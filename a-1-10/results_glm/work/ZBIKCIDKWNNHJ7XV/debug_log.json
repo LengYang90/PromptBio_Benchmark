@@ -1,0 +1,10 @@
+[
+    {
+        "image": "lengyang/pb_bio_tools:2.0.0",
+        "command": "#!/bin/bash\nBAM=\"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-1-10/result_714/toolsgenie_20260714/data/example_tumor.bam\"\nOUT=\"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-1-10/result_714/toolsgenie_20260714/data/average_coverage.txt\"\n\necho \"=== 1. Index BAM ===\"\nsamtools index \"$BAM\"\n\necho \"\"\necho \"=== 2. Compute average depth over non-zero positions ===\"\nsamtools depth \"$BAM\" | awk '{sum+=$3; count++} END {printf \"%.4f\\n\", sum/count}' > \"$OUT\"\n\necho \"\"\necho \"=== 3. Output file contents ===\"\ncat \"$OUT\"\n\necho \"\"\necho \"=== Verification: non-zero positions, sum of depths, average ===\"\nsamtools depth \"$BAM\" | awk '{sum+=$3; count++} END {print \"Non-zero positions:\", count; print \"Sum of depths:\", sum; print \"Average:\", sum/count}'\n\necho \"\"\necho \"=== 4. samtools coverage (cross-validation) ===\"\nsamtools coverage \"$BAM\"\n",
+        "code_type": "bash",
+        "exec_runcode": 0,
+        "exec_stdout": "=== 1. Index BAM ===\n\n=== 2. Compute average depth over non-zero positions ===\n\n=== 3. Output file contents ===\n31.5860\n\n=== Verification: non-zero positions, sum of depths, average ===\nNon-zero positions: 5739\nSum of depths: 181272\nAverage: 31.586\n\n=== 4. samtools coverage (cross-validation) ===\n#rname\tstartpos\tendpos\tnumreads\tcovbases\tcoverage\tmeandepth\tmeanbaseq\tmeanmapq\nchr6\t1\t171115067\t2392\t5733\t0.00335038\t0.00105936\t93\t39.8\n",
+        "exec_stderr": ""
+    }
+]

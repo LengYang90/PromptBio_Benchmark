@@ -1,0 +1,23 @@
+exec_runcode:
+0
+exec_stdout:
+=== 1. BAM Header (samtools view -H) ===
+@HD	VN:1.3	SO:coordinate
+@SQ	SN:chr6	LN:171115067
+@PG	ID:bwa	PN:bwa	VN:0.7.15-r1140	CL:bwa mem /camp/lab/swantonc/working/rosentr/projects/PolySolverLOH/test/test-example-file/chr6.fa /camp/lab/swantonc/working/rosentr/projects/PolySolverLOH/test/test-example-file/fastq/example_tumor.fq1 /camp/lab/swantonc/working/rosentr/projects/PolySolverLOH/test/test-example-file/fastq/example_tumor.fq2
+@PG	ID:samtools	PN:samtools	PP:bwa	VN:1.22.1	CL:samtools view -H /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-1-10/result_714/toolsgenie_20260714/data/example_tumor.bam
+
+=== 2. Total Read Count (samtools view -c) ===
+2401
+
+=== 3. Index File (.bai) Check ===
+NOT FOUND: no .bai index file located next to the BAM
+
+=== 4. idxstats (chromosomes and read counts) ===
+chr6	171115067	2392	9
+*	0	0	0
+
+exec_stderr:
+[E::idx_find_and_load] Could not retrieve index file for '/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-1-10/result_714/toolsgenie_20260714/data/example_tumor.bam'
+samtools idxstats: fail to load index for "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-1-10/result_714/toolsgenie_20260714/data/example_tumor.bam", reverting to slow method
+

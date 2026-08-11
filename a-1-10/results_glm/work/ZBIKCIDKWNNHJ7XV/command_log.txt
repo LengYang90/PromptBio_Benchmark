@@ -1,0 +1,21 @@
+exec_runcode:
+0
+exec_stdout:
+=== 1. Index BAM ===
+
+=== 2. Compute average depth over non-zero positions ===
+
+=== 3. Output file contents ===
+31.5860
+
+=== Verification: non-zero positions, sum of depths, average ===
+Non-zero positions: 5739
+Sum of depths: 181272
+Average: 31.586
+
+=== 4. samtools coverage (cross-validation) ===
+#rname	startpos	endpos	numreads	covbases	coverage	meandepth	meanbaseq	meanmapq
+chr6	1	171115067	2392	5733	0.00335038	0.00105936	93	39.8
+
+exec_stderr:
+
