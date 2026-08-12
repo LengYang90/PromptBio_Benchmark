@@ -34,8 +34,8 @@ from typing import Any
 
 
 DEFAULT_BASE_URL = "https://api.openai.com/v1"
-DEFAULT_MAX_FILE_CHARS = 16_0000
-DEFAULT_MAX_AUDIT_CHARS = 300_000
+DEFAULT_MAX_FILE_CHARS = 100_0000
+DEFAULT_MAX_AUDIT_CHARS = 1500_000
 
 
 @dataclass(frozen=True)
