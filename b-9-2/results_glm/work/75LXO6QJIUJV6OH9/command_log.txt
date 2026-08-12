@@ -1,0 +1,77 @@
+exec_runcode:
+0
+exec_stdout:
+Collecting lifelines
+  Downloading lifelines-0.30.3-py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: numpy>=1.14.0 in /opt/conda/lib/python3.12/site-packages (from lifelines) (1.26.4)
+Requirement already satisfied: scipy>=1.7.0 in /opt/conda/lib/python3.12/site-packages (from lifelines) (1.14.1)
+Requirement already satisfied: pandas<3.0,>=2.1 in /opt/conda/lib/python3.12/site-packages (from lifelines) (2.2.3)
+Requirement already satisfied: matplotlib>=3.0 in /opt/conda/lib/python3.12/site-packages (from lifelines) (3.9.2)
+Collecting autograd>=1.5 (from lifelines)
+  Downloading autograd-1.9.1-py3-none-any.whl.metadata (6.1 kB)
+Collecting autograd-gamma>=0.3 (from lifelines)
+  Downloading autograd-gamma-0.5.0.tar.gz (4.0 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting formulaic>=0.2.2 (from lifelines)
+  Downloading formulaic-1.2.2-py3-none-any.whl.metadata (7.0 kB)
+Collecting interface-meta>=1.2.0 (from formulaic>=0.2.2->lifelines)
+  Downloading interface_meta-2.0.1-py3-none-any.whl.metadata (6.4 kB)
+Collecting narwhals>=1.17 (from formulaic>=0.2.2->lifelines)
+  Downloading narwhals-2.23.0-py3-none-any.whl.metadata (15 kB)
+Collecting typing-extensions>=4.2.0 (from formulaic>=0.2.2->lifelines)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting wrapt>=1.0 (from formulaic>=0.2.2->lifelines)
+  Downloading wrapt-2.2.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (7.4 kB)
+Requirement already satisfied: contourpy>=1.0.1 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=3.0->lifelines) (1.3.2)
+Requirement already satisfied: cycler>=0.10 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=3.0->lifelines) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=3.0->lifelines) (4.58.0)
+Requirement already satisfied: kiwisolver>=1.3.1 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=3.0->lifelines) (1.4.8)
+Requirement already satisfied: packaging>=20.0 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=3.0->lifelines) (24.1)
+Requirement already satisfied: pillow>=8 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=3.0->lifelines) (11.2.1)
+Requirement already satisfied: pyparsing>=2.3.1 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=3.0->lifelines) (3.2.3)
+Requirement already satisfied: python-dateutil>=2.7 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=3.0->lifelines) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in /opt/conda/lib/python3.12/site-packages (from pandas<3.0,>=2.1->lifelines) (2025.2)
+Requirement already satisfied: tzdata>=2022.7 in /opt/conda/lib/python3.12/site-packages (from pandas<3.0,>=2.1->lifelines) (2025.2)
+Requirement already satisfied: six>=1.5 in /opt/conda/lib/python3.12/site-packages (from python-dateutil>=2.7->matplotlib>=3.0->lifelines) (1.17.0)
+Downloading lifelines-0.30.3-py3-none-any.whl (409 kB)
+Downloading autograd-1.9.1-py3-none-any.whl (54 kB)
+Downloading formulaic-1.2.2-py3-none-any.whl (118 kB)
+Downloading interface_meta-2.0.1-py3-none-any.whl (15 kB)
+Downloading narwhals-2.23.0-py3-none-any.whl (458 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading wrapt-2.2.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (169 kB)
+Building wheels for collected packages: autograd-gamma
+  Building wheel for autograd-gamma (setup.py): started
+  Building wheel for autograd-gamma (setup.py): finished with status 'done'
+  Created wheel for autograd-gamma: filename=autograd_gamma-0.5.0-py3-none-any.whl size=4030 sha256=2eb233b38fc4abc0c21aee1740788a13329b1386e75dc6bad208d23c3dd2044a
+  Stored in directory: /root/.cache/pip/wheels/50/37/21/0a719b9d89c635e89ff24bd93b862882ad675279552013b2fb
+Successfully built autograd-gamma
+Installing collected packages: wrapt, typing-extensions, narwhals, interface-meta, autograd, autograd-gamma, formulaic, lifelines
+Successfully installed autograd-1.9.1 autograd-gamma-0.5.0 formulaic-1.2.2 interface-meta-2.0.1 lifelines-0.30.3 narwhals-2.23.0 typing-extensions-4.16.0 wrapt-2.2.2
+=== MODEL SUMMARY ===
+                       coef  exp(coef)  ...             p   -log2(p)
+covariate                               ...                         
+age                0.029169   1.029599  ...  2.652729e-12  38.455660
+sex               -0.226992   0.796927  ...  4.014934e-02   4.638480
+gene_score_medium  0.312493   1.366828  ...  1.623003e-02   5.945190
+gene_score_high    0.928950   2.531848  ...  8.657767e-11  33.427214
+
+[4 rows x 11 columns]
+
+=== CONCORDANCE INDEX ===
+0.6521031851706052
+
+=== RESULTS DATAFRAME (rounded to 4 decimals for display) ===
+   Gene_Score  Hazard_Ratio  CI_Lower_95  CI_Upper_95  P_value
+medium_vs_low        1.3668       1.0594       1.7635   0.0162
+  high_vs_low        2.5318       1.9124       3.3520   0.0000
+
+=== SAVED CSV CONTENT (full precision) ===
+   Gene_Score  Hazard_Ratio  CI_Lower_95  CI_Upper_95      P_value
+medium_vs_low      1.366828     1.059384     1.763495 1.623003e-02
+  high_vs_low      2.531848     1.912389     3.351963 8.657767e-11
+
+exec_stderr:
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+

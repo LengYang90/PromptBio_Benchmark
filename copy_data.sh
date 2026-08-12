@@ -11,11 +11,11 @@ if [ ! -d ${model_res_dir} ];then
     mkdir -p  ${model_res_dir}
 fi
 
-data_dir="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/${1}/data"
-ref_answer="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/${1}/ref_answer"
-ref_script="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/${1}/ref_script"
-eval_file="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/${1}/eval.json"
-task_file="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/${1}/task.json"
+data_dir="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/${1}/data"
+ref_answer="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/${1}/ref_answer"
+ref_script="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/${1}/ref_script"
+eval_file="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/${1}/eval.json"
+task_file="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/${1}/task.json"
 
 
 # if [ -d ${data_dir} ];then
@@ -69,7 +69,7 @@ case "$2" in
         ;;
 esac
 
-glm_result_dir="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/${1}/${res}/toolsgenie_20260714"
+glm_result_dir="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/${1}/${res}/toolsgenie_20260709"
 ls ${ref_answer}|while read id
 do
     echo $id
@@ -91,7 +91,7 @@ else
     exit 1
 fi
 
-glm_result_log="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/${1}/${res}/toolsgenie_20260714-log"
+glm_result_log="/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/${1}/${res}/toolsgenie_20260709-log"
 if [ -f ${glm_result_log}/log.out ];then
     echo "Copy ${glm_result_log}/log.out to ${model_res_dir}"
     cp -r ${glm_result_log}/log.out ${model_res_dir}

@@ -1,0 +1,10 @@
+[
+    {
+        "image": "lengyang/pb_bio_tools:2.0.0_mini",
+        "command": "import pandas as pd\n\ndf = pd.read_csv('/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-4-12/result_79/toolsgenie_20260709/data/cognitive_scores.csv')\n\nprint(\"=== SHAPE ===\")\nprint(df.shape)\n\nprint(\"\\n=== COLUMN NAMES ===\")\nprint(list(df.columns))\n\nprint(\"\\n=== DATA TYPES ===\")\nprint(df.dtypes)\n\nprint(\"\\n=== FIRST 10 ROWS ===\")\nprint(df.head(10).to_string())\n\nprint(\"\\n=== MISSING VALUES ===\")\nprint(df.isnull().sum())\n\nprint(\"\\n=== UNIQUE VALUES IN GROUP/DIAGNOSIS COLUMNS ===\")\nfor col in df.columns:\n    lower = col.lower()\n    if any(k in lower for k in ['group', 'diagnosis', 'diagnos', 'condition', 'status', 'category', 'label', 'class']):\n        print(f\"\\n{col}: {sorted(df[col].dropna().unique().tolist())}\")\n",
+        "code_type": "python",
+        "exec_runcode": 0,
+        "exec_stdout": "=== SHAPE ===\n(100, 3)\n\n=== COLUMN NAMES ===\n['SubjectID', 'Group', 'CognitiveScore']\n\n=== DATA TYPES ===\nSubjectID          object\nGroup              object\nCognitiveScore    float64\ndtype: object\n\n=== FIRST 10 ROWS ===\n  SubjectID    Group  CognitiveScore\n0    CTRL01  Control          107.45\n1    CTRL02  Control           97.93\n2    CTRL03  Control          109.72\n3    CTRL04  Control          122.85\n4    CTRL05  Control           96.49\n5    CTRL06  Control           96.49\n6    CTRL07  Control          123.69\n7    CTRL08  Control          111.51\n8    CTRL09  Control           92.96\n9    CTRL10  Control          108.14\n\n=== MISSING VALUES ===\nSubjectID         0\nGroup             0\nCognitiveScore    0\ndtype: int64\n\n=== UNIQUE VALUES IN GROUP/DIAGNOSIS COLUMNS ===\n\nGroup: ['Alzheimers', 'Control']\n",
+        "exec_stderr": ""
+    }
+]

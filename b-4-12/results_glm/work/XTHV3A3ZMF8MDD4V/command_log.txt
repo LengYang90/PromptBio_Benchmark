@@ -1,0 +1,40 @@
+exec_runcode:
+0
+exec_stdout:
+=== SHAPE ===
+(100, 3)
+
+=== COLUMN NAMES ===
+['SubjectID', 'Group', 'CognitiveScore']
+
+=== DATA TYPES ===
+SubjectID          object
+Group              object
+CognitiveScore    float64
+dtype: object
+
+=== FIRST 10 ROWS ===
+  SubjectID    Group  CognitiveScore
+0    CTRL01  Control          107.45
+1    CTRL02  Control           97.93
+2    CTRL03  Control          109.72
+3    CTRL04  Control          122.85
+4    CTRL05  Control           96.49
+5    CTRL06  Control           96.49
+6    CTRL07  Control          123.69
+7    CTRL08  Control          111.51
+8    CTRL09  Control           92.96
+9    CTRL10  Control          108.14
+
+=== MISSING VALUES ===
+SubjectID         0
+Group             0
+CognitiveScore    0
+dtype: int64
+
+=== UNIQUE VALUES IN GROUP/DIAGNOSIS COLUMNS ===
+
+Group: ['Alzheimers', 'Control']
+
+exec_stderr:
+

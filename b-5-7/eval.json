@@ -1,0 +1,23 @@
+{
+    "id": "b-5-7",
+    "question": "Apply spectral clustering to the dataset. Use the RBF kernel with gamma=0.01 to construct the similarity matrix. Report the eigenvalues of the Laplacian matrix used in the clustering and determine the optimal number of clusters.",
+    "ref_answer": [
+        "ref_answer/laplacian_eigenvalues.csv",
+        "ref_answer/laplacian_eigenvalues.png"
+    ],
+    "ref_script": [
+        "ref_script/spectral_clustering.py"
+    ],
+    "scoring": {
+        "expected_output": [
+            {
+                "file": "laplacian_eigenvalues.csv",
+                "guidelines": "Ascending eigenvalue records must match the reference within +/-0.01; column naming may differ."
+            },
+            {
+                "file": "laplacian_eigenvalues.png",
+                "guidelines": "Plot must show sorted Laplacian eigenvalues as a line with the eigengap annotated; axis labels and styling may differ."
+            }
+        ]
+    }
+}

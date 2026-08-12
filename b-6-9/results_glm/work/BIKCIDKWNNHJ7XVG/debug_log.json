@@ -1,0 +1,10 @@
+[
+    {
+        "image": "quay.io/biocontainers/mulled-v2-6d7bfd94b486889b7c682c29c819307ed96403e5:888ea6aeaba0e48d19567965041dd37b92307a30-0",
+        "command": "import pandas as pd\nimport numpy as np\nfrom sklearn.manifold import MDS\nfrom scipy.spatial.distance import pdist\n\npath = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-6-9/result_79/toolsgenie_20260709/data/gene_expression.csv\"\ndf = pd.read_csv(path, index_col=0)\n\ngroups = df['Group']\nfeatures = df.drop(columns=['Group'])\n\nmds = MDS(n_components=2, random_state=42, dissimilarity='euclidean', normalized_stress='auto')\ncoords = mds.fit_transform(features)\nstress = mds.stress_\n\ncentroids = np.array([coords[groups == g].mean(axis=0) for g in groups.unique()])\nbetween_dist = np.mean(pdist(centroids))\n\nwithin_dists = [np.mean(pdist(coords[groups == g])) for g in groups.unique() if (groups == g).sum() > 1]\nwithin_dist = np.mean(within_dists)\n\nratio = between_dist / within_dist\n\nout_path = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-6-9/result_79/toolsgenie_20260709/data/mds_results.txt\"\nwith open(out_path, 'w') as f:\n    f.write(f\"Stress: {stress}\\n\")\n    f.write(f\"Between_Within_Ratio: {ratio}\\n\")\n\nwith open(out_path, 'r') as f:\n    print(f.read())\n",
+        "code_type": "python",
+        "exec_runcode": 0,
+        "exec_stdout": "Stress: 61350.96091792431\nBetween_Within_Ratio: 3.6522769768700742\n\n",
+        "exec_stderr": ""
+    }
+]

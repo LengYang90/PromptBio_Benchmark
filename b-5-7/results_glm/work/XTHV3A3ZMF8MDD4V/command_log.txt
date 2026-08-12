@@ -1,0 +1,63 @@
+exec_runcode:
+0
+exec_stdout:
+=== FIRST FEW ROWS ===
+   feature_1  feature_2  feature_3  ...  feature_8  feature_9  feature_10
+0     0.4967    -0.1383     0.6477  ...     0.7674    -0.4695      0.5426
+1    -0.4634    -0.4657     0.2420  ...     0.3142    -0.9080     -1.4123
+2     1.4656    -0.2258     0.0675  ...     0.3757    -0.6006     -0.2917
+3    -0.6017     1.8523    -0.0135  ...    -1.9597    -1.3282      0.1969
+4     0.7385     0.1714    -0.1156  ...     1.0571     0.3436     -1.7630
+
+[5 rows x 10 columns]
+
+=== SHAPE ===
+(120, 10)
+
+=== COLUMN NAMES ===
+['feature_1', 'feature_2', 'feature_3', 'feature_4', 'feature_5', 'feature_6', 'feature_7', 'feature_8', 'feature_9', 'feature_10']
+
+=== DATA TYPES ===
+feature_1     float64
+feature_2     float64
+feature_3     float64
+feature_4     float64
+feature_5     float64
+feature_6     float64
+feature_7     float64
+feature_8     float64
+feature_9     float64
+feature_10    float64
+dtype: object
+
+=== BASIC STATISTICS ===
+        feature_1   feature_2   feature_3  ...   feature_8   feature_9  feature_10
+count  120.000000  120.000000  120.000000  ...  120.000000  120.000000  120.000000
+mean     0.034973   -0.024175    0.035973  ...    3.330761    3.428850    3.425565
+std      4.168724    4.244439    4.062862  ...    2.536599    2.531856    2.641474
+min     -7.499400   -7.896300   -6.448000  ...   -1.959700   -1.328200   -1.987600
+25%     -4.217725   -4.367075   -4.093750  ...    0.503800    0.497200    0.629275
+50%     -0.110150    0.193950    0.063850  ...    4.245150    4.477800    4.423650
+75%      4.517725    3.872025    4.296850  ...    5.256925    5.416125    5.528950
+max      7.060700    7.075400    7.560100  ...    7.455300    8.078900    7.163300
+
+[8 rows x 10 columns]
+
+=== MISSING VALUES (per column) ===
+feature_1     0
+feature_2     0
+feature_3     0
+feature_4     0
+feature_5     0
+feature_6     0
+feature_7     0
+feature_8     0
+feature_9     0
+feature_10    0
+dtype: int64
+
+=== TOTAL MISSING VALUES ===
+0
+
+exec_stderr:
+

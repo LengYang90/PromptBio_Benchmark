@@ -1,0 +1,20 @@
+{
+    "test_client_stream_20260709_061743": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-6-9/result_79/toolsgenie_20260709/data/gene_expression.csv"
+        ],
+        "Reference_import": [],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-6-9/result_79/toolsgenie_20260709/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            },
+            {
+                "key": "BIKCIDKWNNHJ7XVG",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-6-9/result_79/toolsgenie_20260709/work/BIKCIDKWNNHJ7XVG/debug_log.json"
+            }
+        ]
+    }
+}

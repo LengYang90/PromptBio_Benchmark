@@ -1,0 +1,10 @@
+exec_runcode:
+1
+exec_stdout:
+
+exec_stderr:
+Traceback (most recent call last):
+  File "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-9-2/result_79/toolsgenie_20260709/work/ZBIKCIDKWNNHJ7XV/command.sh", line 2, in <module>
+    from lifelines import CoxPHFitter
+ModuleNotFoundError: No module named 'lifelines'
+

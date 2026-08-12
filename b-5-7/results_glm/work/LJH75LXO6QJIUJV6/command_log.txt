@@ -1,0 +1,28 @@
+exec_runcode:
+0
+exec_stdout:
+=== CSV Verification ===
+Column names: ['index', 'eigenvalue']
+Total row count: 120
+
+First 10 rows:
+   index    eigenvalue
+0      0 -1.734598e-16
+1      1  9.868069e-02
+2      2  2.345712e-01
+3      3  9.608818e-01
+4      4  9.621217e-01
+5      5  9.668203e-01
+6      6  9.718475e-01
+7      7  9.727309e-01
+8      8  9.740823e-01
+9      9  9.745280e-01
+
+Eigenvalues sorted ascending: True
+
+=== PNG Verification ===
+File exists: True
+File size: 57127 bytes (55.79 KB)
+
+exec_stderr:
+

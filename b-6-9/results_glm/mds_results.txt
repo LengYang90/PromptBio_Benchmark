@@ -1,0 +1,2 @@
+Stress: 61350.96091792431
+Between_Within_Ratio: 3.6522769768700742

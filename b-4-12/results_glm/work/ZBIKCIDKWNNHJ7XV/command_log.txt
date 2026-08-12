@@ -1,0 +1,13 @@
+exec_runcode:
+0
+exec_stdout:
+=== Group Statistics ===
+Alzheimers: mean=85.2666, sd=13.1149, n=50
+Control:    mean=96.6178, sd=14.0051, n=50
+
+=== Results ===
+ Mean_Difference  P_Value  Cohens_d  CI_Lower  CI_Upper Effect_Size_Interpretation
+        -11.3512 0.000063 -0.836659 -1.248944 -0.470915                      large
+
+exec_stderr:
+

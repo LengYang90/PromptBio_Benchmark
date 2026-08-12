@@ -1,0 +1,95 @@
+exec_runcode:
+0
+exec_stdout:
+=== First 5 rows ===
+              Group    Gene_1    Gene_2  ...   Gene_48   Gene_49   Gene_50
+Sample_ID                                ...                              
+Sample_044  Group_2  7.036022  7.812775  ...  5.890714  4.181496  6.292870
+Sample_049  Group_2  6.270840  5.784271  ...  2.840878  7.716729  7.468821
+Sample_025  Group_1  8.906612  8.304390  ...  6.531522  6.220717  3.538549
+Sample_052  Group_2  6.486596  7.500887  ...  4.720003  5.035278  6.583468
+Sample_045  Group_2  6.253758  4.077530  ...  6.781850  7.603438  4.179260
+
+[5 rows x 51 columns]
+
+=== Column names ===
+['Group', 'Gene_1', 'Gene_2', 'Gene_3', 'Gene_4', 'Gene_5', 'Gene_6', 'Gene_7', 'Gene_8', 'Gene_9', 'Gene_10', 'Gene_11', 'Gene_12', 'Gene_13', 'Gene_14', 'Gene_15', 'Gene_16', 'Gene_17', 'Gene_18', 'Gene_19', 'Gene_20', 'Gene_21', 'Gene_22', 'Gene_23', 'Gene_24', 'Gene_25', 'Gene_26', 'Gene_27', 'Gene_28', 'Gene_29', 'Gene_30', 'Gene_31', 'Gene_32', 'Gene_33', 'Gene_34', 'Gene_35', 'Gene_36', 'Gene_37', 'Gene_38', 'Gene_39', 'Gene_40', 'Gene_41', 'Gene_42', 'Gene_43', 'Gene_44', 'Gene_45', 'Gene_46', 'Gene_47', 'Gene_48', 'Gene_49', 'Gene_50']
+
+=== Shape ===
+(100, 51)
+
+=== Group-related columns (guess) ===
+['Group']
+
+=== Data types ===
+Group       object
+Gene_1     float64
+Gene_2     float64
+Gene_3     float64
+Gene_4     float64
+Gene_5     float64
+Gene_6     float64
+Gene_7     float64
+Gene_8     float64
+Gene_9     float64
+Gene_10    float64
+Gene_11    float64
+Gene_12    float64
+Gene_13    float64
+Gene_14    float64
+Gene_15    float64
+Gene_16    float64
+Gene_17    float64
+Gene_18    float64
+Gene_19    float64
+Gene_20    float64
+Gene_21    float64
+Gene_22    float64
+Gene_23    float64
+Gene_24    float64
+Gene_25    float64
+Gene_26    float64
+Gene_27    float64
+Gene_28    float64
+Gene_29    float64
+Gene_30    float64
+Gene_31    float64
+Gene_32    float64
+Gene_33    float64
+Gene_34    float64
+Gene_35    float64
+Gene_36    float64
+Gene_37    float64
+Gene_38    float64
+Gene_39    float64
+Gene_40    float64
+Gene_41    float64
+Gene_42    float64
+Gene_43    float64
+Gene_44    float64
+Gene_45    float64
+Gene_46    float64
+Gene_47    float64
+Gene_48    float64
+Gene_49    float64
+Gene_50    float64
+dtype: object
+
+=== Basic statistics ===
+          Group      Gene_1      Gene_2  ...     Gene_48     Gene_49     Gene_50
+count       100  100.000000  100.000000  ...  100.000000  100.000000  100.000000
+unique        3         NaN         NaN  ...         NaN         NaN         NaN
+top     Group_1         NaN         NaN  ...         NaN         NaN         NaN
+freq         34         NaN         NaN  ...         NaN         NaN         NaN
+mean        NaN    6.880998    8.016310  ...    6.980346    7.355208    6.013328
+std         NaN    1.620209    2.008269  ...    1.988364    1.447619    1.579506
+min         NaN    3.010217    3.680409  ...    2.840878    3.086558    3.199707
+25%         NaN    5.830986    6.380083  ...    5.453126    6.207897    4.623725
+50%         NaN    7.163625    8.143980  ...    6.532470    7.181166    6.001261
+75%         NaN    8.167848    9.745974  ...    8.610709    8.722039    7.169996
+max         NaN    9.302316   11.711309  ...   11.551907    9.941097   10.282169
+
+[11 rows x 51 columns]
+
+exec_stderr:
+

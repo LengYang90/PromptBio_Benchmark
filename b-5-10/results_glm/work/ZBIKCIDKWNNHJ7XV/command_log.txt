@@ -1,0 +1,38 @@
+exec_runcode:
+0
+exec_stdout:
+Cluster sizes:
+  Cluster 0: 30
+  Cluster 1: 30
+  Cluster 2: 30
+
+Preview of output file:
+Sample	Cluster
+Sample_1	2
+Sample_2	1
+Sample_3	1
+Sample_4	0
+Sample_5	1
+Sample_6	1
+Sample_7	1
+Sample_8	2
+Sample_9	1
+
+Output saved to: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-5-10/result_79/toolsgenie_20260709/data/snf_cluster_assignments.txt
+
+exec_stderr:
+/usr/local/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py:136: UserWarning: Could not find the number of physical cores for the following reason:
+[Errno 2] No such file or directory: 'lscpu'
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/usr/local/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py", line 250, in _count_physical_cores
+    cpu_info = subprocess.run(
+               ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/local/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+

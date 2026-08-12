@@ -1,0 +1,10 @@
+[
+    {
+        "image": "lengyang/pb_bio_tools:2.0.0_mini",
+        "command": "import pandas as pd\n\npath = '/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-4-12/result_79/toolsgenie_20260709/data/ttest_cohens_d_results.csv'\ndf = pd.read_csv(path)\nprint(f\"File: {path}\")\nprint(f\"Shape: {df.shape}\")\nprint(f\"Columns: {list(df.columns)}\")\nprint(\"\\n=== Contents ===\")\nprint(df.to_string(index=False))\n",
+        "code_type": "python",
+        "exec_runcode": 0,
+        "exec_stdout": "File: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-4-12/result_79/toolsgenie_20260709/data/ttest_cohens_d_results.csv\nShape: (1, 6)\nColumns: ['Mean_Difference', 'P_Value', 'Cohens_d', 'CI_Lower', 'CI_Upper', 'Effect_Size_Interpretation']\n\n=== Contents ===\n Mean_Difference  P_Value  Cohens_d  CI_Lower  CI_Upper Effect_Size_Interpretation\n        -11.3512 0.000063 -0.836659 -1.248944 -0.470915                      large\n",
+        "exec_stderr": ""
+    }
+]
