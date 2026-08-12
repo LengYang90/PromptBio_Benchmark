@@ -398,7 +398,8 @@ def call_llm(base_url: str, api_key: str, model: str, user_prompt: str, timeout:
         "response_format": {"type": "json_object"},
         "messages": messages,
     }
-    response, error = post_chat_completion(endpoint, api_key, body, timeout)
+    response, error = post_
+    chat_completion(endpoint, api_key, body, timeout)
     # Some OpenAI-compatible services do not implement response_format. Retry
     # once without it, then still validate the model's response locally.
     if error and "response_format" in error.lower():
