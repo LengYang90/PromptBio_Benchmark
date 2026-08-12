@@ -1,0 +1,53 @@
+exec_runcode:
+0
+exec_stdout:
+Collecting gseapy
+  Downloading gseapy-1.3.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (13 kB)
+Requirement already satisfied: numpy>=1.13.0 in /opt/conda/lib/python3.12/site-packages (from gseapy) (1.26.4)
+Requirement already satisfied: scipy in /opt/conda/lib/python3.12/site-packages (from gseapy) (1.14.1)
+Requirement already satisfied: pandas in /opt/conda/lib/python3.12/site-packages (from gseapy) (2.2.3)
+Requirement already satisfied: matplotlib>=2.2 in /opt/conda/lib/python3.12/site-packages (from gseapy) (3.9.2)
+Requirement already satisfied: requests in /opt/conda/lib/python3.12/site-packages (from gseapy) (2.32.3)
+Requirement already satisfied: contourpy>=1.0.1 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=2.2->gseapy) (1.3.2)
+Requirement already satisfied: cycler>=0.10 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=2.2->gseapy) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=2.2->gseapy) (4.58.0)
+Requirement already satisfied: kiwisolver>=1.3.1 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=2.2->gseapy) (1.4.8)
+Requirement already satisfied: packaging>=20.0 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=2.2->gseapy) (24.1)
+Requirement already satisfied: pillow>=8 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=2.2->gseapy) (11.2.1)
+Requirement already satisfied: pyparsing>=2.3.1 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=2.2->gseapy) (3.2.3)
+Requirement already satisfied: python-dateutil>=2.7 in /opt/conda/lib/python3.12/site-packages (from matplotlib>=2.2->gseapy) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in /opt/conda/lib/python3.12/site-packages (from pandas->gseapy) (2025.2)
+Requirement already satisfied: tzdata>=2022.7 in /opt/conda/lib/python3.12/site-packages (from pandas->gseapy) (2025.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/conda/lib/python3.12/site-packages (from requests->gseapy) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in /opt/conda/lib/python3.12/site-packages (from requests->gseapy) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/conda/lib/python3.12/site-packages (from requests->gseapy) (2.2.3)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.12/site-packages (from requests->gseapy) (2025.4.26)
+Requirement already satisfied: six>=1.5 in /opt/conda/lib/python3.12/site-packages (from python-dateutil>=2.7->matplotlib>=2.2->gseapy) (1.17.0)
+Downloading gseapy-1.3.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (664 kB)
+    664.6/664.6 kB 24.0 MB/s eta 0:00:00
+Installing collected packages: gseapy
+Successfully installed gseapy-1.3.0
+Shape: (2654, 10)
+Columns: ['Name', 'Term', 'ES', 'NES', 'NOM p-val', 'FDR q-val', 'FWER p-val', 'Tag %', 'Gene %', 'Lead_genes']
+
+Head:
+      Name                                                                       Term        ES       NES  NOM p-val  FDR q-val  FWER p-val  Tag %  Gene %                                                                                                                                                                                                                                                                                                                                                                                                                      Lead_genes
+0  prerank                                       Cytoplasmic Translation (GO:0002181)  0.743205  1.835790        0.0      0.003       0.003  70/90  14.57%  RPL12;RPS11;RPS15A;RPS6;RPL14;RPLP0;RPL11;RPS2;RPSA;RPL36;RPS10;RPL27A;RPL5;RPS7;RPS16;RPS5;RPS14;RPS23;UBA52;RPS3;RPS8;RPS4X;RPL29;RPL9;RPLP2;RPS13;RPS9;RPL35A;RPS19;RPL6;RPL24;RPL15;RPL7A;RPS25;RPL8;RPL30;RPS28;RPL3;RPS27A;RPS17;RPL17;RPL23A;EIF4A1;RPS27;RPL10A;RPS3A;RPL37A;RPS18;RPL31;RPL19;EIF4A2;RPS29;RPL7;RPL18;RPL4;RPL13A;RPS15;RPL38;RPS20;EIF2B3;RPS24;RPL10;RPL18A;MRPS12;RPL21;RPL35;ETF1;RPL34;RPS21;FAU
+1  prerank                                   Cellular Response To Lectin (GO:1990858)  0.809615  1.782056        0.0      0.005       0.014  13/19   8.11%                                                                                                                                                                                                                                                                                                                                                           EP300;CREBBP;SRC;PAK1;TRAF6;FYN;LYN;TYROBP;PAK3;PAK2;SYK;IKBKB;MAP3K7
+2  prerank          Stimulatory C-type Lectin Receptor Signaling Pathway (GO:0002223)  0.809615  1.782056        0.0      0.005       0.014  13/19   8.11%                                                                                                                                                                                                                                                                                                                                                           EP300;CREBBP;SRC;PAK1;TRAF6;FYN;LYN;TYROBP;PAK3;PAK2;SYK;IKBKB;MAP3K7
+3  prerank                                      Myoblast Differentiation (GO:0045445)  0.793094  1.765169        0.0      0.006       0.023  14/19  13.52%                                                                                                                                                                                                                                                                                                                                                    NOTCH1;RB1;ITGB1;SRF;NRG1;TCF7L2;IGF1;JAG1;MAPK12;MBNL1;RBPJ;EPAS1;DDX5;SDC1
+4  prerank  Fc-gamma Receptor Signaling Pathway Involved In Phagocytosis (GO:0038096)  0.792681  1.761954        0.0      0.005       0.023  16/20  13.99%                                                                                                                                                                                                                                                                                                                                                   SRC;PAK1;FYN;PRKCE;LYN;PRKCD;PTK2;VAV3;SYK;YES1;HCK;PLA2G6;PLD2;VAV1;VAV2;FGR
+
+===== TOP 5 RESULTS =====
+       Name                                                         Term        ES       NES  NOM p-val  FDR q-val  FWER p-val
+0   prerank                         Cytoplasmic Translation (GO:0002181)  0.743205  1.835790        0.0   0.003000       0.003
+12  prerank             Response To Epidermal Growth Factor (GO:0070849)  0.759776  1.740154        0.0   0.003462       0.043
+11  prerank  Positive Regulation Of Leukocyte Proliferation (GO:0070665)  0.805199  1.741221        0.0   0.003500       0.040
+13  prerank                   Fc Receptor Signaling Pathway (GO:0038093)  0.770011  1.736650        0.0   0.003500       0.047
+10  prerank    Negative Regulation Of Synaptic Transmission (GO:0050805)  0.803819  1.741926        0.0   0.003818       0.040
+
+exec_stderr:
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-07-14 02:29:43,869 [WARNING] Duplicated values found in preranked stats: 4.97% of genes
+The order of those genes will be arbitrary, which may produce unexpected results.
+

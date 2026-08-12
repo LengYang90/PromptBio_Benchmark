@@ -1,0 +1,33 @@
+exec_runcode:
+0
+exec_stdout:
+=== gsea_result.csv ===
+Shape: (2654, 7)
+Columns: ['Name', 'Term', 'ES', 'NES', 'NOM p-val', 'FDR q-val', 'FWER p-val']
+First 10 rows:
+      Name                                                                                                           Term        ES       NES  NOM p-val  FDR q-val  FWER p-val
+0  prerank                                                                           Cytoplasmic Translation (GO:0002181)  0.743205  1.835790        0.0   0.003000       0.003
+1  prerank                                                               Response To Epidermal Growth Factor (GO:0070849)  0.759776  1.740154        0.0   0.003462       0.043
+2  prerank                                                    Positive Regulation Of Leukocyte Proliferation (GO:0070665)  0.805199  1.741221        0.0   0.003500       0.040
+3  prerank                                                                     Fc Receptor Signaling Pathway (GO:0038093)  0.770011  1.736650        0.0   0.003500       0.047
+4  prerank                                                      Negative Regulation Of Synaptic Transmission (GO:0050805)  0.803819  1.741926        0.0   0.003818       0.040
+5  prerank                                                             Fc-epsilon Receptor Signaling Pathway (GO:0038095)  0.781688  1.730258        0.0   0.004000       0.059
+6  prerank                                                                            ERBB Signaling Pathway (GO:0038127)  0.723829  1.742528        0.0   0.004100       0.039
+7  prerank                                                                Activin Receptor Signaling Pathway (GO:0032924)  0.825201  1.761491        0.0   0.004167       0.023
+8  prerank                                                       Regulation Of Cellular Component Biogenesis (GO:0044087)  0.737894  1.730695        0.0   0.004200       0.059
+9  prerank  Regulation Of Cardiac Muscle Contraction By Regulation Of The Release Of Sequestered Calcium Ion (GO:0010881)  0.813887  1.743931        0.0   0.004222       0.036
+
+=== gsea_top5_result.csv ===
+      Name                                                         Term        ES       NES  NOM p-val  FDR q-val  FWER p-val
+0  prerank                         Cytoplasmic Translation (GO:0002181)  0.743205  1.835790        0.0   0.003000       0.003
+1  prerank             Response To Epidermal Growth Factor (GO:0070849)  0.759776  1.740154        0.0   0.003462       0.043
+2  prerank  Positive Regulation Of Leukocyte Proliferation (GO:0070665)  0.805199  1.741221        0.0   0.003500       0.040
+3  prerank                   Fc Receptor Signaling Pathway (GO:0038093)  0.770011  1.736650        0.0   0.003500       0.047
+4  prerank    Negative Regulation Of Synaptic Transmission (GO:0050805)  0.803819  1.741926        0.0   0.003818       0.040
+
+=== Column Verification ===
+gsea_result.csv contains required columns: True
+gsea_top5_result.csv contains required columns: True
+
+exec_stderr:
+

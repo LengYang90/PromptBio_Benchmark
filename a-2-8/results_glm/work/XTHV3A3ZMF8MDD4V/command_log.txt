@@ -1,0 +1,88 @@
+exec_runcode:
+0
+exec_stdout:
+===== FIRST 20 LINES (RAW) =====
+'ATXN1\t16.4567529278529'
+'UBQLN4\t13.9894927152905'
+'CALM1\t13.7455333730743'
+'DLG4\t12.7965880953805'
+'MRE11A\t12.7876313022079'
+'CTNNB1\t11.8893681498343'
+'YWHAG\t11.6952988831155'
+'PRKACA\t11.2589237003211'
+'DLG1\t10.1893333087532'
+'GRB2\t10.1806792182863'
+'SP1\t10.0268570945189'
+'EGFR\t9.42171466996551'
+'RAC1\t9.32315225379885'
+'SMAD9\t9.31088315261862'
+'YWHAZ\t9.29233395806198'
+'KLF6\t9.20419682604166'
+'SMAD1\t9.17425382363213'
+'DISC1\t9.06773278186888'
+'TGFBR1\t9.03970989077039'
+'PRKCA\t9.03181145987899'
+
+===== TOTAL LINES: 22922 =====
+
+===== DETECTED DELIMITER: '\t' =====
+
+===== SHAPE =====
+(22922, 2)
+
+===== COLUMNS =====
+['gene', 'score']
+
+===== DTYPES =====
+gene      object
+score    float64
+dtype: object
+
+===== HEAD =====
+      gene      score
+0    ATXN1  16.456753
+1   UBQLN4  13.989493
+2    CALM1  13.745533
+3     DLG4  12.796588
+4   MRE11A  12.787631
+5   CTNNB1  11.889368
+6    YWHAG  11.695299
+7   PRKACA  11.258924
+8     DLG1  10.189333
+9     GRB2  10.180679
+10     SP1  10.026857
+11    EGFR   9.421715
+12    RAC1   9.323152
+13   SMAD9   9.310883
+14   YWHAZ   9.292334
+15    KLF6   9.204197
+16   SMAD1   9.174254
+17   DISC1   9.067733
+18  TGFBR1   9.039710
+19   PRKCA   9.031811
+
+===== MISSING VALUES (per column) =====
+gene     0
+score    0
+dtype: int64
+
+===== DUPLICATE ROWS =====
+0
+
+===== DUPLICATES IN FIRST COLUMN (gene names) =====
+0
+
+===== STATS FOR score =====
+count    22922.000000
+mean         0.969383
+std          1.017349
+min          0.000000
+25%          0.252712
+50%          0.690070
+75%          1.363355
+max         16.456753
+Name: score, dtype: float64
+Inf count: 0
+
+exec_stderr:
+
