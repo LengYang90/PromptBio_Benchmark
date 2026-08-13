@@ -1,0 +1,13 @@
+# Agent orchestration and OpenAI-compatible model access
+deepagents>=0.6,<1.0
+langgraph>=1.0,<2.0
+langchain-openai>=1.0,<2.0
+httpx[socks]>=0.28,<1.0
+
+# Read-only artifact inspection.  These libraries are never used to execute
+# task scripts or modify task files.
+Pillow>=10.0,<12.0
+PyMuPDF>=1.24,<2.0
+openpyxl>=3.1,<4.0
+biopython>=1.83,<2.0
+pysam>=0.22,<1.0

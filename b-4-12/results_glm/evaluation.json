@@ -3,70 +3,541 @@
   "task_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12",
   "result_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm",
   "score": 1,
-  "rationale": "The agent answered all requested analyses in the required one-row CSV. Its negative estimates are explicitly for Alzheimers minus Control, whereas the reference uses Control minus Alzheimers. The small p-value and bootstrap-CI differences are justified by the agent's use of Welch's t-test rather than the reference's default pooled-variance t-test and by reversed group sampling order under the same seeded bootstrap; both are valid under the task wording, which did not prescribe variance assumption or subtraction order.",
+  "rationale": "The Agent executed a valid independent two-sample comparison on the demonstrated 50-per-group data, computed pooled-SD Cohen’s d, and generated a seeded 10,000-resample percentile bootstrap CI. Its negative estimates correctly use the stated Alzheimers-minus-Control ordering. The reference instead orders Control minus Alzheimers and uses scipy’s default pooled-variance t-test; the task itself does not prescribe group direction or a Student-versus-Welch t-test. Thus the sign reversal and small p-value/CI differences are reasonably attributable to valid methodological conventions (including the order in which seeded bootstrap resamples are consumed), not a calculation error. The required one-row CSV schema is present and the effect is correctly classified as large.",
   "final_stage": "method_and_execution_audit",
   "evaluator": {
     "model": "gpt-5.6-terra",
-    "strategy": "answer-only comparison, then conditional method-and-execution audit"
+    "base_url": "https://api.openai.com/v1",
+    "api_mode": "responses",
+    "architecture": "LangGraph fixed routing with stage-scoped read-only Deep Agents",
+    "strategy": "all declared output pairs assessed together; conditional method-and-execution audit"
+  },
+  "scope": {
+    "original_input_files_available": false,
+    "scripts_executed": false,
+    "network_access_used_by_agent_tools": false,
+    "task_files_modified": false,
+    "undeclared_result_files_used_as_evidence": false
   },
   "output_files": [
     {
       "file": "ttest_cohens_d_results.csv",
+      "description": "rows as test result (1 row), columns should include Mean_Difference, P_Value, Cohens_d, CI_Lower, CI_Upper, Effect_Size_Interpretation",
+      "type": "csv",
       "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/ref_answer/ttest_cohens_d_results.csv",
       "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/ttest_cohens_d_results.csv",
-      "agent_output_status": "present",
-      "description": "rows as test result (1 row), columns should include Mean_Difference, P_Value, Cohens_d, CI_Lower, CI_Upper, Effect_Size_Interpretation"
+      "reference_exists": true,
+      "agent_exists": true
     }
   ],
-  "evidence_truncation": {
-    "max_file_chars": 1000000,
-    "initial_stage": {
-      "truncated_files": []
+  "file_manifest": [
+    {
+      "path": "b-4-12/ref_answer/ttest_cohens_d_results.csv",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 119,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "4462f5e3865306038eaf6173679e4490000b723cff49430116e3a9a56b250d89"
     },
-    "audit_stage": {
-      "performed": true,
-      "max_total_chars": 1500000,
-      "total_limit_reached": false,
-      "truncated_files": [],
-      "omitted_paths": []
+    {
+      "path": "b-4-12/ref_script/ttest_cohens_d.py",
+      "roles": [
+        "reference_script"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 4928,
+      "suffix": ".py",
+      "mime_type": "text/x-python",
+      "sha256": "1155c52e353e9140e388434cd31bfc61a883cd9c2386369e70e083a400ecdfa1"
+    },
+    {
+      "path": "b-4-12/results_glm/log.out",
+      "roles": [
+        "agent_runtime_log"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 29139,
+      "suffix": ".out",
+      "mime_type": "application/octet-stream",
+      "sha256": "8bdfadaa753ec79999ab6eb534c2262cc689c5e9a1e0493c737d73c3b3612925"
+    },
+    {
+      "path": "b-4-12/results_glm/ttest_cohens_d_results.csv",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 184,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "d74a0131b824fe3e596561d77902d3283e00a2afc442742ca1ae17847d8e7663"
+    },
+    {
+      "path": "b-4-12/results_glm/work/IBLJH75LXO6QJIUJ/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 347,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "6548334110f88d1beda237405bc1703b325bdbd28d92b91a7a7195d1798ea11a"
+    },
+    {
+      "path": "b-4-12/results_glm/work/IBLJH75LXO6QJIUJ/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 498,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "5a2240bcff81ebe531defd4e2dfe69983c4cbfb616045b3edc20e6ab19d13b20"
+    },
+    {
+      "path": "b-4-12/results_glm/work/IBLJH75LXO6QJIUJ/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1028,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "56a48900e4c06cfe56ba2d21174955d9ec2c5178749ba768d7d33ad4a1af2395"
+    },
+    {
+      "path": "b-4-12/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 749,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "cf25fb8fa099663961087f1bf7fd35ef48497505778e104a8ae0d289c08db5ed"
+    },
+    {
+      "path": "b-4-12/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 853,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "828b1183f38f72d6f1ce4ba0883f455b13c57d0d38cbe23b9a5f06e8671b9b26"
+    },
+    {
+      "path": "b-4-12/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1838,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "12ab412fe328ee5ad355d43936998cc169b836cc31b4a093afe8bd9c808fba1d"
+    },
+    {
+      "path": "b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1893,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "7dfaa1082b89ec72354f87e1de2216c260350a772d1ba27e822a1bb3d4da722e"
+    },
+    {
+      "path": "b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 338,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "84581422d311b5cd0c03e14b4fe7d6e980bdf6dc0afb9877c17c6b2fcec009f1"
+    },
+    {
+      "path": "b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2546,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "aad9e7d0cb7948d36edbc5f151d06f768e7f0007e6a50e47b9681c07dd3ab7c4"
+    },
+    {
+      "path": "b-4-12/results_glm/work/workflow_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1193,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "965cbf3d28111936a7b9d2488ec7f8eae5a9a02638051c20642e5d4721796370"
+    },
+    {
+      "path": "b-4-12/task.json",
+      "roles": [
+        "task_definition"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 727,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "73435ba8f39b862d86901e9821cb03af2aa09677ec049e85ae6930375ce070a4"
     }
-  },
+  ],
   "initial_assessment": {
     "verdict": "uncertain",
-    "reason": "The agent reports matching mean-difference and Cohen’s d magnitudes, a closely matching p-value, and an appropriate large-effect interpretation; the reversed signs are plausibly due to an unstated group-subtraction order. However, the bootstrap CI magnitudes do not exactly match the reference, and the output alone does not establish that the required seed-42, 10,000-iteration procedure was used equivalently.",
-    "file_assessments": [
+    "reason": "Both CSVs contain the required one-row schema and characterize the effect as large, but their reported mean difference and Cohen’s d have opposite signs, and the p-values and bootstrap CI bounds are not identical after accounting for that sign reversal. With answer-only evidence, the direction convention and bootstrap/calculation basis cannot be verified, so completion cannot be established conclusively.",
+    "file_observations": [
       {
         "file": "ttest_cohens_d_results.csv",
-        "verdict": "uncertain",
-        "reason": "All required result fields are present and core estimates align in magnitude, but group direction is unstated and the CI differs from the reference beyond simple sign reversal or display formatting."
+        "assessment": "uncertain",
+        "reason": "The reference has Mean_Difference 11.351, P_Value 6.2649e-05, Cohen’s d 0.837, CI 0.463 to 1.24, and “Large,” whereas the agent has -11.351200000000006, 6.283838205749362e-05, -0.836658533579983, CI -1.2489435627733445 to -0.470914779992002, and “large.” The opposite directions may reflect group ordering, but the differing numerical p-value and CI cannot be resolved from the files alone.",
+        "evidence_ids": [
+          "I-0001",
+          "I-0002"
+        ]
       }
+    ],
+    "evidence_ids": [
+      "I-0001",
+      "I-0002"
     ]
   },
   "audit_assessment": {
     "score": 1,
-    "reason": "The agent answered all requested analyses in the required one-row CSV. Its negative estimates are explicitly for Alzheimers minus Control, whereas the reference uses Control minus Alzheimers. The small p-value and bootstrap-CI differences are justified by the agent's use of Welch's t-test rather than the reference's default pooled-variance t-test and by reversed group sampling order under the same seeded bootstrap; both are valid under the task wording, which did not prescribe variance assumption or subtraction order.",
-    "reference_method": "Loads Control and Alzheimers scores; computes mean difference and pooled-SD Cohen's d as Control minus Alzheimers; uses scipy.stats.ttest_ind with its default equal_var=True; seeds NumPy with 42 and performs 10,000 percentile bootstrap resamples in Control-then-Alzheimers order; labels effect size using absolute d.",
-    "agent_method": "Executed code loads the two groups, computes Alzheimers minus Control mean difference and pooled-SD Cohen's d, runs scipy.stats.ttest_ind(..., equal_var=False) for Welch's t-test, sets np.random.seed(42), performs 10,000 with-replacement bootstrap iterations in Alzheimers-then-Control sampling order, uses percentile 2.5/97.5 CI limits, and classifies absolute d as large. The execution log demonstrates the reported CSV values were produced.",
-    "key_evidence": [
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/debug_log.json: captured successful execution contains the complete analysis code, including equal_var=False, seed 42, n_boot=10000, bootstrap calculation, and CSV write.",
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/command_log.txt: successful execution reports Alzheimers n=50 and Control n=50 and the computed estimates/CI.",
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/IBLJH75LXO6QJIUJ/command_log.txt: successful post-write read verifies a 1x6 CSV with all required columns and the reported values.",
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/ref_script/ttest_cohens_d.py: reference instead uses default equal-variance t-test and Control-minus-Alzheimers bootstrap sampling/order."
+    "reason": "The Agent executed a valid independent two-sample comparison on the demonstrated 50-per-group data, computed pooled-SD Cohen’s d, and generated a seeded 10,000-resample percentile bootstrap CI. Its negative estimates correctly use the stated Alzheimers-minus-Control ordering. The reference instead orders Control minus Alzheimers and uses scipy’s default pooled-variance t-test; the task itself does not prescribe group direction or a Student-versus-Welch t-test. Thus the sign reversal and small p-value/CI differences are reasonably attributable to valid methodological conventions (including the order in which seeded bootstrap resamples are consumed), not a calculation error. The required one-row CSV schema is present and the effect is correctly classified as large.",
+    "reference_method": "Reference loads Control and Alzheimers scores, applies scipy.stats.ttest_ind with its default equal-variance setting, defines mean difference and pooled-SD Cohen’s d as Control minus Alzheimers, then sets seed 42 and bootstraps 10,000 percentile estimates in Control-then-Alzheimers sampling order.",
+    "agent_method": "Captured successful execution loads Alzheimers and Control scores (n=50 each), applies Welch’s t-test (equal_var=False), defines the mean difference and pooled-SD Cohen’s d as Alzheimers minus Control, sets np.random.seed(42), and bootstraps 10,000 percentile estimates in that group order. The output was then successfully read back and verified.",
+    "file_observations": [
+      {
+        "file": "ttest_cohens_d_results.csv",
+        "assessment": "consistent",
+        "reason": "Both files contain exactly one row and all six required fields. The reference reports the Control-minus-Alzheimers convention (positive 11.351 and d=0.837), while the Agent reports the equally valid Alzheimers-minus-Control convention (-11.3512 and d=-0.83666), with a correspondingly negative CI. Both identify a large effect. The minor p-value and CI-magnitude differences follow from the reference’s default equal-variance test and Control-first bootstrap draws versus the Agent’s Welch test and Alzheimer’s-first draws; these conventions were not fixed by the task.",
+        "evidence_ids": [
+          "A-0001",
+          "A-0002",
+          "A-0003",
+          "A-0015"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "A-0001",
+      "A-0002",
+      "A-0003",
+      "A-0015",
+      "A-0011"
     ],
     "confidence": "high"
   },
-  "audit_evidence_files": [
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/ref_script/ttest_cohens_d.py",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/IBLJH75LXO6QJIUJ/command.sh",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/command.sh",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/IBLJH75LXO6QJIUJ/command_log.txt",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/command_log.txt",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/workflow_log.json",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/log.out",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/IBLJH75LXO6QJIUJ/debug_log.json",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/debug_log.json"
-  ]
+  "evidence_inventory": [
+    {
+      "evidence_id": "I-0001",
+      "path": "b-4-12/ref_answer/ttest_cohens_d_results.csv",
+      "locator": "header and first 1 data rows of 1",
+      "extractor": "inspect_table",
+      "sha256": "4462f5e3865306038eaf6173679e4490000b723cff49430116e3a9a56b250d89",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "I-0002",
+      "path": "b-4-12/results_glm/ttest_cohens_d_results.csv",
+      "locator": "header and first 1 data rows of 1",
+      "extractor": "inspect_table",
+      "sha256": "d74a0131b824fe3e596561d77902d3283e00a2afc442742ca1ae17847d8e7663",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0001",
+      "path": "b-4-12/ref_script/ttest_cohens_d.py",
+      "locator": "lines 1-122 of 122",
+      "extractor": "read_text",
+      "sha256": "1155c52e353e9140e388434cd31bfc61a883cd9c2386369e70e083a400ecdfa1",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0002",
+      "path": "b-4-12/ref_answer/ttest_cohens_d_results.csv",
+      "locator": "header and first 1 data rows of 1",
+      "extractor": "inspect_table",
+      "sha256": "4462f5e3865306038eaf6173679e4490000b723cff49430116e3a9a56b250d89",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0003",
+      "path": "b-4-12/results_glm/ttest_cohens_d_results.csv",
+      "locator": "header and first 1 data rows of 1",
+      "extractor": "inspect_table",
+      "sha256": "d74a0131b824fe3e596561d77902d3283e00a2afc442742ca1ae17847d8e7663",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0004",
+      "path": "b-4-12/results_glm/work/IBLJH75LXO6QJIUJ/command.sh",
+      "locator": "lines 1-9 of 9",
+      "extractor": "read_text",
+      "sha256": "6548334110f88d1beda237405bc1703b325bdbd28d92b91a7a7195d1798ea11a",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0005",
+      "path": "b-4-12/results_glm/work/IBLJH75LXO6QJIUJ/command_log.txt",
+      "locator": "lines 1-13 of 13",
+      "extractor": "read_text",
+      "sha256": "5a2240bcff81ebe531defd4e2dfe69983c4cbfb616045b3edc20e6ab19d13b20",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0006",
+      "path": "b-4-12/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+      "locator": "lines 1-40 of 40",
+      "extractor": "read_text",
+      "sha256": "828b1183f38f72d6f1ce4ba0883f455b13c57d0d38cbe23b9a5f06e8671b9b26",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0007",
+      "path": "b-4-12/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "locator": "lines 1-24 of 24",
+      "extractor": "read_text",
+      "sha256": "cf25fb8fa099663961087f1bf7fd35ef48497505778e104a8ae0d289c08db5ed",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0008",
+      "path": "b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/command.sh",
+      "locator": "lines 1-58 of 58",
+      "extractor": "read_text",
+      "sha256": "7dfaa1082b89ec72354f87e1de2216c260350a772d1ba27e822a1bb3d4da722e",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0009",
+      "path": "b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/command_log.txt",
+      "locator": "lines 1-13 of 13",
+      "extractor": "read_text",
+      "sha256": "84581422d311b5cd0c03e14b4fe7d6e980bdf6dc0afb9877c17c6b2fcec009f1",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0010",
+      "path": "b-4-12/results_glm/work/workflow_log.json",
+      "locator": "JSON pointer /",
+      "extractor": "inspect_json",
+      "sha256": "965cbf3d28111936a7b9d2488ec7f8eae5a9a02638051c20642e5d4721796370",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0011",
+      "path": "b-4-12/results_glm/work/IBLJH75LXO6QJIUJ/debug_log.json",
+      "locator": "JSON pointer /",
+      "extractor": "inspect_json",
+      "sha256": "56a48900e4c06cfe56ba2d21174955d9ec2c5178749ba768d7d33ad4a1af2395",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0012",
+      "path": "b-4-12/results_glm/log.out",
+      "locator": "search query 'Mean_Difference', 10 match(es)",
+      "extractor": "search_text",
+      "sha256": "8bdfadaa753ec79999ab6eb534c2262cc689c5e9a1e0493c737d73c3b3612925",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0013",
+      "path": "b-4-12/results_glm/log.out",
+      "locator": "search query 'equal_var', 4 match(es)",
+      "extractor": "search_text",
+      "sha256": "8bdfadaa753ec79999ab6eb534c2262cc689c5e9a1e0493c737d73c3b3612925",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0014",
+      "path": "b-4-12/results_glm/log.out",
+      "locator": "search query 'ttest_ind', 5 match(es)",
+      "extractor": "search_text",
+      "sha256": "8bdfadaa753ec79999ab6eb534c2262cc689c5e9a1e0493c737d73c3b3612925",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0015",
+      "path": "b-4-12/results_glm/work/ZBIKCIDKWNNHJ7XV/debug_log.json",
+      "locator": "JSON pointer /",
+      "extractor": "inspect_json",
+      "sha256": "aad9e7d0cb7948d36edbc5f151d06f768e7f0007e6a50e47b9681c07dd3ab7c4",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0016",
+      "path": "b-4-12/results_glm/log.out",
+      "locator": "search query '10,000', 7 match(es)",
+      "extractor": "search_text",
+      "sha256": "8bdfadaa753ec79999ab6eb534c2262cc689c5e9a1e0493c737d73c3b3612925",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0017",
+      "path": "b-4-12/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+      "locator": "JSON pointer /",
+      "extractor": "inspect_json",
+      "sha256": "12ab412fe328ee5ad355d43936998cc169b836cc31b4a093afe8bd9c808fba1d",
+      "status": "complete",
+      "notes": []
+    }
+  ],
+  "coverage": {
+    "by_stage": {
+      "initial_assessment": {
+        "files_discovered": 3,
+        "files_inspected": 2,
+        "files_not_inspected": [
+          "b-4-12/task.json"
+        ],
+        "partial_evidence_paths": []
+      },
+      "method_and_execution_audit": {
+        "files_discovered": 15,
+        "files_inspected": 14,
+        "files_not_inspected": [
+          "b-4-12/task.json"
+        ],
+        "partial_evidence_paths": []
+      }
+    },
+    "evidence_paths_discovered": 14,
+    "evidence_paths_inspected": 14,
+    "partial_evidence_paths": []
+  },
+  "token_usage": {
+    "total_input_tokens": 54352,
+    "total_output_tokens": 2327,
+    "total_tokens": 56679,
+    "total_cached_input_tokens": 17419,
+    "calls": [
+      {
+        "stage": "initial_assessment",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2028,
+        "output_tokens": 113,
+        "total_tokens": 2141,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2469,
+        "output_tokens": 485,
+        "total_tokens": 2954,
+        "cached_input_tokens": 1906,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2397,
+        "output_tokens": 16,
+        "total_tokens": 2413,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4063,
+        "output_tokens": 586,
+        "total_tokens": 4649,
+        "cached_input_tokens": 2275,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 3,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 9419,
+        "output_tokens": 424,
+        "total_tokens": 9843,
+        "cached_input_tokens": 3941,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 4,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 33976,
+        "output_tokens": 703,
+        "total_tokens": 34679,
+        "cached_input_tokens": 9297,
+        "usage_reported_by_provider": true
+      }
+    ]
+  }
 }

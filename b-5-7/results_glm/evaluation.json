@@ -3,82 +3,554 @@
   "task_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7",
   "result_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm",
   "score": 1,
-  "rationale": "The agent executed a valid normalized spectral-Laplacian analysis using the required RBF affinity (gamma=0.01), produced sorted eigenvalues and an annotated eigengap plot, and obtained k=3. Its spectrum differs from the reference because the reference reports the unnormalized Laplacian D-W, whereas the agent reports the symmetric normalized Laplacian I-D^{-1/2}WD^{-1/2}; this is a justified implementation difference and the normalized form is standard for spectral clustering. Execution logs demonstrate the files and reported k were actually produced.",
+  "rationale": "The agent executed an RBF affinity construction with gamma=0.01 and correctly formed the symmetric normalized Laplacian, which is the Laplacian convention used by standard spectral clustering. The reference instead explicitly forms the unnormalized Laplacian D-W. This convention difference explains the materially different eigenvalue scales and eigengaps; it is not a demonstrated calculation error. The captured execution log corroborates the agent code ran successfully, printed the sorted spectrum and gaps, and selected k=3. Both declared artifacts satisfy their stated formats and jointly report the required spectrum and eigengap-based cluster count.",
   "final_stage": "method_and_execution_audit",
   "evaluator": {
     "model": "gpt-5.6-terra",
-    "strategy": "answer-only comparison, then conditional method-and-execution audit"
+    "base_url": "https://api.openai.com/v1",
+    "api_mode": "responses",
+    "architecture": "LangGraph fixed routing with stage-scoped read-only Deep Agents",
+    "strategy": "all declared output pairs assessed together; conditional method-and-execution audit"
+  },
+  "scope": {
+    "original_input_files_available": false,
+    "scripts_executed": false,
+    "network_access_used_by_agent_tools": false,
+    "task_files_modified": false,
+    "undeclared_result_files_used_as_evidence": false
   },
   "output_files": [
     {
       "file": "laplacian_eigenvalues.csv",
+      "description": "rows as eigenvalues sorted ascending, columns should include index, eigenvalue",
+      "type": "csv",
       "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/ref_answer/laplacian_eigenvalues.csv",
       "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/laplacian_eigenvalues.csv",
-      "agent_output_status": "present",
-      "description": "rows as eigenvalues sorted ascending, columns should include index, eigenvalue"
+      "reference_exists": true,
+      "agent_exists": true
     },
     {
       "file": "laplacian_eigenvalues.png",
+      "description": "eigenvalue index as x-axis, eigenvalue as y-axis, eigengap annotated",
+      "type": "png",
       "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/ref_answer/laplacian_eigenvalues.png",
       "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/laplacian_eigenvalues.png",
-      "agent_output_status": "present",
-      "description": "eigenvalue index as x-axis, eigenvalue as y-axis, eigengap annotated"
+      "reference_exists": true,
+      "agent_exists": true
     }
   ],
-  "evidence_truncation": {
-    "max_file_chars": 1000000,
-    "initial_stage": {
-      "truncated_files": []
+  "file_manifest": [
+    {
+      "path": "b-5-7/ref_answer/laplacian_eigenvalues.csv",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2577,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "471f69c4c9424b54555d755e6543a725aea730bb75cc39961fcb4086873d4760"
     },
-    "audit_stage": {
-      "performed": true,
-      "max_total_chars": 1500000,
-      "total_limit_reached": false,
-      "truncated_files": [],
-      "omitted_paths": []
+    {
+      "path": "b-5-7/ref_answer/laplacian_eigenvalues.png",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 23820,
+      "suffix": ".png",
+      "mime_type": "image/png",
+      "sha256": "c1b5ab7d371ba8b20484e2805bf6b3c34ae5b16c33c85470ce4aee224a425ff7"
+    },
+    {
+      "path": "b-5-7/ref_script/spectral_clustering.py",
+      "roles": [
+        "reference_script"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 3794,
+      "suffix": ".py",
+      "mime_type": "text/x-python",
+      "sha256": "f27381180d0cc89ef0bec8b47bdd70c2878022b52990fe1d6b847f95b8e3057f"
+    },
+    {
+      "path": "b-5-7/results_glm/laplacian_eigenvalues.csv",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2659,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "aa7a26cc05520837bcf3b66e90aa5b319ae143a612520670425e415c33abe0e1"
+    },
+    {
+      "path": "b-5-7/results_glm/laplacian_eigenvalues.png",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 57127,
+      "suffix": ".png",
+      "mime_type": "image/png",
+      "sha256": "2415b0f80a2293c034bc82cefdb7906117695c23a3e84ce7e960081586402a51"
+    },
+    {
+      "path": "b-5-7/results_glm/log.out",
+      "roles": [
+        "agent_runtime_log"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 36432,
+      "suffix": ".out",
+      "mime_type": "application/octet-stream",
+      "sha256": "ba5036e544d0eb0a35142e02a23ca13ba5e1d8ab7f0eb0a8deb7fdb8422a700d"
+    },
+    {
+      "path": "b-5-7/results_glm/work/LJH75LXO6QJIUJV6/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 931,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "682250d40497b62123d2da532233bac9adcdc48c096760f5c904080cc21a3c88"
+    },
+    {
+      "path": "b-5-7/results_glm/work/LJH75LXO6QJIUJV6/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 511,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "e143cf51745c8d1fbc5974e0afc6d58cb52a098232e86726077543ccfac693c3"
+    },
+    {
+      "path": "b-5-7/results_glm/work/LJH75LXO6QJIUJV6/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1669,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "7b5428d37814c168a8e33a7e52a58ad954c7fd739138466bd02bca807e401884"
+    },
+    {
+      "path": "b-5-7/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 592,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "c29192bd183447fbc15fc7ff14b7121570ae995f07c35516677807a64acf7c2c"
+    },
+    {
+      "path": "b-5-7/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2005,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "aaa3b1d1bd6d20204b29046b2af3f8640f471266f69429c05498ec7d85a6264c"
+    },
+    {
+      "path": "b-5-7/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2853,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "9d8479c8690bc6174a2d84f6bb70dc454190f669b1f00dd118e74bbe178c24ee"
+    },
+    {
+      "path": "b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1956,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "931d31acd7312561e6d6daa31532836043767dbfda4b3edcd34ab0bc288790de"
+    },
+    {
+      "path": "b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 3958,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "0b79f9a25c911e8d66947696e984406f465df34ebd1ae4e35a93253c5e50c50a"
+    },
+    {
+      "path": "b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 6204,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "aa1dbd40f80f055b9a51dc2d19e96c4ad14dcf7a7f33f33dbfd588a457a1a571"
+    },
+    {
+      "path": "b-5-7/results_glm/work/workflow_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1184,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "d22fb072471197ec366ab9ebcf37ad1216cc517c6fa5d13aa291f58d9d691f6c"
+    },
+    {
+      "path": "b-5-7/task.json",
+      "roles": [
+        "task_definition"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 789,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "c915e7d1738d7707442e6b106f332fd1b955126be8b04e16394313d77d3263b9"
     }
-  },
+  ],
   "initial_assessment": {
     "verdict": "fail",
-    "reason": "The agent's eigenvalue spectrum is substantively different from the reference Laplacian spectrum: it reports normalized-Laplacian-like values bounded near 1, whereas the required/reference Laplacian eigenvalues range from approximately 0 to 42.49. Thus the reported Laplacian matrix is not the one used/required by the task. The provided outputs also do not establish the optimal number of clusters.",
-    "file_assessments": [
+    "reason": "The agent's eigenvalue output and eigengap visualization materially differ from the reference outputs, so the declared files do not establish completion consistent with the required result.",
+    "file_observations": [
       {
         "file": "laplacian_eigenvalues.csv",
-        "verdict": "fail",
-        "reason": "Although formatted correctly and sorted ascending, the eigenvalues materially disagree with the reference throughout (e.g., index 1: 0.09868 vs 3.58037; index 3: 0.96088 vs 28.99150), indicating a different Laplacian definition or calculation."
+        "assessment": "different",
+        "reason": "Both files provide 120 indexed, ascending eigenvalues, but their values are materially different: the reference begins approximately 0, 3.5804, 8.9717, 28.9915, whereas the agent begins approximately 0, 0.09868, 0.23457, 0.96088.",
+        "evidence_ids": [
+          "I-0001",
+          "I-0002"
+        ]
       },
       {
         "file": "laplacian_eigenvalues.png",
-        "verdict": "fail",
-        "reason": "The plot corresponds to the incorrect near-[0,1] eigenvalue spectrum rather than the reference spectrum. From the supplied output alone, it also does not establish a reported optimal cluster count or a clearly annotated eigengap."
+        "assessment": "different",
+        "reason": "The reference plot marks its largest eigengap as 20.0198 between the eigenvalues around indices 3 and 4, while the agent plot labels the largest eigengap at index 2 and annotates optimal k = 3; their plotted eigenvalue scales and eigengap presentations are materially inconsistent.",
+        "evidence_ids": [
+          "I-0003",
+          "I-0004"
+        ]
       }
+    ],
+    "evidence_ids": [
+      "I-0001",
+      "I-0002",
+      "I-0003",
+      "I-0004"
     ]
   },
   "audit_assessment": {
     "score": 1,
-    "reason": "The agent executed a valid normalized spectral-Laplacian analysis using the required RBF affinity (gamma=0.01), produced sorted eigenvalues and an annotated eigengap plot, and obtained k=3. Its spectrum differs from the reference because the reference reports the unnormalized Laplacian D-W, whereas the agent reports the symmetric normalized Laplacian I-D^{-1/2}WD^{-1/2}; this is a justified implementation difference and the normalized form is standard for spectral clustering. Execution logs demonstrate the files and reported k were actually produced.",
-    "reference_method": "Constructs W with rbf_kernel(X, gamma=0.01), computes the unnormalized Laplacian L=D-W, eigendecomposes it, and selects the largest eigengap among the first 11 eigenvalues. It separately invokes sklearn SpectralClustering for silhouette scores, but with gamma=1.0 rather than 0.01.",
-    "agent_method": "Executed code constructs W with sklearn rbf_kernel(X, gamma=0.01), computes the symmetric normalized Laplacian L_sym=I-D^{-1/2}WD^{-1/2}, eigendecomposes and sorts all 120 eigenvalues, chooses the global largest eigengap (between indices 2 and 3), and writes the CSV and annotated PNG. The execution output reports k=3.",
-    "key_evidence": [
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/command.sh: explicitly computes L_sym from the gamma=0.01 RBF affinity and saves both required outputs.",
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/command_log.txt: successful execution prints the normalized spectrum, eigengaps, and 'Optimal number of clusters (k) = 3'.",
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/LJH75LXO6QJIUJV6/command_log.txt: successful verification confirms a 120-row, ascending index/eigenvalue CSV and that the PNG exists.",
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/ref_script/spectral_clustering.py: reference explicitly uses unnormalized L=D-W, explaining its eigenvalues near 0 to 42.49 rather than the agent's normalized values near 0 to 1."
+    "reason": "The agent executed an RBF affinity construction with gamma=0.01 and correctly formed the symmetric normalized Laplacian, which is the Laplacian convention used by standard spectral clustering. The reference instead explicitly forms the unnormalized Laplacian D-W. This convention difference explains the materially different eigenvalue scales and eigengaps; it is not a demonstrated calculation error. The captured execution log corroborates the agent code ran successfully, printed the sorted spectrum and gaps, and selected k=3. Both declared artifacts satisfy their stated formats and jointly report the required spectrum and eigengap-based cluster count.",
+    "reference_method": "The reference script builds W with sklearn rbf_kernel(X, gamma=0.01), forms the unnormalized Laplacian L=D-W, eigendecomposes it, and picks the largest eigengap only among the first 10 gaps. Its saved spectrum has a largest selected gap between its fourth and fifth eigenvalues, yielding k=4.",
+    "agent_method": "The executed agent script builds the same RBF affinity W at gamma=0.01, forms the symmetric normalized Laplacian L_sym=I-D^(-1/2)WD^(-1/2), uses numpy.linalg.eigh, sorts all eigenvalues, and selects the global largest consecutive eigengap, yielding k=3.",
+    "file_observations": [
+      {
+        "file": "laplacian_eigenvalues.csv",
+        "assessment": "different",
+        "reason": "Both CSVs have the requested index/eigenvalue columns and 120 ascending values, but their numerical spectra differ because the reference's unnormalized Laplacian has values such as 3.5804 and 28.9915 while the agent's normalized Laplacian has 0.09868 and 0.96088. The agent method is a valid spectral-clustering Laplacian and was captured as successfully executed.",
+        "evidence_ids": [
+          "A-0001",
+          "A-0002",
+          "A-0003",
+          "A-0005",
+          "A-0006"
+        ]
+      },
+      {
+        "file": "laplacian_eigenvalues.png",
+        "assessment": "different",
+        "reason": "The reference plot annotates the unnormalized-spectrum eigengap of 20.0198, whereas the agent plot visibly marks the normalized-spectrum largest gap at index 2 and annotates optimal k=3. The agent plot nevertheless has the requested eigenvalue-index x-axis, eigenvalue y-axis, and an eigengap/optimal-k annotation, consistent with its executed method.",
+        "evidence_ids": [
+          "A-0001",
+          "A-0004",
+          "A-0007",
+          "A-0008"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "A-0001",
+      "A-0004",
+      "A-0005",
+      "A-0006",
+      "A-0007",
+      "A-0008"
     ],
     "confidence": "high"
   },
-  "audit_evidence_files": [
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/ref_script/spectral_clustering.py",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/LJH75LXO6QJIUJV6/command.sh",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/command.sh",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/LJH75LXO6QJIUJV6/command_log.txt",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/command_log.txt",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/workflow_log.json",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/log.out",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/LJH75LXO6QJIUJV6/debug_log.json",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/debug_log.json"
-  ]
+  "evidence_inventory": [
+    {
+      "evidence_id": "I-0001",
+      "path": "b-5-7/ref_answer/laplacian_eigenvalues.csv",
+      "locator": "header and first 50 data rows of 120",
+      "extractor": "inspect_table",
+      "sha256": "471f69c4c9424b54555d755e6543a725aea730bb75cc39961fcb4086873d4760",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "I-0002",
+      "path": "b-5-7/results_glm/laplacian_eigenvalues.csv",
+      "locator": "header and first 50 data rows of 120",
+      "extractor": "inspect_table",
+      "sha256": "aa7a26cc05520837bcf3b66e90aa5b319ae143a612520670425e415c33abe0e1",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "I-0003",
+      "path": "b-5-7/ref_answer/laplacian_eigenvalues.png",
+      "locator": "full image metadata and scaled preview",
+      "extractor": "inspect_image",
+      "sha256": "c1b5ab7d371ba8b20484e2805bf6b3c34ae5b16c33c85470ce4aee224a425ff7",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "I-0004",
+      "path": "b-5-7/results_glm/laplacian_eigenvalues.png",
+      "locator": "full image metadata and scaled preview",
+      "extractor": "inspect_image",
+      "sha256": "2415b0f80a2293c034bc82cefdb7906117695c23a3e84ce7e960081586402a51",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0001",
+      "path": "b-5-7/ref_script/spectral_clustering.py",
+      "locator": "lines 1-108 of 108",
+      "extractor": "read_text",
+      "sha256": "f27381180d0cc89ef0bec8b47bdd70c2878022b52990fe1d6b847f95b8e3057f",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0002",
+      "path": "b-5-7/results_glm/laplacian_eigenvalues.csv",
+      "locator": "header and first 12 data rows of 120",
+      "extractor": "inspect_table",
+      "sha256": "aa7a26cc05520837bcf3b66e90aa5b319ae143a612520670425e415c33abe0e1",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "A-0003",
+      "path": "b-5-7/ref_answer/laplacian_eigenvalues.csv",
+      "locator": "header and first 12 data rows of 120",
+      "extractor": "inspect_table",
+      "sha256": "471f69c4c9424b54555d755e6543a725aea730bb75cc39961fcb4086873d4760",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "A-0004",
+      "path": "b-5-7/results_glm/log.out",
+      "locator": "lines 1-337 of 337",
+      "extractor": "read_text",
+      "sha256": "ba5036e544d0eb0a35142e02a23ca13ba5e1d8ab7f0eb0a8deb7fdb8422a700d",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0005",
+      "path": "b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/command.sh",
+      "locator": "lines 1-46 of 46",
+      "extractor": "read_text",
+      "sha256": "931d31acd7312561e6d6daa31532836043767dbfda4b3edcd34ab0bc288790de",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0006",
+      "path": "b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/command_log.txt",
+      "locator": "lines 1-72 of 72",
+      "extractor": "read_text",
+      "sha256": "0b79f9a25c911e8d66947696e984406f465df34ebd1ae4e35a93253c5e50c50a",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0007",
+      "path": "b-5-7/ref_answer/laplacian_eigenvalues.png",
+      "locator": "full image metadata and scaled preview",
+      "extractor": "inspect_image",
+      "sha256": "c1b5ab7d371ba8b20484e2805bf6b3c34ae5b16c33c85470ce4aee224a425ff7",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0008",
+      "path": "b-5-7/results_glm/laplacian_eigenvalues.png",
+      "locator": "full image metadata and scaled preview",
+      "extractor": "inspect_image",
+      "sha256": "2415b0f80a2293c034bc82cefdb7906117695c23a3e84ce7e960081586402a51",
+      "status": "complete",
+      "notes": []
+    }
+  ],
+  "coverage": {
+    "by_stage": {
+      "initial_assessment": {
+        "files_discovered": 5,
+        "files_inspected": 4,
+        "files_not_inspected": [
+          "b-5-7/task.json"
+        ],
+        "partial_evidence_paths": [
+          "b-5-7/ref_answer/laplacian_eigenvalues.csv",
+          "b-5-7/results_glm/laplacian_eigenvalues.csv"
+        ]
+      },
+      "method_and_execution_audit": {
+        "files_discovered": 17,
+        "files_inspected": 8,
+        "files_not_inspected": [
+          "b-5-7/results_glm/work/LJH75LXO6QJIUJV6/command.sh",
+          "b-5-7/results_glm/work/LJH75LXO6QJIUJV6/command_log.txt",
+          "b-5-7/results_glm/work/LJH75LXO6QJIUJV6/debug_log.json",
+          "b-5-7/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
+          "b-5-7/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+          "b-5-7/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+          "b-5-7/results_glm/work/ZBIKCIDKWNNHJ7XV/debug_log.json",
+          "b-5-7/results_glm/work/workflow_log.json",
+          "b-5-7/task.json"
+        ],
+        "partial_evidence_paths": [
+          "b-5-7/ref_answer/laplacian_eigenvalues.csv",
+          "b-5-7/results_glm/laplacian_eigenvalues.csv"
+        ]
+      }
+    },
+    "evidence_paths_discovered": 8,
+    "evidence_paths_inspected": 8,
+    "partial_evidence_paths": [
+      "b-5-7/ref_answer/laplacian_eigenvalues.csv",
+      "b-5-7/results_glm/laplacian_eigenvalues.csv"
+    ]
+  },
+  "token_usage": {
+    "total_input_tokens": 36871,
+    "total_output_tokens": 1686,
+    "total_tokens": 38557,
+    "total_cached_input_tokens": 8643,
+    "calls": [
+      {
+        "stage": "initial_assessment",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2115,
+        "output_tokens": 206,
+        "total_tokens": 2321,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 6036,
+        "output_tokens": 325,
+        "total_tokens": 6361,
+        "cached_input_tokens": 1993,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2514,
+        "output_tokens": 16,
+        "total_tokens": 2530,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4380,
+        "output_tokens": 434,
+        "total_tokens": 4814,
+        "cached_input_tokens": 2392,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 3,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 21826,
+        "output_tokens": 705,
+        "total_tokens": 22531,
+        "cached_input_tokens": 4258,
+        "usage_reported_by_provider": true
+      }
+    ]
+  }
 }

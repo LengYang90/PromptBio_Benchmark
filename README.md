@@ -1,44 +1,99 @@
-# PromptBio Benchmark LLM 评测
+# PromptBio Benchmark：只读 Deep Agent 评测器
 
-本项目用于评估生物信息学 Agent 是否正确完成单个 PromptBio Benchmark
-任务。当前实现面向类似 `a-1-10` 的任务目录：任务提供标准答案和生成
-标准答案的参考脚本，Agent 提供最终结果、执行代码和运行日志。
+本项目评测一个生物信息学 Agent 是否完成了**单个** PromptBio Benchmark
+任务，例如 `a-1-10`。推荐入口是
+[`evaluate_task_with_deep_agent.py`](./evaluate_task_with_deep_agent.py)。
 
-## 目的
+评测的最终结论是任务级二元分数：
 
-生物信息学任务往往存在多种正确的计算实现。仅把 Agent 输出与参考答案
-逐字或按固定数值误差比较，可能误判正确结果。例如，Agent 与参考脚本使用
-不同但同样符合题意的命令，得到略有不同的数值；这种情况需要检查具体方法
-和执行记录后才能判断。
+- `score: 1`：现有结果与证据支持 Agent 已正确回答题目；即使最终文件与参考答案
+  不完全相同，也可以得分为 1。
+- `score: 0`：现有证据支持结果错误、方法不回答题目、执行记录不足以证明结果，或
+  无法支持其正确性。
 
-评测器的最终输出是二元分数：
+无论分数是 0 还是 1，`evaluation.json` 都包含判断依据、逐文件观察、一次性的
+文件清单和可追溯的内容证据。
 
-- `score: 1`：Agent 正确完成任务，即使其结果与参考答案不完全一致；
-- `score: 0`：Agent 未完成任务、结果错误、方法不符合题意，或现有证据无法
-  支持其结果正确。
+## 为什么不直接比较参考答案
 
-无论分数为 `0` 还是 `1`，评测报告都会给出判断依据。
+生物信息学问题常有多种可行的计算实现。不同实现可能产生不完全一致的数值或
+表格，却同样正确地回答题目。因此，本项目不使用 `eval.json` 中的固定阈值，也
+不会把“结果不同”自动判为失败。
 
-## 实现方式
+例如，参考实现和 Agent 分别采用两种符合题意的覆盖度计算实现，得到略有不同的
+小数。初评会先把此情况标记为需要复核；复核阶段再查看已有代码和日志，判断差异
+是否确实来自两种计算实现，而不是计算错误。
 
-评测使用 OpenAI 兼容 API 调用 LLM，并采用两阶段流程：
+## 评测流程
 
-1. **答案初评**：仅读取 `task.json`、`ref_answer` 中的标准答案和 Agent
-   最终输出文件。LLM 根据题目和结果返回 `pass`、`fail` 或 `uncertain`。
-2. **方法与执行复核**：仅当初评为 `fail` 或 `uncertain` 时，才读取
-   `ref_script`、`results_glm/work` 中的代码与执行记录，以及
-   `results_glm/log.out`。LLM 比较参考计算与 Agent 实际执行的计算，判断：
-   - Agent 的方法是否回答了题目；
-   - 代码与日志是否证明该方法实际执行并产出了结果；
-   - 不同结果是否能由两种计算实现的差异合理解释，而非计算错误。
+评测器是一个固定路由的 LangGraph：两次模型调用使用受限的 Deep Agent，最后由
+确定性 Python 代码写报告，而不是让模型决定可读目录或执行脚本。
 
-`eval.json` 中的固定评分要求不参与正确性判断。它可能包含不适用于开放性
-生物信息学任务的阈值；正确性由题意、结果和复核证据共同决定。
+```text
+task.json + 所有“参考答案—Agent 结果”配对
+                    │
+                    ▼
+       初评 Deep Agent（只能读配对结果）
+             │ pass              │ fail / uncertain
+             ▼                   ▼
+          score 1       复核 Deep Agent（再读脚本、work、log）
+                                      │
+                                      ▼
+                                 final score 0/1
+                                      │
+                                      ▼
+                    results_*/evaluation.json
+```
 
-为控制上下文长度，较长文本文件会保留开头和结尾，并附带文件路径、原始
-长度和 摘要。脚本把所有文件内容视为证据，不执行其中的指令。
-如果发生截断，报告的 `evidence_truncation` 会列出受影响的文件；第二阶段
-还会标记总证据上限是否触发，并列出因总量限制而未读取的文件路径。
+### 阶段一：仅比较最终结果
+
+初评只能读取：
+
+- `task.json`；
+- `ref_answer/<expected_output.file>`；
+- `<results_dir>/<expected_output.file>`。
+
+`task.json` 的 `expected_output` 中声明了一个或多个输出文件。所有声明输出的
+“参考答案—Agent 结果”配对会一次性提供给**同一个** LLM/Deep Agent，由它进行
+任务整体判断，而不是每个文件独立调用模型、也不是“有一个文件不同就自动 0 分”。
+
+初评必须实际检查每一对文件。它可返回 `pass`、`fail` 或 `uncertain`。只有
+`pass` 才会直接给出 `score: 1`；`fail` 和 `uncertain` 都进入复核。
+
+### 阶段二：方法与执行复核
+
+仅当阶段一不是 `pass` 时，复核 Agent 额外可读：
+
+- `ref_script/**`；
+- `<results_dir>/work/**`；
+- `<results_dir>/log.out`。
+
+它判断参考实现做了什么、Agent 实际采用什么方法、日志是否证明该方法产生了结果，
+以及结果差异是否能由两种计算实现的差异合理解释。代码或计划只表示意图；日志和
+命令记录才可作为实际执行的证据。
+
+复核仍然对所有声明输出作整体判断。文件级观察只是证据，最终 `score` 由任务整体
+结论决定。
+
+## 严格只读范围
+
+评测器不会访问原始输入数据，也不会重新运行参考脚本、Agent 代码、命令或验证
+脚本。它只能基于目录中已有的文件判断。
+
+Deep Agent 只获得项目自定义的只读工具，并有模型请求过滤和执行时工具白名单两层
+限制。工具只支持读取或生成内存中的预览：
+
+- 文本、JSON、CSV/TSV、代码和日志的分页读取、搜索与结构化检查；
+- Excel 表格的只读采样；
+- 图片和 PDF 的元数据、文本提取及内存预览；
+- FASTA/FASTQ、VCF/BCF、BAM/CRAM 的 header 与记录采样。
+
+文件列表与文件元数据工具仅用于导航；只有实际读取正文、表格、图片、PDF 或生物
+文件内容的工具才产生可引用的证据 ID。解析器不修改源文件。不会向 Agent 暴露 Shell、Python 执行、网络、写入、删除、
+编辑、默认文件系统工具或子 Agent 工具。结果目录根目录下未在 `expected_output`
+声明的其他文件也不会成为证据；例如不会把未声明的附加文本当成 Agent 答案。
+
+评测器唯一会写入的文件是 `<results_dir>/evaluation.json`。
 
 ## 目录约定
 
@@ -46,112 +101,173 @@
 
 ```text
 a-1-10/
-├── task.json                    # 题目和所需输出文件
-├── ref_answer/                  # 标准答案文件
-├── ref_script/                  # 生成标准答案的代码
+├── task.json
+├── eval.json                     # 不参与正确性判断
+├── ref_answer/
+│   ├── required_result_1.txt     # 与 expected_output 同名
+│   └── required_result_2.csv
+├── ref_script/
+│   └── coverage.py               # 仅在复核阶段可读
 └── results_glm/
-    ├── <最终输出文件>            # 与要求输出同名的 Agent 结果
-    ├── log.out                   # Agent 运行总日志
-    └── work/                     # Agent 的代码、命令和执行记录
+    ├── required_result_1.txt     # 与 ref_answer 中声明文件同名
+    ├── required_result_2.csv
+    ├── log.out                   # 仅在复核阶段可读
+    └── work/                     # 仅在复核阶段可读
+        ├── command.sh
+        ├── command_log.txt
+        └── ...
 ```
 
-脚本根据 `task.json` 的 `expected_output` 找到需要对比的文件。结果文件应位于
-结果目录根目录，或在该目录下以唯一同名文件存在。
+`ref_answer/` 和结果目录根目录都可以有多个文件，但只能使用 `task.json` 的
+`expected_output[].file` 所声明的同名配对。声明的文件名必须是相对于其输出目录的
+非越界路径。
 
-## 使用方法
+## 安装
 
-脚本只依赖 Python 标准库，要求 Python 3.10 或更高版本。
-
-设置以下环境变量：
-
-- `API_KEY`：OpenAI 兼容服务的 API 密钥；也兼容 `OPENAI_API_KEY`。
-- `MODEL`：用于评测的模型名称；也兼容 `LLM_MODEL`。
-- `BASE_URL`：可选，OpenAI 兼容 API 的基础地址，默认
-  `https://api.openai.com/v1`。
-
-在仓库根目录运行：
+要求 Python 3.10 或更高版本。安装依赖：
 
 ```bash
-API_KEY=your_api_key MODEL=your_model \
-python evaluate_task_with_llm.py a-1-10 --result-dir results_glm
+python -m pip install -r requirements.txt
 ```
 
-使用其他 OpenAI 兼容服务时：
+其中 `deepagents`、`langgraph` 和 `langchain-openai` 用于受限 Agent 编排；其余
+依赖用于**只读**解析图片、PDF、表格和生物信息学文件。若不需要某类文件，相关库
+不会被导入。
+
+## 使用 OpenAI `gpt-5.6-terra`
+
+在仓库根目录设置环境变量后运行。评测器默认通过 **Responses API** 调用模型；这是
+`gpt-5.6-terra` 在使用函数工具和多轮工作流时所需的接口。不会显式传递
+`temperature`，从而避免该模型对非默认 temperature 的限制。
 
 ```bash
-BASE_URL=https://your-api.example/v1 \
-API_KEY=your_api_key MODEL=your_model \
-python evaluate_task_with_llm.py a-1-10 --result-dir results_glm
+export OPENAI_API_KEY='你的 OpenAI API Key'
+export MODEL='gpt-5.6-terra'
+export BASE_URL='https://api.openai.com/v1'   # 可省略，这是默认值
+
+python evaluate_task_with_deep_agent.py a-1-10 --result-dir results_glm
 ```
 
-默认报告位置为：
+也兼容 `API_KEY`（优先于 `OPENAI_API_KEY`）和 `LLM_MODEL`（在 `MODEL` 未设置时
+使用）。如果使用其他 OpenAI 兼容服务且它实现了 Responses API：
+
+```bash
+API_KEY='your-key' MODEL='your-model' \
+BASE_URL='https://your-api.example/v1' \
+python evaluate_task_with_deep_agent.py a-1-10 --result-dir results_glm
+```
+
+默认 API 模式是 `responses`，也可以设置 `API_MODE=responses` 或传递
+`--api-mode responses`。只有服务与模型明确支持带函数工具的 Chat Completions 时，
+才能使用 `--api-mode chat_completions`；不要把它与默认 reasoning 的
+`gpt-5.6-terra` 一起使用。
+
+成功时会输出类似：
 
 ```text
-a-1-10/results_glm/evaluation.json
+score=1 report=/absolute/path/a-1-10/results_glm/evaluation.json
 ```
 
-常用选项：
+模型接口、工具调用或结构化结果失败时，程序以非零状态结束，且**不把评测器故障
+写成 Agent 的 `score: 0`**。
+
+### 先检查权限范围
+
+不需要 API Key 即可检查阶段一实际能看到的文件：
 
 ```bash
-# 不调用 LLM；仅确认初评阶段会读取哪些最终结果文件
-python evaluate_task_with_llm.py a-1-10 --result-dir results_glm --dry-run
-
-# 自定义报告位置
-API_KEY=... MODEL=... \
-python evaluate_task_with_llm.py a-1-10 --result-dir results_glm \
-  --output /tmp/a-1-10-evaluation.json
-
-# 控制单文件和复核阶段的最大证据长度（字符数）
-API_KEY=... MODEL=... \
-python evaluate_task_with_llm.py a-1-10 --result-dir results_glm \
-  --max-file-chars 16000 --max-audit-chars 100000
+python evaluate_task_with_deep_agent.py a-1-10 --result-dir results_glm --dry-run
 ```
 
-## 报告格式
+输出会列出所有输出配对以及初评的允许文件；其中不应出现 `ref_script/`、`work/`
+或 `log.out`。
 
-报告为 JSON，关键字段如下：
+### 读取与预览的单次上限
+
+Deep Agent 可以多次分页读取或按需搜索，所以不存在旧版“把全部证据一次性拼进
+prompt”的全局审计字符上限。以下参数只限制**单个工具调用**返回给模型的内容，
+防止一页异常大而无法处理；被截断的证据会在报告中明确标记，Agent 仍可请求下一页
+或更具体的范围。
+
+```bash
+python evaluate_task_with_deep_agent.py a-1-10 --result-dir results_glm \
+  --max-text-characters 1000000 \
+  --max-table-rows 200 \
+  --max-records 100 \
+  --max-image-bytes 8000000 \
+  --timeout 600
+```
+
+默认值已经偏向充分保留证据。若单条记录或单个 PDF 页特别大，可增大
+`--max-text-characters`；没有总量上限，复核 Agent 可继续调用只读工具。
+
+## `evaluation.json` 关键字段
 
 ```json
 {
-  "task_id": "a-1-10",
   "score": 1,
-  "rationale": "Agent 结果与参考答案不同，但复核显示其计算方法符合题意。",
+  "rationale": "任务级最终判断依据",
   "final_stage": "method_and_execution_audit",
-  "evidence_truncation": {
-    "max_file_chars": 16000,
-    "initial_stage": {"truncated_files": []},
-    "audit_stage": {
-      "performed": true,
-      "max_total_chars": 100000,
-      "total_limit_reached": false,
-      "truncated_files": [],
-      "omitted_paths": []
-    }
-  },
   "initial_assessment": {
     "verdict": "fail",
-    "reason": "最终数值与参考答案不同。"
+    "reason": "答案文件存在需解释的差异"
   },
   "audit_assessment": {
     "score": 1,
-    "reference_method": "参考脚本的计算方式",
-    "agent_method": "Agent 实际执行的计算方式",
-    "key_evidence": ["证据文件路径及观察结果"]
+    "reference_method": "从参考脚本读出的计算实现",
+    "agent_method": "从 Agent 代码和日志读出的计算实现",
+    "reason": "差异仍符合题意的原因"
+  },
+  "file_manifest": [
+    {
+      "path": "a-1-10/results_glm/average_coverage.txt",
+      "roles": ["agent_output"],
+      "available_in_stages": ["initial_assessment", "method_and_execution_audit"],
+      "sha256": "..."
+    }
+  ],
+  "evidence_inventory": [
+    {
+      "evidence_id": "A-0003",
+      "path": ".../work/command_log.txt",
+      "locator": "lines 1-120",
+      "status": "complete"
+    }
+  ],
+  "coverage": {
+    "partial_evidence_paths": []
+  },
+  "token_usage": {
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "total_cached_input_tokens": 0,
+    "total_tokens": 0,
+    "calls": []
   }
 }
 ```
 
-`final_stage` 为 `answer_only_comparison` 时，说明最终输出已经在初评通过，
-不会读取参考脚本和 Agent 的工作日志；为 `method_and_execution_audit` 时，
-说明已完成第二阶段复核。
+`file_manifest` 是文件级元数据：每个物理文件在整份报告中只出现一次，记录角色、
+可用阶段、大小、类型和 SHA-256。`evidence_inventory` 只记录实际内容检查，不再记录
+文件列表或元数据查询；同一文件若读取了不同正文范围，才会有多个证据 ID。初评证据
+ID 以 `I-` 开头，复核证据 ID 以 `A-` 开头。`coverage` 会列出未检查和只检查部分内容
+的文件，因此截断不会被静默隐藏。
 
-若 `truncated_files` 非空，表示对应文件仅有部分内容被提交给 LLM；
-`total_limit_reached: true` 表示第二阶段的总证据限额已用完，
-`omitted_paths` 列出未被读取的后续证据文件。这些字段用于解释评测结论的
-证据完整性，不会自动把 Agent 判为失败。
+`token_usage.calls` 记录每次实际模型响应的输入、输出、缓存输入和总 token；汇总
+字段是全任务两阶段调用的合计。若接口未返回某一项 token 数，报告保留 0，而不会
+虚构用量。
 
-## 失败处理
+## 测试
 
-如果 API 密钥、模型名、接口调用或 LLM 返回格式存在问题，脚本会以非零退出码
-结束并报告“评测器执行失败”。这种情况不会被写成 Agent 的 `score: 0`，避免将
-评测基础设施错误误判为 Agent 失败。
+以下测试不调用模型 API，也不会修改任何任务文件：
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+它验证两阶段目录隔离、未声明结果文件排除、路径越界拒绝、一次性文件清单、
+并发读取下唯一的证据编号、初评到复核的 LangGraph 路由、token 统计，以及 Deep
+Agent 的工具调用白名单。
+
+旧的 `evaluate_task_with_llm.py` 仍保留作为早期纯文本评测实现；它不会按需解析
+多种文件格式，也不具备本 README 所述的受限 Deep Agent 多步读取能力。
