@@ -1,18 +1,17 @@
-# PromptBio Benchmark：只读 Deep Agent 评测器
+# PromptBio Benchmark 评测
 
 本项目评测一个生物信息学 Agent 是否完成了**单个** PromptBio Benchmark
 任务，例如 `a-1-10`。推荐入口是
 [`evaluate_task_with_deep_agent.py`](./evaluate_task_with_deep_agent.py)。
 
-评测的最终结论是任务级二元分数：
+评测的最终结论
 
 - `score: 1`：现有结果与证据支持 Agent 已正确回答题目；即使最终文件与参考答案
   不完全相同，也可以得分为 1。
 - `score: 0`：现有证据支持结果错误、方法不回答题目、执行记录不足以证明结果，或
   无法支持其正确性。
 
-无论分数是 0 还是 1，`evaluation.json` 都包含判断依据、逐文件观察、一次性的
-文件清单和可追溯的内容证据。
+无论分数是 0 还是 1，`evaluation.json` 都包含判断依据、逐文件观察和可追溯的内容证据。
 
 ## 为什么不直接比较参考答案
 
@@ -25,9 +24,6 @@
 是否确实来自两种计算实现，而不是计算错误。
 
 ## 评测流程
-
-评测器是一个固定路由的 LangGraph：两次模型调用使用受限的 Deep Agent，最后由
-确定性 Python 代码写报告，而不是让模型决定可读目录或执行脚本。
 
 ```text
 task.json + 所有“参考答案—Agent 结果”配对
@@ -72,7 +68,7 @@ task.json + 所有“参考答案—Agent 结果”配对
 以及结果差异是否能由两种计算实现的差异合理解释。代码或计划只表示意图；日志和
 命令记录才可作为实际执行的证据。
 
-复核仍然对所有声明输出作整体判断。文件级观察只是证据，最终 `score` 由任务整体
+复核仍然对所有声明输出的文件作整体判断。文件级观察只是证据，最终 `score` 由任务整体
 结论决定。
 
 ## 严格只读范围
@@ -88,7 +84,7 @@ Deep Agent 只获得项目自定义的只读工具，并有模型请求过滤和
 - 图片和 PDF 的元数据、文本提取及内存预览；
 - FASTA/FASTQ、VCF/BCF、BAM/CRAM 的 header 与记录采样。
 
-文件列表与文件元数据工具仅用于导航；只有实际读取正文、表格、图片、PDF 或生物
+文件列表与文件元数据工具仅用于导航；只有实际读取正文、表格、图片、PDF 或生物信息常用
 文件内容的工具才产生可引用的证据 ID。解析器不修改源文件。不会向 Agent 暴露 Shell、Python 执行、网络、写入、删除、
 编辑、默认文件系统工具或子 Agent 工具。结果目录根目录下未在 `expected_output`
 声明的其他文件也不会成为证据；例如不会把未声明的附加文本当成 Agent 答案。
@@ -153,14 +149,8 @@ python evaluate_task_with_deep_agent.py a-1-10 --result-dir results_glm
 
 ```bash
 API_KEY='your-key' MODEL='your-model' \
-BASE_URL='https://your-api.example/v1' \
 python evaluate_task_with_deep_agent.py a-1-10 --result-dir results_glm
 ```
-
-默认 API 模式是 `responses`，也可以设置 `API_MODE=responses` 或传递
-`--api-mode responses`。只有服务与模型明确支持带函数工具的 Chat Completions 时，
-才能使用 `--api-mode chat_completions`；不要把它与默认 reasoning 的
-`gpt-5.6-terra` 一起使用。
 
 成功时会输出类似：
 
