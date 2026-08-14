@@ -261,3 +261,19 @@ Agent 的工具调用白名单。
 
 旧的 `evaluate_task_with_llm.py` 仍保留作为早期纯文本评测实现；它不会按需解析
 多种文件格式，也不具备本 README 所述的受限 Deep Agent 多步读取能力。
+
+## 汇总多个评测报告
+
+[`summarize_evaluations.py`](./summarize_evaluations.py) 可读取一个或多个任务的
+`evaluation.json`，生成 CSV 汇总。`--result-dir` 是每个任务目录下的结果目录名；
+`--output` 指定 CSV 的完整输出路径和文件名。
+
+```bash
+python summarize_evaluations.py a-1-10 a-2-8 b-4-12 \
+  --result-dir results_glm \
+  --output reports/evaluation_summary.csv
+```
+
+CSV 列为：`question_id`、`score`、`rationale`、`total_input_tokens` 和
+`total_output_tokens`。脚本会先验证所有请求的报告；任一 `evaluation.json` 缺失或
+字段不符合要求时，以非零状态结束，不写入不完整的 CSV。
