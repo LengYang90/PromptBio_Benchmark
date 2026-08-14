@@ -1,0 +1,33 @@
+exec_runcode:
+0
+exec_stdout:
+tau=0.1: 266 non-zero coefficients, final loss=0.416459, iterations=10000
+tau=0.5: 497 non-zero coefficients, final loss=0.632317, iterations=10000
+tau=0.9: 498 non-zero coefficients, final loss=0.302585, iterations=10000
+
+Top 20 taxa by absolute coefficient value (tau=0.9):
+Taxon_322: 0.262442
+Taxon_153: 0.224527
+Taxon_193: 0.214226
+Taxon_377: 0.214123
+Taxon_421: -0.209277
+Taxon_457: 0.203116
+Taxon_208: 0.202714
+Taxon_325: 0.202640
+Taxon_042: 0.191005
+Taxon_242: 0.190854
+Taxon_455: 0.188859
+Taxon_098: 0.187203
+Taxon_499: 0.186624
+Taxon_328: -0.185002
+Taxon_156: -0.184955
+Taxon_252: -0.182284
+Taxon_396: 0.179113
+Taxon_364: -0.175635
+Taxon_121: 0.174472
+Taxon_497: -0.172938
+
+Coefficients saved to: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-8-10/result_79/toolsgenie_20260709/quantile_regression_coefficients_temp.csv
+
+exec_stderr:
+

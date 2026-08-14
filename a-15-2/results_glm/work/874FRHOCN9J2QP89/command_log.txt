@@ -1,0 +1,60 @@
+exec_runcode:
+0
+exec_stdout:
+=== File Format ===
+File: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_714/toolsgenie_20260714/mQTL_results.txt
+Separator: tab (\t)
+Shape: 93 rows x 6 columns
+
+=== Column Names ===
+['SNP', 'CpG', 'celltype', 'estimate', 'statistic', 'p.value']
+
+=== Column Types ===
+SNP           object
+CpG           object
+celltype      object
+estimate     float64
+statistic    float64
+p.value      float64
+dtype: object
+
+=== First 5 Rows ===
+      SNP        CpG celltype  estimate  statistic  p.value
+rs6678176 cg19251656     CD4T -0.166278  -1.138133 0.260958
+rs6678176 cg19251656     CD8T  0.240737   1.077242 0.286989
+rs6678176 cg19251656       NK  0.225284   0.902555 0.371464
+rs6678176 cg01433766     CD4T  0.014478   0.734511 0.466365
+rs6678176 cg01433766     CD8T  0.012205   0.437967 0.663460
+
+=== Last 5 Rows ===
+      SNP        CpG celltype  estimate  statistic  p.value
+rs7528153 cg05337192     CD8T -0.093623  -0.574610 0.568355
+rs7528153 cg05337192       NK -0.255347  -1.265280 0.212143
+rs7528153 cg11481351     CD4T  0.011081   0.300864 0.764874
+rs7528153 cg11481351     CD8T  0.009058   0.167340 0.867836
+rs7528153 cg11481351       NK -0.049787  -0.808765 0.422813
+
+=== Total Number of Rows ===
+93
+
+=== Significant P-values (p < 0.05) ===
+Count: 6
+        SNP        CpG celltype   estimate  statistic  p.value
+ kgp7451999 cg01433766       NK  -0.172671  -3.393316 0.001430
+kgp11573536 cg01433766       NK   0.094989   2.041034 0.047009
+  rs2339135 cg13089765     CD8T   0.251939   2.419656 0.019545
+ kgp4370028 cg05337192     CD8T   0.389805   2.158473 0.036144
+  rs4292979 cg05337192     CD4T -14.410695  -2.037684 0.047357
+  rs4292979 cg05337192       NK   1.236796   2.169401 0.035255
+
+Min p-value: 0.0014295602051997
+Corresponding row:
+SNP          kgp7451999
+CpG          cg01433766
+celltype             NK
+estimate      -0.172671
+statistic     -3.393316
+p.value         0.00143
+
+exec_stderr:
+

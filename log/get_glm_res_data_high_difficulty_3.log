@@ -1,0 +1,50 @@
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-3-13/ref_answer dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-3-13
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-3-13/ref_script dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-3-13
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-3-13/eval.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-3-13
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-3-13/task.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-3-13
+trinity_out.Trinity.fasta
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-3-13/result_714/toolsgenie_20260714/trinity_out.Trinity.fasta to /mnt/data/lengyang/github/PromptBio_Benchmark/a-3-13/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-3-13/result_714/toolsgenie_20260714/work to /mnt/data/lengyang/github/PromptBio_Benchmark/a-3-13/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-3-13/result_714/toolsgenie_20260714-log/log.out to /mnt/data/lengyang/github/PromptBio_Benchmark/a-3-13/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-14-2/ref_answer dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-14-2
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-14-2/ref_script dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-14-2
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-14-2/eval.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-14-2
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-14-2/task.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-14-2
+binding_sites.csv
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-14-2/result_714/toolsgenie_20260714/binding_sites.csv to /mnt/data/lengyang/github/PromptBio_Benchmark/a-14-2/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-14-2/result_714/toolsgenie_20260714/work to /mnt/data/lengyang/github/PromptBio_Benchmark/a-14-2/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-14-2/result_714/toolsgenie_20260714-log/log.out to /mnt/data/lengyang/github/PromptBio_Benchmark/a-14-2/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-15-2/ref_answer dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-2
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-15-2/ref_script dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-2
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-15-2/eval.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-2
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-15-2/task.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-2
+mQTL_results.txt
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-15-2/result_714/toolsgenie_20260714/mQTL_results.txt to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-2/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-15-2/result_714/toolsgenie_20260714/work to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-2/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-15-2/result_714/toolsgenie_20260714-log/log.out to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-2/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-15-9/ref_answer dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-9
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-15-9/ref_script dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-9
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-15-9/eval.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-9
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-15-9/task.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-9
+module_trait_correlations.csv
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-15-9/result_714/toolsgenie_20260714/module_trait_correlations.csv to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-9/results_glm
+wgcna_module_trait_heatmap.png
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-15-9/result_714/toolsgenie_20260714/wgcna_module_trait_heatmap.png to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-9/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-15-9/result_714/toolsgenie_20260714/work to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-9/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-15-9/result_714/toolsgenie_20260714-log/log.out to /mnt/data/lengyang/github/PromptBio_Benchmark/a-15-9/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-5/ref_answer dir to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-5
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-5/ref_script dir to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-5
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-5/eval.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-5
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-5/task.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-5
+test_performance.csv
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-5/result_79/toolsgenie_20260709/test_performance.csv to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-5/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-5/result_79/toolsgenie_20260709/work to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-5/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-5/result_79/toolsgenie_20260709-log/log.out to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-5/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-10/ref_answer dir to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-10
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-10/ref_script dir to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-10
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-10/eval.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-10
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-10/task.json dir to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-10
+high_il6_specific_taxa.csv
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-10/result_79/toolsgenie_20260709/high_il6_specific_taxa.csv to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-10/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-10/result_79/toolsgenie_20260709/work to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-10/results_glm
+Copy /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/b-8-10/result_79/toolsgenie_20260709-log/log.out to /mnt/data/lengyang/github/PromptBio_Benchmark/b-8-10/results_glm

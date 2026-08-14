@@ -1,0 +1,15 @@
+{
+    "id": "b-8-10",
+    "question": "Model the conditional quantiles (tau=0.1, 0.5, 0.9) of inflammatory marker IL-6 using relative abundances of 500 gut microbiome taxa. Apply centered log-ratio (clr) transformation to microbiome data and use elastic net penalized quantile regression. Report which microbial taxa are associated with extremely high IL-6 levels (tau=0.9) but not with average levels.",
+    "input_files": [
+        "data/microbiome_il6_data.csv"
+    ],
+    "expected_output": [
+        {
+            "file": "high_il6_specific_taxa.csv",
+            "type": "csv",
+            "description": "rows as microbial taxa, columns should include Taxon, Coefficient"
+        }
+    ],
+    "timeout_seconds": 3600
+}

@@ -1,0 +1,33 @@
+exec_runcode:
+0
+exec_stdout:
+=== 1. File Check ===
+Path: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-13/result_714/toolsgenie_20260714/trinity_out.Trinity.fasta
+Size: 73321 bytes
+=== 2. Total Transcripts ===
+105
+=== 3. First 5 Transcript Headers ===
+>TRINITY_DN65_c0_g1_i1 len=647 path=[0:0-646]
+>TRINITY_DN11_c0_g1_i2 len=644 path=[0:0-415 2:416-643]
+>TRINITY_DN40_c0_g1_i1 len=416 path=[0:0-415]
+>TRINITY_DN38_c0_g1_i1 len=757 path=[0:0-756]
+>TRINITY_DN48_c0_g1_i1 len=797 path=[0:0-796]
+=== 4. Transcript Length Statistics ===
+Total bases: 64905
+Transcripts: 105
+Min length: 202
+Max length: 1551
+Mean length: 618.14
+=== 5. FASTA Format Validation ===
+VALID: 105 headers, 1125 sequence lines, 1230 total lines
+=== 6. Gene-Trans Map File ===
+Path: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-13/result_714/toolsgenie_20260714/trinity_out.Trinity.fasta.gene_trans_map
+Size: 4250 bytes
+Line count: 105
+First 3 lines:
+TRINITY_DN65_c0_g1	TRINITY_DN65_c0_g1_i1
+TRINITY_DN11_c0_g1	TRINITY_DN11_c0_g1_i2
+TRINITY_DN40_c0_g1	TRINITY_DN40_c0_g1_i1
+
+exec_stderr:
+

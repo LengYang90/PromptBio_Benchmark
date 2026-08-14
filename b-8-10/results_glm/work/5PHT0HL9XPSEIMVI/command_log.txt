@@ -1,0 +1,32 @@
+exec_runcode:
+0
+exec_stdout:
+Total number of taxa selected: 7
+75th percentile of |coef_tau_0.9|: 0.080684
+25th percentile of |coef_tau_0.5|: 0.009115
+
+Selected taxa (sorted by specificity score descending):
+    Taxon  Coefficient
+Taxon_471    -0.110485
+Taxon_009     0.110468
+Taxon_085     0.096173
+Taxon_106     0.099489
+Taxon_462     0.088188
+Taxon_334    -0.080934
+Taxon_259    -0.083825
+
+--- Verification: reading output file back ---
+    Taxon  Coefficient
+Taxon_471    -0.110485
+Taxon_009     0.110468
+Taxon_085     0.096173
+Taxon_106     0.099489
+Taxon_462     0.088188
+Taxon_334    -0.080934
+Taxon_259    -0.083825
+
+Output file saved to: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-8-10/result_79/toolsgenie_20260709/high_il6_specific_taxa.csv
+Rows in output file: 7
+
+exec_stderr:
+

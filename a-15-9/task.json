@@ -1,0 +1,22 @@
+{
+    "id": "a-15-9",
+    "question": "Apply WGCNA to cluster multi-omics features and identify modules associated with disease phenotype (the 'Disease' column in Pheno.csv). Combine RNA and protein data by row-binding (rbind) into a single expression matrix. Use blockwiseModules with TOMType='unsigned', deepSplit=4, minModuleSize=10, mergeCutHeight=0.3; select softPower via pickSoftThreshold (powerVector=1:10, default to 6 if powerEstimate is NA). Correlate each module eigengene with the Disease trait using Pearson correlation, and report  p-values via corPvalueStudent",
+    "input_files": [
+        "data/Pheno.csv",
+        "data/protein.csv",
+        "data/rna.csv"
+    ],
+    "expected_output": [
+        {
+            "file": "module_trait_correlations.csv",
+            "type": "csv",
+            "description": "rows as WGCNA modules, columns should include Module, Correlation, Pvalue"
+        },
+        {
+            "file": "wgcna_module_trait_heatmap.png",
+            "type": "png",
+            "description": "heatmap; modules as rows, phenotype as columns, cells colored by Pearson correlation with correlation values overlaid"
+        }
+    ],
+    "timeout_seconds": 3600
+}

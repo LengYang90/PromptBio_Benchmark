@@ -1,0 +1,25 @@
+{
+    "test_client_stream_20260709_062542": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-8-5/result_79/toolsgenie_20260709/data/icu_occupancy_timeseries.csv"
+        ],
+        "Reference_import": [],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-8-5/result_79/toolsgenie_20260709/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            },
+            {
+                "key": "ZBIKCIDKWNNHJ7XV",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-8-5/result_79/toolsgenie_20260709/work/ZBIKCIDKWNNHJ7XV/debug_log.json"
+            },
+            {
+                "key": "IBLJH75LXO6QJIUJ",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-8-5/result_79/toolsgenie_20260709/work/IBLJH75LXO6QJIUJ/debug_log.json"
+            }
+        ]
+    }
+}

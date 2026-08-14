@@ -1,0 +1,137 @@
+exec_runcode:
+0
+exec_stdout:
+Genes removed (zero variance): 0 
+Expression matrix dim (features x samples): 200 20 
+datExpr dim (samples x features): 20 200 
+datExpr column names sample: rna_Gene1 rna_Gene2 rna_Gene3 rna_Gene4 rna_Gene5 
+Row names of datExpr match Pheno Sample: TRUE 
+Disease trait vector:
+
+ 0  1 
+ 8 12 
+pickSoftThreshold: will use block size 200.
+ pickSoftThreshold: calculating connectivity for given powers...
+   ..working on genes 1 through 200 of 200
+   Power SFT.R.sq slope truncated.R.sq mean.k. median.k. max.k.
+1      1    0.509 -2.76          0.846  42.900    41.300  62.40
+2      2    0.635 -2.08          0.824  14.100    12.900  26.50
+3      3    0.765 -1.82          0.930   5.770     4.940  12.80
+4      4    0.847 -1.50          0.919   2.760     2.330   6.74
+5      5    0.817 -1.54          0.865   1.490     1.240   4.03
+6      6    0.133 -3.16         -0.114   0.885     0.734   2.73
+7      7    0.697 -1.53          0.724   0.571     0.478   1.98
+8      8    0.778 -1.51          0.855   0.394     0.343   1.52
+9      9    0.242 -3.36          0.162   0.287     0.246   1.22
+10    10    0.245 -3.25          0.179   0.218     0.184   1.02
+
+=== pickSoftThreshold results ===
+   Power  SFT.R.sq     slope truncated.R.sq    mean.k.  median.k.    max.k.
+1      1 0.5093541 -2.758798      0.8459573 42.8712762 41.3252646 62.409308
+2      2 0.6351557 -2.082916      0.8242381 14.0701325 12.8715916 26.483799
+3      3 0.7652828 -1.822009      0.9298512  5.7660028  4.9443327 12.817672
+4      4 0.8472280 -1.496454      0.9186163  2.7562017  2.3312226  6.735959
+5      5 0.8172146 -1.538225      0.8651852  1.4860518  1.2366300  4.030304
+6      6 0.1328043 -3.161864     -0.1136190  0.8845075  0.7340301  2.728081
+7      7 0.6973072 -1.527152      0.7239379  0.5713299  0.4779177  1.981231
+8      8 0.7783132 -1.509718      0.8552559  0.3944815  0.3433510  1.522505
+9      9 0.2416457 -3.356048      0.1619242  0.2872678  0.2456400  1.223502
+10    10 0.2447511 -3.245675      0.1791616  0.2181162  0.1841037  1.018317
+Selected soft power: 6 
+ Calculating module eigengenes block-wise from all genes
+   Flagging genes and samples with too many missing values...
+    ..step 1
+ ..Working on block 1 .
+    TOM calculation: adjacency..
+    ..will not use multithreading.
+     Fraction of slow calculations: 0.000000
+    ..connectivity..
+    ..matrix multiplication (system BLAS)..
+    ..normalization..
+    ..done.
+ ....clustering..
+ ....detecting modules..
+ ....calculating module eigengenes..
+ ....checking kME in modules..
+     ..removing 1 genes from module 3 because their KME is too low.
+ ..merging modules that are too close..
+     mergeCloseModules: Merging modules whose distance is less than 0.3
+       Calculating new MEs...
+
+=== blockwiseModules results ===
+Module sizes (table):
+
+ 0  1  2  3  4  5  6  7  8  9 
+80 18 18 14 14 13 12 11 10 10 
+Number of modules (excluding 0/grey): 9 
+
+=== Module Eigengenes ===
+MEs dimensions: 20 10 
+MEs column names: MEgreen MEblue MEred MEturquoise MEmagenta MEblack MEpink MEbrown MEyellow MEgrey 
+
+=== Module-Trait Correlations ===
+                   [,1]
+MEgreen      0.22959598
+MEblue      -0.04654885
+MEred        0.34548423
+MEturquoise  0.12611425
+MEmagenta    0.14035857
+MEblack      0.26080162
+MEpink      -0.17162246
+MEbrown     -0.24068930
+MEyellow    -0.14969385
+MEgrey      -0.32075473
+
+=== Module-Trait P-values ===
+                 [,1]
+MEgreen     0.3301746
+MEblue      0.8454919
+MEred       0.1357112
+MEturquoise 0.5962452
+MEmagenta   0.5550436
+MEblack     0.2667410
+MEpink      0.4693764
+MEbrown     0.3066792
+MEyellow    0.5287529
+MEgrey      0.1679403
+
+Wrote module_trait_correlations.csv
+        Module Correlation    Pvalue
+1      MEgreen  0.22959598 0.3301746
+2       MEblue -0.04654885 0.8454919
+3        MEred  0.34548423 0.1357112
+4  MEturquoise  0.12611425 0.5962452
+5    MEmagenta  0.14035857 0.5550436
+6      MEblack  0.26080162 0.2667410
+7       MEpink -0.17162246 0.4693764
+8      MEbrown -0.24068930 0.3066792
+9     MEyellow -0.14969385 0.5287529
+10      MEgrey -0.32075473 0.1679403
+null device 
+          1 
+
+Wrote wgcna_module_trait_heatmap.png
+
+=== WGCNA Analysis Complete ===
+
+exec_stderr:
+
+Loading required package: dynamicTreeCut
+Loading required package: fastcluster
+
+Attaching package: fastcluster
+
+The following object is masked from package:stats:
+
+    hclust
+
+
+Attaching package: WGCNA
+
+The following object is masked from package:stats:
+
+    cor
+
+Warning message:
+executing %dopar% sequentially: no parallel backend registered 
+

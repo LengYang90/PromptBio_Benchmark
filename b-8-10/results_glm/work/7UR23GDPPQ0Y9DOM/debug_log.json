@@ -1,0 +1,10 @@
+[
+    {
+        "image": "lengyang/pb_bio_tools:2.0.0_mini",
+        "command": "import pandas as pd\n\npath = '/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-8-10/result_79/toolsgenie_20260709/high_il6_specific_taxa.csv'\ndf = pd.read_csv(path)\n\nprint(f\"Shape: {df.shape}\")\nprint(f\"Columns: {list(df.columns)}\")\nprint(f\"Column dtypes:\\n{df.dtypes}\")\nprint(f\"\\nExpected columns ['Taxon', 'Coefficient'] present: {list(df.columns) == ['Taxon', 'Coefficient']}\")\nprint(f\"\\nFile content:\")\nprint(df.to_string(index=False))\n",
+        "code_type": "python",
+        "exec_runcode": 0,
+        "exec_stdout": "Shape: (7, 2)\nColumns: ['Taxon', 'Coefficient']\nColumn dtypes:\nTaxon           object\nCoefficient    float64\ndtype: object\n\nExpected columns ['Taxon', 'Coefficient'] present: True\n\nFile content:\n    Taxon  Coefficient\nTaxon_471    -0.110485\nTaxon_009     0.110468\nTaxon_085     0.096173\nTaxon_106     0.099489\nTaxon_462     0.088188\nTaxon_334    -0.080934\nTaxon_259    -0.083825\n",
+        "exec_stderr": ""
+    }
+]

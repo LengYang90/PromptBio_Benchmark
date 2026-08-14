@@ -1,0 +1,18 @@
+exec_runcode:
+0
+exec_stdout:
+Shape: (3, 2)
+Columns: ['Metric', 'Value']
+Dtypes:
+Metric     object
+Value     float64
+dtype: object
+
+=== Contents ===
+Metric    Value
+  RMSE 4.668723
+   MAE 3.865930
+  MAPE 6.013052
+
+exec_stderr:
+

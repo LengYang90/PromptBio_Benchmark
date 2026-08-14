@@ -1,0 +1,23 @@
+{
+    "id": "a-15-9",
+    "question": "Apply WGCNA to cluster multi-omics features and identify modules associated with disease phenotype (the 'Disease' column in Pheno.csv). Combine RNA and protein data by row-binding (rbind) into a single expression matrix. Use blockwiseModules with TOMType='unsigned', deepSplit=4, minModuleSize=10, mergeCutHeight=0.3; select softPower via pickSoftThreshold (powerVector=1:10, default to 6 if powerEstimate is NA). Correlate each module eigengene with the Disease trait using Pearson correlation, and report  p-values via corPvalueStudent",
+    "ref_answer": [
+        "ref_answer/module_trait_correlations.csv",
+        "ref_answer/wgcna_module_trait_heatmap.png"
+    ],
+    "ref_script": [
+        "ref_script/WGCNA.R"
+    ],
+    "scoring": {
+        "expected_output": [
+            {
+                "file": "module_trait_correlations.csv",
+                "guidelines": "If the same number of modules as reference is identified: each module's Correlation and Pvalue must match the reference within +/-0.05; module name/color labels, column order, and header labels may differ. If the number of modules differs from reference: compare the top-5 modules ranked by absolute correlation — at least 3 of the top-5 must appear in the reference's top-5 (matched by correlation sign and approximate magnitude within +/-0.1); the overall Spearman rank correlation of all module correlations must be >= 0.6."
+            },
+            {
+                "file": "wgcna_module_trait_heatmap.png",
+                "guidelines": "Heatmap must show module-trait correlations as a color grid with correlation values overlaid; axis labels, color scale, and font styling may differ."
+            }
+        ]
+    }
+}
