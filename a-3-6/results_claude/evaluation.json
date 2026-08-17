@@ -1,0 +1,663 @@
+{
+  "task_id": "a-3-6",
+  "task_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-3-6",
+  "result_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-3-6/results_claude",
+  "score": 1,
+  "rationale": "The Agent demonstrably executed STAR on the paired FASTQ data and then generated both required deliverables. Its chimeric-junction calls differ from the reference because it used a valid, more explicitly configured chimeric-detection invocation (notably --chimJunctionOverhangMin 15, chimera scoring/gap options, and Junctions SeparateSAMold) whereas the reference relies largely on STAR defaults with only --chimSegmentMin 15 and --chimOutType Junctions. The task does not prescribe the reference's exact parameter set, so the additional candidate calls are reasonably attributable to a legitimate implementation choice, rather than evidence of calculation error. The CSV correctly takes the read identifier from STAR junction field 10 (zero-based index 9); in contrast, the reference script selects awk $9, which is not the read-name field. Captured execution output proves STAR completed successfully and that the parser wrote 463 data rows; validation confirms the two comment/summary lines in the STAR file are not parsed as candidates.",
+  "final_stage": "method_and_execution_audit",
+  "evaluator": {
+    "model": "gpt-5.6-terra",
+    "base_url": "https://api.openai.com/v1",
+    "api_mode": "responses",
+    "architecture": "LangGraph fixed routing with stage-scoped read-only Deep Agents",
+    "strategy": "all declared output pairs assessed together; conditional method-and-execution audit"
+  },
+  "scope": {
+    "original_input_files_available": false,
+    "scripts_executed": false,
+    "network_access_used_by_agent_tools": false,
+    "task_files_modified": false,
+    "undeclared_result_files_used_as_evidence": false
+  },
+  "output_files": [
+    {
+      "file": "K562_Chimeric.out.junction",
+      "description": "STAR chimeric junction format",
+      "type": "junction",
+      "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-3-6/ref_answer/K562_Chimeric.out.junction",
+      "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-3-6/results_claude/K562_Chimeric.out.junction",
+      "reference_exists": true,
+      "agent_exists": true
+    },
+    {
+      "file": "K562_candidate_fusions.csv",
+      "description": "rows as candidate fusion junctions, columns should include chr1, base1, strand1, chr2, base2, strand2, junction_type, read_name",
+      "type": "csv",
+      "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-3-6/ref_answer/K562_candidate_fusions.csv",
+      "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-3-6/results_claude/K562_candidate_fusions.csv",
+      "reference_exists": true,
+      "agent_exists": true
+    }
+  ],
+  "file_manifest": [
+    {
+      "path": "a-3-6/ref_answer/K562_Chimeric.out.junction",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 45848,
+      "suffix": ".junction",
+      "mime_type": "application/octet-stream",
+      "sha256": "119f06fc0483b1270b9785c8c71cbfebf71011f2144c3838b753cb2b00e68d4b"
+    },
+    {
+      "path": "a-3-6/ref_answer/K562_candidate_fusions.csv",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 13934,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "985a38a1de1a5d735156bb0231aaf729ac2a85f88b70367e572ecee40aa64c43"
+    },
+    {
+      "path": "a-3-6/ref_script/star_fusion.sh",
+      "roles": [
+        "reference_script"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 745,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "3e0fabc89789cbec5060551fc2988e7824061e7efa6527dedc2d398c9e910acc"
+    },
+    {
+      "path": "a-3-6/results_claude/K562_Chimeric.out.junction",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 49917,
+      "suffix": ".junction",
+      "mime_type": "application/octet-stream",
+      "sha256": "2926443859e2288d306650c2e1c64fcce51a476493239bc7b0c11d3c1393ffbd"
+    },
+    {
+      "path": "a-3-6/results_claude/K562_candidate_fusions.csv",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 34446,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "3cd87b773d206d06820fc6d2f8b3c2eec339175aa37715872fd1845ac9eb2e10"
+    },
+    {
+      "path": "a-3-6/results_claude/log.out",
+      "roles": [
+        "agent_runtime_log"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 24264,
+      "suffix": ".out",
+      "mime_type": "application/octet-stream",
+      "sha256": "3bc1f90f9a39343dd8b96787239adbaf713e9b9090dc0bd166b40b6162cbab84"
+    },
+    {
+      "path": "a-3-6/results_claude/work/CIDKWNNHJ7XVG0FN/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2576,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "0b861ecb952500d2aa471cfa16165cc074fef027b50ca18786f23ab079e00198"
+    },
+    {
+      "path": "a-3-6/results_claude/work/CIDKWNNHJ7XVG0FN/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1375,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "ccdedf52557772bb59c43eebbd4b110c4975091e035f10c34d7bf2af7c631262"
+    },
+    {
+      "path": "a-3-6/results_claude/work/CIDKWNNHJ7XVG0FN/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 4232,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "2da1ff94b711820da7b753886343e87bcadad8e09659f4c4ab982af76b457e10"
+    },
+    {
+      "path": "a-3-6/results_claude/work/H75LXO6QJIUJV6OH/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2491,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "6fad83e9f34f04012255f3e4d56d3761525c3b3d939b1ca3ba4814fd3ed1bc9d"
+    },
+    {
+      "path": "a-3-6/results_claude/work/H75LXO6QJIUJV6OH/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2561,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "bfdedd8f9f5f0a64a9389070f82e8366e382c2784d86e36277bb3b653209b642"
+    },
+    {
+      "path": "a-3-6/results_claude/work/H75LXO6QJIUJV6OH/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 5492,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "ae05d0a0bff5a8f4d60251c2f49d003ec0e38cb2791d166025ccc7c3eba2fde1"
+    },
+    {
+      "path": "a-3-6/results_claude/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2354,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "06ef0f857cdb0c411e028dc8392e2863cf0644486836ef5ce2877defcbe62a82"
+    },
+    {
+      "path": "a-3-6/results_claude/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2630,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "b2caab3dfdc9fdda4ab8d1ae655652c5132275aac85b92d1daac3b53e8aa79ca"
+    },
+    {
+      "path": "a-3-6/results_claude/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 5381,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "933136781e5db76ebce0c2dbc2147ff8ed4bfda14ad92d603bbb3fbde83cb78f"
+    },
+    {
+      "path": "a-3-6/results_claude/work/workflow_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1468,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "d4cc47d0632fa7b775c534019a006e57f7f30222e73482a1a76efc08c317d107"
+    },
+    {
+      "path": "a-3-6/task.json",
+      "roles": [
+        "task_definition"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 812,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "6f6c37481bebb06d193085298462dd822465ac4944ff5f78a9adf6fc5278983b"
+    }
+  ],
+  "initial_assessment": {
+    "verdict": "fail",
+    "reason": "The agent outputs are structurally usable but materially differ from the corresponding reference outputs: the chimeric junction file has 465 lines versus 434 in the reference and contains additional junction records; the candidate CSV correspondingly has 463 rows versus 434. This discrepancy is meaningful for the requested candidate-junction result and cannot be resolved from answer-only evidence.",
+    "file_observations": [
+      {
+        "file": "K562_Chimeric.out.junction",
+        "assessment": "different",
+        "reason": "Both files are tab-delimited chimeric-junction records, but the reference has 434 observed lines whereas the agent file has 465. The agent output includes records absent from the reference within the shared portion (for example, an added chr9–chr22 record following the reference's first 36 records) and ends with additional STAR comment/summary lines.",
+        "evidence_ids": [
+          "I-0004",
+          "I-0002"
+        ]
+      },
+      {
+        "file": "K562_candidate_fusions.csv",
+        "assessment": "different",
+        "reason": "Both CSVs have the requested eight-column header, but the reference has 434 rows while the agent has 463. Their read_name values also differ: the reference sample's read_name column contains numeric values such as 0 and 6, whereas the agent sample contains the read identifiers from the junction records. The row-count discrepancy corresponds to the differing junction outputs.",
+        "evidence_ids": [
+          "I-0001",
+          "I-0003"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "I-0004",
+      "I-0002",
+      "I-0001",
+      "I-0003"
+    ]
+  },
+  "audit_assessment": {
+    "score": 1,
+    "reason": "The Agent demonstrably executed STAR on the paired FASTQ data and then generated both required deliverables. Its chimeric-junction calls differ from the reference because it used a valid, more explicitly configured chimeric-detection invocation (notably --chimJunctionOverhangMin 15, chimera scoring/gap options, and Junctions SeparateSAMold) whereas the reference relies largely on STAR defaults with only --chimSegmentMin 15 and --chimOutType Junctions. The task does not prescribe the reference's exact parameter set, so the additional candidate calls are reasonably attributable to a legitimate implementation choice, rather than evidence of calculation error. The CSV correctly takes the read identifier from STAR junction field 10 (zero-based index 9); in contrast, the reference script selects awk $9, which is not the read-name field. Captured execution output proves STAR completed successfully and that the parser wrote 463 data rows; validation confirms the two comment/summary lines in the STAR file are not parsed as candidates.",
+    "reference_method": "Runs STAR on the supplied paired reads with --chimSegmentMin 15 and --chimOutType Junctions, copies K562_Chimeric.out.junction, then uses awk to export fields 1–7 and 9 to the requested CSV header.",
+    "agent_method": "Runs STAR 2.7.10a on the paired reads using --chimSegmentMin 15 plus valid additional chimeric controls (--chimJunctionOverhangMin 15, scoring/gap parameters, and Junctions SeparateSAMold), then parses junction records with at least 14 tab-delimited fields into the eight requested CSV columns, using field 10 as read_name.",
+    "file_observations": [
+      {
+        "file": "K562_Chimeric.out.junction",
+        "assessment": "different",
+        "reason": "The agent file has 463 junction records plus two STAR provenance/summary comment lines, while the reference has 434 records. Its leading records agree with the reference, and its final reference records are present; the extra calls are consistent with the agent's different valid chimeric settings. The execution log records a successful STAR run with those settings, and the file's comment line preserves the invocation.",
+        "evidence_ids": [
+          "A-0001",
+          "A-0003",
+          "A-0011",
+          "A-0006",
+          "A-0009",
+          "A-0010",
+          "A-0014"
+        ]
+      },
+      {
+        "file": "K562_candidate_fusions.csv",
+        "assessment": "different",
+        "reason": "The agent CSV has the requested header and 463 candidate rows. Its coordinate/strand/type fields agree with the corresponding STAR records, and its read_name values are actual STAR read identifiers. The reference CSV has 434 rows but its read_name values are field-9 numeric values because the reference awk script exports $9 rather than the STAR read-name field $10. The agent parser explicitly uses index 9 (field 10), which is semantically correct for the requested read_name column.",
+        "evidence_ids": [
+          "A-0001",
+          "A-0003",
+          "A-0007",
+          "A-0008",
+          "A-0011",
+          "A-0012"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "A-0001",
+      "A-0003",
+      "A-0011",
+      "A-0012",
+      "A-0006",
+      "A-0007",
+      "A-0008",
+      "A-0010",
+      "A-0014"
+    ],
+    "confidence": "high"
+  },
+  "evidence_inventory": [
+    {
+      "evidence_id": "I-0001",
+      "path": "a-3-6/ref_answer/K562_candidate_fusions.csv",
+      "locator": "header and first 50 data rows of 434",
+      "extractor": "inspect_table",
+      "sha256": "985a38a1de1a5d735156bb0231aaf729ac2a85f88b70367e572ecee40aa64c43",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "I-0002",
+      "path": "a-3-6/results_claude/K562_Chimeric.out.junction",
+      "locator": "lines 1-465 of 465",
+      "extractor": "read_text",
+      "sha256": "2926443859e2288d306650c2e1c64fcce51a476493239bc7b0c11d3c1393ffbd",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "I-0003",
+      "path": "a-3-6/results_claude/K562_candidate_fusions.csv",
+      "locator": "header and first 50 data rows of 463",
+      "extractor": "inspect_table",
+      "sha256": "3cd87b773d206d06820fc6d2f8b3c2eec339175aa37715872fd1845ac9eb2e10",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "I-0004",
+      "path": "a-3-6/ref_answer/K562_Chimeric.out.junction",
+      "locator": "lines 1-434 of 434",
+      "extractor": "read_text",
+      "sha256": "119f06fc0483b1270b9785c8c71cbfebf71011f2144c3838b753cb2b00e68d4b",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0001",
+      "path": "a-3-6/ref_script/star_fusion.sh",
+      "locator": "lines 1-19 of 19",
+      "extractor": "read_text",
+      "sha256": "3e0fabc89789cbec5060551fc2988e7824061e7efa6527dedc2d398c9e910acc",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0002",
+      "path": "a-3-6/results_claude/log.out",
+      "locator": "lines 1-300 of 487",
+      "extractor": "read_text",
+      "sha256": "3bc1f90f9a39343dd8b96787239adbaf713e9b9090dc0bd166b40b6162cbab84",
+      "status": "partial",
+      "notes": [
+        "Output was limited; request the next line range for additional text."
+      ]
+    },
+    {
+      "evidence_id": "A-0003",
+      "path": "a-3-6/results_claude/work/CIDKWNNHJ7XVG0FN/command.sh",
+      "locator": "lines 1-71 of 71",
+      "extractor": "read_text",
+      "sha256": "0b861ecb952500d2aa471cfa16165cc074fef027b50ca18786f23ab079e00198",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0004",
+      "path": "a-3-6/results_claude/work/H75LXO6QJIUJV6OH/command.sh",
+      "locator": "lines 1-79 of 79",
+      "extractor": "read_text",
+      "sha256": "6fad83e9f34f04012255f3e4d56d3761525c3b3d939b1ca3ba4814fd3ed1bc9d",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0005",
+      "path": "a-3-6/results_claude/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "locator": "lines 1-81 of 81",
+      "extractor": "read_text",
+      "sha256": "06ef0f857cdb0c411e028dc8392e2863cf0644486836ef5ce2877defcbe62a82",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0006",
+      "path": "a-3-6/ref_answer/K562_Chimeric.out.junction",
+      "locator": "lines 1-12 of 434",
+      "extractor": "read_text",
+      "sha256": "119f06fc0483b1270b9785c8c71cbfebf71011f2144c3838b753cb2b00e68d4b",
+      "status": "partial",
+      "notes": [
+        "Output was limited; request the next line range for additional text."
+      ]
+    },
+    {
+      "evidence_id": "A-0007",
+      "path": "a-3-6/results_claude/K562_candidate_fusions.csv",
+      "locator": "lines 1-15 of 464",
+      "extractor": "read_text",
+      "sha256": "3cd87b773d206d06820fc6d2f8b3c2eec339175aa37715872fd1845ac9eb2e10",
+      "status": "partial",
+      "notes": [
+        "Output was limited; request the next line range for additional text."
+      ]
+    },
+    {
+      "evidence_id": "A-0008",
+      "path": "a-3-6/ref_answer/K562_candidate_fusions.csv",
+      "locator": "lines 1-15 of 435",
+      "extractor": "read_text",
+      "sha256": "985a38a1de1a5d735156bb0231aaf729ac2a85f88b70367e572ecee40aa64c43",
+      "status": "partial",
+      "notes": [
+        "Output was limited; request the next line range for additional text."
+      ]
+    },
+    {
+      "evidence_id": "A-0009",
+      "path": "a-3-6/results_claude/K562_Chimeric.out.junction",
+      "locator": "lines 1-12 of 465",
+      "extractor": "read_text",
+      "sha256": "2926443859e2288d306650c2e1c64fcce51a476493239bc7b0c11d3c1393ffbd",
+      "status": "partial",
+      "notes": [
+        "Output was limited; request the next line range for additional text."
+      ]
+    },
+    {
+      "evidence_id": "A-0010",
+      "path": "a-3-6/results_claude/K562_Chimeric.out.junction",
+      "locator": "lines 425-465 of 465",
+      "extractor": "read_text",
+      "sha256": "2926443859e2288d306650c2e1c64fcce51a476493239bc7b0c11d3c1393ffbd",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0011",
+      "path": "a-3-6/results_claude/work/CIDKWNNHJ7XVG0FN/command_log.txt",
+      "locator": "lines 1-18 of 18",
+      "extractor": "read_text",
+      "sha256": "ccdedf52557772bb59c43eebbd4b110c4975091e035f10c34d7bf2af7c631262",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0012",
+      "path": "a-3-6/results_claude/work/H75LXO6QJIUJV6OH/command_log.txt",
+      "locator": "lines 1-87 of 87",
+      "extractor": "read_text",
+      "sha256": "bfdedd8f9f5f0a64a9389070f82e8366e382c2784d86e36277bb3b653209b642",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0013",
+      "path": "a-3-6/ref_answer/K562_Chimeric.out.junction",
+      "locator": "lines 425-434 of 434",
+      "extractor": "read_text",
+      "sha256": "119f06fc0483b1270b9785c8c71cbfebf71011f2144c3838b753cb2b00e68d4b",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0014",
+      "path": "a-3-6/results_claude/K562_Chimeric.out.junction",
+      "locator": "search query '#', 2 match(es)",
+      "extractor": "search_text",
+      "sha256": "2926443859e2288d306650c2e1c64fcce51a476493239bc7b0c11d3c1393ffbd",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0015",
+      "path": "a-3-6/results_claude/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+      "locator": "lines 1-68 of 68",
+      "extractor": "read_text",
+      "sha256": "b2caab3dfdc9fdda4ab8d1ae655652c5132275aac85b92d1daac3b53e8aa79ca",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0016",
+      "path": "a-3-6/results_claude/log.out",
+      "locator": "lines 300-487 of 487",
+      "extractor": "read_text",
+      "sha256": "3bc1f90f9a39343dd8b96787239adbaf713e9b9090dc0bd166b40b6162cbab84",
+      "status": "complete",
+      "notes": []
+    }
+  ],
+  "coverage": {
+    "by_stage": {
+      "initial_assessment": {
+        "files_discovered": 5,
+        "files_inspected": 4,
+        "files_not_inspected": [
+          "a-3-6/task.json"
+        ],
+        "partial_evidence_paths": [
+          "a-3-6/ref_answer/K562_candidate_fusions.csv",
+          "a-3-6/results_claude/K562_candidate_fusions.csv"
+        ]
+      },
+      "method_and_execution_audit": {
+        "files_discovered": 17,
+        "files_inspected": 12,
+        "files_not_inspected": [
+          "a-3-6/results_claude/work/CIDKWNNHJ7XVG0FN/debug_log.json",
+          "a-3-6/results_claude/work/H75LXO6QJIUJV6OH/debug_log.json",
+          "a-3-6/results_claude/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+          "a-3-6/results_claude/work/workflow_log.json",
+          "a-3-6/task.json"
+        ],
+        "partial_evidence_paths": [
+          "a-3-6/ref_answer/K562_Chimeric.out.junction",
+          "a-3-6/ref_answer/K562_candidate_fusions.csv",
+          "a-3-6/results_claude/K562_Chimeric.out.junction",
+          "a-3-6/results_claude/K562_candidate_fusions.csv",
+          "a-3-6/results_claude/log.out"
+        ]
+      }
+    },
+    "evidence_paths_discovered": 12,
+    "evidence_paths_inspected": 12,
+    "partial_evidence_paths": [
+      "a-3-6/ref_answer/K562_Chimeric.out.junction",
+      "a-3-6/ref_answer/K562_candidate_fusions.csv",
+      "a-3-6/results_claude/K562_Chimeric.out.junction",
+      "a-3-6/results_claude/K562_candidate_fusions.csv",
+      "a-3-6/results_claude/log.out"
+    ]
+  },
+  "token_usage": {
+    "total_input_tokens": 117724,
+    "total_output_tokens": 2790,
+    "total_tokens": 120514,
+    "total_cached_input_tokens": 27924,
+    "calls": [
+      {
+        "stage": "initial_assessment",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2115,
+        "output_tokens": 16,
+        "total_tokens": 2131,
+        "cached_input_tokens": 1993,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2673,
+        "output_tokens": 250,
+        "total_tokens": 2923,
+        "cached_input_tokens": 1993,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 3,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 66045,
+        "output_tokens": 512,
+        "total_tokens": 66557,
+        "cached_input_tokens": 2551,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2566,
+        "output_tokens": 16,
+        "total_tokens": 2582,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4446,
+        "output_tokens": 513,
+        "total_tokens": 4959,
+        "cached_input_tokens": 2444,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 3,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 14741,
+        "output_tokens": 431,
+        "total_tokens": 15172,
+        "cached_input_tokens": 4324,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 4,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 25138,
+        "output_tokens": 1052,
+        "total_tokens": 26190,
+        "cached_input_tokens": 14619,
+        "usage_reported_by_provider": true
+      }
+    ]
+  }
+}
