@@ -1,0 +1,24 @@
+exec_runcode:
+0
+exec_stdout:
+mQTL_results.tsv does not exist in the output directory.
+Expected location: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_10/toolsgenie_20260516/mQTL_results.tsv
+
+Checking directory contents:
+total 60
+drwxrwsr-x  4 1011 1011 4096 May 16 07:07 .
+drwxr-xr-x  3 root root 4096 May 16 07:22 ..
+-rw-r--r--  1 root 1011 3265 May 16 07:03 Matrix_of_covariates_corrected.csv
+-rw-r--r--  1 root 1011 3258 May 16 07:06 cell_composition_formatted.csv
+-rw-r--r--  1 root 1011 1825 May 16 07:07 cis_pairs_1mb.csv
+-rw-r--r--  1 root 1011 3379 May 16 07:06 covariates_formatted.csv
+drwxrwsr-x  2 1011 1011 4096 May 16 07:02 data
+-rw-r--r--  1 root 1011 6369 May 16 07:06 methylation_formatted.csv
+-rw-r--r--  1 root 1011  168 May 16 07:06 methylation_positions_formatted.csv
+-rw-rw-r--  1 1011 1011   32 May 16 07:02 session_init
+-rw-r--r--  1 root 1011 4164 May 16 07:06 snp_genotypes_formatted.csv
+-rw-r--r--  1 root 1011  788 May 16 07:06 snp_positions_formatted.csv
+drwxrwsr-x 11 1011 1011 4096 May 16 07:22 work
+
+exec_stderr:
+

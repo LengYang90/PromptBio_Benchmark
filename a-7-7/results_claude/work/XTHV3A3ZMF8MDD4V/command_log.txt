@@ -1,0 +1,81 @@
+exec_runcode:
+0
+exec_stdout:
+=== FASTA Database Analysis ===
+File: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/data/18Protein_SoCe_Tr_detergents_trace_target_decoy.fasta
+File size: 9893908 bytes
+Total sequences: 18878
+First 10 sequence headers:
+>sp|A9F596|ACCA_SORC5 Acetyl-coenzyme A carboxylase carboxyl transferase subunit alpha OS=Sorangium cellulosum (strain So ce56) GN=accA PE=3 SV=1
+>sp|A9FGA8|ACYP_SORC5 Acylphosphatase OS=Sorangium cellulosum (strain So ce56) GN=acyP PE=3 SV=1
+>sp|A9ESU7|ALR_SORC5 Alanine racemase OS=Sorangium cellulosum (strain So ce56) GN=alr PE=3 SV=1
+>sp|A9GFF3|APT_SORC5 Adenine phosphoribosyltransferase OS=Sorangium cellulosum (strain So ce56) GN=apt PE=3 SV=1
+>sp|A9GQU6|ARGB_SORC5 Acetylglutamate kinase OS=Sorangium cellulosum (strain So ce56) GN=argB PE=3 SV=1
+>sp|A9EN94|ASTD_SORC5 N-succinylglutamate 5-semialdehyde dehydrogenase OS=Sorangium cellulosum (strain So ce56) GN=astD PE=3 SV=1
+>sp|A9F773|ATKA_SORC5 Potassium-transporting ATPase A chain OS=Sorangium cellulosum (strain So ce56) GN=kdpA PE=3 SV=1
+>sp|A9F781|ATKC_SORC5 Potassium-transporting ATPase C chain OS=Sorangium cellulosum (strain So ce56) GN=kdpC PE=3 SV=1
+>sp|A9FGS5|ATP6_SORC5 ATP synthase subunit a OS=Sorangium cellulosum (strain So ce56) GN=atpB PE=3 SV=1
+>sp|A9GHR6|ATPA_SORC5 ATP synthase subunit alpha OS=Sorangium cellulosum (strain So ce56) GN=atpA PE=3 SV=1
+
+Checking for decoy sequences:
+Decoy sequences (REV_): 0
+Decoy sequences (DECOY_): 0
+Sequences with 'decoy' in header: 0
+Last 10 sequence headers:
+>sp|P01948|HBA_RABIT_rev Hemoglobin subunit alpha-1/2 OS=Oryctolagus cuniculus PE=1 SV=2
+>sp|P02057|HBB_RABIT_rev Hemoglobin subunit beta-1/2 OS=Oryctolagus cuniculus GN=HBB1 PE=1 SV=2
+>sp|P0AF93|YJGF_ECOLI_rev UPF0076 protein yjgF OS=Escherichia coli (strain K12) GN=yjgF PE=1 SV=2
+>sp|P62975|UBIQ_RABIT_rev Ubiquitin OS=Oryctolagus cuniculus PE=1 SV=1
+>sp|P00883|ALDOA_RABIT_rev Fructose-bisphosphate aldolase A OS=Oryctolagus cuniculus GN=ALDOA PE=1 SV=2
+>sp|Q08043|ACTN3_HUMAN_rev Alpha-actinin-3 OS=Homo sapiens GN=ACTN3 PE=1 SV=2
+>sp|P02586|TNNC2_RABIT_rev Troponin C, skeletal muscle OS=Oryctolagus cuniculus GN=TNNC2 PE=1 SV=2
+>sp|P0A6F3|GLPK_ECOLI_rev Glycerol kinase OS=Escherichia coli (strain K12) GN=glpK PE=1 SV=2
+>sp|P58772|TPM1_RABIT_rev Tropomyosin alpha-1 chain OS=Oryctolagus cuniculus GN=TPM1 PE=1 SV=1
+>sp|P01088|ITRF_MAIZE_rev Trypsin/factor XIIA inhibitor OS=Zea mays PE=1 SV=2
+
+=== mzML File Analysis ===
+File: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/data/BSA2_F1.mzML
+File size: 5344675 bytes
+Total spectra: 814
+MS1 spectra: 257
+MS2 spectra: 557
+
+Sample spectrum information (first MS2):
+					</binaryDataArray>
+				</binaryDataArrayList>
+			</spectrum>
+			<spectrum id="spectrum=2305" index="257" defaultArrayLength="100" dataProcessingRef="dp_sp_1">
+				<cvParam cvRef="MS" accession="MS:1000127" name="centroid spectrum" />
+				<cvParam cvRef="MS" accession="MS:1000511" name="ms level" value="2" />
+				<cvParam cvRef="MS" accession="MS:1000294" name="mass spectrum" />
+				<cvParam cvRef="MS" accession="MS:1000130" name="positive scan" />
+				<cvParam cvRef="MS" accession="MS:1000504" name="base peak m/z" value="391.727355957031023"/>
+				<cvParam cvRef="MS" accession="MS:1000505" name="base peak intensity" value="88.416290283203097"/>
+				<cvParam cvRef="MS" accession="MS:1000285" name="total ion current" value="863.67041015625"/>
+--
+					</binaryDataArray>
+				</binaryDataArrayList>
+			</spectrum>
+			<spectrum id="spectrum=2306" index="258" defaultArrayLength="86" dataProcessingRef="dp_sp_1">
+				<cvParam cvRef="MS" accession="MS:1000127" name="centroid spectrum" />
+				<cvParam cvRef="MS" accession="MS:1000511" name="ms level" value="2" />
+				<cvParam cvRef="MS" accession="MS:1000294" name="mass spectrum" />
+				<cvParam cvRef="MS" accession="MS:1000130" name="positive scan" />
+
+Instrument information:
+	<instrumentConfigurationList count="1">
+		<instrumentConfiguration id="ic_0">
+		</instrumentConfiguration>
+	</instrumentConfigurationList>
+	<run id="ru_0" defaultInstrumentConfigurationRef="ic_0" sampleRef="sa_0" startTimeStamp="2009-08-12T14:09:14" defaultSourceFileRef="sf_ru_0">
+
+=== Data Summary for Peptide Identification ===
+- FASTA database: 18,878 protein sequences from Sorangium cellulosum (9.89 MB)
+- Database type: Target-decoy database suitable for FDR calculation
+- mzML file: 814 spectra (257 MS1, 557 MS2) from DDA acquisition (5.34 MB)
+- Data format: Centroid spectra in positive ion mode
+- Acquisition date: 2009-08-12
+- Files are properly formatted and ready for peptide identification analysis
+
+exec_stderr:
+

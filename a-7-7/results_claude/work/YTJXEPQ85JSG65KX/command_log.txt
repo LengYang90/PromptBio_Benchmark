@@ -1,0 +1,90 @@
+exec_runcode:
+0
+exec_stdout:
+=== Generating Proper Comet v2023.01 Parameter Template ===
+
+ Created:  comet.params.new
+
+Using comet.params.new as template
+Parameter file updated with custom settings
+
+=== Running Comet Database Search ===
+ Comet version "2023.01 rev. 0 (c40d7e6)"
+
+ Search start:  05/16/2026, 06:57:03 AM
+ - Input file: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/data/BSA2_F1.mzML
+   - Load spectra: 557
+     - Search progress:   2%  5%  8% 10% 13% 15% 18% 21% 23% 26% 28% 31% 34% 36% 39% 42% 45% 47% 50% 52% 55% 58% 60% 63% 66% 68% 71% 73% 76% 79% 81% 84% 87% 90% 92% 95% 98%100%
+     - Post analysis:  done
+ Search end:    05/16/2026, 06:57:04 AM, 0m:1s
+
+
+=== Locating and Processing Output Files ===
+Checking current directory for output files:
+No output files in current directory
+
+Checking data directory for output files:
+-rw-r--r--    1 root     1011       1807504 May 16 06:57 ./data/BSA2_F1.decoy.pep.xml
+-rw-r--r--    1 root     1011        382158 May 16 06:57 ./data/BSA2_F1.decoy.txt
+-rw-rw-r--    1 1011     1011       5344675 Apr 21 09:40 ./data/BSA2_F1.mzML
+-rw-r--r--    1 root     1011       1793949 May 16 06:57 ./data/BSA2_F1.pep.xml
+-rw-r--r--    1 root     1011        367737 May 16 06:57 ./data/BSA2_F1.txt
+
+=== Processing Comet TXT Output ===
+TXT file header structure:
+CometVersion 2023.01 rev. 0 (c40d7e6)	/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/data/BSA2_F1	05/16/2026, 06:57:03 AM	/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/data/18Protein_SoCe_Tr_detergents_trace_target_decoy.fasta
+scan	num	charge	exp_neutral_mass	calc_neutral_mass	e-value	xcorr	delta_cn	sp_score	ions_matched	ions_total	plain_peptide	modified_peptide	prev_aa	next_aa	protein	protein_count	modifications	retention_time_sec	sp_rank
+259	1	2	905.516209	903.517838	7.48E+00	0.6360	0.0189	77.7	6	14	VPTVPPPR	R.n[42.0106]VPTVPPPR.M	R	M	tr|A9EUI2|A9EUI2_SORC5	1	1_V_42.010600_n	1505.1	3
+259	2	2	905.516209	904.513051	8.53E+00	0.6240	0.0742	89.6	6	14	AIRAFAEK	R.AIRAFAEK.D	R	D	tr|A9EW16|A9EW16_SORC5_rev	1	-	1505.1	1
+259	3	2	905.516209	903.525013	1.41E+01	0.5777	0.0132	81.5	5	14	SRRSASLK	R.SRRSASLK.E	R	E	tr|A9GWV6|A9GWV6_SORC5_rev	1	-	1505.1	2
+
+Extracting PSMs from TXT format with proper parsing:
+PSMs extracted from TXT format successfully
+
+=== Validating Output and Results Summary ===
+ Peptide identification completed successfully
+ Output file: BSA2_F1_comet_psm.tsv
+ PSMs identified: 2273
+
+First 10 PSMs:
+spectrum_id	peptide_sequence	charge	protein_accession
+259	VPTVPPPRM	2	1
+259	AIRAFAEKD	2	1
+259	SRRSASLKE	2	1
+259	ETTVRAARA	2	1
+259	EFLRTIKE	2	1
+260	CEVGEMCRD	2	1
+260	HCADCHDGKE	2	1
+260	DSSGGQEGGSSM	2	1
+260	GDHCDACHKI	2	1
+260	DTMDEGDEKT	2	1
+
+File format validation:
+- Columns: 4
+- Header: spectrum_id	peptide_sequence	charge	protein_accession
+
+Data quality check:
+- Unique spectra: 475
+- Unique peptides: 2001
+- Unique proteins: 6
+
+Peptide length distribution:
+     11 6
+    101 7
+    236 8
+    383 9
+    405 10
+    295 11
+    277 12
+    232 13
+    108 14
+     87 15
+
+=== Task Completion Summary ===
+Database search: Completed
+Parameter file: Compatible with Comet v2023.01
+Input spectra: 557 MS2 spectra processed
+Output format: TSV with spectrum_id, peptide_sequence, charge, protein_accession
+
+exec_stderr:
+

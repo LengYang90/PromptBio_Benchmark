@@ -1,0 +1,171 @@
+exec_runcode:
+0
+exec_stdout:
+=== MeRIP_RNA_result.xlsx Structure ===
+Shape: (12754, 13)
+Columns: ['GeneID', 'm_log2FC', 'm_pvalue', 'g_log2FC', 'g_pvalue', 'm6A', 'DEG', 'm6A_DEG', 'GeneID.1', 'gene_id', 'gene_name', 'Annotation', 'Class']
+Data types:
+GeneID         object
+m_log2FC      float64
+m_pvalue      float64
+g_log2FC      float64
+g_pvalue      float64
+m6A            object
+DEG            object
+m6A_DEG        object
+GeneID.1       object
+gene_id        object
+gene_name      object
+Annotation     object
+Class          object
+dtype: object
+
+First 5 rows:
+            GeneID  ...           Class
+0  ENST00000249005  ...  protein_coding
+1  ENST00000381278  ...  protein_coding
+2  ENST00000401850  ...  protein_coding
+3  ENST00000642412  ...  protein_coding
+4  ENST00000409085  ...  protein_coding
+
+[5 rows x 13 columns]
+
+Summary statistics:
+           m_log2FC      m_pvalue      g_log2FC      g_pvalue
+count  12754.000000  1.275400e+04  12754.000000  1.275400e+04
+mean       0.202921  4.671640e-01      0.040154  5.385290e-01
+std        1.209556  3.058016e-01      1.987639  3.026503e-01
+min       -9.290000  4.530000e-12    -11.849700  1.615150e-09
+25%       -0.240000  1.910000e-01     -0.817179  2.865979e-01
+50%        0.300000  4.530000e-01     -0.002364  5.672969e-01
+75%        0.820000  7.330000e-01      0.785829  8.034710e-01
+max        4.850000  1.000000e+00     12.133500  1.000000e+00
+
+==================================================
+
+=== Proteomic_data.xlsx Structure ===
+Shape: (3850, 15)
+Columns: ['protein', 'Description', 'gene', 'gene_id', 'Normal', 'Tumor', 'Ratio', 'FC', 'log2FC', 'p.value', 'adj.Pval', 'is_sig', 'compare', '1', '2']
+Data types:
+protein         object
+Description     object
+gene            object
+gene_id         object
+Normal         float64
+Tumor          float64
+Ratio          float64
+FC             float64
+log2FC         float64
+p.value        float64
+adj.Pval       float64
+is_sig            bool
+compare         object
+1             float64
+2             float64
+dtype: object
+
+First 5 rows:
+  protein                                        Description  ...  1  2
+0  C9J7P5  FAST kinase domain-containing protein 4 (Fragm...  ... NaN NaN
+1  Q02252  Methylmalonate-semialdehyde dehydrogenase [acy...  ... NaN NaN
+2  P55084  Trifunctional enzyme subunit beta, mitochondri...  ... NaN NaN
+3  P06396  Gelsolin OS=Homo sapiens OX=9606 GN=GSN PE=1 SV=1  ... NaN NaN
+4  P31323  cAMP-dependent protein kinase type II-beta reg...  ... NaN NaN
+
+[5 rows x 15 columns]
+
+Summary statistics:
+             Normal         Tumor        Ratio  ...     adj.Pval   1   2
+count  3.850000e+03  3.850000e+03  3850.000000  ...  3850.000000  0.0  0.0
+mean   2.109576e+08  5.418276e+07     2.269626  ...     0.495089  NaN  NaN
+std    2.846503e+09  4.618665e+08     8.231030  ...     0.245673  NaN  NaN
+min    4.729697e+04  4.495098e+04     0.001482  ...     0.126903  NaN  NaN
+25%    8.005654e+05  1.137546e+06     0.441918  ...     0.279317  NaN  NaN
+50%    4.214084e+06  4.272148e+06     1.042518  ...     0.444743  NaN  NaN
+75%    2.357052e+07  1.836199e+07     2.154446  ...     0.684277  NaN  NaN
+max    1.292262e+11  1.971424e+10   374.015775  ...     0.999896  NaN  NaN
+
+[8 rows x 9 columns]
+
+MeRIP missing values:
+GeneID        0
+m_log2FC      0
+m_pvalue      0
+g_log2FC      0
+g_pvalue      0
+m6A           0
+DEG           0
+m6A_DEG       0
+GeneID.1      0
+gene_id       0
+gene_name     0
+Annotation    0
+Class         0
+dtype: int64
+
+Proteomic missing values:
+protein           0
+Description       0
+gene              0
+gene_id           0
+Normal            0
+Tumor             0
+Ratio             0
+FC                0
+log2FC            0
+p.value           0
+adj.Pval          0
+is_sig            0
+compare           0
+1             3850
+2             3850
+dtype: int64
+
+MeRIP GeneID unique values: ['ENST00000249005' 'ENST00000381278' 'ENST00000401850' ...
+ 'ENST00000468083' 'ENST00000370798' 'ENST00000370801']
+
+MeRIP m6A unique values: ['m6A no sig' 'm6A Hyper' 'm6A Hypo']
+
+MeRIP DEG unique values: ['no-DEGs' 'Up' 'Down']
+
+MeRIP m6A_DEG unique values: ['m6A no sig and no-DEGs' 'm6A no sig and Up' 'm6A no sig and Down'
+ 'm6A Hyper and no-DEGs' 'm6A Hypo and no-DEGs' 'm6A Hypo and Down'
+ 'm6A Hyper and Down' 'm6A Hypo and Up' 'm6A Hyper and Up']
+
+MeRIP GeneID.1 unique values: ['ENST00000249005' 'ENST00000381278' 'ENST00000401850' ...
+ 'ENST00000468083' 'ENST00000370798' 'ENST00000370801']
+
+MeRIP gene_id unique values: ['ENSG00000128274' 'ENSG00000115977' 'ENSG00000090861' ...
+ 'ENSG00000162378' 'ENSG00000159840' 'ENSG00000036549']
+
+MeRIP gene_name unique values: ['A4GALT' 'AAK1' 'AARS1' ... 'ZYG11B' 'ZYX' 'ZZZ3']
+
+MeRIP Annotation unique values: ['alpha 1,4-galactosyltransferase (P blood group) [Source:HGNC Symbol;Acc:HGNC:18149]'
+ 'AP2 associated kinase 1 [Source:HGNC Symbol;Acc:HGNC:19679]'
+ 'alanyl-tRNA synthetase 1 [Source:HGNC Symbol;Acc:HGNC:20]' ...
+ 'zyg-11 family member B, cell cycle regulator [Source:HGNC Symbol;Acc:HGNC:25820]'
+ 'zyxin [Source:HGNC Symbol;Acc:HGNC:13200]'
+ 'zinc finger ZZ-type containing 3 [Source:HGNC Symbol;Acc:HGNC:24523]']
+
+MeRIP Class unique values: ['protein_coding' 'retained_intron' 'processed_transcript' 'lncRNA'
+ 'transcribed_processed_pseudogene' 'processed_pseudogene'
+ 'unprocessed_pseudogene']
+
+Proteomic protein unique values: ['C9J7P5' 'Q02252' 'P55084' ... 'O14880' 'P30085' 'O15523']
+
+Proteomic Description unique values: ['FAST kinase domain-containing protein 4 (Fragment) OS=Homo sapiens OX=9606 GN=TBRG4 PE=1 SV=1'
+ 'Methylmalonate-semialdehyde dehydrogenase [acylating], mitochondrial OS=Homo sapiens OX=9606 GN=ALDH6A1 PE=1 SV=2'
+ 'Trifunctional enzyme subunit beta, mitochondrial OS=Homo sapiens OX=9606 GN=HADHB PE=1 SV=3'
+ ...
+ 'Microsomal glutathione S-transferase 3 OS=Homo sapiens OX=9606 GN=MGST3 PE=1 SV=1'
+ 'UMP-CMP kinase OS=Homo sapiens OX=9606 GN=CMPK1 PE=1 SV=3'
+ 'ATP-dependent RNA helicase DDX3Y OS=Homo sapiens OX=9606 GN=DDX3Y PE=1 SV=2']
+
+Proteomic gene unique values: ['TBRG4' 'ALDH6A1' 'HADHB' ... 'MGST3' 'CMPK1' 'DDX3Y']
+
+Proteomic gene_id unique values: ['9238' '4329' '3032' ... '4259' '51727' '8653']
+
+Proteomic compare unique values: ['Tumor vs Normal']
+
+exec_stderr:
+

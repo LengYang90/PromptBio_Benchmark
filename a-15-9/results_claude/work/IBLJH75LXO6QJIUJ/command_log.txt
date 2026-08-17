@@ -1,0 +1,93 @@
+exec_runcode:
+0
+exec_stdout:
+ Flagging genes and samples with too many missing values...
+  ..step 1
+All samples good: TRUE 
+pickSoftThreshold: will use block size 200.
+ pickSoftThreshold: calculating connectivity for given powers...
+   ..working on genes 1 through 200 of 200
+   Power SFT.R.sq slope truncated.R.sq mean.k. median.k. max.k.
+1      1    0.509 -2.76         0.8460 42.9000   41.3000 62.400
+2      2    0.635 -2.08         0.8240 14.1000   12.9000 26.500
+3      3    0.765 -1.82         0.9300  5.7700    4.9400 12.800
+4      4    0.847 -1.50         0.9190  2.7600    2.3300  6.740
+5      5    0.817 -1.54         0.8650  1.4900    1.2400  4.030
+6      6    0.133 -3.16        -0.1140  0.8850    0.7340  2.730
+7      7    0.697 -1.53         0.7240  0.5710    0.4780  1.980
+8      8    0.778 -1.51         0.8550  0.3940    0.3430  1.520
+9      9    0.242 -3.36         0.1620  0.2870    0.2460  1.220
+10    10    0.245 -3.25         0.1790  0.2180    0.1840  1.020
+11    12    0.215 -2.81         0.0248  0.1380    0.1040  0.761
+12    14    0.900 -1.47         0.9080  0.0940    0.0638  0.609
+13    16    0.261 -2.88         0.1500  0.0675    0.0394  0.509
+14    18    0.262 -2.80         0.1380  0.0502    0.0246  0.436
+15    20    0.226 -3.35         0.0096  0.0382    0.0146  0.381
+Chosen soft power: 14 
+ Calculating module eigengenes block-wise from all genes
+   Flagging genes and samples with too many missing values...
+    ..step 1
+ ..Working on block 1 .
+    TOM calculation: adjacency..
+    ..will not use multithreading.
+     Fraction of slow calculations: 0.000000
+    ..connectivity..
+    ..matrix multiplication (system BLAS)..
+    ..normalization..
+    ..done.
+ ....clustering..
+ ....detecting modules..
+ No modules detected in block 1
+ ..merging modules that are too close..
+     mergeCloseModules: Merging modules whose distance is less than 0.15
+Number of modules detected: 0 
+Module sizes:
+moduleColors
+grey 
+ 200 
+No modules detected with standard parameters. Trying alternative approach...
+..connectivity..
+..matrix multiplication (system BLAS)..
+..normalization..
+..done.
+ ..cutHeight not given, setting it to 0.998  ===>  99% of the (truncated) height range in dendro.
+ ..done.
+Alternative approach - Number of modules detected: 6 
+Alternative approach - Module sizes:
+moduleColors
+     blue     brown     green      grey       red turquoise    yellow 
+        8         7         6       159         5         9         6 
+Module assignments saved to module_assignments.csv
+Summary: Detected 6 modules from 200 features
+
+exec_stderr:
+Loading required package: dynamicTreeCut
+Loading required package: fastcluster
+
+Attaching package: fastcluster
+
+The following object is masked from package:stats:
+
+    hclust
+
+
+
+Attaching package: WGCNA
+
+The following object is masked from package:stats:
+
+    cor
+
+Warning message:
+executing %dopar% sequentially: no parallel backend registered 
+Warning message:
+In blockwiseModules(datExpr, power = softPower, TOMType = "unsigned",  :
+  blockwiseModules: mergeCloseModules failed with the following error message:
+     Error in mergeCloseModules(datExpr, colors[gsg$goodGenes], cutHeight = mergeCutHeight,  : 
+  Error in moduleEigengenes(expr = exprData[[set]]$data, colors = setColors,  : 
+  Color levels are empty. Possible reason: the only color is grey and grey module is excluded from the calculation.
+
+ 
+--> returning unmerged colors.
+
+

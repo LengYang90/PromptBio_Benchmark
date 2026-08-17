@@ -1,0 +1,143 @@
+exec_runcode:
+0
+exec_stdout:
+=== CLEANING UP PREVIOUS ATTEMPT ===
+=== DIA-NN LIBRARY-FREE DIA ANALYSIS (MODIFIED) ===
+Creating temporary directory for DIA-NN...
+Running DIA-NN with conservative parameters to avoid crashes...
+DIA-NN 1.8.1 (Data-Independent Acquisition by Neural Networks)
+Compiled on Apr 15 2022 08:45:18
+Current date and time: Sat May 16 06:56:29 2026
+Logical CPU cores: 112
+A spectral library will be generated
+Deep learning will be used to generate a new in silico spectral library from peptides provided
+Library-free search enabled
+Output will be filtered at 0.01 FDR
+Precursor/protein x samples expression level matrices will be saved along with the main report
+Thread number set to 2
+Fixed-width center of each elution peak will be used for quantification
+Interference removal from fragment elution curves disabled
+DIA-NN will optimise the mass accuracy automatically using the first run in the experiment. This is useful primarily for quick initial analyses, when it is not yet known which mass accuracy setting works best for a particular acquisition scheme.
+Exclusion of fragments shared between heavy and light peptides from quantification is not supported in FASTA digest mode - disabled; to enable, generate an in silico predicted spectral library and analyse with this library
+
+1 files will be processed
+[0:00] Loading FASTA /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/REF_EColi_K12_UPS1_combined.fasta
+[0:00] Processing FASTA
+[0:00] Assembling elution groups
+[0:01] 490735 precursors generated
+[0:01] Gene names missing for some isoforms
+[0:01] Library contains 4338 proteins, and 4338 genes
+[0:01] Encoding peptides for spectra and RTs prediction
+[0:02] Predicting spectra and IMs
+[4:19] Predicting RTs
+[4:39] Decoding predicted spectra and IMs
+[4:48] Decoding RTs
+[4:48] Saving the library to ./speclib.predicted.speclib
+[4:48] Initialising library
+
+[4:49] File #1/1
+[4:49] Loading run /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/RD139_Narrow_UPS1_0_1fmol_inj1.mzML
+=== DIA-NN EXECUTION COMPLETED (Exit Code: 0) ===
+=== FIRST ATTEMPT FAILED, TRYING CONSERVATIVE APPROACH ===
+DIA-NN 1.8.1 (Data-Independent Acquisition by Neural Networks)
+Compiled on Apr 15 2022 08:45:18
+Current date and time: Sat May 16 07:01:19 2026
+Logical CPU cores: 112
+Library-free search enabled
+Output will be filtered at 0.05 FDR
+Thread number set to 1
+DIA-NN will optimise the mass accuracy automatically using the first run in the experiment. This is useful primarily for quick initial analyses, when it is not yet known which mass accuracy setting works best for a particular acquisition scheme.
+Exclusion of fragments shared between heavy and light peptides from quantification is not supported in FASTA digest mode - disabled; to enable, generate an in silico predicted spectral library and analyse with this library
+WARNING: it's strongly recommended to use deep learning spectra/RTs prediction. If impossible because some unsupported modifications need to be searched, consider using either (i) the --strip-unknown-mods command or (ii) a 'training library' specified with the --learn-lib command. A training library might facilitate about 1.5x more IDs, deep learning - about 2x-3x more IDs.
+
+1 files will be processed
+[0:00] Loading FASTA /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/REF_EColi_K12_UPS1_combined.fasta
+[0:00] Processing FASTA
+[0:01] Assembling elution groups
+[0:01] 490735 precursors generated
+[0:01] Gene names missing for some isoforms
+[0:01] Library contains 4338 proteins, and 4338 genes
+[0:01] Initialising library
+
+[0:01] File #1/1
+[0:01] Loading run /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/RD139_Narrow_UPS1_0_1fmol_inj1.mzML
+WARNING: spectra other than MS1 and MS2 detected
+[0:03] 317281 library precursors are potentially detectable
+[0:03] Processing...
+[0:25] Cannot perform mass calibration, too few confidently identified precursors
+[0:25] Cannot perform MS1 mass calibration, too few confidently identified precursors
+[0:47] RT window set to 0.715048
+[0:47] Peak width: 0
+[0:47] Scan window radius set to 5
+[0:47] Cannot perform mass calibration, too few confidently identified precursors
+[0:47] Cannot perform MS1 mass calibration, too few confidently identified precursors
+[0:47] Using MS1 mass accuracy: 20 ppm
+[0:47] Using mass accuracy: 20 ppm
+[1:27] Removing low confidence identifications
+[1:27] Removing interfering precursors
+[1:27] Too few confident identifications, neural networks will not be used
+[1:27] Number of IDs at 0.01 FDR: 0
+[1:27] Number of IDs at 0.01 FDR: 0
+[1:27] Calculating protein q-values
+[1:27] Number of genes identified at 1% FDR: 0 (precursor-level), 0 (protein-level) (inference performed using proteotypic peptides only)
+[1:27] Quantification
+[1:27] Quantification information saved to ./temp_diann/_mnt_data_lengyang_youjia_project_autoba_BABench_src_promptbio-bench_tasks_a-7-8_result_10_toolsgenie_20260516_data_RD139_Narrow_UPS1_0_1fmol_inj1_mzML.quant.
+
+[1:27] Cross-run analysis
+[1:27] Reading quantification information: 1 files
+[1:27] Quantifying peptides
+[1:27] Assembling protein groups
+[1:27] Quantifying proteins
+[1:27] Calculating q-values for protein and gene groups
+[1:27] Calculating global q-values for protein and gene groups
+[1:27] Writing report
+[1:27] Report saved to /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.tsv.
+[1:27] Stats report saved to /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.stats.tsv
+[1:27] Log saved to /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.log.txt
+Finished
+
+=== RETRY COMPLETED (Exit Code: 0) ===
+=== CHECKING DIA-NN LOG ===
+DIA-NN retry log file contents:
+[1:27] Number of IDs at 0.01 FDR: 0
+[1:27] Number of IDs at 0.01 FDR: 0
+[1:27] Calculating protein q-values
+[1:27] Number of genes identified at 1% FDR: 0 (precursor-level), 0 (protein-level) (inference performed using proteotypic peptides only)
+[1:27] Quantification
+[1:27] Quantification information saved to ./temp_diann/_mnt_data_lengyang_youjia_project_autoba_BABench_src_promptbio-bench_tasks_a-7-8_result_10_toolsgenie_20260516_data_RD139_Narrow_UPS1_0_1fmol_inj1_mzML.quant.
+
+[1:27] Cross-run analysis
+[1:27] Reading quantification information: 1 files
+[1:27] Quantifying peptides
+[1:27] Assembling protein groups
+[1:27] Quantifying proteins
+[1:27] Calculating q-values for protein and gene groups
+[1:27] Calculating global q-values for protein and gene groups
+[1:27] Writing report
+[1:27] Report saved to /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.tsv.
+[1:27] Stats report saved to /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.stats.tsv
+[1:27] Log saved to /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.log.txt
+Finished
+
+=== OUTPUT VERIFICATION ===
+Checking for output files in current directory:
+-rw-r--r-- 1 root 1011      3745 May 16 07:02 diann_log_retry.txt
+-rw-r--r-- 1 root 1011      4140 May 16 07:02 report.log.txt
+-rw-r--r-- 1 root 1011       570 May 16 07:02 report.stats.tsv
+-rw-r--r-- 1 root 1011       780 May 16 07:02 report.tsv
+SUCCESS: Main report file generated:
+-rw-r--r-- 1 root 1011 780 May 16 07:02 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.tsv
+First few lines of report.tsv:
+File.Name	Run	Protein.Group	Protein.Ids	Protein.Names	Genes	PG.Quantity	PG.Normalised	PG.MaxLFQ	Genes.Quantity	Genes.Normalised	Genes.MaxLFQ	Genes.MaxLFQ.Unique	Modified.Sequence	Stripped.Sequence	Precursor.Id	Precursor.Charge	Q.Value	PEP	Global.Q.Value	Protein.Q.Value	PG.Q.Value	Global.PG.Q.Value	GG.Q.Value	Translated.Q.Value	Proteotypic	Precursor.Quantity	Precursor.Normalised	Precursor.Translated	Translated.Quality	Ms1.Translated	Quantity.Quality	RT	RT.Start	RT.Stop	iRT	Predicted.RT	Predicted.iRT	First.Protein.Description	Lib.Q.Value	Lib.PG.Q.Value	Ms1.Profile.Corr	Ms1.Area	Evidence	Spectrum.Similarity	Averagine	Mass.Evidence	CScore	Decoy.Evidence	Decoy.CScore	Fragment.Quant.Raw	Fragment.Quant.Corrected	Fragment.Correlations	MS2.Scan	IM	iIM	Predicted.IM	Predicted.iIM
+Total lines in report:
+1 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.tsv
+WARNING: Report file is empty or contains only header
+SUCCESS: Predicted spectral library generated:
+-rw-r--r-- 1 root 1011 125M May 16 07:01 ./speclib.predicted.speclib
+=== FINAL STATUS CHECK ===
+FAILURE: DIA-NN analysis did not produce valid results
+Check log files for detailed error information
+=== ANALYSIS COMPLETE ===
+
+exec_stderr:
+

@@ -1,0 +1,29 @@
+exec_runcode:
+0
+exec_stdout:
+Combined data dimensions: 20 200 
+Phenotype data dimensions: 20 1 
+Number of aligned samples: 20 
+Data preparation completed. Files saved:
+- combined_expression_data.csv: samples as rows, features as columns
+- aligned_phenotype_data.csv: aligned phenotype data
+
+exec_stderr:
+Loading required package: dynamicTreeCut
+Loading required package: fastcluster
+
+Attaching package: fastcluster
+
+The following object is masked from package:stats:
+
+    hclust
+
+
+
+Attaching package: WGCNA
+
+The following object is masked from package:stats:
+
+    cor
+
+

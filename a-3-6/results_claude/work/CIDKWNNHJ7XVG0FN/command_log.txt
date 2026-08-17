@@ -1,0 +1,18 @@
+exec_runcode:
+0
+exec_stdout:
+	STAR --genomeDir /mnt/data/ims/genome/references/wts/STARIndex/ --readFilesIn /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/data/K562f_1.fq.gz /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/data/K562f_2.fq.gz --readFilesCommand zcat --runThreadN 8 --outFileNamePrefix K562_ --outSAMtype BAM SortedByCoordinate --chimSegmentMin 15 --chimJunctionOverhangMin 15 --chimOutType Junctions SeparateSAMold --chimSegmentReadGapMax 0 --chimScoreMin 15 --chimScoreDropMax 20 --chimNonchimScoreDropMin 10 --chimOutJunctionFormat 1
+	STAR version: 2.7.10a   compiled: 2022-01-14T18:50:00-05:00 :/home/dobin/data/STAR/STARcode/STAR.master/source
+Apr 30 06:38:22 ..... started STAR run
+Apr 30 06:38:22 ..... loading genome
+Apr 30 06:39:14 ..... started mapping
+Apr 30 06:39:15 ..... finished mapping
+Apr 30 06:39:16 ..... started sorting BAM
+Apr 30 06:39:16 ..... finished successfully
+Generated 463 candidate fusion junctions
+Output files:
+- /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/K562_Chimeric.out.junction
+- /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/K562_candidate_fusions.csv
+
+exec_stderr:
+

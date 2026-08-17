@@ -1,0 +1,33 @@
+exec_runcode:
+0
+exec_stdout:
+SNP positions loaded: (31, 1)
+SNP position columns: ['Position']
+Sample SNP positions:
+              Position
+SNP                   
+rs6678176    100000827
+kgp7451999   100179050
+kgp11573536  100443462
+kgp11301880  100909699
+kgp3991027   101105310
+
+SNP data: 31 SNPs, 53 samples
+CpG data: 6 CpG sites, 53 samples
+CpG positions: (6, 1)
+SNP positions: (31, 1)
+
+Identified 31 cis SNP-CpG pairs within 1.0Mb
+Distance range: 455 - 979961 bp
+
+Cis pairs saved to: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/cis_pairs.csv
+Sample cis pairs:
+           SNP         CpG    SNP_pos    CpG_pos  distance
+0    rs6678176  cg19251656  100000827  100000372       455
+1    rs6678176  cg01433766  100000827  100715098    714271
+2   kgp7451999  cg19251656  100179050  100000372    178678
+3   kgp7451999  cg01433766  100179050  100715098    536048
+4  kgp11573536  cg19251656  100443462  100000372    443090
+
+exec_stderr:
+

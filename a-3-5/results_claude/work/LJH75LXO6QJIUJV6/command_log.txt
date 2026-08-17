@@ -1,0 +1,73 @@
+exec_runcode:
+0
+exec_stdout:
+=== SE.MATS.JC.txt Content and Format ===
+ID	GeneID	geneSymbol	chr	strand	exonStart_0base	exonEnd	upstreamES	upstreamEE	downstreamES	downstreamEE	ID	IJC_SAMPLE_1	SJC_SAMPLE_1	IJC_SAMPLE_2	SJC_SAMPLE_2	IncFormLen	SkipFormLen	PValue	FDR	IncLevel1	IncLevel2	IncLevelDifference
+0	"GENE_ID"	"GENE_NAME"	chr16	+	18250	18350	13500	13700	20750	21000	0	108	239	126	241	198	99	0.492743439057	0.492743439057	0.184	0.207	-0.023
+
+=== Headers and Format Verification for All *.MATS.JC.txt Files ===
+File: A3SS.MATS.JC.txt
+Header line:
+ID	GeneID	geneSymbol	chr	strand	longExonStart_0base	longExonEnd	shortES	shortEE	flankingES	flankingEE	ID	IJC_SAMPLE_1	SJC_SAMPLE_1	IJC_SAMPLE_2	SJC_SAMPLE_2	IncFormLen	SkipFormLen	PValue	FDR	IncLevel1	IncLevel2	IncLevelDifference
+Number of columns: 23
+File size: 230 bytes
+Total lines: 1
+
+File: A5SS.MATS.JC.txt
+Header line:
+ID	GeneID	geneSymbol	chr	strand	longExonStart_0base	longExonEnd	shortES	shortEE	flankingES	flankingEE	ID	IJC_SAMPLE_1	SJC_SAMPLE_1	IJC_SAMPLE_2	SJC_SAMPLE_2	IncFormLen	SkipFormLen	PValue	FDR	IncLevel1	IncLevel2	IncLevelDifference
+Number of columns: 23
+File size: 230 bytes
+Total lines: 1
+
+File: MXE.MATS.JC.txt
+Header line:
+ID	GeneID	geneSymbol	chr	strand	1stExonStart_0base	1stExonEnd	2ndExonStart_0base	2ndExonEnd	upstreamES	upstreamEE	downstreamES	downstreamEE	ID	IJC_SAMPLE_1	SJC_SAMPLE_1	IJC_SAMPLE_2	SJC_SAMPLE_2	IncFormLen	SkipFormLen	PValue	FDR	IncLevel1	IncLevel2	IncLevelDifference
+Number of columns: 25
+File size: 268 bytes
+Total lines: 1
+
+File: RI.MATS.JC.txt
+Header line:
+ID	GeneID	geneSymbol	chr	strand	riExonStart_0base	riExonEnd	upstreamES	upstreamEE	downstreamES	downstreamEE	ID	IJC_SAMPLE_1	SJC_SAMPLE_1	IJC_SAMPLE_2	SJC_SAMPLE_2	IncFormLen	SkipFormLen	PValue	FDR	IncLevel1	IncLevel2	IncLevelDifference
+Number of columns: 23
+File size: 236 bytes
+Total lines: 1
+
+File: SE.MATS.JC.txt
+Header line:
+ID	GeneID	geneSymbol	chr	strand	exonStart_0base	exonEnd	upstreamES	upstreamEE	downstreamES	downstreamEE	ID	IJC_SAMPLE_1	SJC_SAMPLE_1	IJC_SAMPLE_2	SJC_SAMPLE_2	IncFormLen	SkipFormLen	PValue	FDR	IncLevel1	IncLevel2	IncLevelDifference
+Number of columns: 23
+File size: 374 bytes
+Total lines: 2
+
+=== Detailed SE.MATS.JC.txt Column Information ===
+     1	ID
+     2	GeneID
+     3	geneSymbol
+     4	chr
+     5	strand
+     6	exonStart_0base
+     7	exonEnd
+     8	upstreamES
+     9	upstreamEE
+    10	downstreamES
+    11	downstreamEE
+    12	ID
+    13	IJC_SAMPLE_1
+    14	SJC_SAMPLE_1
+    15	IJC_SAMPLE_2
+    16	SJC_SAMPLE_2
+    17	IncFormLen
+    18	SkipFormLen
+    19	PValue
+    20	FDR
+    21	IncLevel1
+    22	IncLevel2
+    23	IncLevelDifference
+
+=== SE.MATS.JC.txt Data Values ===
+0	"GENE_ID"	"GENE_NAME"	chr16	+	18250	18350	13500	13700	20750	21000	0	108	239	126	241	198	99	0.492743439057	0.492743439057	0.184	0.207	-0.023
+
+exec_stderr:
+

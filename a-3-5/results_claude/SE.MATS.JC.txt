@@ -1,0 +1,2 @@
+ID	GeneID	geneSymbol	chr	strand	exonStart_0base	exonEnd	upstreamES	upstreamEE	downstreamES	downstreamEE	ID	IJC_SAMPLE_1	SJC_SAMPLE_1	IJC_SAMPLE_2	SJC_SAMPLE_2	IncFormLen	SkipFormLen	PValue	FDR	IncLevel1	IncLevel2	IncLevelDifference
+0	"GENE_ID"	"GENE_NAME"	chr16	+	18250	18350	13500	13700	20750	21000	0	108	239	126	241	198	99	0.492743439057	0.492743439057	0.184	0.207	-0.023

@@ -1,0 +1,85 @@
+exec_runcode:
+0
+exec_stdout:
+=== CELL-TYPE-SPECIFIC ASSOCIATION TESTING RESULTS SUMMARY ===
+
+1. OUTPUT FILE STRUCTURE:
+   - File path: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_10/toolsgenie_20260516/dna_methylation_results.tsv
+   - Dimensions: 300 rows  6 columns
+   - Columns: ['response', 'celltype', 'term', 'estimate', 'statistic', 'p.value']
+   - File size: 63.6 KB
+
+2. DATA COMPLETENESS:
+   - Missing values: 0
+   - Unique CpG sites: 20
+   - Unique cell types: 8
+   - Unique terms: 15
+
+3. P-VALUE DISTRIBUTION:
+   - Range: 0.043503 - 0.998940
+   - Mean: 0.654064
+   - Median: 0.717207
+   - Standard deviation: 0.252991
+
+4. SIGNIFICANCE ANALYSIS:
+   - p < 0.05: 8 associations (2.7%)
+   - p < 0.01: 0 associations (0.0%)
+   - p < 0.001: 0 associations (0.0%)
+   - Bonferroni corrected (p < 1.67e-04): 0 associations
+
+5. RESULTS BY TERM TYPE:
+               p.value                          estimate              
+                 count      mean       min          mean           std
+term                                                                  
+Bcells              20  0.683814  0.203587  3.514837e+08  1.350123e+09
+CD4.                20  0.683814  0.203587  3.514837e+08  1.350123e+09
+CD8.                20  0.683814  0.203587  3.514837e+08  1.350123e+09
+Eos                 20  0.683814  0.203587  3.514837e+08  1.350123e+09
+NK                  20  0.683814  0.203587  3.514837e+08  1.350123e+09
+Nue                 20  0.683814  0.203587  3.514837e+08  1.350123e+09
+disease             20  0.628032  0.043503 -8.267327e+07  4.741880e+09
+disease:Bcells      20  0.628032  0.043503  8.267327e+07  4.741880e+09
+disease:CD4.        20  0.628032  0.043503  8.267327e+07  4.741880e+09
+disease:CD8.        20  0.628032  0.043503  8.267327e+07  4.741880e+09
+disease:Eos         20  0.628032  0.043503  8.267327e+07  4.741880e+09
+disease:NK          20  0.628032  0.043503  8.267327e+07  4.741880e+09
+disease:Nue         20  0.628032  0.043503  8.267327e+07  4.741880e+09
+disease:mono        20  0.628032  0.043503  8.267327e+07  4.741880e+09
+mono                20  0.683814  0.203587  3.514837e+08  1.350123e+09
+
+6. RESULTS BY CELL TYPE:
+          count  sig_p05      est_mean       est_std
+celltype                                            
+Bcells       40        1  2.170785e+08  3.443982e+09
+CD4.         40        1  2.170785e+08  3.443982e+09
+CD8.         40        1  2.170785e+08  3.443982e+09
+Eos          40        1  2.170785e+08  3.443982e+09
+NK           40        1  2.170785e+08  3.443982e+09
+Nue          40        1  2.170785e+08  3.443982e+09
+mono         40        1  2.170785e+08  3.443982e+09
+overall      20        1 -8.267327e+07  4.741880e+09
+
+7. TOP 10 MOST SIGNIFICANT ASSOCIATIONS:
+  response celltype           term      estimate  p.value
+cg06535675   Bcells disease:Bcells  5.112784e+09 0.043503
+cg06535675     CD4.   disease:CD4.  5.112784e+09 0.043503
+cg06535675  overall        disease -5.112784e+09 0.043503
+cg06535675      Nue    disease:Nue  5.112784e+09 0.043503
+cg06535675       NK     disease:NK  5.112784e+09 0.043503
+cg06535675     CD8.   disease:CD8.  5.112784e+09 0.043503
+cg06535675     mono   disease:mono  5.112784e+09 0.043503
+cg06535675      Eos    disease:Eos  5.112784e+09 0.043503
+cg13709618      Eos    disease:Eos  1.232953e+10 0.109630
+cg13709618       NK     disease:NK  1.232953e+10 0.109630
+
+8. EFFECT SIZE ANALYSIS:
+   - Estimate range: -1.29e+10 - 1.29e+10
+   - Mean absolute estimate: 2.02e+09
+   - Large effects (|estimate| > 1e6): 300
+
+=== ANALYSIS COMPLETE ===
+Summary: Analyzed 20 CpG sites across 8 cell types
+with 15 different terms, generating 300 total associations.
+
+exec_stderr:
+

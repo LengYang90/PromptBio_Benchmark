@@ -1,0 +1,82 @@
+exec_runcode:
+0
+exec_stdout:
+rMATS summary report generated: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/rMATS_summary_report.txt
+================================================================================
+rMATS ALTERNATIVE SPLICING ANALYSIS SUMMARY REPORT
+================================================================================
+
+1. OVERVIEW OF DETECTED EVENTS BY TYPE
+----------------------------------------
+SE (Skipped Exon): 0 events (0.0%)
+A3SS (Alternative 3' Splice Site): 0 events (0.0%)
+A5SS (Alternative 5' Splice Site): 0 events (0.0%)
+MXE (Mutually Exclusive Exon): 0 events (0.0%)
+RI (Retained Intron): 0 events (0.0%)
+
+Total Events Detected: 0
+
+2. DETAILED INFORMATION - SKIPPED EXON EVENTS
+--------------------------------------------------
+No skipped exon events detected.
+
+3. STATISTICAL SUMMARY
+-------------------------
+Total Alternative Splicing Events: 0
+Most Common Event Type: None detected
+Significant Events (FDR < 0.05): 0
+Average P-Value: N/A
+Average FDR: N/A
+Average Inclusion Level Difference: N/A
+
+4. OUTPUT FILE VALIDATION
+------------------------------
+SE.MATS.JC.txt:
+  - File exists: Yes
+  - File size: 374 bytes
+  - Format: Tab-separated values
+  - Columns: 23
+  - Rows (including header): 1
+  - Events detected: 0
+  - Required JC format: Validated
+
+A3SS.MATS.JC.txt:
+  - File exists: Yes
+  - File size: 230 bytes
+  - Format: Tab-separated values
+  - Columns: 23
+  - Rows (including header): 0
+  - Events detected: 0
+  - Required JC format: Validated
+
+A5SS.MATS.JC.txt:
+  - File exists: Yes
+  - File size: 230 bytes
+  - Format: Tab-separated values
+  - Columns: 23
+  - Rows (including header): 0
+  - Events detected: 0
+  - Required JC format: Validated
+
+MXE.MATS.JC.txt:
+  - File exists: Yes
+  - File size: 268 bytes
+  - Format: Tab-separated values
+  - Columns: 25
+  - Rows (including header): 0
+  - Events detected: 0
+  - Required JC format: Validated
+
+RI.MATS.JC.txt:
+  - File exists: Yes
+  - File size: 236 bytes
+  - Format: Tab-separated values
+  - Columns: 23
+  - Rows (including header): 0
+  - Events detected: 0
+  - Required JC format: Validated
+
+
+
+exec_stderr:
+

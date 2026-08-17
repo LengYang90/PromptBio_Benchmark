@@ -1,0 +1,64 @@
+exec_runcode:
+0
+exec_stdout:
+=== ANALYZING DIA-NN ZERO IDENTIFICATION ISSUE ===
+
+1. ANALYZING DIA-NN LOG FILES:
+
+--- report.log.txt ---
+File size: 4140 characters
+Key findings:
+  - Mass calibration failed - too few precursors
+  - Neural networks disabled - insufficient data
+  - Zero identifications at 1% FDR
+  - Generated 490735 precursors from FASTA
+  Line 12: WARNING: it's strongly recommended to use deep learning spectra/RTs prediction. If impossible because some unsupported modifications need to be searched, consider using either (i) the --strip-unknown-mods command or (ii) a 'training library' specified with the --learn-lib command. A training library might facilitate about 1.5x more IDs, deep learning - about 2x-3x more IDs.
+  Line 25: WARNING: spectra other than MS1 and MS2 detected
+  Line 28: [0:25] Cannot perform mass calibration, too few confidently identified precursors
+  Line 29: [0:25] Cannot perform MS1 mass calibration, too few confidently identified precursors
+  Line 33: [0:47] Cannot perform mass calibration, too few confidently identified precursors
+  Line 34: [0:47] Cannot perform MS1 mass calibration, too few confidently identified precursors
+  Line 39: [1:27] Too few confident identifications, neural networks will not be used
+
+--- report.stats.tsv ---
+File size: 570 characters
+Key findings:
+
+--- diann_log_retry.txt ---
+File size: 3745 characters
+Key findings:
+  - Mass calibration failed - too few precursors
+  - Neural networks disabled - insufficient data
+  - Zero identifications at 1% FDR
+  - Generated 490735 precursors from FASTA
+  Line 10: WARNING: it's strongly recommended to use deep learning spectra/RTs prediction. If impossible because some unsupported modifications need to be searched, consider using either (i) the --strip-unknown-mods command or (ii) a 'training library' specified with the --learn-lib command. A training library might facilitate about 1.5x more IDs, deep learning - about 2x-3x more IDs.
+  Line 23: WARNING: spectra other than MS1 and MS2 detected
+  Line 26: [0:25] Cannot perform mass calibration, too few confidently identified precursors
+  Line 27: [0:25] Cannot perform MS1 mass calibration, too few confidently identified precursors
+  Line 31: [0:47] Cannot perform mass calibration, too few confidently identified precursors
+  Line 32: [0:47] Cannot perform MS1 mass calibration, too few confidently identified precursors
+  Line 37: [1:27] Too few confident identifications, neural networks will not be used
+
+2. DEEP mzML FILE ANALYSIS:
+File: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/RD139_Narrow_UPS1_0_1fmol_inj1.mzML
+File size: 43.2 MB
+Total spectra analyzed: 100
+MS levels found: {2: 8308, 1: 112}
+Scan types: {'MSn': 8308, 'MS1': 112}
+Acquisition methods detected: Standard MS/MS
+Isolation windows: 76 unique windows
+Window range: 4.0 - 946.0
+DIA acquisition indicators: ['Multiple isolation windows (76)', 'High MS2/MS1 ratio suggesting DIA']
+
+3. DIAGNOSTIC SUMMARY:
+Potential causes of zero identifications:
+- Data type mismatch: File may be DDA data analyzed with DIA parameters
+- Mass accuracy issues: Instrument calibration problems
+- Low signal quality: Sample concentration too low (0.1 fmol)
+- Parameter settings: Default DIA-NN settings may not match acquisition method
+- Database mismatch: E.coli database may not match sample composition
+
+Analysis report saved to: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/diann_failure_analysis.txt
+
+exec_stderr:
+

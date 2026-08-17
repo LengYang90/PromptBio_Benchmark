@@ -1,0 +1,24 @@
+exec_runcode:
+0
+exec_stdout:
+Original sample counts:
+Methylation: 658 samples, 20 CpGs
+Cell composition: 658 samples, 7 cell types
+Traits: 658 samples, 1 traits
+Common samples: 658
+
+Data alignment check:
+All methylation samples in common: True
+All cell composition samples in common: True
+All trait samples in common: True
+Combined dataset shape: (658, 28)
+
+Combined dataset saved with:
+- 658 samples
+- 20 CpG sites
+- 7 cell types
+- 1 disease trait
+- Ready for cell-type-specific association testing
+
+exec_stderr:
+

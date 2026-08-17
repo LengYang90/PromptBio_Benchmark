@@ -1,0 +1,32 @@
+exec_runcode:
+0
+exec_stdout:
+Available columns in combined dataset:
+['cg10543797', 'cg22718169', 'cg26398836', 'cg14656329', 'cg25320798', 'cg21470600', 'cg06719487', 'cg26797159', 'cg20945232', 'cg08164371', 'cg13709618', 'cg24360459', 'cg06535675', 'cg13848568', 'cg20149137', 'cg03341469', 'cg07221518', 'cg15684811', 'cg22803724', 'cg15553397', 'CD4.', 'CD8.', 'mono', 'Bcells', 'NK', 'Nue', 'Eos', 'disease']
+
+Identified columns:
+CpG sites: ['cg10543797', 'cg22718169', 'cg26398836', 'cg14656329', 'cg25320798', 'cg21470600', 'cg06719487', 'cg26797159', 'cg20945232', 'cg08164371', 'cg13709618', 'cg24360459', 'cg06535675', 'cg13848568', 'cg20149137', 'cg03341469', 'cg07221518', 'cg15684811', 'cg22803724', 'cg15553397']
+Cell types: ['CD4.', 'CD8.', 'mono', 'Bcells', 'NK', 'Nue', 'Eos']
+Disease column: disease
+
+Cell-type-specific association testing completed:
+- Analyzed 20 CpG sites
+- Tested 7 cell types
+- Generated 300 association results
+- Results saved to dna_methylation_results.tsv
+
+Sample of results:
+     response celltype          term      estimate  statistic   p.value
+0  cg10543797  overall       disease -4.612576e+06  -0.001329  0.998940
+1  cg10543797     CD4.          CD4.  6.840944e+08   0.315042  0.752832
+2  cg10543797     CD8.          CD8.  6.840944e+08   0.315042  0.752832
+3  cg10543797     mono          mono  6.840944e+08   0.315042  0.752832
+4  cg10543797   Bcells        Bcells  6.840944e+08   0.315042  0.752832
+5  cg10543797       NK            NK  6.840944e+08   0.315042  0.752832
+6  cg10543797      Nue           Nue  6.840944e+08   0.315042  0.752832
+7  cg10543797      Eos           Eos  6.840944e+08   0.315042  0.752832
+8  cg10543797     CD4.  disease:CD4.  4.612576e+06   0.001329  0.998940
+9  cg10543797     CD8.  disease:CD8.  4.612576e+06   0.001329  0.998940
+
+exec_stderr:
+

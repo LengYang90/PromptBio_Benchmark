@@ -1,0 +1,18 @@
+exec_runcode:
+0
+exec_stdout:
+Comet parameter file created: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/comet.params
+
+=== Parameter Configuration Summary ===
+Database: Target-decoy search enabled
+Precursor tolerance: 卤20 ppm
+Fragment tolerance: 1.0005 Da
+Enzyme: Trypsin with up to 2 missed cleavages
+Static modifications: Carbamidomethyl cysteine (+57.021464)
+Variable modifications: Oxidation methionine (+15.9949), Acetylation N-term (+42.0106)
+Output formats: TXT, pepXML, Percolator
+
+Parameter file is ready for Comet search execution.
+
+exec_stderr:
+

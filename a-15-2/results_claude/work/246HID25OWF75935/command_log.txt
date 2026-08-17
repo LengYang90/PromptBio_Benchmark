@@ -1,0 +1,26 @@
+exec_runcode:
+0
+exec_stdout:
+=== mQTL Results File Verification ===
+ mQTL_results.tsv file not found at: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_10/toolsgenie_20260516/mQTL_results.tsv
+
+=== Available files in output directory ===
+  - Matrix_of_covariates_corrected.csv
+  - cell_composition_formatted.csv
+  - cis_pairs_1mb.csv
+  - covariates_formatted.csv
+  - data/ (directory)
+  - methylation_formatted.csv
+  - methylation_positions_formatted.csv
+  - session_init
+  - snp_genotypes_formatted.csv
+  - snp_positions_formatted.csv
+  - work/ (directory)
+
+=== Diagnosis ===
+The mQTL analysis appears to have completed based on history,
+but the results file was not properly saved.
+Recommendation: Re-run the ctcisQTL analysis with explicit file output verification.
+
+exec_stderr:
+
