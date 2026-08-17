@@ -5,7 +5,9 @@ suppressMessages({
   allowWGCNAThreads()
 })
 
-task_dir <- dirname(dirname(normalizePath(sys.frames()[[1]]$ofile, mustWork = FALSE)))
+args <- commandArgs(trailingOnly = FALSE)
+script_path <- sub("--file=", "", args[grep("--file=", args)])
+task_dir <- dirname(dirname(normalizePath(script_path, mustWork = FALSE)))
 
 rna     <- read.csv(file.path(task_dir, "data", "rna.csv"),     row.names = 1)
 protein <- read.csv(file.path(task_dir, "data", "protein.csv"), row.names = 1)
@@ -17,8 +19,7 @@ protein <- protein[, common_samples]
 
 exprData <- rbind(rna, protein)
 datExpr  <- as.data.frame(apply(as.data.frame(t(exprData)), 2, as.numeric))
-
-sampleTree <- hclust(dist(datExpr), method = "average")
+rownames(datExpr) <- common_samples
 
 powers   <- 1:10
 sft      <- pickSoftThreshold(datExpr, powerVector = powers, verbose = 0)
@@ -43,6 +44,7 @@ rownames(datTraits) <- pheno$Sample
 MEs <- orderMEs(moduleEigengenes(datExpr, colors = moduleColors)$eigengenes)
 
 if (ncol(MEs) > 0) {
+  datTraits         <- datTraits[rownames(MEs), , drop = FALSE]
   moduleTraitCor    <- cor(MEs, datTraits$Disease, use = "p")
   moduleTraitPvalue <- corPvalueStudent(moduleTraitCor, nrow(datExpr))
   res <- data.frame(Module      = rownames(moduleTraitCor),

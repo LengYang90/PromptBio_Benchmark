@@ -1,0 +1,10 @@
+[
+    {
+        "image": "lengyang/pb_bio_tools:2.0.0_mini",
+        "command": "import pandas as pd\n\n# Define absolute paths\nEDGES_PATH = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-11-8/result_11/toolsgenie_20260623/preprocessed_edges.csv\"\nNODE_TYPES_PATH = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-11-8/result_11/toolsgenie_20260623/node_types.csv\"\nOUTPUT_PATH = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-11-8/result_11/toolsgenie_20260623/cross_layer_hubs.csv\"\n\n# Calculate degree centrality for undirected network\nedges = pd.read_csv(EDGES_PATH)\nall_nodes = pd.concat([edges[\"source\"], edges[\"target\"]])\ndegree_df = all_nodes.value_counts().reset_index()\ndegree_df.columns = [\"node\", \"degree_centrality\"]\n\n# Merge with node types and filter gene nodes\nnode_types = pd.read_csv(NODE_TYPES_PATH)\nmerged_df = pd.merge(degree_df, node_types, on=\"node\", how=\"inner\")\ngene_degrees = merged_df[merged_df[\"node_type\"] == \"gene\"]\n\n# Compute 90th percentile threshold and filter cross-layer hubs\nthreshold = gene_degrees[\"degree_centrality\"].quantile(0.9)\nhubs = gene_degrees[gene_degrees[\"degree_centrality\"] >= threshold].copy()\nhubs[\"type\"] = \"gene\"\nhubs = hubs[[\"node\", \"degree_centrality\", \"type\"]]\n\n# Save output\nhubs.to_csv(OUTPUT_PATH, index=False)\n",
+        "code_type": "python",
+        "exec_runcode": 0,
+        "exec_stdout": "",
+        "exec_stderr": ""
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "image": "quay.io/biocontainers/bioconductor-iclusterplus:1.38.0--r43h9913872_2",
+        "command": "library(iClusterPlus)\n\n# Define paths\ninput_dir <- \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-7/result_11/toolsgenie_20260623\"\nexp_path <- file.path(input_dir, \"preprocessed_gbm_exp.csv\")\nmut_path <- file.path(input_dir, \"preprocessed_gbm_mut.csv\")\ncn_path <- file.path(input_dir, \"preprocessed_gbm_cn.csv\")\nout_path <- file.path(input_dir, \"cluster.csv\")\n\n# Load data and convert to matrices\nexp_mat <- as.matrix(read.csv(exp_path, row.names = 1, check.names = FALSE))\nmut_mat <- as.matrix(read.csv(mut_path, row.names = 1, check.names = FALSE))\ncn_mat <- as.matrix(read.csv(cn_path, row.names = 1, check.names = FALSE))\n\n# Run iClusterPlus with k=3\nfit <- iClusterPlus(\n  datasets = list(exp_mat, mut_mat, cn_mat),\n  type = c(\"gaussian\", \"binomial\", \"gaussian\"),\n  K = 3,\n  maxiter = 20,\n  epsilon = 1e-4\n)\n\n# Extract cluster assignments\ncluster_res <- data.frame(\n  sample_id = rownames(exp_mat),\n  cluster = fit$clusters\n)\n\n# Save output\nwrite.csv(cluster_res, out_path, row.names = FALSE, quote = FALSE)\n",
+        "code_type": "r",
+        "exec_runcode": 1,
+        "exec_stdout": "",
+        "exec_stderr": "Loading required package: parallel\nError in iClusterPlus(datasets = list(exp_mat, mut_mat, cn_mat), type = c(\"gaussian\",  : \n  unused arguments (datasets = list(exp_mat, mut_mat, cn_mat), epsilon = 1e-04)\nExecution halted\n"
+    },
+    {
+        "image": "quay.io/biocontainers/bioconductor-iclusterplus:1.38.0--r43h9913872_2",
+        "command": "library(iClusterPlus)\n\n# Define paths\ninput_dir <- \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-7/result_11/toolsgenie_20260623\"\nexp_path <- file.path(input_dir, \"preprocessed_gbm_exp.csv\")\nmut_path <- file.path(input_dir, \"preprocessed_gbm_mut.csv\")\ncn_path <- file.path(input_dir, \"preprocessed_gbm_cn.csv\")\nout_path <- file.path(input_dir, \"cluster.csv\")\n\n# Load data and convert to matrices\nexp_mat <- as.matrix(read.csv(exp_path, row.names = 1, check.names = FALSE))\nmut_mat <- as.matrix(read.csv(mut_path, row.names = 1, check.names = FALSE))\ncn_mat <- as.matrix(read.csv(cn_path, row.names = 1, check.names = FALSE))\n\n# Run iClusterPlus with k=3 (fixed parameters)\nfit <- iClusterPlus(\n  dt1 = exp_mat,\n  dt2 = mut_mat,\n  dt3 = cn_mat,\n  type = c(\"gaussian\", \"binomial\", \"gaussian\"),\n  K = 3,\n  max.iter = 20,\n  eps = 1e-4\n)\n\n# Extract cluster assignments\ncluster_res <- data.frame(\n  sample_id = rownames(exp_mat),\n  cluster = fit$clusters\n)\n\n# Save output\nwrite.csv(cluster_res, out_path, row.names = FALSE, quote = FALSE)\n",
+        "code_type": "r",
+        "exec_runcode": 1,
+        "exec_stdout": "",
+        "exec_stderr": "Loading required package: parallel\nError in iClusterPlus(dt1 = exp_mat, dt2 = mut_mat, dt3 = cn_mat, type = c(\"gaussian\",  : \n  unused argument (max.iter = 20)\nExecution halted\n"
+    },
+    {
+        "image": "quay.io/biocontainers/bioconductor-iclusterplus:1.38.0--r43h9913872_2",
+        "command": "library(iClusterPlus)\n\n# Define paths\ninput_dir <- \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-7/result_11/toolsgenie_20260623\"\nexp_path <- file.path(input_dir, \"preprocessed_gbm_exp.csv\")\nmut_path <- file.path(input_dir, \"preprocessed_gbm_mut.csv\")\ncn_path <- file.path(input_dir, \"preprocessed_gbm_cn.csv\")\nout_path <- file.path(input_dir, \"cluster.csv\")\n\n# Load data and convert to matrices\nexp_mat <- as.matrix(read.csv(exp_path, row.names = 1, check.names = FALSE))\nmut_mat <- as.matrix(read.csv(mut_path, row.names = 1, check.names = FALSE))\ncn_mat <- as.matrix(read.csv(cn_path, row.names = 1, check.names = FALSE))\n\n# Run iClusterPlus with k=3 (fixed parameters)\nfit <- iClusterPlus(\n  dt1 = exp_mat,\n  dt2 = mut_mat,\n  dt3 = cn_mat,\n  type = c(\"gaussian\", \"binomial\", \"gaussian\"),\n  K = 3,\n  maxiter = 20,\n  eps = 1e-4\n)\n\n# Extract cluster assignments\ncluster_res <- data.frame(\n  sample_id = rownames(exp_mat),\n  cluster = fit$clusters\n)\n\n# Save output\nwrite.csv(cluster_res, out_path, row.names = FALSE, quote = FALSE)\n",
+        "code_type": "r",
+        "exec_runcode": 0,
+        "exec_stdout": "",
+        "exec_stderr": "Loading required package: parallel\n"
+    }
+]

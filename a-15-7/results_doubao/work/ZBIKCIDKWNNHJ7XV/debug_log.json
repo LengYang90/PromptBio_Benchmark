@@ -1,0 +1,10 @@
+[
+    {
+        "image": "lengyang/pb_bio_tools:2.0.0_mini",
+        "command": "import pandas as pd\n\n# Define input paths\nexp_path = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-7/result_11/toolsgenie_20260623/data/gbm.exp.csv\"\nmut_path = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-7/result_11/toolsgenie_20260623/data/gbm.mut.csv\"\ncn_path = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-7/result_11/toolsgenie_20260623/data/gbm.cn.csv\"\nout_dir = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-7/result_11/toolsgenie_20260623\"\n\n# Load datasets and set sample ID as index\nexp_df = pd.read_csv(exp_path, index_col=0)\nmut_df = pd.read_csv(mut_path, index_col=0)\ncn_df = pd.read_csv(cn_path, index_col=0)\n\n# Get common samples and align order\ncommon_samples = sorted(list(set(exp_df.index) & set(mut_df.index) & set(cn_df.index)))\nexp_aligned = exp_df.reindex(common_samples).apply(pd.to_numeric)\nmut_aligned = mut_df.reindex(common_samples).apply(pd.to_numeric)\ncn_aligned = cn_df.reindex(common_samples).apply(pd.to_numeric)\n\n# Check missing values\nprint(f\"Common sample count: {len(common_samples)}\")\nprint(f\"Missing values in expression matrix: {exp_aligned.isna().sum().sum()}\")\nprint(f\"Missing values in mutation matrix: {mut_aligned.isna().sum().sum()}\")\nprint(f\"Missing values in copy number matrix: {cn_aligned.isna().sum().sum()}\")\n\n# Save aligned datasets\nexp_aligned.to_csv(f\"{out_dir}/preprocessed_gbm_exp.csv\", index=True, header=True)\nmut_aligned.to_csv(f\"{out_dir}/preprocessed_gbm_mut.csv\", index=True, header=True)\ncn_aligned.to_csv(f\"{out_dir}/preprocessed_gbm_cn.csv\", index=True, header=True)\n",
+        "code_type": "python",
+        "exec_runcode": 0,
+        "exec_stdout": "Common sample count: 84\nMissing values in expression matrix: 0\nMissing values in mutation matrix: 0\nMissing values in copy number matrix: 0\n",
+        "exec_stderr": ""
+    }
+]

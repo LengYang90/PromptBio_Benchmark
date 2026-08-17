@@ -1,0 +1,10 @@
+[
+    {
+        "image": "community.wave.seqera.io/library/bioconductor-complexheatmap_r-base_r-circlize_r-dplyr_pruned:58d1af3dbaeba617",
+        "command": "library(ggplot2)\n\n# Define paths\nbase_dir <- \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-7/result_11/toolsgenie_20260623\"\nexp_path <- file.path(base_dir, \"preprocessed_gbm_exp.csv\")\nmut_path <- file.path(base_dir, \"preprocessed_gbm_mut.csv\")\ncn_path <- file.path(base_dir, \"preprocessed_gbm_cn.csv\")\ncluster_path <- file.path(base_dir, \"cluster.csv\")\nout_plot_path <- file.path(base_dir, \"cluster.png\")\n\n# Load and combine omics matrices\nexp_mat <- read.csv(exp_path, row.names = 1, check.names = FALSE)\nmut_mat <- read.csv(mut_path, row.names = 1, check.names = FALSE)\ncn_mat <- read.csv(cn_path, row.names = 1, check.names = FALSE)\ncombined_mat <- cbind(exp_mat, mut_mat, cn_mat)\n\n# Run PCA with feature standardization\npca <- prcomp(combined_mat, scale. = TRUE)\n\n# Align cluster assignments with PCA results\ncluster_df <- read.csv(cluster_path)\ncluster_df <- cluster_df[match(rownames(pca$x), cluster_df$sample_id), ]\n\n# Prepare plot data\nplot_df <- data.frame(\n  PC1 = pca$x[,1],\n  PC2 = pca$x[,2],\n  Cluster = as.factor(cluster_df$cluster)\n)\n\n# Calculate variance explained for axis labels\npc1_var <- round(summary(pca)$importance[2,1] * 100, 1)\npc2_var <- round(summary(pca)$importance[2,2] * 100, 1)\n\n# Generate PCA scatter plot\np <- ggplot(plot_df, aes(x=PC1, y=PC2, color=Cluster)) +\n  geom_point(size=2) +\n  labs(\n    title = \"GBM Molecular Subtypes (PCA of Integrated Multi-omics Data)\",\n    x = paste0(\"PC1 (\", pc1_var, \"%)\"),\n    y = paste0(\"PC2 (\", pc2_var, \"%)\")\n  ) +\n  theme_bw() +\n  theme(plot.title = element_text(hjust = 0.5))\n\n# Save publication quality plot\nggsave(out_plot_path, plot = p, width = 8, height = 6, dpi = 300)\n",
+        "code_type": "r",
+        "exec_runcode": 0,
+        "exec_stdout": "",
+        "exec_stderr": ""
+    }
+]

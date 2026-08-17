@@ -1,0 +1,23 @@
+{
+  "id": "4444106",
+  "name": "Report",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1817792",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "4781911",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e75e",
+      "unicode_decimal": 59230
+    }
+  ]
+}

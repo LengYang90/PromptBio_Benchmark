@@ -1,0 +1,7 @@
+exec_runcode:
+127
+exec_stdout:
+
+exec_stderr:
+/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_11/toolsgenie_20260623/work/IKCIDKWNNHJ7XVG0/command.sh: line 5: conda: command not found
+

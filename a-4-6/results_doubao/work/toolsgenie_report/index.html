@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <title>Report</title>
+
+  <link rel="icon" href="./img/logo.png">
+  <!-- 字体 -->
+  <!-- <link href="https://fonts.googlefonts.cn/css?family=Muli:400,600,700" rel="stylesheet"> -->
+  <link href="https://fonts.googlefonts.cn/css?family=Merriweather:300,400,700" rel="stylesheet">
+  <!-- 图标 -->
+  <link href="./icon/iconfont.css" rel="stylesheet">
+
+  <link href="./css/index.css" rel="stylesheet" />
+</head>
+<body :style="{ '--page-height': '1200px' }">
+  <script src="./js/vue.global.js"></script>
+  <script src="./js/content.js"></script>
+  <script src="./js/js-cookie.min.js"></script>
+
+  <div id="app">
+    <!-- 左边悬浮目录 -->
+    <div v-if="!isShow" class="menu-btn" @click="switchSidebar(true)">
+      <i class="iconfont icon-caidan" title="Menu"></i>
+    </div>
+    <div v-else class="sidebar">
+      <div class="close-btn">
+        <i class="iconfont icon-guanbi" title="Close" @click="switchSidebar(false)"></i>
+      </div>
+      <div class="list">
+        <a href="#cover" class="cata-link" @click="curChapterId = 'cover'">Cover</a>
+        <a href="#catalog" class="cata-link" @click="curChapterId = 'catalog'">Contents</a>
+        <template v-for="item in catalogList">
+          <a
+            :href="`#${item[0]}`"
+            class="cata-link"
+            :style="{'margin-left': getIndent(item, 20)}"
+            :title="item[1]"
+            @click="curChapterId = item[0]"
+          >
+            <span class="mg-r-1">{{ getChapterNum(item) }}</span>
+            <span>{{ item[1] }}</span>
+          </a>
+        </template>
+        <a href="#end" class="cata-link" @click="curChapterId = 'end'">End</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <!-- 报告封面 -->
+      <div class="cover" id="cover">
+        <div class="cover-header">
+          <div class="left"></div>
+          <img src="./img/full-logo.png" alt="PromptBio" class="logo">
+        </div>
+        <div class="report-title">{{ coverInfo.report_title }}</div>
+        <div class="cover-content">
+          <!-- <div class="item">
+            <span class="label">Project name: </span>
+            <span class="value">{{ coverInfo.project_name }}</span>
+          </div>
+          <div class="item">
+            <span class="label">Report number: </span>
+            <span class="value">{{ coverInfo.report_number }}</span>
+          </div>
+          <div class="item">
+            <span class="label">Generated: </span>
+            <span class="value">{{ coverInfo.report_time }}</span>
+          </div> -->
+          <div class="label-list">
+            <span>Project name: </span>
+            <span>Report number: </span>
+            <span>Generated: </span>
+          </div>
+          <div class="value-list">
+            <span>{{ coverInfo.project_name }}</span>
+            <span>{{ coverInfo.report_number }}</span>
+            <span>{{ coverInfo.report_time }}</span>
+          </div>
+        </div>
+        <div class="cover-bottom">
+          <img src="./img/cover-bottom.png">
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="catalog" id="catalog">
+        <div class="cata-title">Contents</div>
+        <div class="cata-list">
+          <div v-for="item in catalogList" :class="[isFirstLevel(item) ? 'first-cata' : 'other-cata']">
+            <a
+              :href="`#${item[0]}`"
+              class="cata-link"
+              :style="{'margin-left': getIndent(item)}"
+              @click="curChapterId = item[0]"
+            >
+              <span class="mg-r-1">{{ getChapterNum(item) }}</span>
+              <span>{{ item[1] }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. 正文 -->
+      <div class="content">
+        <template v-for="item in contentList">
+          <div
+            v-if="item[0].includes('chapter')"
+            :id="item[0]"
+            class="chapter-title"
+            :style="getTitleStyle(item)"
+          >
+            <span class="mg-r-1">{{ getChapterNum(item) }}</span>
+            <span>{{ item[1] }}</span>
+          </div>
+
+          <div v-else-if="item[0] === 'img'">
+            <img :src="item[1]" :alt="item[2]" :class="['chapter-img', `${item[3] || 'medium'}`]">
+            <div class="sub-title">{{ item[2] }}</div>
+          </div>
+
+          <ul v-else-if="item[0] === 'items'" class="chapter-items">
+            <li v-for="(subItem, index) in item[1]" :key="index">
+              <span v-html="subItem"></span>
+            </li>
+          </ul>
+
+          <div v-else-if="item[0] === 'table'">
+            <div class="sub-title mg-t-30">{{ item[2] }}</div>
+            <table class="chapter-table">
+              <tbody>
+                <tr>
+                  <th v-for="(th, index) in item[1][0]" :key="index">{{ th }}</th>
+                </tr>
+                <tr v-for="(tr, index) in item[1].slice(1)" :key="index" class="row">
+                  <td v-for="(td, index) in tr" :key="index">
+                    <span v-html="td"></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div v-else>
+            <p :class="['text', `${item[2] || 'medium'}`]" v-html="item[1]"></p>
+          </div>
+        </template>
+      </div>
+
+      <!-- 结尾 -->
+      <div class="cover end" id="end">
+        <div class="cover-header">
+          <div class="left"></div>
+          <img src="./img/full-logo.png" alt="PromptBio" class="logo">
+        </div>
+        <div class="report-title"></div>
+        <div class="cover-bottom">
+          <img src="./img/cover-bottom.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入Vue -->
+  <script type="module">
+    const { createApp, ref, onMounted, watch } = Vue
+
+    const app = createApp({
+      setup() {
+        const coverInfo = ref({})
+        const catalogList = ref([])
+        const contentList = ref([])
+        const curChapterId = ref('')
+        const curViewChapterId = ref('')
+
+        coverInfo.value = content.shift()
+        document.title = coverInfo.value.report_title
+
+        contentList.value = content
+        getCatalogList()
+
+        // 获取目录列表
+        function getCatalogList() {
+          let firstLevel = 0
+          let secondLevel = 0
+          let thirdLevel = 0
+
+          contentList.value.forEach((item, index) => {
+            if (!item[0].includes('title')) return
+
+            const level = +item[0].split('-')[1]
+            
+            if (level === 1) {
+              firstLevel++
+              secondLevel = 0
+              thirdLevel = 0
+              item[0] = `chapter-${firstLevel}`
+            } else if (level === 2) {
+              secondLevel++
+              thirdLevel = 0
+              item[0] = `chapter-${firstLevel}.${secondLevel}`
+            } else if (level === 3) {
+              thirdLevel++
+              item[0] = `chapter-${firstLevel}.${secondLevel}.${thirdLevel}`
+            }
+
+            catalogList.value.push(item)
+          })
+        }
+
+        function getChapterNum(item) {
+          return item[0].split('-')[1]
+        }
+
+        function isFirstLevel(item) {
+          return item[0].split('-')[1].split('.').length === 1
+        }
+
+        function getIndent(item, base = 40) {
+          // 获取小数点后的位数
+          const level = item[0].split('-')[1].split('.').length - 1
+          return `${level * base}px`
+        }
+
+        // 标题字号
+        function getTitleStyle(item) {
+          const level = item[0].split('-')[1].split('.').length
+          if (level === 1) return ({ 'font-size': '24px', 'font-weight': 'bold', 'color': 'var(--main-color)' })
+          if (level === 2) return ({ 'font-size': '20px', 'font-weight': 'bold', 'color': 'var(--sub-color)' })
+          return ({ 'font-size': '1rem', 'font-weight': 600 })
+        }
+
+        // 隐藏目录
+        const isShow = ref(false)
+        function switchSidebar(show) {
+          isShow.value = show
+          const method = show ? 'remove' : 'add'
+          document.querySelector('.sidebar')?.classList[method]('hidden')
+        }
+
+        onMounted(() => {
+          const pageHeight = document.querySelector('.cover').offsetHeight
+          document.documentElement.style.setProperty('--page-height', `${pageHeight}px`)
+
+          // 监听滚动事件，高亮当前章节
+          window.addEventListener('scroll', function () {
+            if (!isShow.value) return
+
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+
+            // 获取封面和目录的高度
+            const coverHeight = document.querySelector('.cover').offsetHeight
+            const catalogHeight = document.querySelector('.catalog').offsetHeight
+
+            // 当滚动到封面目录和结尾时，高亮对应标题
+            if (scrollTop < coverHeight) {
+              const activeLink = document.querySelector('.cata-link.active')
+              activeLink && activeLink.classList.remove('active')
+              document.querySelector('.cata-link[href="#cover"]')?.classList.add('active')
+              curViewChapterId.value = 'cover'
+              return
+            }
+
+            if (scrollTop < coverHeight + catalogHeight) {
+              const activeLink = document.querySelector('.cata-link.active')
+              activeLink && activeLink.classList.remove('active')
+              document.querySelector('.cata-link[href="#catalog"]')?.classList.add('active')
+              curViewChapterId.value = 'catalog'
+              return
+            }
+
+            const endHeight = document.querySelector('.end').offsetTop
+            if (scrollTop > endHeight) {
+              const activeLink = document.querySelector('.cata-link.active')
+              activeLink && activeLink.classList.remove('active')
+              document.querySelector('.cata-link[href="#end"]')?.classList.add('active')
+              curViewChapterId.value = 'end'
+              return
+            }
+
+            // 获取章节标题列表
+            const chapterList = document.querySelectorAll('.chapter-title')
+            const len = chapterList.length
+
+            for (let i = 0; i < len; i++) {
+              const curChapter = chapterList[i]
+              const nextChapter = chapterList[i + 1]
+
+              // 当前章节标题出现在顶部中时
+              if (curChapter.offsetTop <= (scrollTop + 20) && (!nextChapter || nextChapter.offsetTop > scrollTop)) {
+                let curLink = document.querySelector(`.cata-link[href="#${curChapter.id}"]`)
+                
+                const activeLink = document.querySelector('.cata-link.active')
+
+                activeLink && activeLink.classList.remove('active')
+                curLink.classList.add('active')
+                curViewChapterId.value = curChapter.id
+              }
+            }
+          })
+        })
+
+        watch(curChapterId, (newVal, oldVal) => {
+          setTimeout(() => {
+            if (!isShow.value || newVal === curViewChapterId.value) return
+
+            const curLink = document.querySelector(`.cata-link[href="#${newVal}"]`)
+            const activeLink = document.querySelector('.cata-link.active')
+
+            activeLink && activeLink.classList.remove('active')
+            curLink.classList.add('active')
+          }, 50)
+        })
+
+        return {
+          coverInfo,
+          catalogList,
+          contentList,
+          curChapterId,
+          getChapterNum,
+          isFirstLevel,
+          getIndent,
+          getTitleStyle,
+          isShow,
+          switchSidebar
+        }
+      }
+    })
+
+    const isUrl = ['http:', 'https:'].includes(location.protocol)
+    const cookie = Cookies.get('Admin-Token-Dev')
+
+    if (location.protocol === 'file:') {
+      app.mount('#app')
+    } else if (isUrl && !cookie) {
+      location.href = '/login'
+    } else {
+      // 校验token
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', '/prod-api/extensionToken', true)
+      xhr.setRequestHeader('Authorization', `Bearer ${cookie}`)
+      xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8')
+      xhr.onload = () => {
+				if (xhr.status === 200) {
+          const res = JSON.parse(xhr.responseText)
+          if (res && res.msg == "Token parameter is invalid") {
+            location.href = '/login'
+            return
+          }
+          app.mount('#app')
+				} else {
+					location.href = '/login'
+				}
+			}
+
+			xhr.onerror = () => {
+				location.href = '/login'
+			}
+      xhr.send()
+    }
+  </script>
+</body>
+</html>
