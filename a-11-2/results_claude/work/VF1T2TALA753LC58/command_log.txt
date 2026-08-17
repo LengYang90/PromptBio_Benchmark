@@ -1,0 +1,43 @@
+exec_runcode:
+0
+exec_stdout:
+=== CALCULATING COMPREHENSIVE CONNECTIVITY MEASURES ===
+Total connectivity calculated for 919 genes
+Intramodular and extramodular connectivity calculated
+
+=== CONNECTIVITY SUMMARY ===
+Total genes analyzed: 919 
+Hub genes identified: 93 
+
+Module-wise hub gene counts:
+black module: 9 hub genes
+blue module: 17 hub genes
+brown module: 16 hub genes
+green module: 10 hub genes
+red module: 9 hub genes
+turquoise module: 19 hub genes
+yellow module: 13 hub genes
+
+Connectivity analysis completed
+Results saved to hub_genes.csv
+File contains: Gene_ID, Module, Intramodular_Connectivity, Extramodular_Connectivity, Total_Connectivity, Is_Hub
+
+exec_stderr:
+Loading required package: dynamicTreeCut
+Loading required package: fastcluster
+
+Attaching package: fastcluster
+
+The following object is masked from package:stats:
+
+    hclust
+
+
+
+Attaching package: WGCNA
+
+The following object is masked from package:stats:
+
+    cor
+
+

@@ -1,0 +1,43 @@
+exec_runcode:
+0
+exec_stdout:
+=== WGCNA DATA PREPROCESSING ===
+Original data dimensions: 1000 genes x 18 samples
+Normalization: log2(CPM+1) transformation completed
+Gene filtering: Removed 81 low-expression genes
+Filtered data dimensions: 919 genes x 18 samples
+
+=== SAMPLE OUTLIER DETECTION ===
+No significant outlier samples detected
+ Flagging genes and samples with too many missing values...
+  ..step 1
+
+Data quality check:
+All samples good: TRUE 
+
+Preprocessing completed successfully
+Final data dimensions for WGCNA: 18 samples x 919 genes
+Output files saved:
+- preprocessed_data.csv (samples as rows, genes as columns)
+- normalized_expression.csv (genes as rows, samples as columns)
+
+exec_stderr:
+Loading required package: dynamicTreeCut
+Loading required package: fastcluster
+
+Attaching package: fastcluster
+
+The following object is masked from package:stats:
+
+    hclust
+
+
+
+Attaching package: WGCNA
+
+The following object is masked from package:stats:
+
+    cor
+
+Loading required package: limma
+

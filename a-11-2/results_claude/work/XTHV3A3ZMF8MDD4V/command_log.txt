@@ -1,0 +1,39 @@
+exec_runcode:
+0
+exec_stdout:
+=== GENE EXPRESSION DATA INSPECTION ===
+File format: Tab-delimited text file
+Data dimensions: 1000 genes x 18 samples
+Data type: data.frame 
+
+=== DATA PREVIEW ===
+               LH38_Z1_1 LH38_Z1_2 LH38_Z1_3 LH38_Z2_1 LH38_Z2_2
+Zm00001d001763       135       202       113       136       230
+Zm00001d001766      5540      2132      6857      7741      3677
+Zm00001d001770         1         0         0         0         5
+Zm00001d001774      6517      2393      6626      8215      4183
+Zm00001d001775         0         0         0         0         0
+
+=== DATA QUALITY ASSESSMENT ===
+Missing values: 0 
+Zero values: 2878 
+Data range: [ 0 , 42498 ]
+
+=== SUMMARY STATISTICS ===
+Mean expression: 440.185 
+Median expression: 56 
+Standard deviation: 1532.593 
+
+=== IDENTIFIERS ===
+Sample names (first 5): LH38_Z1_1, LH38_Z1_2, LH38_Z1_3, LH38_Z2_1, LH38_Z2_2 
+Gene names (first 5): Zm00001d001763, Zm00001d001766, Zm00001d001770, Zm00001d001774, Zm00001d001775 
+
+=== WGCNA ANALYSIS READINESS ===
+Minimum samples for WGCNA: 15 (recommended: >20)
+Current samples: 18  SUFFICIENT 
+Minimum genes for analysis: 5000 (recommended: >10000)
+Current genes: 1000  MAY NEED FILTERING 
+Data appears to be: raw counts 
+
+exec_stderr:
+
