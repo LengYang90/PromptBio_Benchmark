@@ -1,0 +1,673 @@
+{
+  "task_id": "a-15-7",
+  "task_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-15-7",
+  "result_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-15-7/results_doubao",
+  "score": 0,
+  "rationale": "The agent executed an iClusterPlus workflow, but used K=3. In iClusterPlus, the reference explicitly uses K=2 to obtain three clusters; the agent’s executed result instead contains four cluster labels (1–4), and its PCA plot displays those four categories. Therefore the submitted outputs do not identify or visualize the requested three molecular subtypes.",
+  "final_stage": "method_and_execution_audit",
+  "evaluator": {
+    "model": "gpt-5.6-terra",
+    "base_url": "https://api.openai.com/v1",
+    "api_mode": "responses",
+    "architecture": "LangGraph fixed routing with stage-scoped read-only Deep Agents",
+    "strategy": "all declared output pairs assessed together; conditional method-and-execution audit"
+  },
+  "scope": {
+    "original_input_files_available": false,
+    "scripts_executed": false,
+    "network_access_used_by_agent_tools": false,
+    "task_files_modified": false,
+    "undeclared_result_files_used_as_evidence": false
+  },
+  "output_files": [
+    {
+      "file": "cluster.csv",
+      "description": "rows as samples, columns should include sample_id, cluster",
+      "type": "csv",
+      "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-15-7/ref_answer/cluster.csv",
+      "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-15-7/results_doubao/cluster.csv",
+      "reference_exists": true,
+      "agent_exists": true
+    },
+    {
+      "file": "cluster.png",
+      "description": "PC1 as x-axis, PC2 as y-axis, points colored by cluster",
+      "type": "png",
+      "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-15-7/ref_answer/cluster.png",
+      "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-15-7/results_doubao/cluster.png",
+      "reference_exists": true,
+      "agent_exists": true
+    }
+  ],
+  "file_manifest": [
+    {
+      "path": "a-15-7/ref_answer/cluster.csv",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1278,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "1997277b89a8b52c23d156cf27327048d1ecdbead8f8dd81b183d855290edcf3"
+    },
+    {
+      "path": "a-15-7/ref_answer/cluster.png",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 23129,
+      "suffix": ".png",
+      "mime_type": "image/png",
+      "sha256": "bc771eb8fcd861952265db3600eb7e0c610ad572412af2c52f090170d3c6d05c"
+    },
+    {
+      "path": "a-15-7/ref_script/iclusterplus.R",
+      "roles": [
+        "reference_script"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1873,
+      "suffix": ".r",
+      "mime_type": "application/octet-stream",
+      "sha256": "f5614551e38a1e019a94a8cd8e9c5d0e1f4b9724775a8a2a01efce290bd84b5d"
+    },
+    {
+      "path": "a-15-7/results_doubao/cluster.csv",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1278,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "1e67152477b33860a0e55bc989691737b1ea257c26a120381b7a1f9444e0982a"
+    },
+    {
+      "path": "a-15-7/results_doubao/cluster.png",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 117107,
+      "suffix": ".png",
+      "mime_type": "image/png",
+      "sha256": "6fb523515b009d5c0bf0525fe8f57bc1b92d59a963de42beba8065b31e723d3f"
+    },
+    {
+      "path": "a-15-7/results_doubao/log.out",
+      "roles": [
+        "agent_runtime_log"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 42819,
+      "suffix": ".out",
+      "mime_type": "application/octet-stream",
+      "sha256": "eb8d1aa8ff24f9be1138bf2ccdd3af436b8bce0d2499ea1fb5078a4b3df928f7"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/9T84AZYTJXEPQ85J/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1683,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "bcc88e59fe3b7fc96a762183eaeee64d9437c693d6b525e82924a574334037ee"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/9T84AZYTJXEPQ85J/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 44,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "9bcfe01d8e97b644ba2377e6c66fd99ae71ba785a5378083e710c16c812ad79a"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/9T84AZYTJXEPQ85J/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2027,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "43696115df990b52a53e61a12863ba4e97f5dc21edd9544d6959bd143f793fba"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/IBLJH75LXO6QJIUJ/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1067,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "8f487c167b2bb98a13e4d78e91977ac26c839f560c53e507238c68c832c593e5"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/IBLJH75LXO6QJIUJ/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 79,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "36bfd1bf8e6d2403d30d3c2cedf985ca33343cf10790067d7235eaf8063133a8"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/IBLJH75LXO6QJIUJ/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 4472,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "b3f3bbd2069a86ff71b60a8cda384648212ffccbcfdaf0c18e591e43967154ea"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 980,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "d8b8871e387ba9dcc7cfa13fe677c58e3b5552cc0871c3202d0deea7a44e64d3"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 920024,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "90e77a5ebdd11e1df10152e4aedcb7e8cf9ebb4cd6811d01f3320789edbf81e8"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 921248,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "bca3a12f7f0a3b050834d7ad45134c857c92336cb1e47fd491efef002b1bbaee"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/ZBIKCIDKWNNHJ7XV/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1673,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "d2c1554e1c5e961dcc7f41b9681f542ac58a152a90dd13133dc4ca677475aa48"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/ZBIKCIDKWNNHJ7XV/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 184,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "1bb4c9f17263e30fcb1cc71ceaea5a7342138c1773ec748765098e80df89bf76"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/ZBIKCIDKWNNHJ7XV/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2070,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "ef15f14917011ff651cfc5b3759f989ba722ca08eec1e497c64cb0aade7d6d9a"
+    },
+    {
+      "path": "a-15-7/results_doubao/work/workflow_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1765,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "ed3e0f3cb90e951e6927b2ba4840d409a4f064ef10520a2121ead5e26d51be26"
+    },
+    {
+      "path": "a-15-7/task.json",
+      "roles": [
+        "task_definition"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 749,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "14be0a8b1781a565d400811436489bdd9e8114fd2b580dd686eb4a737d7facf1"
+    }
+  ],
+  "initial_assessment": {
+    "verdict": "fail",
+    "reason": "The agent output identifies four clusters rather than the requested three molecular subtypes. Its PCA plot correspondingly contains four color-coded cluster categories, so the declared outputs do not establish completion of the task.",
+    "file_observations": [
+      {
+        "file": "cluster.csv",
+        "assessment": "different",
+        "reason": "Both files provide the required sample_id and cluster columns for 84 samples, but the reference sampled assignments use three labels (1, 2, and 3), whereas the agent sampled assignments include label 4 and differ substantially. The agent therefore reports four cluster categories rather than three.",
+        "evidence_ids": [
+          "I-0001",
+          "I-0002"
+        ]
+      },
+      {
+        "file": "cluster.png",
+        "assessment": "different",
+        "reason": "Both images are PCA scatterplots with PC1 and PC2 axes and cluster colors, but the reference legend has three categories (2, 3, 4) while the agent legend has four (1, 2, 3, 4). This is inconsistent with identification and visualization of three subtypes.",
+        "evidence_ids": [
+          "I-0003",
+          "I-0004"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "I-0001",
+      "I-0002",
+      "I-0003",
+      "I-0004"
+    ]
+  },
+  "audit_assessment": {
+    "score": 0,
+    "reason": "The agent executed an iClusterPlus workflow, but used K=3. In iClusterPlus, the reference explicitly uses K=2 to obtain three clusters; the agent’s executed result instead contains four cluster labels (1–4), and its PCA plot displays those four categories. Therefore the submitted outputs do not identify or visualize the requested three molecular subtypes.",
+    "reference_method": "The reference aligns the three matrices, tunes iClusterPlus penalty parameters with mutation/binomial, copy-number/gaussian, and expression/gaussian data using K=2 (documented as producing three clusters), selects the minimum-BIC fit, then creates a PC1-versus-PC2 PCA plot colored by those assignments.",
+    "agent_method": "The agent aligned 84 common samples without missing values, then executed iClusterPlus with expression/gaussian, mutation/binomial, and copy-number/gaussian inputs but set K=3 and fixed maxiter=20/eps=1e-4 without penalty tuning. It then performed standardized PCA on the column-bound matrices and colored the plot by the resulting assignments. Execution logs show successful return codes for both clustering and plotting.",
+    "file_observations": [
+      {
+        "file": "cluster.csv",
+        "assessment": "different",
+        "reason": "Both files have the required sample_id and cluster columns and 84 rows, but the reference output uses three labels (1, 2, 3), whereas the agent output uses four labels (1, 2, 3, 4). This is explained by the agent’s K=3 setting versus the reference’s K=2 setting for three clusters, not a harmless relabeling difference.",
+        "evidence_ids": [
+          "A-0001",
+          "A-0003",
+          "A-0002",
+          "A-0004",
+          "A-0015"
+        ]
+      },
+      {
+        "file": "cluster.png",
+        "assessment": "different",
+        "reason": "The agent image is a PC1-versus-PC2 scatter plot with points colored by cluster as required in form, but its legend visibly contains four categories (1–4), so it visualizes four rather than three subtypes. The reference image visibly contains three legend categories.",
+        "evidence_ids": [
+          "A-0010",
+          "A-0009",
+          "A-0005",
+          "A-0014"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "A-0002",
+      "A-0004",
+      "A-0015",
+      "A-0003",
+      "A-0010",
+      "A-0011"
+    ],
+    "confidence": "high"
+  },
+  "evidence_inventory": [
+    {
+      "evidence_id": "I-0001",
+      "path": "a-15-7/ref_answer/cluster.csv",
+      "locator": "header and first 50 data rows of 84",
+      "extractor": "inspect_table",
+      "sha256": "1997277b89a8b52c23d156cf27327048d1ecdbead8f8dd81b183d855290edcf3",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "I-0002",
+      "path": "a-15-7/results_doubao/cluster.csv",
+      "locator": "header and first 50 data rows of 84",
+      "extractor": "inspect_table",
+      "sha256": "1e67152477b33860a0e55bc989691737b1ea257c26a120381b7a1f9444e0982a",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "I-0003",
+      "path": "a-15-7/ref_answer/cluster.png",
+      "locator": "full image metadata and scaled preview",
+      "extractor": "inspect_image",
+      "sha256": "bc771eb8fcd861952265db3600eb7e0c610ad572412af2c52f090170d3c6d05c",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "I-0004",
+      "path": "a-15-7/results_doubao/cluster.png",
+      "locator": "full image metadata and scaled preview",
+      "extractor": "inspect_image",
+      "sha256": "6fb523515b009d5c0bf0525fe8f57bc1b92d59a963de42beba8065b31e723d3f",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0001",
+      "path": "a-15-7/ref_answer/cluster.csv",
+      "locator": "header and first 84 data rows of 84",
+      "extractor": "inspect_table",
+      "sha256": "1997277b89a8b52c23d156cf27327048d1ecdbead8f8dd81b183d855290edcf3",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0002",
+      "path": "a-15-7/ref_script/iclusterplus.R",
+      "locator": "lines 1-48 of 48",
+      "extractor": "read_text",
+      "sha256": "f5614551e38a1e019a94a8cd8e9c5d0e1f4b9724775a8a2a01efce290bd84b5d",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0003",
+      "path": "a-15-7/results_doubao/cluster.csv",
+      "locator": "header and first 84 data rows of 84",
+      "extractor": "inspect_table",
+      "sha256": "1e67152477b33860a0e55bc989691737b1ea257c26a120381b7a1f9444e0982a",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0004",
+      "path": "a-15-7/results_doubao/work/IBLJH75LXO6QJIUJ/command.sh",
+      "locator": "lines 1-33 of 33",
+      "extractor": "read_text",
+      "sha256": "8f487c167b2bb98a13e4d78e91977ac26c839f560c53e507238c68c832c593e5",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0005",
+      "path": "a-15-7/results_doubao/work/9T84AZYTJXEPQ85J/command.sh",
+      "locator": "lines 1-47 of 47",
+      "extractor": "read_text",
+      "sha256": "bcc88e59fe3b7fc96a762183eaeee64d9437c693d6b525e82924a574334037ee",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0006",
+      "path": "a-15-7/results_doubao/work/ZBIKCIDKWNNHJ7XV/command.sh",
+      "locator": "lines 1-29 of 29",
+      "extractor": "read_text",
+      "sha256": "d2c1554e1c5e961dcc7f41b9681f542ac58a152a90dd13133dc4ca677475aa48",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0007",
+      "path": "a-15-7/results_doubao/log.out",
+      "locator": "lines 1-300 of 414",
+      "extractor": "read_text",
+      "sha256": "eb8d1aa8ff24f9be1138bf2ccdd3af436b8bce0d2499ea1fb5078a4b3df928f7",
+      "status": "partial",
+      "notes": [
+        "Output was limited; request the next line range for additional text."
+      ]
+    },
+    {
+      "evidence_id": "A-0008",
+      "path": "a-15-7/results_doubao/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "locator": "lines 1-22 of 22",
+      "extractor": "read_text",
+      "sha256": "d8b8871e387ba9dcc7cfa13fe677c58e3b5552cc0871c3202d0deea7a44e64d3",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0009",
+      "path": "a-15-7/ref_answer/cluster.png",
+      "locator": "full image metadata and scaled preview",
+      "extractor": "inspect_image",
+      "sha256": "bc771eb8fcd861952265db3600eb7e0c610ad572412af2c52f090170d3c6d05c",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0010",
+      "path": "a-15-7/results_doubao/cluster.png",
+      "locator": "full image metadata and scaled preview",
+      "extractor": "inspect_image",
+      "sha256": "6fb523515b009d5c0bf0525fe8f57bc1b92d59a963de42beba8065b31e723d3f",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0011",
+      "path": "a-15-7/results_doubao/log.out",
+      "locator": "lines 295-414 of 414",
+      "extractor": "read_text",
+      "sha256": "eb8d1aa8ff24f9be1138bf2ccdd3af436b8bce0d2499ea1fb5078a4b3df928f7",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0012",
+      "path": "a-15-7/results_doubao/work/ZBIKCIDKWNNHJ7XV/command_log.txt",
+      "locator": "lines 1-10 of 10",
+      "extractor": "read_text",
+      "sha256": "1bb4c9f17263e30fcb1cc71ceaea5a7342138c1773ec748765098e80df89bf76",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0013",
+      "path": "a-15-7/results_doubao/work/workflow_log.json",
+      "locator": "JSON pointer /",
+      "extractor": "inspect_json",
+      "sha256": "ed3e0f3cb90e951e6927b2ba4840d409a4f064ef10520a2121ead5e26d51be26",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0014",
+      "path": "a-15-7/results_doubao/work/9T84AZYTJXEPQ85J/command_log.txt",
+      "locator": "lines 1-6 of 6",
+      "extractor": "read_text",
+      "sha256": "9bcfe01d8e97b644ba2377e6c66fd99ae71ba785a5378083e710c16c812ad79a",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0015",
+      "path": "a-15-7/results_doubao/work/IBLJH75LXO6QJIUJ/command_log.txt",
+      "locator": "lines 1-7 of 7",
+      "extractor": "read_text",
+      "sha256": "36bfd1bf8e6d2403d30d3c2cedf985ca33343cf10790067d7235eaf8063133a8",
+      "status": "complete",
+      "notes": []
+    }
+  ],
+  "coverage": {
+    "by_stage": {
+      "initial_assessment": {
+        "files_discovered": 5,
+        "files_inspected": 4,
+        "files_not_inspected": [
+          "a-15-7/task.json"
+        ],
+        "partial_evidence_paths": [
+          "a-15-7/ref_answer/cluster.csv",
+          "a-15-7/results_doubao/cluster.csv"
+        ]
+      },
+      "method_and_execution_audit": {
+        "files_discovered": 20,
+        "files_inspected": 14,
+        "files_not_inspected": [
+          "a-15-7/results_doubao/work/9T84AZYTJXEPQ85J/debug_log.json",
+          "a-15-7/results_doubao/work/IBLJH75LXO6QJIUJ/debug_log.json",
+          "a-15-7/results_doubao/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+          "a-15-7/results_doubao/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+          "a-15-7/results_doubao/work/ZBIKCIDKWNNHJ7XV/debug_log.json",
+          "a-15-7/task.json"
+        ],
+        "partial_evidence_paths": [
+          "a-15-7/results_doubao/log.out"
+        ]
+      }
+    },
+    "evidence_paths_discovered": 14,
+    "evidence_paths_inspected": 14,
+    "partial_evidence_paths": [
+      "a-15-7/ref_answer/cluster.csv",
+      "a-15-7/results_doubao/cluster.csv",
+      "a-15-7/results_doubao/log.out"
+    ]
+  },
+  "token_usage": {
+    "total_input_tokens": 62013,
+    "total_output_tokens": 2061,
+    "total_tokens": 64074,
+    "total_cached_input_tokens": 29228,
+    "calls": [
+      {
+        "stage": "initial_assessment",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2076,
+        "output_tokens": 16,
+        "total_tokens": 2092,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2614,
+        "output_tokens": 206,
+        "total_tokens": 2820,
+        "cached_input_tokens": 1954,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 3,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 6902,
+        "output_tokens": 310,
+        "total_tokens": 7212,
+        "cached_input_tokens": 2492,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2459,
+        "output_tokens": 16,
+        "total_tokens": 2475,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4676,
+        "output_tokens": 546,
+        "total_tokens": 5222,
+        "cached_input_tokens": 2337,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 3,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 18013,
+        "output_tokens": 313,
+        "total_tokens": 18326,
+        "cached_input_tokens": 4554,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 4,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 25273,
+        "output_tokens": 654,
+        "total_tokens": 25927,
+        "cached_input_tokens": 17891,
+        "usage_reported_by_provider": true
+      }
+    ]
+  }
+}

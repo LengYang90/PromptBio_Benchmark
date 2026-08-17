@@ -1,0 +1,157 @@
+{
+  "task_id": "a-14-2",
+  "task_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-14-2",
+  "result_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-14-2/results_doubao",
+  "score": 1,
+  "rationale": "Both declared CSVs have the required columns and contain the same 30 chain/residue/name binding-residue records; their only difference is row ordering.",
+  "final_stage": "answer_only_comparison",
+  "evaluator": {
+    "model": "gpt-5.6-terra",
+    "base_url": "https://api.openai.com/v1",
+    "api_mode": "responses",
+    "architecture": "LangGraph fixed routing with stage-scoped read-only Deep Agents",
+    "strategy": "all declared output pairs assessed together; conditional method-and-execution audit"
+  },
+  "scope": {
+    "original_input_files_available": false,
+    "scripts_executed": false,
+    "network_access_used_by_agent_tools": false,
+    "task_files_modified": false,
+    "undeclared_result_files_used_as_evidence": false
+  },
+  "output_files": [
+    {
+      "file": "binding_sites.csv",
+      "description": "rows as binding residues, columns should include Chain, Residue_ID, Residue_Name",
+      "type": "csv",
+      "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-14-2/ref_answer/binding_sites.csv",
+      "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-14-2/results_doubao/binding_sites.csv",
+      "reference_exists": true,
+      "agent_exists": true
+    }
+  ],
+  "file_manifest": [
+    {
+      "path": "a-14-2/ref_answer/binding_sites.csv",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment"
+      ],
+      "size_bytes": 329,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "2be0587adb0d26a5cebd24adb8289a70b668326655cb61528b6d38d403d0707c"
+    },
+    {
+      "path": "a-14-2/results_doubao/binding_sites.csv",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment"
+      ],
+      "size_bytes": 329,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "760b830739e7136d2924b0900c88e364e80d63489add12b475799ab9a555c7ef"
+    },
+    {
+      "path": "a-14-2/task.json",
+      "roles": [
+        "task_definition"
+      ],
+      "available_in_stages": [
+        "initial_assessment"
+      ],
+      "size_bytes": 458,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "ee218548afee28ece7106c310f1faf8172b98f99ada037c3b4c34d600613951e"
+    }
+  ],
+  "initial_assessment": {
+    "verdict": "pass",
+    "reason": "Both declared CSVs have the required columns and contain the same 30 chain/residue/name binding-residue records; their only difference is row ordering.",
+    "file_observations": [
+      {
+        "file": "binding_sites.csv",
+        "assessment": "consistent",
+        "reason": "Reference and Agent files both use the header Chain, Residue_ID, Residue_Name and list the same 30 residues across chains A and B, with the Agent ordering rows differently from the reference.",
+        "evidence_ids": [
+          "I-0002",
+          "I-0001"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "I-0002",
+      "I-0001"
+    ]
+  },
+  "audit_assessment": null,
+  "evidence_inventory": [
+    {
+      "evidence_id": "I-0001",
+      "path": "a-14-2/results_doubao/binding_sites.csv",
+      "locator": "header and first 30 data rows of 30",
+      "extractor": "inspect_table",
+      "sha256": "760b830739e7136d2924b0900c88e364e80d63489add12b475799ab9a555c7ef",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "I-0002",
+      "path": "a-14-2/ref_answer/binding_sites.csv",
+      "locator": "header and first 30 data rows of 30",
+      "extractor": "inspect_table",
+      "sha256": "2be0587adb0d26a5cebd24adb8289a70b668326655cb61528b6d38d403d0707c",
+      "status": "complete",
+      "notes": []
+    }
+  ],
+  "coverage": {
+    "by_stage": {
+      "initial_assessment": {
+        "files_discovered": 3,
+        "files_inspected": 2,
+        "files_not_inspected": [
+          "a-14-2/task.json"
+        ],
+        "partial_evidence_paths": []
+      }
+    },
+    "evidence_paths_discovered": 2,
+    "evidence_paths_inspected": 2,
+    "partial_evidence_paths": []
+  },
+  "token_usage": {
+    "total_input_tokens": 4784,
+    "total_output_tokens": 246,
+    "total_tokens": 5030,
+    "total_cached_input_tokens": 1835,
+    "calls": [
+      {
+        "stage": "initial_assessment",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1957,
+        "output_tokens": 106,
+        "total_tokens": 2063,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2827,
+        "output_tokens": 140,
+        "total_tokens": 2967,
+        "cached_input_tokens": 1835,
+        "usage_reported_by_provider": true
+      }
+    ]
+  }
+}
