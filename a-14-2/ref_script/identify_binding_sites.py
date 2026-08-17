@@ -17,7 +17,7 @@ def identify_binding_sites(pdb_content, ligand_resname="MTX", cutoff=4.0):
 
     Args:
         pdb_content (str): The content of the PDB file as a string.
-        ligand_resname (str): The three-letter code for the ligand residue (default 'LIG').
+        ligand_resname (str): The three-letter code for the ligand residue (default 'MTX').
         cutoff (float): Distance cutoff for binding site residues (default 4.0 Å).
 
     Returns:

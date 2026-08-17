@@ -1,6 +1,6 @@
 {
     "id": "a-14-2",
-    "question": "Identify protein residues within 4.0 \u00c5 of the ligand (residue name MTX) in the PDB structure, and list all contacting residues.",
+    "question": "Identify protein residues within 4.0 Angstroms of the ligand (residue name MTX) in the PDB structure.",
     "input_files": [
         "data/protein.pdb"
     ],

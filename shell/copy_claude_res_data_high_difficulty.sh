@@ -1,5 +1,5 @@
 ## $1 question id
-## $2 a or b start
+## $2 result dir index, eg 10,2,1
 
 target_dir="/mnt/data/lengyang/github/PromptBio_Benchmark/${1}"
 if [ ! -d ${target_dir} ];then
@@ -63,65 +63,56 @@ else
     exit 1
 fi
 
+
+case "$2" in
+    10)
+        date="20260516"
+        log_date="20260516-log"
+        ;;
+    2)
+        date="20260430"
+        log_date="20260430-log"
+        ;;
+    1)
+        date="20260515"
+        log_date="20260515_log"
+        ;;
+    *)
+        echo "Error: parameter \$2 must be 10, 2, or 1"
+        exit 1
+        ;;
+esac
+
 #########################################################################
 ### 2. Copy model result answers, code and logs to target_dir/results_claude ##
 #########################################################################
 
-if [ -d ${task_dir}/${1}/result_10 ];then
-    if [ -d ${task_dir}/${1}/result_10/toolsgenie_20260516/work ];then
-        echo "Copy  ${task_dir}/${1}/result_10/toolsgenie_20260516/work to ${model_res_dir}"
-        cp -r ${task_dir}/${1}/result_10/toolsgenie_20260516/work ${model_res_dir}
+if [ -d ${task_dir}/${1}/result_${2} ];then
+    if [ -d ${task_dir}/${1}/result_${2}/toolsgenie_${date}/work ];then
+        echo "Copy  ${task_dir}/${1}/result_${2}/toolsgenie_${date}/work to ${model_res_dir}"
+        cp -r ${task_dir}/${1}/result_${2}/toolsgenie_${date}/work ${model_res_dir}
     else
-        echo "Error:${task_dir}/${1}/result_10/toolsgenie_20260516/work not exists "
+        echo "Error:${task_dir}/${1}/result_${2}/toolsgenie_${date}/work not exists "
         exit 1
     fi
 
-    if [ -f ${task_dir}/${1}/result_10/toolsgenie_20260516-log/log.out ];then
-        echo "Copy ${task_dir}/${1}/result_10/toolsgenie_20260516-log/log.out to ${model_res_dir}"
-        cp -r ${task_dir}/${1}/result_10/toolsgenie_20260516-log/log.out ${model_res_dir}
+    if [ -f ${task_dir}/${1}/result_${2}/toolsgenie_${log_date}/log.out ];then
+        echo "Copy ${task_dir}/${1}/result_${2}/toolsgenie_${log_date}/log.out to ${model_res_dir}"
+        cp -r ${task_dir}/${1}/result_${2}/toolsgenie_${log_date}/log.out ${model_res_dir}
     else
-        echo "Error:${task_dir}/${1}/result_10/toolsgenie_20260516-log/log.out not exists "
-        exit 1
-    fi
-
-    ls ${ref_answer}|while read id
-    do
-        if [ -f  ${task_dir}/${1}/result_10/toolsgenie_20260516/${id} ];then
-            echo "Copy ${task_dir}/${1}/result_10/toolsgenie_20260516/${id} to ${model_res_dir}"
-            cp ${task_dir}/${1}/result_10/toolsgenie_20260516/${id} ${model_res_dir}
-        else
-            echo "Error:${task_dir}/${1}/result_10/toolsgenie_20260516/${id} not exists "
-            exit 1
-        fi
-    done
-elif [ -d ${task_dir}/${1}/result_1 ];then
-   if [ -d ${task_dir}/${1}/result_1/toolsgenie_20260515/work ];then
-        echo "Copy  ${task_dir}/${1}/result_1/toolsgenie_20260515/work to ${model_res_dir}"
-        cp -r ${task_dir}/${1}/result_1/toolsgenie_20260515/work ${model_res_dir}
-    else
-        echo "Error:${task_dir}/${1}/result_1/toolsgenie_20260515/work not exists "
-        exit 1
-    fi
-
-    if [ -f ${task_dir}/${1}/result_1/toolsgenie_20260515_log/log.out ];then
-        echo "Copy ${task_dir}/${1}/result_1/toolsgenie_20260515_log/log.out to ${model_res_dir}"
-        cp -r ${task_dir}/${1}/result_1/toolsgenie_20260515_log/log.out ${model_res_dir}
-    else
-        echo "Error:${task_dir}/${1}/result_1/toolsgenie_20260515_log/log.out not exists "
+        echo "Error:${task_dir}/${1}/result_${2}/toolsgenie_${log_date}/log.out not exists "
         exit 1
     fi
 
     ls ${ref_answer}|while read id
     do
-        if [ -f ${task_dir}/${1}/result_1/toolsgenie_20260515/${id} ];then
-            echo "Copy ${task_dir}/${1}/result_1/toolsgenie_20260515/${id} to ${model_res_dir}"
-            cp ${task_dir}/${1}/result_1/toolsgenie_20260515/${id} ${model_res_dir}
+        if [ -f  ${task_dir}/${1}/result_${2}/toolsgenie_${date}/${id} ];then
+            echo "Copy ${task_dir}/${1}/result_${2}/toolsgenie_${date}/${id} to ${model_res_dir}"
+            cp ${task_dir}/${1}/result_${2}/toolsgenie_${date}/${id} ${model_res_dir}
         else
-            echo "Error:${task_dir}/${1}/result_1/toolsgenie_20260515/${id} not exists "
+            echo "Error:${task_dir}/${1}/result_${2}/toolsgenie_${date}/${id} not exists "
             exit 1
         fi
     done
-else
-    echo "Error:Copy ${1} result answers failed"
-    exit 1
 fi
+
