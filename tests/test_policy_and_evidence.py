@@ -91,6 +91,33 @@ class PolicyTests(FixtureMixin, unittest.TestCase):
 
 
 class EvidenceStoreTests(FixtureMixin, unittest.TestCase):
+    def test_star_junction_file_is_readable_as_text(self) -> None:
+        temporary, task_dir, result_dir = self.make_task_fixture()
+        self.addCleanup(temporary.cleanup)
+        payload = json.loads((task_dir / "task.json").read_text(encoding="utf-8"))
+        payload["expected_output"] = [{"file": "K562_Chimeric.out.junction", "type": "junction"}]
+        (task_dir / "task.json").write_text(json.dumps(payload), encoding="utf-8")
+        junction_line = "chr9\t130854100\t-\tchr22\t23290410\t-\n"
+        (task_dir / "ref_answer" / "K562_Chimeric.out.junction").write_text(junction_line, encoding="utf-8")
+        (result_dir / "K562_Chimeric.out.junction").write_text(junction_line, encoding="utf-8")
+        task = load_task(task_dir)
+        store = EvidenceStore(task_dir, result_dir, task, "initial_assessment", AccessLimits())
+
+        reference = store.read_text(
+            str(task_dir / "ref_answer" / "K562_Chimeric.out.junction"),
+            1,
+            10,
+        )
+        agent = store.read_text(
+            str(result_dir / "K562_Chimeric.out.junction"),
+            1,
+            10,
+        )
+
+        self.assertEqual(reference["content"], junction_line)
+        self.assertEqual(agent["content"], junction_line)
+        self.assertEqual([record.evidence_id for record in store.records], ["I-0001", "I-0002"])
+
     def test_stage_scope_and_evidence_ledger(self) -> None:
         temporary, task_dir, result_dir = self.make_task_fixture()
         self.addCleanup(temporary.cleanup)

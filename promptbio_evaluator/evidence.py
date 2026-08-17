@@ -21,6 +21,10 @@ TEXT_EXTENSIONS = {
     ".html", ".htm", ".md", ".rst", ".log", ".out", ".err", ".sh", ".py",
     ".r", ".rmd", ".pl", ".awk", ".bed", ".gff", ".gff3", ".gtf", ".vcf",
     ".fasta", ".fa", ".fna", ".ffn", ".faa", ".frn", ".fastq", ".fq", ".sam",
+    # STAR Chimeric.out.junction is a tab-delimited text report. It has no
+    # required header, so read_text/search_text are safer than header-based
+    # table sampling for this artifact type.
+    ".junction",
 }
 TABLE_EXTENSIONS = {".csv", ".tsv", ".txt", ".xlsx", ".xlsm"}
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".tif", ".tiff"}
