@@ -116,5 +116,9 @@ out_id_score_df["evaluation_doubao_rationale"] = ""
 out_id_score_df = out_id_score_df[["question_id", "evaluation_glm", "evaluation_claude", "evaluation_doubao", "origin_glm", "origin_claude", "origin_doubao", "evaluation_glm_rationale", "evaluation_claude_rationale", "evaluation_doubao_rationale"]]
 combined_df = pd.concat([combined_df, out_id_score_df], ignore_index=True)
 
+print([id for id in  high_difficulty_question_id if id not in combined_df["question_id"].values])
+
+print(len(combined_df),len(high_difficulty_question_id))
+
 combined_df.to_csv(os.path.join(script_dir, "failed_high_difficulty_deepagent_model_score_comparison.csv"), index=False)
 
