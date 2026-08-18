@@ -1,0 +1,47 @@
+exec_runcode:
+0
+exec_stdout:
+=== 1. Contents of module_trait_correlations.csv ===
+        Module Correlation    Pvalue
+1      MEgreen  0.22959598 0.3301746
+2       MEblue -0.04654885 0.8454919
+3        MEred  0.34548423 0.1357112
+4  MEturquoise  0.12611425 0.5962452
+5    MEmagenta  0.14035857 0.5550436
+6      MEblack  0.26080162 0.2667410
+7       MEpink -0.17162246 0.4693764
+8      MEbrown -0.24068930 0.3066792
+9     MEyellow -0.14969385 0.5287529
+10      MEgrey -0.32075473 0.1679403
+
+CSV dimensions: 10 rows x 3 columns
+Column names: Module, Correlation, Pvalue 
+
+=== 2. PNG file existence and size ===
+wgcna_module_trait_heatmap.png exists: TRUE 
+File size: 139020 bytes ( 135.76 KB )
+
+=== 3. PNG image dimensions (via R) ===
+Width: 1800 pixels
+Height: 1800 pixels
+Channels: 3 
+
+exec_stderr:
+Unable to find image 'quay.io/biocontainers/r-png:0.1.7--r3.3.2_0' locally
+0.1.7--r3.3.2_0: Pulling from biocontainers/r-png
+a3ed95caeb02: Already exists
+77c6c00e8b61: Already exists
+3aaade50789a: Already exists
+00cf8b9f3d2a: Already exists
+7ff999a2256f: Already exists
+d2ba336f2e44: Already exists
+dfda3e01f2b6: Already exists
+a3ed95caeb02: Already exists
+10c3bb32200b: Already exists
+12ea0827f24b: Pulling fs layer
+12ea0827f24b: Verifying Checksum
+12ea0827f24b: Download complete
+12ea0827f24b: Pull complete
+Digest: sha256:638216bdf560b9e9f130b87abf7946dca43445bf430322c96c62a5fa18e22c98
+Status: Downloaded newer image for quay.io/biocontainers/r-png:0.1.7--r3.3.2_0
+

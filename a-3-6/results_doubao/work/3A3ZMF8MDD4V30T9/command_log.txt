@@ -1,0 +1,15 @@
+exec_runcode:
+0
+exec_stdout:
+	/usr/local/bin/STAR-avx2 --genomeDir /mnt/data/ims/genome/references/wts/STARIndex/ --sjdbGTFfile /mnt/data/ims/genome/references/wts/Annotation/ref_annot.gtf --readFilesIn /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_11/toolsgenie_20260623/data/K562f_1.fq.gz /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_11/toolsgenie_20260623/data/K562f_2.fq.gz --readFilesCommand zcat --outFileNamePrefix /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_11/toolsgenie_20260623/K562_ --chimSegmentMin 12 --chimJunctionOverhangMin 12 --chimOutType Junctions --outSAMtype None
+	STAR version: 2.7.11b   compiled: 2025-07-24T03:06:21+0000 :/opt/conda/conda-bld/star_1753326220084/work/source
+Jun 23 03:11:34 ..... started STAR run
+Jun 23 03:11:34 ..... loading genome
+Jun 23 03:12:06 ..... processing annotations GTF
+Jun 23 03:12:23 ..... inserting junctions into the genome indices
+Jun 23 03:13:58 ..... started mapping
+Jun 23 03:13:58 ..... finished mapping
+Jun 23 03:14:00 ..... finished successfully
+
+exec_stderr:
+

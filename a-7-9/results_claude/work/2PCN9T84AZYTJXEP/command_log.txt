@@ -1,0 +1,85 @@
+exec_runcode:
+0
+exec_stdout:
+Requirement already satisfied: openpyxl in /usr/local/lib/python3.9/site-packages (3.0.7)
+Requirement already satisfied: et-xmlfile in /usr/local/lib/python3.9/site-packages (from openpyxl) (1.0.1)
+Available columns in MeRIP data:
+['GeneID', 'm_log2FC', 'm_pvalue', 'g_log2FC', 'g_pvalue', 'm6A', 'DEG', 'm6A_DEG', 'GeneID.1', 'gene_id', 'gene_name', 'Annotation', 'Class']
+
+Columns containing 'm6A': ['m6A', 'm6A_DEG']
+Columns containing 'DEG': ['DEG', 'm6A_DEG']
+
+Could not find the exact column names. Let's examine all columns:
+0: GeneID
+   Sample values: ['ENST00000249005' 'ENST00000381278' 'ENST00000401850' 'ENST00000642412'
+ 'ENST00000409085']
+1: m_log2FC
+   Sample values: [-0.04  0.36  1.01  1.18  0.68]
+2: m_pvalue
+   Sample values: [0.951 0.69  0.105 0.2   0.329]
+3: g_log2FC
+   Sample values: [ 1.15109  -1.1548    0.896137 -1.15427  -0.367584]
+4: g_pvalue
+   Sample values: [0.22025095 0.47304697 0.5855755  0.44169898 0.88027496]
+5: m6A
+   Sample values: ['m6A no sig' 'm6A Hyper' 'm6A Hypo']
+6: DEG
+   Sample values: ['no-DEGs' 'Up' 'Down']
+7: m6A_DEG
+   Sample values: ['m6A no sig and no-DEGs' 'm6A no sig and Up' 'm6A no sig and Down'
+ 'm6A Hyper and no-DEGs' 'm6A Hypo and no-DEGs']
+8: GeneID.1
+   Sample values: ['ENST00000249005' 'ENST00000381278' 'ENST00000401850' 'ENST00000642412'
+ 'ENST00000409085']
+9: gene_id
+   Sample values: ['ENSG00000128274' 'ENSG00000115977' 'ENSG00000090861' 'ENSG00000124608'
+ 'ENSG00000275700']
+10: gene_name
+   Sample values: ['A4GALT' 'AAK1' 'AARS1' 'AARS2' 'AATF']
+11: Annotation
+   Sample values: ['alpha 1,4-galactosyltransferase (P blood group) [Source:HGNC Symbol;Acc:HGNC:18149]'
+ 'AP2 associated kinase 1 [Source:HGNC Symbol;Acc:HGNC:19679]'
+ 'alanyl-tRNA synthetase 1 [Source:HGNC Symbol;Acc:HGNC:20]'
+ 'alanyl-tRNA synthetase 2, mitochondrial [Source:HGNC Symbol;Acc:HGNC:21022]'
+ 'apoptosis antagonizing transcription factor [Source:HGNC Symbol;Acc:HGNC:19235]']
+12: Class
+   Sample values: ['protein_coding' 'retained_intron' 'processed_transcript' 'lncRNA'
+ 'transcribed_processed_pseudogene']
+
+Potential categorical columns:
+m6A: ['m6A no sig' 'm6A Hyper' 'm6A Hypo']
+DEG: ['no-DEGs' 'Up' 'Down']
+m6A_DEG: ['m6A no sig and no-DEGs' 'm6A no sig and Up' 'm6A no sig and Down'
+ 'm6A Hyper and no-DEGs' 'm6A Hypo and no-DEGs' 'm6A Hypo and Down'
+ 'm6A Hyper and Down' 'm6A Hypo and Up' 'm6A Hyper and Up']
+Class: ['protein_coding' 'retained_intron' 'processed_transcript' 'lncRNA'
+ 'transcribed_processed_pseudogene' 'processed_pseudogene'
+ 'unprocessed_pseudogene']
+Using m6A column: m6A
+Using DEG column: DEG
+
+Original data shape: (12754, 13)
+Filtered data shape: (12754, 13)
+
+Contingency Table:
+DEG         Down   Up  no-DEGs
+m6A                           
+m6A Hyper     12  106      562
+m6A Hypo     119    9      383
+m6A no sig   284  433    10846
+
+Chi-square Test Results:
+Chi-square statistic: 901.4452328658433
+p-value: 8.100776480858902e-194
+Degrees of freedom: 4
+
+Expected frequencies:
+[[   22.12639172    29.21750039   628.65610789]
+ [   16.6273326     21.95609221   472.41657519]
+ [  376.24627568   496.8264074  10689.92731692]]
+
+Chi-square test p-value saved to chisq_test_p_value.txt: 8.100776480858902e-194
+
+exec_stderr:
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+

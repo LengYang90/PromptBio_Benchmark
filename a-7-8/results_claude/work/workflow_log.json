@@ -1,0 +1,41 @@
+{
+    "test_client_stream_20260516_073522": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/RD139_Narrow_UPS1_0_1fmol_inj1.mzML",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/REF_EColi_K12_UPS1_combined.fasta"
+        ],
+        "Reference_import": [],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            },
+            {
+                "key": "ZBIKCIDKWNNHJ7XV",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/work/ZBIKCIDKWNNHJ7XV/debug_log.json"
+            },
+            {
+                "key": "IBLJH75LXO6QJIUJ",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/work/IBLJH75LXO6QJIUJ/debug_log.json"
+            },
+            {
+                "key": "AZYTJXEPQ85JSG65",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/work/AZYTJXEPQ85JSG65/debug_log.json"
+            },
+            {
+                "key": "A753LC58DRC11ERT",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/work/A753LC58DRC11ERT/debug_log.json"
+            },
+            {
+                "key": "IHCWI64CIYHE7UR2",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/work/IHCWI64CIYHE7UR2/debug_log.json"
+            }
+        ]
+    }
+}

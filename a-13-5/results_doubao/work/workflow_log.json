@@ -1,0 +1,13 @@
+{
+    "test_client_stream_20260623_055152": {
+        "Input_data": [],
+        "Reference_import": [],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-13-5/result_11/toolsgenie_20260623/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            }
+        ]
+    }
+}

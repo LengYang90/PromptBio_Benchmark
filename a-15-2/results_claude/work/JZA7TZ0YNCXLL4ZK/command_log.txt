@@ -1,0 +1,170 @@
+exec_runcode:
+1
+exec_stdout:
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether x86_64-conda-linux-gnu-cc accepts -g... yes
+checking for x86_64-conda-linux-gnu-cc option to accept ISO C89... none needed
+checking whether we are using the GNU C++ compiler... yes
+checking whether x86_64-conda-linux-gnu-c++ -std=gnu++17 accepts -g... yes
+checking how to run the C++ preprocessor... x86_64-conda-linux-gnu-c++ -std=gnu++17 -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking sys/vfs.h usability... yes
+checking sys/vfs.h presence... yes
+checking for sys/vfs.h... yes
+checking sys/mman.h usability... yes
+checking sys/mman.h presence... yes
+checking for sys/mman.h... yes
+checking sys/file.h usability... yes
+checking sys/file.h presence... yes
+checking for sys/file.h... yes
+checking for sys/stat.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking sys/mount.h usability... yes
+checking sys/mount.h presence... yes
+checking for sys/mount.h... yes
+checking for struct statfs.f_iosize... no
+checking sys/statfs.h usability... yes
+checking sys/statfs.h presence... yes
+checking for sys/statfs.h... yes
+checking for struct statfs.f_iosize... (cached) no
+checking sys/statvfs.h usability... yes
+checking sys/statvfs.h presence... yes
+checking for sys/statvfs.h... yes
+checking for off_t... yes
+checking for size_t... yes
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking for _LARGEFILE_SOURCE value needed for large files... no
+checking for fseeko... yes
+configure: creating ./config.status
+config.status: creating src/ac_config.h
+config.status: src/ac_config.h is unchanged
+x86_64-conda-linux-gnu-c++ -std=gnu++17 -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix   -c Error.cpp -o Error.o
+x86_64-conda-linux-gnu-c++ -std=gnu++17 -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix   -c FSInfo_statfs.cpp -o FSInfo_statfs.o
+x86_64-conda-linux-gnu-c++ -std=gnu++17 -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix   -c FSInfo_win32.cpp -o FSInfo_win32.o
+x86_64-conda-linux-gnu-c++ -std=gnu++17 -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix   -c MMapFileMapping.cpp -o MMapFileMapping.o
+x86_64-conda-linux-gnu-c++ -std=gnu++17 -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix   -c Win32FileMapping.cpp -o Win32FileMapping.o
+x86_64-conda-linux-gnu-c++ -std=gnu++17 -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix   -c ff.cpp -o ff.o
+x86_64-conda-linux-gnu-cc -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix  -c ordermerge.c -o ordermerge.o
+x86_64-conda-linux-gnu-cc -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix  -c r_ff.c -o r_ff.o
+x86_64-conda-linux-gnu-c++ -std=gnu++17 -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix   -c r_file_resize.cpp -o r_file_resize.o
+x86_64-conda-linux-gnu-c++ -std=gnu++17 -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix   -c utk_file_allocate_fseek.cpp -o utk_file_allocate_fseek.o
+x86_64-conda-linux-gnu-c++ -std=gnu++17 -I"/opt/conda/lib/R/include" -DNDEBUG   -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /opt/conda/include -I/opt/conda/include -Wl,-rpath-link,/opt/conda/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /opt/conda/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1728291269090/work=/usr/local/src/conda/r-base-4.4.1 -fdebug-prefix-map=/opt/conda=/usr/local/src/conda-prefix   -c utk_file_resize.cpp -o utk_file_resize.o
+x86_64-conda-linux-gnu-c++ -std=gnu++17 -shared -L/opt/conda/lib/R/lib -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,/opt/conda/lib -Wl,-rpath-link,/opt/conda/lib -L/opt/conda/lib -o ff.so Error.o FSInfo_statfs.o FSInfo_win32.o MMapFileMapping.o Win32FileMapping.o ff.o ordermerge.o r_ff.o r_file_resize.o utk_file_allocate_fseek.o utk_file_resize.o -L/opt/conda/lib/R/lib -lR
+Loading and formatting data matrices for omicwas...
+Loading and inspecting position data...
+SNP position data structure:
+Dimensions: 31 x 1 
+Column names: Position 
+             Position
+rs6678176   100000827
+kgp7451999  100179050
+kgp11573536 100443462
+
+CpG position data structure:
+Dimensions: 6 x 1 
+Column names: Position 
+            Position
+cg19251656 100000372
+cg01433766 100715098
+cg13089765 101365187
+Using first column for SNP positions: Position 
+Using first column for CpG positions: Position 
+Data formatting completed!
+Matrix dimensions:
+X (SNPs): 53 x 31 (features x samples)
+Y (methylation): 53 x 6 (features x samples)
+W (cell composition): 53 x 3 (samples x cell types)
+C (covariates): 53 x 3 (samples x covariates)
+Position vectors - Xpos: 53 Ypos: 53 
+Xpos range: Inf - -Inf 
+Ypos range: Inf - -Inf 
+ERROR: X samples ( 31 ) != Y samples ( 6 )
+
+exec_stderr:
+also installing the dependency ff
+
+trying URL 'https://cran.rstudio.com/src/contrib/ff_4.5.2.tar.gz'
+Content type 'application/x-gzip' length 328698 bytes (320 KB)
+==================================================
+downloaded 320 KB
+
+trying URL 'https://cran.rstudio.com/src/contrib/omicwas_0.8.0.tar.gz'
+Content type 'application/x-gzip' length 3983699 bytes (3.8 MB)
+==================================================
+downloaded 3.8 MB
+
+* installing *source* package ff ...
+** package ff successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C compiler: x86_64-conda-linux-gnu-cc (conda-forge gcc 14.1.0-1) 14.1.0
+using C++ compiler: x86_64-conda-linux-gnu-c++ (conda-forge gcc 14.1.0-1) 14.1.0
+installing to /opt/conda/lib/R/library/00LOCK-ff/00new/ff/libs
+** R
+** exec
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (ff)
+* installing *source* package omicwas ...
+** package omicwas successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (omicwas)
+
+The downloaded source packages are in
+	/tmp/RtmpofJA9z/downloaded_packages
+Updating HTML index of packages in '.Library'
+Making 'packages.html' ... done
+Warning messages:
+1: In min(Xpos, na.rm = TRUE) :
+  no non-missing arguments to min; returning Inf
+2: In max(Xpos, na.rm = TRUE) :
+  no non-missing arguments to max; returning -Inf
+Warning messages:
+1: In min(Ypos, na.rm = TRUE) :
+  no non-missing arguments to min; returning Inf
+2: In max(Ypos, na.rm = TRUE) :
+  no non-missing arguments to max; returning -Inf
+Error: Sample dimension mismatch
+Execution halted
+

@@ -1,0 +1,34 @@
+exec_runcode:
+0
+exec_stdout:
+Loaded data:
+SNPs: (31, 53)
+Methylation: (6, 53)
+Cell types: (53, 3)
+Cis pairs: 31
+
+Aligned 53 samples
+Cell types: ['CD4T', 'CD8T', 'NK']
+
+Generated 93 SNP-CpG-celltype associations
+Results saved to: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/mQTL_results.txt
+
+Sample results:
+          SNP         CpG celltype  estimate  statistic   p.value
+0   rs6678176  cg19251656     CD4T -0.118688  -0.867981  0.389552
+1   rs6678176  cg19251656     CD8T  0.254980   1.242959  0.219680
+2   rs6678176  cg19251656       NK  0.108898   0.491423  0.625278
+3   rs6678176  cg01433766     CD4T  0.020933   1.121941  0.267247
+4   rs6678176  cg01433766     CD8T -0.005222  -0.194227  0.846785
+5   rs6678176  cg01433766       NK -0.061816  -2.019107  0.048854
+6  kgp7451999  cg19251656     CD4T -0.264227  -1.381920  0.173139
+7  kgp7451999  cg19251656     CD8T  0.474675   1.667192  0.101729
+8  kgp7451999  cg19251656       NK  0.063682   0.176512  0.860605
+9  kgp7451999  cg01433766     CD4T  0.023590   0.890643  0.377386
+
+Summary statistics:
+Significant associations (p < 0.05): 8
+Effect size range: -14.781808 to 1.311892
+
+exec_stderr:
+

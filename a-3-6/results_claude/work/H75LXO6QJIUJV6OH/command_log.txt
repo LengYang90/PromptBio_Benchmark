@@ -1,0 +1,87 @@
+exec_runcode:
+0
+exec_stdout:
+=== File Validation and Summary Statistics ===
+
+1. File Validation:
+-rw-r--r-- 1 root 1011 49K Apr 30 06:39 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/K562_Chimeric.out.junction
+-rw-r--r-- 1 root 1011 34K Apr 30 06:39 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/K562_candidate_fusions.csv
+
+2. K562_Chimeric.out.junction (first 5 rows):
+chr9	130854100	-	chr22	23290410	-	-1	0	0	61PKHAAXX_HWUSI-EAS627_0007:4:1:1716:17840	130854101	76M	23289617	5M717N71M
+chrM	10744	-	chrM	14106	-	-1	0	0	61PKHAAXX_HWUSI-EAS627_0007:4:76:2954:4125	10745	6S70M	14030	76M
+chrM	4909	+	chrM	2253	+	0	0	6	61PKHAAXX_HWUSI-EAS627_0007:4:112:5420:3022	4888	21M55S	2254	21S55M-8p76M
+chrM	8537	+	chrM	2286	+	-1	0	0	61PKHAAXX_HWUSI-EAS627_0007:4:59:10449:13717	8461	76M	2287	76M
+chrM	7812	-	chr7	128865591	-	0	0	7	61PKHAAXX_HWUSI-EAS627_0007:4:64:1389:7424	7813	28S48M-5p76M	128865563	28M48S
+
+3. K562_candidate_fusions.csv (first 5 rows):
+chr1,base1,strand1,chr2,base2,strand2,junction_type,read_name
+chr9,130854100,-,chr22,23290410,-,-1,61PKHAAXX_HWUSI-EAS627_0007:4:1:1716:17840
+chrM,10744,-,chrM,14106,-,-1,61PKHAAXX_HWUSI-EAS627_0007:4:76:2954:4125
+chrM,4909,+,chrM,2253,+,0,61PKHAAXX_HWUSI-EAS627_0007:4:112:5420:3022
+chrM,8537,+,chrM,2286,+,-1,61PKHAAXX_HWUSI-EAS627_0007:4:59:10449:13717
+
+4. Summary Statistics:
+
+Junction file total lines: 465
+CSV file total records: 463
+
+5. Chromosome Distribution:
+Top 10 chr1 frequencies:
+chr1
+chrM     331
+chr9      40
+chr6      32
+chr22     23
+chr19     11
+chr16      5
+chr1       5
+chr8       4
+chr12      3
+chrX       3
+Name: count, dtype: int64
+
+Top 10 chr2 frequencies:
+chr2
+chrM     308
+chr22     41
+chr6      32
+chr9      24
+chr12      9
+chr19      8
+chr16      7
+chr7       6
+chr17      5
+chr1       5
+Name: count, dtype: int64
+
+6. Junction Types:
+junction_type
+-1    272
+ 0    112
+ 2     43
+ 1     36
+Name: count, dtype: int64
+
+7. Strand Distribution:
+Strand1 distribution:
+strand1
+-    268
++    195
+Name: count, dtype: int64
+Strand2 distribution:
+strand2
+-    253
++    210
+Name: count, dtype: int64
+
+8. Unique Chromosomes Involved:
+Total unique chromosomes: 19
+Chromosomes: ['KI270733.1', 'chr1', 'chr12', 'chr13', 'chr16', 'chr17', 'chr19', 'chr20', 'chr21', 'chr22', 'chr3', 'chr4', 'chr5', 'chr6', 'chr7', 'chr8', 'chr9', 'chrM', 'chrX']
+
+9. Inter vs Intra-chromosomal Fusions:
+Inter-chromosomal fusions: 130 (28.1%)
+Intra-chromosomal fusions: 333 (71.9%)
+
+exec_stderr:
+

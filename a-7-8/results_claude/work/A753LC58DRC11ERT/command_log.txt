@@ -1,0 +1,41 @@
+exec_runcode:
+0
+exec_stdout:
+=== DIA-NN ANALYSIS WITH ULTRA-PERMISSIVE SETTINGS FOR 0.1 fmol SAMPLES ===
+Sample: 0.1 fmol UPS1 - attempting maximum sensitivity approach
+Using DIA-NN at: /usr/diann/1.8.1/diann
+Attempting DIA-NN with maximum permissive settings for ultra-low abundance...
+Ultra-permissive DIA-NN exit code: 0
+Report file generated: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.tsv
+File size: 12K
+Number of identifications: 12
+
+=== FINAL ANALYSIS RESULTS ===
+Sample concentration: 0.1 fmol UPS1 (ultra-low abundance)
+DIA-NN executable: /usr/diann/1.8.1/diann
+Analysis approach: Ultra-permissive parameters with relaxed FDR thresholds
+
+Output files:
+ report.tsv: 12K (13 lines)
+ report.stats.tsv: 4.0K
+
+Identification results:
+- Total identifications: 12
+- Analysis status: SUCCESS - Identifications found
+
+=== KEY LOG INFORMATION ===
+From diann_ultra_permissive_log.txt:
+  [12:16] Protein group levels matrix (1% precursor FDR and protein group FDR) saved to /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.pg_matrix.tsv.
+  [12:16] Gene groups levels matrix (1% precursor FDR and protein group FDR) saved to /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.gg_matrix.tsv.
+  [12:16] Unique genes levels matrix (1% precursor FDR and protein group FDR) saved to /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/report.unique_genes_matrix.tsv.
+  [12:16] 0 precursors passing the FDR threshold are to be extracted
+  [12:16] 0 precursors saved
+  [12:16] Spectral library loaded: 0 protein isoforms, 0 protein groups and 0 precursors in 1 elution groups.
+  [12:16] Loading protein annotations from FASTA /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/REF_EColi_K12_UPS1_combined.fasta
+  [12:16] Library contains 0 proteins, and 0 genes
+
+Analysis completed for 0.1 fmol sample with maximum sensitivity settings
+Note: Ultra-low concentrations may be below reliable detection limits
+
+exec_stderr:
+

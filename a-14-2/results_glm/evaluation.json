@@ -1,0 +1,157 @@
+{
+  "task_id": "a-14-2",
+  "task_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-14-2",
+  "result_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-14-2/results_glm",
+  "score": 1,
+  "rationale": "The agent CSV matches the reference CSV in schema and complete set of 30 contacting residues; the row ordering differs but the listed chain/residue-ID/residue-name records are the same.",
+  "final_stage": "answer_only_comparison",
+  "evaluator": {
+    "model": "gpt-5.6-terra",
+    "base_url": "https://api.openai.com/v1",
+    "api_mode": "responses",
+    "architecture": "LangGraph fixed routing with stage-scoped read-only Deep Agents",
+    "strategy": "all declared output pairs assessed together; conditional method-and-execution audit"
+  },
+  "scope": {
+    "original_input_files_available": false,
+    "scripts_executed": false,
+    "network_access_used_by_agent_tools": false,
+    "task_files_modified": false,
+    "undeclared_result_files_used_as_evidence": false
+  },
+  "output_files": [
+    {
+      "file": "binding_sites.csv",
+      "description": "rows as binding residues, columns should include Chain, Residue_ID, Residue_Name",
+      "type": "csv",
+      "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-14-2/ref_answer/binding_sites.csv",
+      "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-14-2/results_glm/binding_sites.csv",
+      "reference_exists": true,
+      "agent_exists": true
+    }
+  ],
+  "file_manifest": [
+    {
+      "path": "a-14-2/ref_answer/binding_sites.csv",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment"
+      ],
+      "size_bytes": 329,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "2be0587adb0d26a5cebd24adb8289a70b668326655cb61528b6d38d403d0707c"
+    },
+    {
+      "path": "a-14-2/results_glm/binding_sites.csv",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment"
+      ],
+      "size_bytes": 329,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "760b830739e7136d2924b0900c88e364e80d63489add12b475799ab9a555c7ef"
+    },
+    {
+      "path": "a-14-2/task.json",
+      "roles": [
+        "task_definition"
+      ],
+      "available_in_stages": [
+        "initial_assessment"
+      ],
+      "size_bytes": 489,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "667d0aec10d3ce788fa34c52870d48278770c411edc76b68414cf7959face4fc"
+    }
+  ],
+  "initial_assessment": {
+    "verdict": "pass",
+    "reason": "The agent CSV matches the reference CSV in schema and complete set of 30 contacting residues; the row ordering differs but the listed chain/residue-ID/residue-name records are the same.",
+    "file_observations": [
+      {
+        "file": "binding_sites.csv",
+        "assessment": "consistent",
+        "reason": "Both files have the required columns (Chain, Residue_ID, Residue_Name), 30 rows, and the same contacting-residue records across chains A and B, with only ordering changed.",
+        "evidence_ids": [
+          "I-0001",
+          "I-0002"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "I-0001",
+      "I-0002"
+    ]
+  },
+  "audit_assessment": null,
+  "evidence_inventory": [
+    {
+      "evidence_id": "I-0001",
+      "path": "a-14-2/ref_answer/binding_sites.csv",
+      "locator": "header and first 30 data rows of 30",
+      "extractor": "inspect_table",
+      "sha256": "2be0587adb0d26a5cebd24adb8289a70b668326655cb61528b6d38d403d0707c",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "I-0002",
+      "path": "a-14-2/results_glm/binding_sites.csv",
+      "locator": "header and first 30 data rows of 30",
+      "extractor": "inspect_table",
+      "sha256": "760b830739e7136d2924b0900c88e364e80d63489add12b475799ab9a555c7ef",
+      "status": "complete",
+      "notes": []
+    }
+  ],
+  "coverage": {
+    "by_stage": {
+      "initial_assessment": {
+        "files_discovered": 3,
+        "files_inspected": 2,
+        "files_not_inspected": [
+          "a-14-2/task.json"
+        ],
+        "partial_evidence_paths": []
+      }
+    },
+    "evidence_paths_discovered": 2,
+    "evidence_paths_inspected": 2,
+    "partial_evidence_paths": []
+  },
+  "token_usage": {
+    "total_input_tokens": 4788,
+    "total_output_tokens": 251,
+    "total_tokens": 5039,
+    "total_cached_input_tokens": 1838,
+    "calls": [
+      {
+        "stage": "initial_assessment",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1960,
+        "output_tokens": 105,
+        "total_tokens": 2065,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2828,
+        "output_tokens": 146,
+        "total_tokens": 2974,
+        "cached_input_tokens": 1838,
+        "usage_reported_by_provider": true
+      }
+    ]
+  }
+}

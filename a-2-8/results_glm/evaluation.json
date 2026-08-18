@@ -3,90 +3,584 @@
   "task_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8",
   "result_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm",
   "score": 1,
-  "rationale": "The agent performed and logged a valid preranked GSEA on the supplied ranked list, saved a full GO Biological Process result table, and saved five FDR-significant results in a separate table. The differing terms/statistics are justified by the agent using GO_Biological_Process_2023 whereas the reference uses GO_Biological_Process_2021; this is a reasonable implementation difference for the task wording, not evidence of a calculation error.",
+  "rationale": "The Agent demonstrably executed a valid preranked GSEA on the supplied ranked list using gseapy, GO Biological Process gene sets, 1,000 permutations, fixed seed, and the stated size filters; it then saved a complete result table and a five-row table copied from its sorted result table. The outputs have the requested core fields and all five reported entries are significant. The results differ from the reference because the Agent used GO_Biological_Process_2023 whereas the reference implementation uses GO_Biological_Process_2021; this changes the tested gene-set universe and gene-set memberships, reasonably explaining the row-count and enrichment/ranking differences rather than demonstrating a calculation error. Although the reference ranks significant results by NES and the Agent ranks by FDR then |NES|, the task itself does not prescribe a ranking rule and explicitly describes the second deliverable as the top five rows of the full result.",
   "final_stage": "method_and_execution_audit",
   "evaluator": {
     "model": "gpt-5.6-terra",
-    "strategy": "answer-only comparison, then conditional method-and-execution audit"
+    "base_url": "https://api.openai.com/v1",
+    "api_mode": "responses",
+    "architecture": "LangGraph fixed routing with stage-scoped read-only Deep Agents",
+    "strategy": "all declared output pairs assessed together; conditional method-and-execution audit"
+  },
+  "scope": {
+    "original_input_files_available": false,
+    "scripts_executed": false,
+    "network_access_used_by_agent_tools": false,
+    "task_files_modified": false,
+    "undeclared_result_files_used_as_evidence": false
   },
   "output_files": [
     {
       "file": "gsea_result.csv",
+      "description": "rows as gene sets, columns should include Name, Term, NES, FDR q-val",
+      "type": "csv",
       "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/ref_answer/gsea_result.csv",
       "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/gsea_result.csv",
-      "agent_output_status": "present",
-      "description": "rows as gene sets, columns should include Name, Term, NES, FDR q-val"
+      "reference_exists": true,
+      "agent_exists": true
     },
     {
       "file": "gsea_top5_result.csv",
+      "description": "top 5 rows from gsea_result.csv",
+      "type": "csv",
       "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/ref_answer/gsea_top5_result.csv",
       "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/gsea_top5_result.csv",
-      "agent_output_status": "present",
-      "description": "top 5 rows from gsea_result.csv"
+      "reference_exists": true,
+      "agent_exists": true
     }
   ],
-  "evidence_truncation": {
-    "max_file_chars": 1000000,
-    "initial_stage": {
-      "truncated_files": [
-        {
-          "role": "reference_answer",
-          "path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/ref_answer/gsea_result.csv",
-          "original_characters": 1007906,
-          "source_characters_included": 1000000,
-          "prompt_characters_after_marker": 1000058
-        }
-      ]
+  "file_manifest": [
+    {
+      "path": "a-2-8/ref_answer/gsea_result.csv",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1007906,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "de6ed31347d723db969ada6b1edd534d022db1b0f883cef56793e3e4f4c10e1a"
     },
-    "audit_stage": {
-      "performed": true,
-      "max_total_chars": 1500000,
-      "total_limit_reached": false,
-      "truncated_files": [],
-      "omitted_paths": []
+    {
+      "path": "a-2-8/ref_answer/gsea_top5_result.csv",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2870,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "58ec39fbba38d76f4f85873b9ee90941c8031d61d50e89442ef086509ffe4741"
+    },
+    {
+      "path": "a-2-8/ref_script/gsea.py",
+      "roles": [
+        "reference_script"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1039,
+      "suffix": ".py",
+      "mime_type": "text/x-python",
+      "sha256": "4013ee7971b605f0bf683a3152cc58b51f15509b99d395b92c6d2148abd83f81"
+    },
+    {
+      "path": "a-2-8/results_glm/gsea_result.csv",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 355469,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "7624b5ce8f9548bf6a7f320355c3123412941395a54a72dd3ebcb04f9741c160"
+    },
+    {
+      "path": "a-2-8/results_glm/gsea_top5_result.csv",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 679,
+      "suffix": ".csv",
+      "mime_type": "text/csv",
+      "sha256": "c8e946f85ec9010ca313d97305bef1e16e66846cfed28890525ff466f25059b1"
+    },
+    {
+      "path": "a-2-8/results_glm/log.out",
+      "roles": [
+        "agent_runtime_log"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 40269,
+      "suffix": ".out",
+      "mime_type": "application/octet-stream",
+      "sha256": "207bbce8e96e550f54748b959a396cb88e62dc465ec46edf4df0d92e1f1ad2b0"
+    },
+    {
+      "path": "a-2-8/results_glm/work/AZYTJXEPQ85JSG65/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 877,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "e036001d1d679f6d84c39646984ffcc21c6464be8982062fe65079ac927d299e"
+    },
+    {
+      "path": "a-2-8/results_glm/work/AZYTJXEPQ85JSG65/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 3031,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "5657d05be17da3450a79ba80b59111614b54cca3c373d8e91af8cf11c7f4104b"
+    },
+    {
+      "path": "a-2-8/results_glm/work/AZYTJXEPQ85JSG65/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 4143,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "369871336bbfedf0e220131e89396469d2b28b140b89d06113f708262017c335"
+    },
+    {
+      "path": "a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1783,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "4ab53336cee6e97ee8a9c79b04bebd45404fff22a6c2a601cc9e5be12708a8f3"
+    },
+    {
+      "path": "a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 7726,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "f246694600bfff8e837cf7e598bec3e39a5fc93d1c91a508c461e6f483cd83c1"
+    },
+    {
+      "path": "a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 9824,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "36bc14f57fd56ea2c80e1edb0f7f8417181817c099b798e8d6dc1c2bdf2f7958"
+    },
+    {
+      "path": "a-2-8/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1673,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "34cc5e6ea6fe576a4a878c5131a7542157dc2dd083d1d6141057ae3d2ed18992"
+    },
+    {
+      "path": "a-2-8/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1688,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "a704e3c5f455dea265fe99b715ba76faec1a443cfb8f7ea74a9c273d83316df2"
+    },
+    {
+      "path": "a-2-8/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 7571,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "d0d3403eadf3f87ac437d461f8a7204c35e07182e6a7201a757a1c240c6a20c0"
+    },
+    {
+      "path": "a-2-8/results_glm/work/workflow_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1185,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "2adeea628dc337e6af993ac6df4da49ace7d2ec612cb0385bf351e1472f50472"
+    },
+    {
+      "path": "a-2-8/task.json",
+      "roles": [
+        "task_definition"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 703,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "2ba17da7124eecf513dbd9c7c2b7e11f334df72180501d7504a8d6637a495151"
     }
-  },
+  ],
   "initial_assessment": {
     "verdict": "uncertain",
-    "reason": "Both required tables are present and structurally provide GSEA-style biological-process results, but the reported enrichment values and leading top gene sets differ substantially from the reference and the output alone does not establish the gene-set source, ranked list, or settings needed to justify those differences.",
-    "file_assessments": [
+    "reason": "Both Agent CSVs are structurally usable and the 5-row table exactly reproduces the first five rows of its full result, with FDR q-values below 0.05. However, the Agent full result has 2,654 rows rather than the reference’s 2,860 and its top terms/enrichment values differ materially from the reference; the declared result files alone do not establish why these GSEA outputs differ.",
+    "file_observations": [
       {
         "file": "gsea_result.csv",
-        "verdict": "uncertain",
-        "reason": "Contains a large full results table with Name, Term, NES, and FDR q-val columns, but its terms and enrichment statistics materially differ from the reference."
+        "assessment": "different",
+        "reason": "The reference full result has 2,860 rows and 10 columns, while the Agent result has 2,654 rows and 7 columns. Both include the requested Name, Term, NES, and FDR q-val fields, but their leading terms and corresponding scores differ (e.g., reference’s leading displayed term is detection of chemical stimulus involved in sensory perception of smell with NES -1.9606, whereas the Agent begins with Cytoplasmic Translation with NES 1.8358).",
+        "evidence_ids": [
+          "I-0003",
+          "I-0001"
+        ]
       },
       {
         "file": "gsea_top5_result.csv",
-        "verdict": "uncertain",
-        "reason": "Contains five FDR-significant rows and is consistent with the leading rows of the agent's full table, but the selected top sets differ substantially from the reference and cannot be validated from these outputs alone."
+        "assessment": "different",
+        "reason": "Both files contain five rows and requested core columns, but the reported top-five gene sets differ substantially: the reference lists nonsense-mediated mRNA decay, SRP-dependent targeting, cytoplasmic translation, NMDA receptor activity, and Fc receptor signaling; the Agent lists cytoplasmic translation, response to epidermal growth factor, positive regulation of leukocyte proliferation, Fc receptor signaling, and negative regulation of synaptic transmission. The Agent’s table is internally consistent with the first five displayed rows of its own full result.",
+        "evidence_ids": [
+          "I-0002",
+          "I-0004",
+          "I-0001"
+        ]
       }
+    ],
+    "evidence_ids": [
+      "I-0001",
+      "I-0002",
+      "I-0003",
+      "I-0004"
     ]
   },
   "audit_assessment": {
     "score": 1,
-    "reason": "The agent performed and logged a valid preranked GSEA on the supplied ranked list, saved a full GO Biological Process result table, and saved five FDR-significant results in a separate table. The differing terms/statistics are justified by the agent using GO_Biological_Process_2023 whereas the reference uses GO_Biological_Process_2021; this is a reasonable implementation difference for the task wording, not evidence of a calculation error.",
-    "reference_method": "Uses gseapy.prerank on gene_rnk.txt with GO_Biological_Process_2021, seed=42, 1,000 permutations, min_size=15, max_size=500, and selects FDR<0.25 results sorted by NES descending for the top five.",
-    "agent_method": "Execution logs demonstrate gseapy.prerank on the supplied no-header tab-delimited ranked list with GO_Biological_Process_2023, seed=42, 1,000 permutations, min_size=15, max_size=500, and 4 threads. It saved the full res2d-derived table and selected five rows after sorting by FDR q-value ascending and absolute NES descending.",
-    "key_evidence": [
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/command.sh: explicitly specifies gseapy.prerank with GO_Biological_Process_2023 and writes both required CSV files.",
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/command_log.txt: captured successful execution, reports a 2,654-row res2d table and the generated top-five rows.",
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/AZYTJXEPQ85JSG65/command_log.txt: captured verification that both output files exist and contain Name, Term, NES, and FDR q-val.",
-      "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/ref_script/gsea.py: reference instead uses GO_Biological_Process_2021, explaining the materially different result set and enrichment values."
+    "reason": "The Agent demonstrably executed a valid preranked GSEA on the supplied ranked list using gseapy, GO Biological Process gene sets, 1,000 permutations, fixed seed, and the stated size filters; it then saved a complete result table and a five-row table copied from its sorted result table. The outputs have the requested core fields and all five reported entries are significant. The results differ from the reference because the Agent used GO_Biological_Process_2023 whereas the reference implementation uses GO_Biological_Process_2021; this changes the tested gene-set universe and gene-set memberships, reasonably explaining the row-count and enrichment/ranking differences rather than demonstrating a calculation error. Although the reference ranks significant results by NES and the Agent ranks by FDR then |NES|, the task itself does not prescribe a ranking rule and explicitly describes the second deliverable as the top five rows of the full result.",
+    "reference_method": "The reference calls gseapy.prerank on gene_rnk.txt with GO_Biological_Process_2021, seed 42, 1,000 permutations, and min/max sizes 15/500. It saves the unfiltered res2d output, then filters FDR q-val <0.25, sorts NES descending, and writes the first five of that subset.",
+    "agent_method": "Captured command and successful execution log show that the Agent read the headerless tab-delimited ranking into gene/score columns and called gseapy.prerank with GO_Biological_Process_2023, seed 42, 1,000 permutations, min/max sizes 15/500, and no_plot=True. It retained standard enrichment columns, sorted full results by FDR q-val ascending then absolute NES descending, and wrote its first five rows as the top-five table.",
+    "file_observations": [
+      {
+        "file": "gsea_result.csv",
+        "assessment": "consistent",
+        "reason": "The Agent output is a 2,654-row GSEA result CSV with Name, Term, NES, and FDR q-val (plus ES, nominal p, and FWER p). The captured execution has exit status 0 and records a 2,654-by-10 gseapy result before selecting the seven exported fields. Its difference from the 2,860-row reference result is consistent with the documented 2023 versus 2021 GO Biological Process library choice.",
+        "evidence_ids": [
+          "A-0005",
+          "A-0006",
+          "A-0007",
+          "A-0010",
+          "A-0001"
+        ]
+      },
+      {
+        "file": "gsea_top5_result.csv",
+        "assessment": "consistent",
+        "reason": "The Agent file has exactly five rows, contains all required core fields, and exactly matches the first five rows displayed from its own sorted full output; every listed FDR q-value is below 0.05. Its terms differ from the reference top five because the underlying gene-set library and ranking rule differ, both of which are evidenced in the respective implementations.",
+        "evidence_ids": [
+          "A-0008",
+          "A-0004",
+          "A-0006",
+          "A-0009",
+          "A-0001"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "A-0001",
+      "A-0005",
+      "A-0006",
+      "A-0007",
+      "A-0008",
+      "A-0004",
+      "A-0010",
+      "A-0009"
     ],
     "confidence": "high"
   },
-  "audit_evidence_files": [
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/ref_script/gsea.py",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/AZYTJXEPQ85JSG65/command.sh",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/command.sh",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/AZYTJXEPQ85JSG65/command_log.txt",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/command_log.txt",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/workflow_log.json",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/log.out",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/AZYTJXEPQ85JSG65/debug_log.json",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/debug_log.json",
-    "/Users/yang.leng/project/github/PromptBio_Benchmark/a-2-8/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json"
-  ]
+  "evidence_inventory": [
+    {
+      "evidence_id": "I-0001",
+      "path": "a-2-8/results_glm/gsea_result.csv",
+      "locator": "header and first 10 data rows of 2654",
+      "extractor": "inspect_table",
+      "sha256": "7624b5ce8f9548bf6a7f320355c3123412941395a54a72dd3ebcb04f9741c160",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "I-0002",
+      "path": "a-2-8/ref_answer/gsea_top5_result.csv",
+      "locator": "header and first 5 data rows of 5",
+      "extractor": "inspect_table",
+      "sha256": "58ec39fbba38d76f4f85873b9ee90941c8031d61d50e89442ef086509ffe4741",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "I-0003",
+      "path": "a-2-8/ref_answer/gsea_result.csv",
+      "locator": "header and first 10 data rows of 2860",
+      "extractor": "inspect_table",
+      "sha256": "de6ed31347d723db969ada6b1edd534d022db1b0f883cef56793e3e4f4c10e1a",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "I-0004",
+      "path": "a-2-8/results_glm/gsea_top5_result.csv",
+      "locator": "header and first 5 data rows of 5",
+      "extractor": "inspect_table",
+      "sha256": "c8e946f85ec9010ca313d97305bef1e16e66846cfed28890525ff466f25059b1",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0001",
+      "path": "a-2-8/ref_script/gsea.py",
+      "locator": "lines 1-38 of 38",
+      "extractor": "read_text",
+      "sha256": "4013ee7971b605f0bf683a3152cc58b51f15509b99d395b92c6d2148abd83f81",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0002",
+      "path": "a-2-8/results_glm/work/AZYTJXEPQ85JSG65/command.sh",
+      "locator": "lines 1-20 of 20",
+      "extractor": "read_text",
+      "sha256": "e036001d1d679f6d84c39646984ffcc21c6464be8982062fe65079ac927d299e",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0003",
+      "path": "a-2-8/results_glm/log.out",
+      "locator": "lines 1-473 of 473",
+      "extractor": "read_text",
+      "sha256": "207bbce8e96e550f54748b959a396cb88e62dc465ec46edf4df0d92e1f1ad2b0",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0004",
+      "path": "a-2-8/results_glm/work/AZYTJXEPQ85JSG65/command_log.txt",
+      "locator": "lines 1-33 of 33",
+      "extractor": "read_text",
+      "sha256": "5657d05be17da3450a79ba80b59111614b54cca3c373d8e91af8cf11c7f4104b",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0005",
+      "path": "a-2-8/results_glm/gsea_result.csv",
+      "locator": "header and first 10 data rows of 2654",
+      "extractor": "inspect_table",
+      "sha256": "7624b5ce8f9548bf6a7f320355c3123412941395a54a72dd3ebcb04f9741c160",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "A-0006",
+      "path": "a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/command.sh",
+      "locator": "lines 1-50 of 50",
+      "extractor": "read_text",
+      "sha256": "4ab53336cee6e97ee8a9c79b04bebd45404fff22a6c2a601cc9e5be12708a8f3",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0007",
+      "path": "a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/command_log.txt",
+      "locator": "lines 1-53 of 53",
+      "extractor": "read_text",
+      "sha256": "f246694600bfff8e837cf7e598bec3e39a5fc93d1c91a508c461e6f483cd83c1",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0008",
+      "path": "a-2-8/results_glm/gsea_top5_result.csv",
+      "locator": "header and first 5 data rows of 5",
+      "extractor": "inspect_table",
+      "sha256": "c8e946f85ec9010ca313d97305bef1e16e66846cfed28890525ff466f25059b1",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0009",
+      "path": "a-2-8/ref_answer/gsea_top5_result.csv",
+      "locator": "header and first 5 data rows of 5",
+      "extractor": "inspect_table",
+      "sha256": "58ec39fbba38d76f4f85873b9ee90941c8031d61d50e89442ef086509ffe4741",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0010",
+      "path": "a-2-8/ref_answer/gsea_result.csv",
+      "locator": "header and first 10 data rows of 2860",
+      "extractor": "inspect_table",
+      "sha256": "de6ed31347d723db969ada6b1edd534d022db1b0f883cef56793e3e4f4c10e1a",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    }
+  ],
+  "coverage": {
+    "by_stage": {
+      "initial_assessment": {
+        "files_discovered": 5,
+        "files_inspected": 4,
+        "files_not_inspected": [
+          "a-2-8/task.json"
+        ],
+        "partial_evidence_paths": [
+          "a-2-8/ref_answer/gsea_result.csv",
+          "a-2-8/results_glm/gsea_result.csv"
+        ]
+      },
+      "method_and_execution_audit": {
+        "files_discovered": 17,
+        "files_inspected": 10,
+        "files_not_inspected": [
+          "a-2-8/results_glm/work/AZYTJXEPQ85JSG65/debug_log.json",
+          "a-2-8/results_glm/work/IKCIDKWNNHJ7XVG0/debug_log.json",
+          "a-2-8/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
+          "a-2-8/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+          "a-2-8/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+          "a-2-8/results_glm/work/workflow_log.json",
+          "a-2-8/task.json"
+        ],
+        "partial_evidence_paths": [
+          "a-2-8/ref_answer/gsea_result.csv",
+          "a-2-8/results_glm/gsea_result.csv"
+        ]
+      }
+    },
+    "evidence_paths_discovered": 10,
+    "evidence_paths_inspected": 10,
+    "partial_evidence_paths": [
+      "a-2-8/ref_answer/gsea_result.csv",
+      "a-2-8/results_glm/gsea_result.csv"
+    ]
+  },
+  "token_usage": {
+    "total_input_tokens": 48115,
+    "total_output_tokens": 2215,
+    "total_tokens": 50330,
+    "total_cached_input_tokens": 11317,
+    "calls": [
+      {
+        "stage": "initial_assessment",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2087,
+        "output_tokens": 16,
+        "total_tokens": 2103,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2632,
+        "output_tokens": 215,
+        "total_tokens": 2847,
+        "cached_input_tokens": 1965,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 3,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 8981,
+        "output_tokens": 561,
+        "total_tokens": 9542,
+        "cached_input_tokens": 2510,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2614,
+        "output_tokens": 16,
+        "total_tokens": 2630,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4472,
+        "output_tokens": 538,
+        "total_tokens": 5010,
+        "cached_input_tokens": 2492,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 3,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 27329,
+        "output_tokens": 869,
+        "total_tokens": 28198,
+        "cached_input_tokens": 4350,
+        "usage_reported_by_provider": true
+      }
+    ]
+  }
 }

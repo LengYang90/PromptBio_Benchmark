@@ -1,0 +1,41 @@
+exec_runcode:
+0
+exec_stdout:
+=== DIA-NN ENVIRONMENT SETUP AND VALIDATION ===
+1. Checking DIA-NN installation:
+/usr/diann/1.8.1/diann
+DIA-NN 1.8.1 (Data-Independent Acquisition by Neural Networks)
+Compiled on Apr 15 2022 08:45:18
+Current date and time: Sat May 16 06:52:03 2026
+Logical CPU cores: 112
+WARNING: unrecognised option [--version]
+
+0 files will be processed
+2. Validating input files:
+mzML file: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/RD139_Narrow_UPS1_0_1fmol_inj1.mzML
+-rwxrwxr-x 1 1011 1011 44M May 16 01:59 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/RD139_Narrow_UPS1_0_1fmol_inj1.mzML
+FASTA file: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/REF_EColi_K12_UPS1_combined.fasta
+-rw-rw-r-- 1 1011 1011 1.8M Apr 21 09:40 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/REF_EColi_K12_UPS1_combined.fasta
+3. Testing DIA-NN basic functionality:
+DIA-NN 1.8.1 (Data-Independent Acquisition by Neural Networks)
+Compiled on Apr 15 2022 08:45:18
+Current date and time: Sat May 16 06:52:03 2026
+Logical CPU cores: 112
+WARNING: unrecognised option [--help]
+
+0 files will be processed
+4. File accessibility check:
+/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/RD139_Narrow_UPS1_0_1fmol_inj1.mzML: XML 1.0 document, ASCII text, with very long lines
+/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516/data/REF_EColi_K12_UPS1_combined.fasta: ASCII text
+5. Working directory prepared:
+/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-8/result_10/toolsgenie_20260516
+total 20
+drwxrwsr-x 4 1011 1011 4096 May 16 06:51 .
+drwxr-xr-x 3 root root 4096 May 16 06:52 ..
+drwxrwsr-x 2 1011 1011 4096 May 16 06:51 data
+-rw-rw-r-- 1 1011 1011   32 May 16 06:51 session_init
+drwxrwsr-x 4 1011 1011 4096 May 16 06:52 work
+=== SETUP COMPLETE - Ready for DIA analysis ===
+
+exec_stderr:
+

@@ -1,0 +1,24 @@
+{
+    "test_client_stream_20260623_031509": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_11/toolsgenie_20260623/data/K562f_1.fq.gz",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_11/toolsgenie_20260623/data/K562f_2.fq.gz"
+        ],
+        "Reference_import": [
+            "/mnt/data/ims/genome/references/wts/STARIndex/",
+            "/mnt/data/ims/genome/references/wts/Annotation/ref_annot.gtf"
+        ],
+        "CodeProcess_data": [
+            {
+                "key": "3A3ZMF8MDD4V30T9",
+                "agent_status": "Failed",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_11/toolsgenie_20260623/work/3A3ZMF8MDD4V30T9/debug_log.json"
+            },
+            {
+                "key": "UY41IBLJH75LXO6Q",
+                "agent_status": "Failed",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_11/toolsgenie_20260623/work/UY41IBLJH75LXO6Q/debug_log.json"
+            }
+        ]
+    }
+}

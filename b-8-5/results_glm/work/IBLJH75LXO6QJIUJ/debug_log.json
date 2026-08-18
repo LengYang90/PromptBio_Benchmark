@@ -1,0 +1,10 @@
+[
+    {
+        "image": "lengyang/pb_bio_tools:2.0.0_mini",
+        "command": "import pandas as pd\n\npath = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/b-8-5/result_79/toolsgenie_20260709/data/test_performance.csv\"\ndf = pd.read_csv(path)\nprint(\"Shape:\", df.shape)\nprint(\"Columns:\", list(df.columns))\nprint(\"Dtypes:\")\nprint(df.dtypes)\nprint(\"\\n=== Contents ===\")\nprint(df.to_string(index=False))\n",
+        "code_type": "python",
+        "exec_runcode": 0,
+        "exec_stdout": "Shape: (3, 2)\nColumns: ['Metric', 'Value']\nDtypes:\nMetric     object\nValue     float64\ndtype: object\n\n=== Contents ===\nMetric    Value\n  RMSE 4.668723\n   MAE 3.865930\n  MAPE 6.013052\n",
+        "exec_stderr": ""
+    }
+]

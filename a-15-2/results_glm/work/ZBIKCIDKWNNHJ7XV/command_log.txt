@@ -1,0 +1,43 @@
+exec_runcode:
+0
+exec_stdout:
+================================================================================
+FILE: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_714/toolsgenie_20260714/data/Matrix_of_trait_positions.csv
+SHAPE (rows x cols): (31, 1)
+INDEX NAME: SNP
+INDEX: ['rs6678176', 'kgp7451999', 'kgp11573536', 'kgp11301880', 'kgp3991027', 'kgp777601', 'kgp15345729', 'kgp5229054', 'rs1201780', 'rs2339135', 'rs12125726', 'rs11164417', 'rs12752401', 'kgp3702667', 'kgp8438697', 'kgp11342773', 'rs11185389', 'kgp1049392', 'kgp4735121', 'kgp9441632', 'kgp9603468', 'rs10881300', 'rs790970', 'kgp9198659', 'rs11809005', 'kgp4315710', 'kgp4370028', 'rs4292979', 'kgp1159049', 'rs1328199', 'rs7528153']
+COLUMNS: ['Position']
+DTYPES:
+Position    int64
+dtype: object
+FIRST 5 ROWS:
+              Position
+SNP                   
+rs6678176    100000827
+kgp7451999   100179050
+kgp11573536  100443462
+kgp11301880  100909699
+kgp3991027   101105310
+
+================================================================================
+FILE: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_714/toolsgenie_20260714/data/Matrix_of_ovariates.csv
+SHAPE (rows x cols): (53, 3)
+INDEX NAME: None
+INDEX: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+COLUMNS: ['PC1', 'PC2', 'PC3']
+DTYPES:
+PC1    float64
+PC2    float64
+PC3    float64
+dtype: object
+FIRST 5 ROWS:
+        PC1       PC2       PC3
+1 -0.031363 -0.226688 -0.231060
+2 -0.447038 -0.656896 -0.865867
+3 -0.119294 -0.597232 -1.062876
+4  0.296381 -0.270651 -0.661561
+5  0.360331  0.844120  1.023961
+
+
+exec_stderr:
+

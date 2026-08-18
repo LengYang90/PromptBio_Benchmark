@@ -1,0 +1,588 @@
+{
+  "task_id": "a-4-6",
+  "task_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-4-6",
+  "result_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-4-6/results_claude",
+  "score": 0,
+  "rationale": "The agent executed and produced a syntactically valid TSV, but its executed method does not answer the requested covariate-adjusted cell-type-specific association analysis. The reference calls omicwas::ctassoc with the trait, composition, bulk-omics, and covariate matrices using the regularized nls.logit test. The agent instead fit an unregularized OLS model with an intercept, disease, all seven compositional fractions, and all disease-by-fraction products, while explicitly excluding the covariate matrix. This model is non-identifiable because the cell fractions are compositional, and the output exhibits the resulting unstable, implausibly huge coefficients. It also omits every requested overall covariate effect. Thus the numerical disagreement stems from an incorrect/incomplete calculation implementation, not a reasonable alternate implementation of the stated task.",
+  "final_stage": "method_and_execution_audit",
+  "evaluator": {
+    "model": "gpt-5.6-terra",
+    "base_url": "https://api.openai.com/v1",
+    "api_mode": "responses",
+    "architecture": "LangGraph fixed routing with stage-scoped read-only Deep Agents",
+    "strategy": "all declared output pairs assessed together; conditional method-and-execution audit"
+  },
+  "scope": {
+    "original_input_files_available": false,
+    "scripts_executed": false,
+    "network_access_used_by_agent_tools": false,
+    "task_files_modified": false,
+    "undeclared_result_files_used_as_evidence": false
+  },
+  "output_files": [
+    {
+      "file": "dna_methylation_results.tsv",
+      "description": "rows as CpG-celltype-term associations, columns should include response, celltype, term, estimate, statistic, p.value",
+      "type": "tsv",
+      "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-4-6/ref_answer/dna_methylation_results.tsv",
+      "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-4-6/results_claude/dna_methylation_results.tsv",
+      "reference_exists": true,
+      "agent_exists": true
+    }
+  ],
+  "file_manifest": [
+    {
+      "path": "a-4-6/ref_answer/dna_methylation_results.tsv",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 29756,
+      "suffix": ".tsv",
+      "mime_type": "text/tab-separated-values",
+      "sha256": "3f79176321f94b0c1658fb9f74118e8e1d55dda15e5a52466e59ccffb0903100"
+    },
+    {
+      "path": "a-4-6/ref_script/omicwas.R",
+      "roles": [
+        "reference_script"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 704,
+      "suffix": ".r",
+      "mime_type": "application/octet-stream",
+      "sha256": "41c1f332e307d2796092a2abbf8ba7d9433d8e383a701d37b800e3d7a65a7608"
+    },
+    {
+      "path": "a-4-6/results_claude/dna_methylation_results.tsv",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 24718,
+      "suffix": ".tsv",
+      "mime_type": "text/tab-separated-values",
+      "sha256": "d29ad9d1c22dbd2adeeb5f1b36d4649214f8d69e679aefbb58b3fd94360e0563"
+    },
+    {
+      "path": "a-4-6/results_claude/log.out",
+      "roles": [
+        "agent_runtime_log"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 50590,
+      "suffix": ".out",
+      "mime_type": "application/octet-stream",
+      "sha256": "3c2e3665c52fea84a775961228c55d8f3430e831d8b021cc44db76278767d74c"
+    },
+    {
+      "path": "a-4-6/results_claude/work/9T84AZYTJXEPQ85J/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 3137,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "05a8c0b48b62256cb6856efb19d45859b3a73b6afc470ec85f627587780c22ed"
+    },
+    {
+      "path": "a-4-6/results_claude/work/9T84AZYTJXEPQ85J/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 3710,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "f34d4c7ede3af450e75d5b09d5231273bff844759bfbac3cea6e45dbec0811c4"
+    },
+    {
+      "path": "a-4-6/results_claude/work/9T84AZYTJXEPQ85J/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 7313,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "2f0e5863613da09733c1739da66aaf362a6cfd7321575578bac88bc940611842"
+    },
+    {
+      "path": "a-4-6/results_claude/work/IKCIDKWNNHJ7XVG0/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2403,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "218f3796c7036d741ecd8713e5cc818c48cac9287fc5e72c1c4345a8bba89bb4"
+    },
+    {
+      "path": "a-4-6/results_claude/work/IKCIDKWNNHJ7XVG0/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 515,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "dcc4cbbd120a3b0c581b2d22db3c708cf693a0f302b63430620dcc9ee9982c2e"
+    },
+    {
+      "path": "a-4-6/results_claude/work/IKCIDKWNNHJ7XVG0/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 3172,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "1ce9500ea1c70baf27f7a1d38b627adf183b8da5e1de4543376f4c98e3abcba1"
+    },
+    {
+      "path": "a-4-6/results_claude/work/LJH75LXO6QJIUJV6/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2773,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "bb446551291f4a691207f88eb938b00b40aac713fe27fce967cde4d0edd3c1e0"
+    },
+    {
+      "path": "a-4-6/results_claude/work/LJH75LXO6QJIUJV6/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1825,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "77fe7cd1cbf2e8b692c6ff5900c2cdf4a3ddd438c56f4d6dffdff63f986c5fe1"
+    },
+    {
+      "path": "a-4-6/results_claude/work/LJH75LXO6QJIUJV6/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 8865,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "d0fd9ac8ea66571544bd516dac16b46ca9028fcbdf7478c30908c2835b5e5fd2"
+    },
+    {
+      "path": "a-4-6/results_claude/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1919,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "28353182663434b7515c353de9ddfa512624c2491f9dfd351effbf7800e189cb"
+    },
+    {
+      "path": "a-4-6/results_claude/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 26084,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "0612347ec30f1fe7fc02e80899c3b6ca2651cdcfafdecd2fbedc2b6d828ed638"
+    },
+    {
+      "path": "a-4-6/results_claude/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 55898,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "55d53c03528a45bffb0bdeac6795c4d00d2a2ba6973ed4dcf7e8c542862df7a4"
+    },
+    {
+      "path": "a-4-6/results_claude/work/workflow_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1973,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "93b33ea2709593e95eaaef4d6625d343f9d9ad6f748d34a51315305d1aa7f68c"
+    },
+    {
+      "path": "a-4-6/task.json",
+      "roles": [
+        "task_definition"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 833,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "72e05d18ab629e6b4fb0b02637ac223012b8487bb226d5bf94554ec7e9c3c834"
+    }
+  ],
+  "initial_assessment": {
+    "verdict": "fail",
+    "reason": "The agent result has the requested column schema but does not reproduce the required association output: it has fewer rows, omits the reference’s overall covariate-effect terms, and its disease/cell-type estimates, statistics, and p-values materially differ from the reference.",
+    "file_observations": [
+      {
+        "file": "dna_methylation_results.tsv",
+        "assessment": "different",
+        "reason": "Both files use the six expected columns, but the reference has 380 rows while the agent has 300. For cg10543797, the reference reports cell-type disease terms such as CD4. estimate 0.0007109969, statistic 0.4648884, p=0.6421668 and covariate terms (sexF, age, and smoking levels); the agent instead reports a disease:CD4. estimate of 4,612,575.9574 with statistic 0.001329 and p=0.99894, and its sampled rows lack those covariate terms. The agent also labels an 'overall' disease row and bare cell-type terms unlike the reference structure.",
+        "evidence_ids": [
+          "I-0001",
+          "I-0002"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "I-0001",
+      "I-0002"
+    ]
+  },
+  "audit_assessment": {
+    "score": 0,
+    "reason": "The agent executed and produced a syntactically valid TSV, but its executed method does not answer the requested covariate-adjusted cell-type-specific association analysis. The reference calls omicwas::ctassoc with the trait, composition, bulk-omics, and covariate matrices using the regularized nls.logit test. The agent instead fit an unregularized OLS model with an intercept, disease, all seven compositional fractions, and all disease-by-fraction products, while explicitly excluding the covariate matrix. This model is non-identifiable because the cell fractions are compositional, and the output exhibits the resulting unstable, implausibly huge coefficients. It also omits every requested overall covariate effect. Thus the numerical disagreement stems from an incorrect/incomplete calculation implementation, not a reasonable alternate implementation of the stated task.",
+    "reference_method": "The reference reads X (traits), W (cell-type composition), Y (bulk measurements), and C (covariates), then runs omicwas::ctassoc(X, W, Y, C=C, test=\"nls.logit\", regularize=TRUE) and writes result$coefficients.",
+    "agent_method": "Captured execution shows the agent loaded only methylation, cell composition, and disease data, then for each CpG fit statsmodels OLS with intercept + disease + seven cell-fraction main effects + seven disease:fraction interactions. It did not load or include covariates in the fitted model; it extracted 15 non-intercept OLS coefficients per CpG.",
+    "file_observations": [
+      {
+        "file": "dna_methylation_results.tsv",
+        "assessment": "different",
+        "reason": "Both files have the required six-column schema, but the reference has 380 rows whereas the agent has 300. The reference includes seven cell-type disease terms plus five overall covariate terms per CpG (e.g., sexF, age, and smoking terms), while the agent contains only disease, seven cell-fraction main effects, and seven disease:fraction interactions. For cg10543797, the reference CD4 disease estimate/statistic/p-value is 0.0007109969/0.4648884/0.6421668, versus the agent's disease:CD4. value 4612575.9574/0.0013290/0.9989400. The agent has no covariate rows. Its executed output summary further confirms all 300 estimates exceed 1e6 in magnitude, consistent with the non-identifiable OLS design rather than a valid cell-type-specific fit.",
+        "evidence_ids": [
+          "A-0003",
+          "A-0002",
+          "A-0011",
+          "A-0012",
+          "A-0010"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "A-0001",
+      "A-0005",
+      "A-0013",
+      "A-0009",
+      "A-0003",
+      "A-0002",
+      "A-0011",
+      "A-0012"
+    ],
+    "confidence": "high"
+  },
+  "evidence_inventory": [
+    {
+      "evidence_id": "I-0001",
+      "path": "a-4-6/ref_answer/dna_methylation_results.tsv",
+      "locator": "header and first 50 data rows of 380",
+      "extractor": "inspect_table",
+      "sha256": "3f79176321f94b0c1658fb9f74118e8e1d55dda15e5a52466e59ccffb0903100",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "I-0002",
+      "path": "a-4-6/results_claude/dna_methylation_results.tsv",
+      "locator": "header and first 50 data rows of 300",
+      "extractor": "inspect_table",
+      "sha256": "d29ad9d1c22dbd2adeeb5f1b36d4649214f8d69e679aefbb58b3fd94360e0563",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "A-0001",
+      "path": "a-4-6/ref_script/omicwas.R",
+      "locator": "lines 1-14 of 14",
+      "extractor": "read_text",
+      "sha256": "41c1f332e307d2796092a2abbf8ba7d9433d8e383a701d37b800e3d7a65a7608",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0002",
+      "path": "a-4-6/results_claude/dna_methylation_results.tsv",
+      "locator": "header and first 15 data rows of 300",
+      "extractor": "inspect_table",
+      "sha256": "d29ad9d1c22dbd2adeeb5f1b36d4649214f8d69e679aefbb58b3fd94360e0563",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "A-0003",
+      "path": "a-4-6/ref_answer/dna_methylation_results.tsv",
+      "locator": "header and first 15 data rows of 380",
+      "extractor": "inspect_table",
+      "sha256": "3f79176321f94b0c1658fb9f74118e8e1d55dda15e5a52466e59ccffb0903100",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "A-0004",
+      "path": "a-4-6/results_claude/log.out",
+      "locator": "lines 1-300 of 602",
+      "extractor": "read_text",
+      "sha256": "3c2e3665c52fea84a775961228c55d8f3430e831d8b021cc44db76278767d74c",
+      "status": "partial",
+      "notes": [
+        "Output was limited; request the next line range for additional text."
+      ]
+    },
+    {
+      "evidence_id": "A-0005",
+      "path": "a-4-6/results_claude/work/LJH75LXO6QJIUJV6/command.sh",
+      "locator": "lines 1-86 of 86",
+      "extractor": "read_text",
+      "sha256": "bb446551291f4a691207f88eb938b00b40aac713fe27fce967cde4d0edd3c1e0",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0006",
+      "path": "a-4-6/results_claude/work/9T84AZYTJXEPQ85J/command.sh",
+      "locator": "lines 1-74 of 74",
+      "extractor": "read_text",
+      "sha256": "05a8c0b48b62256cb6856efb19d45859b3a73b6afc470ec85f627587780c22ed",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0007",
+      "path": "a-4-6/results_claude/work/IKCIDKWNNHJ7XVG0/command.sh",
+      "locator": "lines 1-44 of 44",
+      "extractor": "read_text",
+      "sha256": "218f3796c7036d741ecd8713e5cc818c48cac9287fc5e72c1c4345a8bba89bb4",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0008",
+      "path": "a-4-6/results_claude/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "locator": "lines 1-45 of 45",
+      "extractor": "read_text",
+      "sha256": "28353182663434b7515c353de9ddfa512624c2491f9dfd351effbf7800e189cb",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0009",
+      "path": "a-4-6/results_claude/log.out",
+      "locator": "lines 280-601 of 602",
+      "extractor": "read_text",
+      "sha256": "3c2e3665c52fea84a775961228c55d8f3430e831d8b021cc44db76278767d74c",
+      "status": "partial",
+      "notes": [
+        "Output was limited; request the next line range for additional text."
+      ]
+    },
+    {
+      "evidence_id": "A-0010",
+      "path": "a-4-6/results_claude/work/9T84AZYTJXEPQ85J/command_log.txt",
+      "locator": "lines 1-85 of 85",
+      "extractor": "read_text",
+      "sha256": "f34d4c7ede3af450e75d5b09d5231273bff844759bfbac3cea6e45dbec0811c4",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0011",
+      "path": "a-4-6/ref_answer/dna_methylation_results.tsv",
+      "locator": "search query 'cg10543797\\tNA', 5 match(es)",
+      "extractor": "search_text",
+      "sha256": "3f79176321f94b0c1658fb9f74118e8e1d55dda15e5a52466e59ccffb0903100",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0012",
+      "path": "a-4-6/results_claude/dna_methylation_results.tsv",
+      "locator": "search query 'cg10543797', 15 match(es)",
+      "extractor": "search_text",
+      "sha256": "d29ad9d1c22dbd2adeeb5f1b36d4649214f8d69e679aefbb58b3fd94360e0563",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0013",
+      "path": "a-4-6/results_claude/work/LJH75LXO6QJIUJV6/command_log.txt",
+      "locator": "lines 1-32 of 32",
+      "extractor": "read_text",
+      "sha256": "77fe7cd1cbf2e8b692c6ff5900c2cdf4a3ddd438c56f4d6dffdff63f986c5fe1",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0014",
+      "path": "a-4-6/results_claude/work/workflow_log.json",
+      "locator": "JSON pointer /",
+      "extractor": "inspect_json",
+      "sha256": "93b33ea2709593e95eaaef4d6625d343f9d9ad6f748d34a51315305d1aa7f68c",
+      "status": "complete",
+      "notes": []
+    }
+  ],
+  "coverage": {
+    "by_stage": {
+      "initial_assessment": {
+        "files_discovered": 3,
+        "files_inspected": 2,
+        "files_not_inspected": [
+          "a-4-6/task.json"
+        ],
+        "partial_evidence_paths": [
+          "a-4-6/ref_answer/dna_methylation_results.tsv",
+          "a-4-6/results_claude/dna_methylation_results.tsv"
+        ]
+      },
+      "method_and_execution_audit": {
+        "files_discovered": 18,
+        "files_inspected": 11,
+        "files_not_inspected": [
+          "a-4-6/results_claude/work/9T84AZYTJXEPQ85J/debug_log.json",
+          "a-4-6/results_claude/work/IKCIDKWNNHJ7XVG0/command_log.txt",
+          "a-4-6/results_claude/work/IKCIDKWNNHJ7XVG0/debug_log.json",
+          "a-4-6/results_claude/work/LJH75LXO6QJIUJV6/debug_log.json",
+          "a-4-6/results_claude/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+          "a-4-6/results_claude/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+          "a-4-6/task.json"
+        ],
+        "partial_evidence_paths": [
+          "a-4-6/ref_answer/dna_methylation_results.tsv",
+          "a-4-6/results_claude/dna_methylation_results.tsv",
+          "a-4-6/results_claude/log.out"
+        ]
+      }
+    },
+    "evidence_paths_discovered": 11,
+    "evidence_paths_inspected": 11,
+    "partial_evidence_paths": [
+      "a-4-6/ref_answer/dna_methylation_results.tsv",
+      "a-4-6/results_claude/dna_methylation_results.tsv",
+      "a-4-6/results_claude/log.out"
+    ]
+  },
+  "token_usage": {
+    "total_input_tokens": 55033,
+    "total_output_tokens": 2034,
+    "total_tokens": 57067,
+    "total_cached_input_tokens": 23351,
+    "calls": [
+      {
+        "stage": "initial_assessment",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1999,
+        "output_tokens": 127,
+        "total_tokens": 2126,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 6640,
+        "output_tokens": 315,
+        "total_tokens": 6955,
+        "cached_input_tokens": 1877,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2365,
+        "output_tokens": 27,
+        "total_tokens": 2392,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4420,
+        "output_tokens": 473,
+        "total_tokens": 4893,
+        "cached_input_tokens": 2243,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 3,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 15055,
+        "output_tokens": 396,
+        "total_tokens": 15451,
+        "cached_input_tokens": 4298,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 4,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 24554,
+        "output_tokens": 696,
+        "total_tokens": 25250,
+        "cached_input_tokens": 14933,
+        "usage_reported_by_provider": true
+      }
+    ]
+  }
+}

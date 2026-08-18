@@ -1,0 +1,8 @@
+exec_runcode:
+0
+exec_stdout:
+Found 30 protein residues within 4.0 Angstroms of MTX ligands
+Results saved to: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-14-2/result_10/toolsgenie_20260516/binding_sites.csv
+
+exec_stderr:
+

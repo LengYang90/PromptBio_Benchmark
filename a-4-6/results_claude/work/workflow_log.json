@@ -1,0 +1,33 @@
+{
+    "test_client_stream_20260516_064600": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_10/toolsgenie_20260516/data/Matrix_of_bulk_omics_measurements.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_10/toolsgenie_20260516/data/Matrix_of_cell_type_composition.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_10/toolsgenie_20260516/data/Matrix_of_ovariates.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_10/toolsgenie_20260516/data/Matrix_of_traits.csv"
+        ],
+        "Reference_import": [],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_10/toolsgenie_20260516/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            },
+            {
+                "key": "IKCIDKWNNHJ7XVG0",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_10/toolsgenie_20260516/work/IKCIDKWNNHJ7XVG0/debug_log.json"
+            },
+            {
+                "key": "LJH75LXO6QJIUJV6",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_10/toolsgenie_20260516/work/LJH75LXO6QJIUJV6/debug_log.json"
+            },
+            {
+                "key": "9T84AZYTJXEPQ85J",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_10/toolsgenie_20260516/work/9T84AZYTJXEPQ85J/debug_log.json"
+            }
+        ]
+    }
+}

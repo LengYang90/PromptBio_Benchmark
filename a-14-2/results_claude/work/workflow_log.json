@@ -1,0 +1,20 @@
+{
+    "test_client_stream_20260516_070223": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-14-2/result_10/toolsgenie_20260516/data/protein.pdb"
+        ],
+        "Reference_import": [],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-14-2/result_10/toolsgenie_20260516/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            },
+            {
+                "key": "ZBIKCIDKWNNHJ7XV",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-14-2/result_10/toolsgenie_20260516/work/ZBIKCIDKWNNHJ7XV/debug_log.json"
+            }
+        ]
+    }
+}

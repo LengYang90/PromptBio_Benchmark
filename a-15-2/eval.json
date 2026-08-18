@@ -1,0 +1,18 @@
+{
+    "id": "a-15-2",
+    "question": "Perform cell-type-specific cis-QTL analysis on methylation data to identify SNP effects on CpG sites. A cis-QTL tests the association between a SNP and a nearby CpG site on the same chromosome within a defined genomic distance window.",
+    "ref_answer": [
+        "ref_answer/mQTL_results.txt"
+    ],
+    "ref_script": [
+        "ref_script/QTL.R"
+    ],
+    "scoring": {
+        "expected_output": [
+            {
+                "file": "mQTL_results.txt",
+                "guidelines": "All SNP-CpG-celltype combination rows must match the reference; estimate, statistic, and p.value must match within 0.1% relative absolute error; column order, row order, and header labels may differ."
+            }
+        ]
+    }
+}

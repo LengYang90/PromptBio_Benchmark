@@ -1,0 +1,23 @@
+exec_runcode:
+0
+exec_stdout:
+=== Raw Data Inspection ===
+Total genes (rows): 1000 
+Total samples (columns): 18 
+First 5 gene IDs: Zm00001d001763 Zm00001d001766 Zm00001d001770 Zm00001d001774 Zm00001d001775 
+First 5 sample IDs: LH38_Z1_1 LH38_Z1_2 LH38_Z1_3 LH38_Z2_1 LH38_Z2_2 
+Raw value range: 0 42498 
+
+=== After Filtering ===
+Genes retained: 894 
+
+=== Preprocessed Data Summary ===
+Output file: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-11-2/result_11/toolsgenie_20260623/preprocessed_expression_for_WGCNA.csv 
+Number of samples (rows): 18 
+Number of genes (columns): 894 
+Mean expression value: 7.151 
+Median expression value: 7.732 
+Preprocessed value range: 0 16.44 
+
+exec_stderr:
+

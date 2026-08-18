@@ -1,0 +1,36 @@
+exec_runcode:
+0
+exec_stdout:
+First 10 rows:
+           chrom  chromStart   chromEnd  count
+experiment                                    
+H3K36me3    chr9   111387372  111387472      1
+H3K36me3    chr9   111387436  111387536      2
+H3K36me3    chr9   111387443  111387543      1
+H3K36me3    chr9   111387455  111387554      1
+H3K36me3    chr9   111387566  111387666      1
+H3K36me3    chr9   111387719  111387819      1
+H3K36me3    chr9   111387739  111387839      1
+H3K36me3    chr9   111387741  111387839      1
+H3K36me3    chr9   111387741  111387841      2
+H3K36me3    chr9   111387748  111387848      3
+
+Column names:
+['chrom', 'chromStart', 'chromEnd', 'count']
+
+Number of unique datasets (stored in row index 'experiment'):
+2
+
+Summary statistics for numeric columns:
+         chromStart      chromEnd         count
+count  4.039600e+04  4.039600e+04  40396.000000
+mean   1.307382e+08  1.307383e+08      1.287578
+std    2.913072e+07  2.913072e+07      0.690361
+min    1.113874e+08  1.113875e+08      1.000000
+25%    1.116832e+08  1.116833e+08      1.000000
+50%    1.118392e+08  1.118393e+08      1.000000
+75%    1.754590e+08  1.754591e+08      1.000000
+max    1.755069e+08  1.755070e+08     11.000000
+
+exec_stderr:
+

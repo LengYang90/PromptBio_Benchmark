@@ -1,0 +1,15 @@
+{
+    "id": "b-8-5",
+    "question": "Use an LSTM neural network to predict daily ICU occupancy over the next 7 days using the past 21 days of hospital admission data. Train on 80% of the time series, validate on 20%. Report test RMSE.",
+    "input_files": [
+        "data/icu_occupancy_timeseries.csv"
+    ],
+    "expected_output": [
+        {
+            "file": "test_performance.csv",
+            "type": "csv",
+            "description": "rows as metrics (1 row), columns should include Metric, Value"
+        }
+    ],
+    "timeout_seconds": 3600
+}

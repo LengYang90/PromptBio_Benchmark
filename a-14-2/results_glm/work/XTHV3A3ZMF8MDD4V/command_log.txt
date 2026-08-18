@@ -1,0 +1,16 @@
+exec_runcode:
+0
+exec_stdout:
+=== PDB Summary ===
+File: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-14-2/result_714/toolsgenie_20260714/data/protein.pdb
+Total chains: 2
+Chain IDs: ['A', 'B']
+Residues per chain:
+  Chain A: 400 residues
+  Chain B: 351 residues
+MTX ligand exists: True
+MTX in chain(s): ['A', 'B']
+Total atom count: 3005
+
+exec_stderr:
+

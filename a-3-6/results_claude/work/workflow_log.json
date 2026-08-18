@@ -1,0 +1,29 @@
+{
+    "test_client_stream_20260430_064000": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/data/K562f_1.fq.gz",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/data/K562f_2.fq.gz"
+        ],
+        "Reference_import": [
+            "/mnt/data/ims/genome/references/wts/STARIndex/",
+            "/mnt/data/ims/genome/references/wts/Annotation/ref_annot.gtf"
+        ],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            },
+            {
+                "key": "CIDKWNNHJ7XVG0FN",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/work/CIDKWNNHJ7XVG0FN/debug_log.json"
+            },
+            {
+                "key": "H75LXO6QJIUJV6OH",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/work/H75LXO6QJIUJV6OH/debug_log.json"
+            }
+        ]
+    }
+}

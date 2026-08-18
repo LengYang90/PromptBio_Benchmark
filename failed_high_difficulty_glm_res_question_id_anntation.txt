@@ -1,0 +1,8 @@
+记录/mnt/data/lengyang/github/PromptBio_Benchmark/log/get_glm_res_data_1.log中没有结果文件的问题的处理过程
+b-9-4 没有结果，原因是 timeout
+a-15-10 没有结果，原因是 timeout
+a-15-9  没有结果是因为结果文件在/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-15-9/result_714中，现在将结果文件夹复制到/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks//a-15-9/result_714 中，
+a-15-8  没有结果，原因是 timeout
+a-15-7 没有结果，原因是 timeout
+a-15-2  没有结果是因为结果文件在/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-15-2/result_714中, 结果文件在/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-15-2/result_79 中
+a-14-1 没有结果是因为结果文件在/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks2/a-14-1/result_714中, 现在将结果文件夹复制到/mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-14-1 中

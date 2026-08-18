@@ -1,0 +1,31 @@
+{
+    "test_client_stream_20260516_065724": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/data/18Protein_SoCe_Tr_detergents_trace_target_decoy.fasta",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/data/BSA2_F1.mzML"
+        ],
+        "Reference_import": [],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            },
+            {
+                "key": "IKCIDKWNNHJ7XVG0",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/work/IKCIDKWNNHJ7XVG0/debug_log.json"
+            },
+            {
+                "key": "LJH75LXO6QJIUJV6",
+                "agent_status": "Failed",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/work/LJH75LXO6QJIUJV6/debug_log.json"
+            },
+            {
+                "key": "YTJXEPQ85JSG65KX",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_10/toolsgenie_20260516/work/YTJXEPQ85JSG65KX/debug_log.json"
+            }
+        ]
+    }
+}

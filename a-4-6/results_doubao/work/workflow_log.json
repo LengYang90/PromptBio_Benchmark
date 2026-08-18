@@ -1,0 +1,23 @@
+{
+    "test_client_stream_20260623_035602": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_11/toolsgenie_20260623/data/Matrix_of_bulk_omics_measurements.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_11/toolsgenie_20260623/data/Matrix_of_cell_type_composition.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_11/toolsgenie_20260623/data/Matrix_of_ovariates.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_11/toolsgenie_20260623/data/Matrix_of_traits.csv"
+        ],
+        "Reference_import": [],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_11/toolsgenie_20260623/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            },
+            {
+                "key": "KCIDKWNNHJ7XVG0F",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-6/result_11/toolsgenie_20260623/work/KCIDKWNNHJ7XVG0F/debug_log.json"
+            }
+        ]
+    }
+}

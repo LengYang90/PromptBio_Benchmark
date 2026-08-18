@@ -1,0 +1,64 @@
+exec_runcode:
+0
+exec_stdout:
+=== SNP Genotype Data ===
+Dimensions: (31, 53)
+SNPs (rows): Index
+Samples (columns): ['tb7216', 'tb7261', 'tb7274', 'tb7286', 'tb7386']...
+Data types: {dtype('int64'): 53}
+Sample values:
+             tb7216  tb7261  tb7274
+rs6678176         1       1       2
+kgp7451999        0       0       1
+kgp11573536       0       0       0
+Unique genotype values: [0, 1, 2]
+
+=== Bulk Omics Measurements (Methylation) ===
+Dimensions: (6, 53)
+CpG sites (rows): Index
+Samples (columns): ['tb7216', 'tb7261', 'tb7274', 'tb7286', 'tb7386']...
+Data types: {dtype('float64'): 53}
+Value range: 0.007 to 0.918
+Sample values:
+              tb7216    tb7261    tb7274
+cg19251656  0.628292  0.591952  0.646255
+cg01433766  0.055684  0.057450  0.035111
+cg13089765  0.731022  0.749422  0.767334
+
+=== Omics Positions ===
+Dimensions: (6, 1)
+Columns: ['Position']
+Data types:
+Position    int64
+dtype: object
+Sample values:
+              Position
+Methylation           
+cg19251656   100000372
+cg01433766   100715098
+cg13089765   101365187
+cg00860370   104068121
+cg05337192   108113367
+
+=== Cell Type Composition ===
+Dimensions: (53, 3)
+Cell types (columns): ['CD4T', 'CD8T', 'NK']
+Samples (rows): Index
+Data types: {dtype('float64'): 3}
+Composition range: 0.000 to 0.885
+Sample values:
+            CD4T      CD8T        NK
+tb7216  0.717141  0.282859  0.000000
+tb7261  0.487205  0.392938  0.119857
+tb7274  0.458717  0.373462  0.167821
+tb7286  0.462711  0.475812  0.061478
+tb7386  0.708830  0.291170  0.000000
+
+=== Sample Alignment Check ===
+SNP samples: 53
+Omics samples: 53
+Composition samples: 53
+Common samples across all datasets: 53
+
+exec_stderr:
+

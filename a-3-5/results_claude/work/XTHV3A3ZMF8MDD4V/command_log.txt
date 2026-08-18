@@ -1,0 +1,91 @@
+exec_runcode:
+0
+exec_stdout:
+=== BAM File Inspection ===
+Sample 1 BAM file:
+@HD	VN:1.4	SO:coordinate
+@SQ	SN:chr16	LN:100000
+@PG	ID:samtools	PN:samtools	VN:1.22.1	CL:samtools view -H /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/data/sample_1.bam
+
+2000 + 0 in total (QC-passed reads + QC-failed reads)
+2000 + 0 primary
+0 + 0 secondary
+0 + 0 supplementary
+0 + 0 duplicates
+0 + 0 primary duplicates
+2000 + 0 mapped (100.00% : N/A)
+2000 + 0 primary mapped (100.00% : N/A)
+2000 + 0 paired in sequencing
+1000 + 0 read1
+1000 + 0 read2
+2000 + 0 properly paired (100.00% : N/A)
+2000 + 0 with itself and mate mapped
+0 + 0 singletons (0.00% : N/A)
+0 + 0 with mate mapped to a different chr
+0 + 0 with mate mapped to a different chr (mapQ>=5)
+
+chr16	100000	2000	0
+*	0	0	0
+
+Sample 2 BAM file:
+@HD	VN:1.4	SO:coordinate
+@SQ	SN:chr16	LN:100000
+@PG	ID:samtools	PN:samtools	VN:1.22.1	CL:samtools view -H /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/data/sample_2.bam
+
+2000 + 0 in total (QC-passed reads + QC-failed reads)
+2000 + 0 primary
+0 + 0 secondary
+0 + 0 supplementary
+0 + 0 duplicates
+0 + 0 primary duplicates
+2000 + 0 mapped (100.00% : N/A)
+2000 + 0 primary mapped (100.00% : N/A)
+2000 + 0 paired in sequencing
+1000 + 0 read1
+1000 + 0 read2
+2000 + 0 properly paired (100.00% : N/A)
+2000 + 0 with itself and mate mapped
+0 + 0 singletons (0.00% : N/A)
+0 + 0 with mate mapped to a different chr
+0 + 0 with mate mapped to a different chr (mapQ>=5)
+
+chr16	100000	2000	0
+*	0	0	0
+
+=== GTF Annotation File Inspection ===
+First 20 lines of GTF file:
+chr16	pseudogene	gene	10001	24100	.	+	.	gene_id "GENE_ID"; gene_name "GENE_NAME"
+chr16	processed_transcript	transcript	10001	24100	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_0"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	10001	10150	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_0"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	13501	13700	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_0"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	18251	18350	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_0"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	20751	21000	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_0"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	24001	24100	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_0"; gene_name "GENE_NAME"
+chr16	processed_transcript	transcript	10001	21000	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_1"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	10001	10150	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_1"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	13501	13700	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_1"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	18251	18350	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_1"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	20751	21000	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_1"; gene_name "GENE_NAME"
+chr16	processed_transcript	transcript	10001	21000	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_2"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	10001	10150	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_2"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	13501	13700	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_2"; gene_name "GENE_NAME"
+chr16	processed_transcript	exon	20751	21000	.	+	.	gene_id "GENE_ID"; transcript_id "TRANSCRIPT_ID_2"; gene_name "GENE_NAME"
+
+GTF file structure summary:
+Total lines:
+16 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/data/annotation.gtf
+
+Feature types in GTF:
+     12 exon
+      3 transcript
+      1 gene
+
+Chromosomes/contigs in GTF:
+     16 chr16
+
+exec_stderr:
+[E::idx_find_and_load] Could not retrieve index file for '/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/data/sample_1.bam'
+samtools idxstats: fail to load index for "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/data/sample_1.bam", reverting to slow method
+[E::idx_find_and_load] Could not retrieve index file for '/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/data/sample_2.bam'
+samtools idxstats: fail to load index for "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/data/sample_2.bam", reverting to slow method
+

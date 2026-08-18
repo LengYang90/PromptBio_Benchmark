@@ -1,0 +1,22 @@
+{
+    "test_client_stream_20260623_061429": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-9/result_11/toolsgenie_20260623/data/Pheno.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-9/result_11/toolsgenie_20260623/data/protein.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-9/result_11/toolsgenie_20260623/data/rna.csv"
+        ],
+        "Reference_import": [],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-9/result_11/toolsgenie_20260623/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            },
+            {
+                "key": "BIKCIDKWNNHJ7XVG",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-9/result_11/toolsgenie_20260623/work/BIKCIDKWNNHJ7XVG/debug_log.json"
+            }
+        ]
+    }
+}

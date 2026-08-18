@@ -1,0 +1,15 @@
+exec_runcode:
+1
+exec_stdout:
+Updating rlang from 1.1.6 to latest version...
+
+exec_stderr:
+Removing package from /opt/conda/lib/R/library
+(as lib is unspecified)
+Updating HTML index of packages in '.Library'
+Making 'packages.html' ... done
+Error in contrib.url(repos, type) : 
+  trying to use CRAN without setting a mirror
+Calls: install.packages -> startsWith -> contrib.url
+Execution halted
+

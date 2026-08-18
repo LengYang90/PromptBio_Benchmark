@@ -1,0 +1,10 @@
+[
+    {
+        "image": "lengyang/pb_bio_tools:2.0.0_mini",
+        "command": "import pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.mixture import GaussianMixture\n\n# Define paths\nINPUT_FILE = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-8/result_11/toolsgenie_20260623/data/ChIP_data.csv\"\nOUTPUT_PLOT = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-4-8/result_11/toolsgenie_20260623/segmentation_model_plot.png\"\n\n# Load data\ndf = pd.read_csv(INPUT_FILE, index_col=0)\nexperiments = df.index.unique()\n\n# Initialize plot\nfig, axes = plt.subplots(nrows=2, ncols=1, figsize=(12, 8))\n\nfor idx, exp in enumerate(experiments):\n    # Process dataset\n    exp_data = df[df.index == exp].copy()\n    exp_data = exp_data.sort_values(\"chromStart\")\n    exp_data[\"midpoint\"] = (exp_data[\"chromStart\"] + exp_data[\"chromEnd\"]) / 2\n    \n    # Fit GMM\n    counts = exp_data[\"count\"].values.reshape(-1, 1)\n    gmm = GaussianMixture(n_components=2, random_state=42)\n    exp_data[\"class\"] = gmm.fit_predict(counts)\n    \n    # Calculate separation threshold\n    mean_vals = sorted(gmm.means_.flatten())\n    threshold = (mean_vals[0] + mean_vals[1]) / 2\n    \n    # Plot\n    ax = axes[idx]\n    ax.scatter(exp_data[\"midpoint\"], exp_data[\"count\"], c=exp_data[\"class\"], cmap=\"viridis\", alpha=0.5, s=10)\n    ax.axhline(y=threshold, color=\"red\", linestyle=\"--\", label=f\"Threshold = {threshold:.2f}\")\n    ax.set_xlabel(\"Genomic Position\")\n    ax.set_ylabel(\"ChIP-seq Signal\")\n    ax.set_title(f\"Experiment: {exp}\")\n    ax.legend()\n\nplt.tight_layout()\nplt.savefig(OUTPUT_PLOT, dpi=300)\nplt.close()\n",
+        "code_type": "python",
+        "exec_runcode": 0,
+        "exec_stdout": "",
+        "exec_stderr": ""
+    }
+]

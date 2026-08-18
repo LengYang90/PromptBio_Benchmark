@@ -1,0 +1,635 @@
+{
+  "task_id": "a-15-2",
+  "task_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-15-2",
+  "result_dir": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-15-2/results_glm",
+  "score": 0,
+  "rationale": "The agent produced and verified a 93-row, tab-separated association file, but its executed analysis is not the reference cell-type-specific cis-QTL procedure. The reference calls omicwas::ctcisQTL with the full genotype, position, composition, methylation, and covariate matrices, then writes that procedure’s output. In contrast, the agent first selected 1-Mb cis pairs and then, separately for each cell type, fit an ordinary least-squares model with only that cell type’s proportion and extracted the genotype×proportion interaction. This substitutes a single-proportion interaction test for ctcisQTL’s cell-type-specific model, leading to systematically different effect estimates, test statistics, and p-values. The discrepancy is substantive rather than a harmless alternate output representation: for example, rs6678176–cg19251656–CD4T is −0.00320 (p=0.757) in the reference but −0.16628 (p=0.261) in the agent output; the agent also reports an extreme −14.41 estimate for rs4292979–cg05337192–CD4T. Thus execution is demonstrated, but it demonstrates a materially different and insufficiently specified method for the requested cell-type-specific cis-QTL effects.",
+  "final_stage": "method_and_execution_audit",
+  "evaluator": {
+    "model": "gpt-5.6-terra",
+    "base_url": "https://api.openai.com/v1",
+    "api_mode": "responses",
+    "architecture": "LangGraph fixed routing with stage-scoped read-only Deep Agents",
+    "strategy": "all declared output pairs assessed together; conditional method-and-execution audit"
+  },
+  "scope": {
+    "original_input_files_available": false,
+    "scripts_executed": false,
+    "network_access_used_by_agent_tools": false,
+    "task_files_modified": false,
+    "undeclared_result_files_used_as_evidence": false
+  },
+  "output_files": [
+    {
+      "file": "mQTL_results.txt",
+      "description": "rows as SNP-CpG-celltype associations, columns should include SNP (term), CpG site (response), celltype, estimate, statistic, p.value",
+      "type": "txt",
+      "reference_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-15-2/ref_answer/mQTL_results.txt",
+      "agent_path": "/Users/yang.leng/project/github/PromptBio_Benchmark/a-15-2/results_glm/mQTL_results.txt",
+      "reference_exists": true,
+      "agent_exists": true
+    }
+  ],
+  "file_manifest": [
+    {
+      "path": "a-15-2/ref_answer/mQTL_results.txt",
+      "roles": [
+        "reference_answer"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 7811,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "d1355b4dd7e5f5e3b0309d7df159baf6c0e8b9a00b640de588a86ee0e7fee79c"
+    },
+    {
+      "path": "a-15-2/ref_script/QTL.R",
+      "roles": [
+        "reference_script"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 988,
+      "suffix": ".r",
+      "mime_type": "application/octet-stream",
+      "sha256": "403bf24fe634cf02c31c7689e00308937267f840c154bc91c9e1de3eb8266cf9"
+    },
+    {
+      "path": "a-15-2/results_glm/log.out",
+      "roles": [
+        "agent_runtime_log"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 76088,
+      "suffix": ".out",
+      "mime_type": "application/octet-stream",
+      "sha256": "98d0c0c06f98b2168843d8aaf1c48cc77f15d627ff79217c9e2d00106938a481"
+    },
+    {
+      "path": "a-15-2/results_glm/mQTL_results.txt",
+      "roles": [
+        "agent_output"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 8047,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "0268d311d92e9380843f0944300f5309de04822c93eb758e8c52e39789cdc57a"
+    },
+    {
+      "path": "a-15-2/results_glm/work/3GDPPQ0Y9DOM5IGQ/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2018,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "7ee2b3533cc874f14d7ae6330f5291c6900b9f93b0a8c03605151d96a6845dc4"
+    },
+    {
+      "path": "a-15-2/results_glm/work/3GDPPQ0Y9DOM5IGQ/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1372,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "be62ed60c2f282970b9e1f2b3c496837a8d4c1012ecb36a5b6950750b92738b2"
+    },
+    {
+      "path": "a-15-2/results_glm/work/3GDPPQ0Y9DOM5IGQ/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 3772,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "a27671a8b62cdf21b52e705e31385471f41bd4bb521e25eecc4e258b2ed2385a"
+    },
+    {
+      "path": "a-15-2/results_glm/work/874FRHOCN9J2QP89/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 991,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "004443765864c4e326e4bed598222837082488bec1b61261ca801090d2090c4c"
+    },
+    {
+      "path": "a-15-2/results_glm/work/874FRHOCN9J2QP89/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1977,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "8c299306770f4e9a40f89d0f891b5af91701333bf72f6f1059f6e20be3880f07"
+    },
+    {
+      "path": "a-15-2/results_glm/work/874FRHOCN9J2QP89/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 3255,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "1d8295fcf2a3b7232469bd1ae8eff6d6275dd12cf3c6babe9561b47b4d8e3d4b"
+    },
+    {
+      "path": "a-15-2/results_glm/work/HL9XPSEIMVIHCWI6/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1511,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "3e05a2d42b9fef8cb9b2717f145c5076b8a18f76f74a73e909eab29906ba722d"
+    },
+    {
+      "path": "a-15-2/results_glm/work/HL9XPSEIMVIHCWI6/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 5623,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "485b99aa61f93b541160fe1eb149da92385eaaea91bc08c4b3dc44f57b634a14"
+    },
+    {
+      "path": "a-15-2/results_glm/work/HL9XPSEIMVIHCWI6/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 7525,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "d48a709a2c8038600aa76a4d35e92dce862cd1523f948db8a5fc4dcec2f44c5e"
+    },
+    {
+      "path": "a-15-2/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1080,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "22e9f2c3f037941762bd240a399747af08bff95b1a3a87c7c5ff9007b1bdf0ea"
+    },
+    {
+      "path": "a-15-2/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 5126,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "9f9ae0c5c13f8cc942681f00268f5636e74d1e71a8d75f413b80ee913fd521d1"
+    },
+    {
+      "path": "a-15-2/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 6580,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "cf5fdf23a9e8676526ea17d92c5683b17498d61d35d0c2b252595639d96215f4"
+    },
+    {
+      "path": "a-15-2/results_glm/work/ZBIKCIDKWNNHJ7XV/command.sh",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 695,
+      "suffix": ".sh",
+      "mime_type": "application/x-sh",
+      "sha256": "e555afb52299c3248473a204a9cda1fc2ec97bb3cbde8a4d25c9e530970a0fd1"
+    },
+    {
+      "path": "a-15-2/results_glm/work/ZBIKCIDKWNNHJ7XV/command_log.txt",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 1790,
+      "suffix": ".txt",
+      "mime_type": "text/plain",
+      "sha256": "a2d3a153ac8d96e4d5e5083001e9201e9900dfd7e6b156ba24eb073c18367281"
+    },
+    {
+      "path": "a-15-2/results_glm/work/ZBIKCIDKWNNHJ7XV/debug_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2720,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "61afbb629189d16aca0a50dcab4fbe2b3e2631b164351697d898b7627ade1f85"
+    },
+    {
+      "path": "a-15-2/results_glm/work/workflow_log.json",
+      "roles": [
+        "agent_work"
+      ],
+      "available_in_stages": [
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 2622,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "d2feb0af874d303e56d082813d03fe50de1b03442e1848d44f82052649f6e693"
+    },
+    {
+      "path": "a-15-2/task.json",
+      "roles": [
+        "task_definition"
+      ],
+      "available_in_stages": [
+        "initial_assessment",
+        "method_and_execution_audit"
+      ],
+      "size_bytes": 769,
+      "suffix": ".json",
+      "mime_type": "application/json",
+      "sha256": "1e47a71f68e06627d734f0b92254d9c9aac07d97633f8149ef83413b9c322dd0"
+    }
+  ],
+  "initial_assessment": {
+    "verdict": "fail",
+    "reason": "Both files contain 93 association rows for the same sampled SNP–CpG–celltype combinations, but the reported estimates, test statistics, and p-values materially differ throughout; therefore the declared result pair does not establish completion consistent with the reference.",
+    "file_observations": [
+      {
+        "file": "mQTL_results.txt",
+        "assessment": "different",
+        "reason": "The reference uses columns term and response while the agent uses SNP and CpG (semantically corresponding), and both have 93 rows, but values for matching associations diverge substantially. For example, rs6678176–cg19251656–CD4T is estimate −0.0031976, statistic −0.3112, p=0.7569 in the reference versus estimate −0.1663, statistic −1.1381, p=0.2610 in the agent result; kgp7451999–cg01433766–NK is −0.02721, −3.9211, p=0.0002689 versus −0.1727, −3.3933, p=0.001430.",
+        "evidence_ids": [
+          "I-0002",
+          "I-0001"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "I-0002",
+      "I-0001"
+    ]
+  },
+  "audit_assessment": {
+    "score": 0,
+    "reason": "The agent produced and verified a 93-row, tab-separated association file, but its executed analysis is not the reference cell-type-specific cis-QTL procedure. The reference calls omicwas::ctcisQTL with the full genotype, position, composition, methylation, and covariate matrices, then writes that procedure’s output. In contrast, the agent first selected 1-Mb cis pairs and then, separately for each cell type, fit an ordinary least-squares model with only that cell type’s proportion and extracted the genotype×proportion interaction. This substitutes a single-proportion interaction test for ctcisQTL’s cell-type-specific model, leading to systematically different effect estimates, test statistics, and p-values. The discrepancy is substantive rather than a harmless alternate output representation: for example, rs6678176–cg19251656–CD4T is −0.00320 (p=0.757) in the reference but −0.16628 (p=0.261) in the agent output; the agent also reports an extreme −14.41 estimate for rs4292979–cg05337192–CD4T. Thus execution is demonstrated, but it demonstrates a materially different and insufficiently specified method for the requested cell-type-specific cis-QTL effects.",
+    "reference_method": "The reference loads all six matrices and runs omicwas::ctcisQTL(X, Xpos, W, Y, Ypos, C=C), then reads and exports its generated ct-cisQTL association table.",
+    "agent_method": "The agent identifies SNP–CpG pairs within 1 Mb, then executes statsmodels OLS separately for every pair and cell type: methylation ~ genotype + celltype_prop + genotype:celltype_prop + PC1 + PC2 + PC3; it reports the genotype:celltype_prop coefficient, t statistic, and p-value.",
+    "file_observations": [
+      {
+        "file": "mQTL_results.txt",
+        "assessment": "different",
+        "reason": "Both outputs contain 93 rows covering the same SNP–CpG–celltype combinations and semantically equivalent identifier columns (reference term/response versus agent SNP/CpG), but their numerical associations are materially different throughout. The reference reports rs6678176–cg19251656–CD4T estimate −0.0031976, statistic −0.3112, p=0.7569, whereas the agent reports −0.1663, −1.1381, p=0.2610. The agent file is shown by its execution log to be the output of the alternate OLS interaction analysis, not ctcisQTL.",
+        "evidence_ids": [
+          "A-0003",
+          "A-0002",
+          "A-0016",
+          "A-0011"
+        ]
+      }
+    ],
+    "evidence_ids": [
+      "A-0001",
+      "A-0016",
+      "A-0011",
+      "A-0003",
+      "A-0002"
+    ],
+    "confidence": "high"
+  },
+  "evidence_inventory": [
+    {
+      "evidence_id": "I-0001",
+      "path": "a-15-2/results_glm/mQTL_results.txt",
+      "locator": "header and first 50 data rows of 93",
+      "extractor": "inspect_table",
+      "sha256": "0268d311d92e9380843f0944300f5309de04822c93eb758e8c52e39789cdc57a",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "I-0002",
+      "path": "a-15-2/ref_answer/mQTL_results.txt",
+      "locator": "header and first 50 data rows of 93",
+      "extractor": "inspect_table",
+      "sha256": "d1355b4dd7e5f5e3b0309d7df159baf6c0e8b9a00b640de588a86ee0e7fee79c",
+      "status": "partial",
+      "notes": [
+        "Use read_text for other row ranges."
+      ]
+    },
+    {
+      "evidence_id": "A-0001",
+      "path": "a-15-2/ref_script/QTL.R",
+      "locator": "lines 1-18 of 18",
+      "extractor": "read_text",
+      "sha256": "403bf24fe634cf02c31c7689e00308937267f840c154bc91c9e1de3eb8266cf9",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0002",
+      "path": "a-15-2/results_glm/mQTL_results.txt",
+      "locator": "lines 1-94 of 94",
+      "extractor": "read_text",
+      "sha256": "0268d311d92e9380843f0944300f5309de04822c93eb758e8c52e39789cdc57a",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0003",
+      "path": "a-15-2/ref_answer/mQTL_results.txt",
+      "locator": "lines 1-94 of 94",
+      "extractor": "read_text",
+      "sha256": "d1355b4dd7e5f5e3b0309d7df159baf6c0e8b9a00b640de588a86ee0e7fee79c",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0004",
+      "path": "a-15-2/task.json",
+      "locator": "JSON pointer /",
+      "extractor": "inspect_json",
+      "sha256": "1e47a71f68e06627d734f0b92254d9c9aac07d97633f8149ef83413b9c322dd0",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0005",
+      "path": "a-15-2/results_glm/work/workflow_log.json",
+      "locator": "lines 1-40 of 40",
+      "extractor": "read_text",
+      "sha256": "d2feb0af874d303e56d082813d03fe50de1b03442e1848d44f82052649f6e693",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0006",
+      "path": "a-15-2/results_glm/work/HL9XPSEIMVIHCWI6/command.sh",
+      "locator": "lines 1-37 of 37",
+      "extractor": "read_text",
+      "sha256": "3e05a2d42b9fef8cb9b2717f145c5076b8a18f76f74a73e909eab29906ba722d",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0007",
+      "path": "a-15-2/results_glm/work/HL9XPSEIMVIHCWI6/command_log.txt",
+      "locator": "lines 1-148 of 148",
+      "extractor": "read_text",
+      "sha256": "485b99aa61f93b541160fe1eb149da92385eaaea91bc08c4b3dc44f57b634a14",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0008",
+      "path": "a-15-2/results_glm/log.out",
+      "locator": "lines 1-300 of 657",
+      "extractor": "read_text",
+      "sha256": "98d0c0c06f98b2168843d8aaf1c48cc77f15d627ff79217c9e2d00106938a481",
+      "status": "partial",
+      "notes": [
+        "Output was limited; request the next line range for additional text."
+      ]
+    },
+    {
+      "evidence_id": "A-0009",
+      "path": "a-15-2/results_glm/work/874FRHOCN9J2QP89/command.sh",
+      "locator": "lines 1-30 of 30",
+      "extractor": "read_text",
+      "sha256": "004443765864c4e326e4bed598222837082488bec1b61261ca801090d2090c4c",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0010",
+      "path": "a-15-2/results_glm/log.out",
+      "locator": "search query 'mQTL_results', 10 match(es)",
+      "extractor": "search_text",
+      "sha256": "98d0c0c06f98b2168843d8aaf1c48cc77f15d627ff79217c9e2d00106938a481",
+      "status": "partial",
+      "notes": [
+        "Additional matches were omitted."
+      ]
+    },
+    {
+      "evidence_id": "A-0011",
+      "path": "a-15-2/results_glm/work/3GDPPQ0Y9DOM5IGQ/command_log.txt",
+      "locator": "lines 1-29 of 29",
+      "extractor": "read_text",
+      "sha256": "be62ed60c2f282970b9e1f2b3c496837a8d4c1012ecb36a5b6950750b92738b2",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0012",
+      "path": "a-15-2/results_glm/work/ZBIKCIDKWNNHJ7XV/command.sh",
+      "locator": "lines 1-20 of 20",
+      "extractor": "read_text",
+      "sha256": "e555afb52299c3248473a204a9cda1fc2ec97bb3cbde8a4d25c9e530970a0fd1",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0013",
+      "path": "a-15-2/results_glm/work/874FRHOCN9J2QP89/command_log.txt",
+      "locator": "lines 1-60 of 60",
+      "extractor": "read_text",
+      "sha256": "8c299306770f4e9a40f89d0f891b5af91701333bf72f6f1059f6e20be3880f07",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0014",
+      "path": "a-15-2/results_glm/work/XTHV3A3ZMF8MDD4V/command.sh",
+      "locator": "lines 1-22 of 22",
+      "extractor": "read_text",
+      "sha256": "22e9f2c3f037941762bd240a399747af08bff95b1a3a87c7c5ff9007b1bdf0ea",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0015",
+      "path": "a-15-2/results_glm/log.out",
+      "locator": "search query 'statsmodels', 2 match(es)",
+      "extractor": "search_text",
+      "sha256": "98d0c0c06f98b2168843d8aaf1c48cc77f15d627ff79217c9e2d00106938a481",
+      "status": "complete",
+      "notes": []
+    },
+    {
+      "evidence_id": "A-0016",
+      "path": "a-15-2/results_glm/work/3GDPPQ0Y9DOM5IGQ/command.sh",
+      "locator": "lines 1-52 of 52",
+      "extractor": "read_text",
+      "sha256": "7ee2b3533cc874f14d7ae6330f5291c6900b9f93b0a8c03605151d96a6845dc4",
+      "status": "complete",
+      "notes": []
+    }
+  ],
+  "coverage": {
+    "by_stage": {
+      "initial_assessment": {
+        "files_discovered": 3,
+        "files_inspected": 2,
+        "files_not_inspected": [
+          "a-15-2/task.json"
+        ],
+        "partial_evidence_paths": [
+          "a-15-2/ref_answer/mQTL_results.txt",
+          "a-15-2/results_glm/mQTL_results.txt"
+        ]
+      },
+      "method_and_execution_audit": {
+        "files_discovered": 21,
+        "files_inspected": 14,
+        "files_not_inspected": [
+          "a-15-2/results_glm/work/3GDPPQ0Y9DOM5IGQ/debug_log.json",
+          "a-15-2/results_glm/work/874FRHOCN9J2QP89/debug_log.json",
+          "a-15-2/results_glm/work/HL9XPSEIMVIHCWI6/debug_log.json",
+          "a-15-2/results_glm/work/XTHV3A3ZMF8MDD4V/command_log.txt",
+          "a-15-2/results_glm/work/XTHV3A3ZMF8MDD4V/debug_log.json",
+          "a-15-2/results_glm/work/ZBIKCIDKWNNHJ7XV/command_log.txt",
+          "a-15-2/results_glm/work/ZBIKCIDKWNNHJ7XV/debug_log.json"
+        ],
+        "partial_evidence_paths": [
+          "a-15-2/results_glm/log.out"
+        ]
+      }
+    },
+    "evidence_paths_discovered": 14,
+    "evidence_paths_inspected": 14,
+    "partial_evidence_paths": [
+      "a-15-2/ref_answer/mQTL_results.txt",
+      "a-15-2/results_glm/log.out",
+      "a-15-2/results_glm/mQTL_results.txt"
+    ]
+  },
+  "token_usage": {
+    "total_input_tokens": 75985,
+    "total_output_tokens": 2475,
+    "total_tokens": 78460,
+    "total_cached_input_tokens": 33862,
+    "calls": [
+      {
+        "stage": "initial_assessment",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1969,
+        "output_tokens": 107,
+        "total_tokens": 2076,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "initial_assessment",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 6515,
+        "output_tokens": 315,
+        "total_tokens": 6830,
+        "cached_input_tokens": 1847,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 1,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2339,
+        "output_tokens": 16,
+        "total_tokens": 2355,
+        "cached_input_tokens": 0,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 2,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4698,
+        "output_tokens": 436,
+        "total_tokens": 5134,
+        "cached_input_tokens": 2217,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 3,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 25344,
+        "output_tokens": 510,
+        "total_tokens": 25854,
+        "cached_input_tokens": 4576,
+        "usage_reported_by_provider": true
+      },
+      {
+        "stage": "method_and_execution_audit",
+        "call_index": 4,
+        "model": "gpt-5.6-terra",
+        "input_tokens": 35120,
+        "output_tokens": 1091,
+        "total_tokens": 36211,
+        "cached_input_tokens": 25222,
+        "usage_reported_by_provider": true
+      }
+    ]
+  }
+}

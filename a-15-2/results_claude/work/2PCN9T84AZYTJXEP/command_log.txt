@@ -1,0 +1,48 @@
+exec_runcode:
+0
+exec_stdout:
+[1] "SNP position file structure:"
+             Position
+rs6678176   100000827
+kgp7451999  100179050
+kgp11573536 100443462
+kgp11301880 100909699
+kgp3991027  101105310
+kgp777601   101468558
+[1] "Position"
+[1] "Methylation position file structure:"
+            Position
+cg19251656 100000372
+cg01433766 100715098
+cg13089765 101365187
+cg00860370 104068121
+cg05337192 108113367
+cg11481351 109265387
+[1] "Position"
+[1] "Found 53 common samples"
+[1] "Formatted matrices for 53 common samples"
+[1] "SNP matrix: 53 samples x 31 SNPs"
+[1] "Methylation matrix: 53 samples x 6 CpGs"
+[1] "Cell composition matrix: 53 samples x 3 cell types"
+[1] "Covariates matrix: 53 samples x 3 covariates"
+[1] "Position data frames created:"
+[1] "SNP positions: 31 entries"
+[1] "Methylation positions: 6 entries"
+
+exec_stderr:
+
+Attaching package: dplyr
+
+The following objects are masked from package:data.table:
+
+    between, first, last
+
+The following objects are masked from package:stats:
+
+    filter, lag
+
+The following objects are masked from package:base:
+
+    intersect, setdiff, setequal, union
+
+

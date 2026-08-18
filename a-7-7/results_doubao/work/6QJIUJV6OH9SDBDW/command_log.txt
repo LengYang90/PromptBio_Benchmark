@@ -1,0 +1,15 @@
+exec_runcode:
+1
+exec_stdout:
+
+ Created:  comet.params.new
+
+
+exec_stderr:
+Missing text for parameter option -P<params>.  Ignored.
+Missing text for parameter option -P<params>.  Ignored.
+
+ Comet version 2024.01 rev. 0 (f00df0c)
+
+ Error - input file "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-7-7/result_11/toolsgenie_20260623/BSA2_F1_raw.txt" not found.
+

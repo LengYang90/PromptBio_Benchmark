@@ -1,0 +1,73 @@
+exec_runcode:
+0
+exec_stdout:
+gtf: 0.022327423095703125
+There are 1 distinct gene ID in the gtf file
+There are 3 distinct transcript ID in the gtf file
+There are 0 one-transcript genes in the gtf file
+There are 12 exons in the gtf file
+There are 0 one-exon transcripts in the gtf file
+There are 0 one-transcript genes with only one exon in the transcript
+Average number of transcripts per gene is 3.000000
+Average number of exons per transcript is 4.000000
+Average number of exons per transcript excluding one-exon tx is 4.000000
+Average number of gene per geneGroup is 1.000000
+statistic: 2.0503997802734375e-05
+
+read outcome totals across all BAMs
+USED: 4000
+NOT_PAIRED: 0
+NOT_NH_1: 0
+NOT_EXPECTED_CIGAR: 0
+NOT_EXPECTED_READ_LENGTH: 0
+NOT_EXPECTED_STRAND: 0
+EXON_NOT_MATCHED_TO_ANNOTATION: 0
+JUNCTION_NOT_MATCHED_TO_ANNOTATION: 0
+CLIPPED: 0
+total: 4000
+outcomes by BAM written to: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/tmp/2026-04-30-06_37_33_166403_read_outcomes_by_bam.txt
+
+novel: 0.007511138916015625
+The splicing graph and candidate read have been saved into /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/tmp/2026-04-30-06_37_33_166403_*.rmats
+save: 0.00039124488830566406
+loadsg: 0.002257823944091797
+
+==========
+Done processing each gene from dictionary to compile AS events
+Found 1 exon skipping events
+Found 0 exon MX events
+Found 0 alt SS events
+There are 0 alt 3 SS events and 0 alt 5 SS events.
+Found 0 RI events
+==========
+
+ase: 0.0003879070281982422
+count: 0.0006384849548339844
+Processing count files.
+Done processing count files.
+Generated rMATS JC output files:
+-rw-r--r--    1 root     1011           230 Apr 30 06:37 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/A3SS.MATS.JC.txt
+-rw-r--r--    1 root     1011           230 Apr 30 06:37 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/A5SS.MATS.JC.txt
+-rw-r--r--    1 root     1011           268 Apr 30 06:37 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/MXE.MATS.JC.txt
+-rw-r--r--    1 root     1011           236 Apr 30 06:37 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/RI.MATS.JC.txt
+-rw-r--r--    1 root     1011           374 Apr 30 06:37 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-5/result_2/toolsgenie_20260430/SE.MATS.JC.txt
+
+Summary of alternative splicing events detected:
+File: A3SS.MATS.JC.txt
+Total events: 0
+
+File: A5SS.MATS.JC.txt
+Total events: 0
+
+File: MXE.MATS.JC.txt
+Total events: 0
+
+File: RI.MATS.JC.txt
+Total events: 0
+
+File: SE.MATS.JC.txt
+Total events: 1
+
+
+exec_stderr:
+

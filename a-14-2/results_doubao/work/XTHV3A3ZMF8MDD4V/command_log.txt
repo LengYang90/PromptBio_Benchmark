@@ -1,0 +1,14 @@
+exec_runcode:
+0
+exec_stdout:
+
+exec_stderr:
+/opt/conda/lib/python3.12/site-packages/Bio/PDB/StructureBuilder.py:100: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3310.
+  warnings.warn(
+/opt/conda/lib/python3.12/site-packages/Bio/PDB/StructureBuilder.py:100: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3344.
+  warnings.warn(
+/opt/conda/lib/python3.12/site-packages/Bio/PDB/StructureBuilder.py:100: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3379.
+  warnings.warn(
+/opt/conda/lib/python3.12/site-packages/Bio/PDB/StructureBuilder.py:100: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3618.
+  warnings.warn(
+

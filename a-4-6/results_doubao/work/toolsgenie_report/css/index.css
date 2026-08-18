@@ -1,0 +1,356 @@
+/* 打印样式和页码设置 */
+@page {
+  size: A4;
+  margin: 2cm;
+  @bottom-center {
+    content: counter(page);
+  }
+}
+
+:root {
+  --main-color: #47207c;
+  /* --sub-color: #d8c4e5; */
+  --sub-color: #7e57c5;
+  --bg-color: #f5f5f5;
+  --border-color: #2f2f2f;
+  --text-color: #000000;
+  --sub-text-color: #666666;
+  --color-canvas-default: #ffffff;
+  --color-canvas-subtle: #f8f8f8;
+  --color-border-default: #333333;
+  --color-border-muted: #e0e0e0;
+}
+
+body {
+  font-family: 'Merriweather', sans-serif;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 1.5;
+  font-size: 16px;
+  overflow-x: hidden;
+  width: 940px;
+  background-color: var(--color-canvas-subtle);
+  word-break: break-word;
+  text-align: justify;
+}
+
+#app {
+  background-color: var(--color-canvas-default);
+}
+
+.mg-r-1 {
+  margin-right: 1rem;
+}
+
+.mg-t-30 {
+  margin-top: 30px;
+}
+
+.sub-title {
+  font-size: 14px;
+  text-align: center;
+  color: var(--sub-text-color);
+}
+
+/* 页眉 */
+.logo-header {
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* 封面 */
+.cover {
+  text-align: center;
+  color: var(--main-color);
+  page-break-before: always; /* 将封面单独占一页 */
+  page-break-inside: avoid; /* 防止封面被分页 */
+  min-height: var(--page-height);
+  font-weight: 700;
+}
+
+.cover.end {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cover-header {
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 2%;
+}
+
+.cover-header .left {
+  width: 0;
+  height: 0;
+  border-left: 8vh solid #d8c4e5;
+  border-right: 8vh solid transparent;
+  border-top: 8vh solid #d8c4e5;
+  border-bottom: 8vh solid transparent;
+  opacity: .5;
+}
+
+.cover-header .logo {
+  width: 45%;
+}
+
+.report-title {
+  margin-top: 15rem;
+  font-size: 2.8rem;
+}
+
+.cover-content {
+  font-size: 20px;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  /* gap: 1.5rem; */
+  width: max-content;
+  margin-left: 30px;
+  transform: translateY(260px);
+  text-align: left;
+}
+
+.label-list, .value-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-list {
+  margin-right: 1.5rem;
+}
+
+.value-list {
+  color: var(--text-color);
+}
+
+/* .cover-content .item {
+  align-self: flex-start;
+  display: flex;
+  gap: 1rem;
+  width: -webkit-fill-available;
+}
+
+.cover-content .item .value {
+  flex: 1;
+  padding: 0 1rem;
+  color: var(--text-color);
+} */
+
+.cover-bottom {
+  font-size: 0;
+}
+
+.cover-bottom img {
+  width: 100%;
+}
+
+/* 目录 */
+.catalog {
+  page-break-before: always;
+  page-break-inside: avoid;
+  min-height: var(--page-height);
+  padding: 30px 40px;
+  background-color: #f2f2f2;
+}
+.cata-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.cata-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.first-cata:not(:first-child) {
+  margin-top: 20px;
+}
+.other-cata {
+  margin-top: 6px;
+}
+.cata-link {
+  color: var(--text-color);
+  text-decoration: none;
+  display: inline-block;
+  padding-left: 10px;
+  font-weight: 600;
+}
+.cata-link:hover {
+  text-decoration: underline;
+}
+
+/* 正文 */
+.content {
+  padding: 30px 40px;
+}
+
+.chapter-title {
+  margin-top: 20px;
+}
+
+/* 文本 */
+.text.large {
+  font-size: 18px;
+}
+
+.text.medium {
+  font-size: 16px;
+}
+
+.text.small {
+  font-size: 14px;
+}
+
+/* 图片 */
+.chapter-img {
+  margin: 30px auto 10px;
+  display: block;
+}
+
+.chapter-img.large {
+  width: 100%;
+}
+
+.chapter-img.medium {
+  width: 60%;
+}
+
+.chapter-img.small {
+  width: 35%;
+}
+
+/* 列表 */
+.chapter-items {
+  margin: 20px 0;
+}
+
+.chapter-items li:not(:last-child) {
+  margin-bottom: 0rem;
+}
+
+/* 表格 */
+.chapter-table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: 100%;
+  margin: 10px 0 30px;
+  max-height: 420px;
+  overflow: auto;
+}
+.chapter-table tbody {
+  display: table;
+  width: calc(100% - 2px);
+  table-layout: auto;
+}
+
+.chapter-table td,
+.chapter-table th {
+  padding: 0;
+}
+.chapter-table th {
+  font-weight: 600;
+}
+.chapter-table th,
+.chapter-table td {
+  padding: 6px 13px;
+  border: 1px solid var(--color-border-default);
+  text-align: left;
+  min-width: 70px;
+}
+.chapter-table td > :last-child {
+  margin-bottom: 0;
+}
+.chapter-table tr {
+  background-color: var(--color-canvas-default);
+  border-top: 1px solid var(--color-border-muted);
+}
+.chapter-table tr:first-child {
+  position: sticky;
+  top: 1px;
+  box-shadow: 0 -1px var(--color-border-default), inset 0 -1px var(--color-border-default);
+}
+.chapter-table .row:nth-child(odd) {
+  background-color: var(--color-canvas-subtle);
+}
+
+/* 左边导航栏 */
+.menu-btn {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  background-color: var(--color-canvas-default);
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transform: translateX(-100%);
+  transition: all 0.3s;
+}
+
+.menu-btn:hover {
+  color: var(--main-color);
+}
+
+.sidebar {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  padding: 20px 20px 0;
+  background-color: var(--color-canvas-default);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s;
+}
+
+.sidebar .list {
+  overflow-y: auto;
+}
+
+.sidebar.hidden {
+  left: -300px;
+}
+
+.sidebar .close-btn {
+  text-align: right;
+}
+
+.sidebar .close-btn i {
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.sidebar .close-btn i:hover{
+  background-color: var(--bg-color);
+}
+
+.sidebar .cata-link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80%;
+}
+
+.sidebar .cata-link.active {
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+@media print {
+  .sidebar {
+    display: none;
+  }
+}

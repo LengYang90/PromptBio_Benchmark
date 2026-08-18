@@ -1,0 +1,10 @@
+[
+    {
+        "image": "lengyang/pb_bio_tools:2.0.0_mini",
+        "command": "from Bio.PDB import PDBParser\n\npdb_path = \"/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-14-2/result_714/toolsgenie_20260714/data/protein.pdb\"\n\nparser = PDBParser(QUIET=True)\nstructure = parser.get_structure(\"protein\", pdb_path)\n\nchains = list(structure.get_chains())\nchain_ids = [c.id for c in chains]\nn_chains = len(chains)\n\nresidues_per_chain = {}\nmtx_chains = []\ntotal_atoms = 0\n\nfor chain in chains:\n    residues = list(chain.get_residues())\n    residues_per_chain[chain.id] = len(residues)\n    for res in residues:\n        if res.resname.strip() == \"MTX\":\n            mtx_chains.append(chain.id)\n    total_atoms += len(list(chain.get_atoms()))\n\nmtx_chains = sorted(set(mtx_chains))\nmtx_exists = len(mtx_chains) > 0\n\nprint(\"=== PDB Summary ===\")\nprint(f\"File: {pdb_path}\")\nprint(f\"Total chains: {n_chains}\")\nprint(f\"Chain IDs: {chain_ids}\")\nprint(\"Residues per chain:\")\nfor cid, n in residues_per_chain.items():\n    print(f\"  Chain {cid}: {n} residues\")\nprint(f\"MTX ligand exists: {mtx_exists}\")\nif mtx_exists:\n    print(f\"MTX in chain(s): {mtx_chains}\")\nprint(f\"Total atom count: {total_atoms}\")\n",
+        "code_type": "python",
+        "exec_runcode": 0,
+        "exec_stdout": "=== PDB Summary ===\nFile: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-14-2/result_714/toolsgenie_20260714/data/protein.pdb\nTotal chains: 2\nChain IDs: ['A', 'B']\nResidues per chain:\n  Chain A: 400 residues\n  Chain B: 351 residues\nMTX ligand exists: True\nMTX in chain(s): ['A', 'B']\nTotal atom count: 3005\n",
+        "exec_stderr": ""
+    }
+]

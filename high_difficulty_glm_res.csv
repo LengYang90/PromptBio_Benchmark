@@ -1,0 +1,46 @@
+id,agent,avg_similarity,equivalent,completion,file_count,success_count,errors,input_tokens,output_tokens,duration_seconds,exit_code,timed_out
+a-2-15,toolsgenie,0.94,1,1,1,1,,40492,9169,176.795655,0,FALSE
+a-3-5,toolsgenie,0.0,0,0,3,0,Candidate file not found: None,,,1215.259673,1,FALSE
+a-3-6,toolsgenie,0.0,0,0,2,0,Candidate file not found: None,,,106.118565,1,FALSE
+a-3-9,toolsgenie,0.875,1,1,1,1,,26964,13618,896.458747,0,FALSE
+a-3-13,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,8.641201,1,FALSE
+a-4-6,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,8.649774,1,FALSE
+a-4-8,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,8.609323,1,FALSE
+a-5-3,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,3600.136289,124,TRUE
+a-5-10,toolsgenie,0.9792363087698599,1,1,1,1,,,,3600.04344,124,TRUE
+a-7-7,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,3600.161524,124,TRUE
+a-7-8,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,3600.108751,124,TRUE
+a-7-9,toolsgenie,0.9233333333333333,1,1,3,3,,68542,13819,294.859099,0,FALSE
+a-9-1,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,3600.218701,124,TRUE
+a-9-10,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,492.466037,1,FALSE
+a-10-3,toolsgenie,0.6666666666666666,1,1,1,1,,23748,12326,206.584223,0,FALSE
+a-11-2,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,8.611431,1,FALSE
+a-11-8,toolsgenie,0.37,0,1,2,1,Candidate file has no data: /mnt/data/lengyang/youjia_project/autoba/test_babench/tasks/a-11-8/result_79/toolsgenie_20260709/cross_layer_hubs.csv,,,3600.267718,124,TRUE
+a-13-3,toolsgenie,0.0,0,0,2,0,Candidate file not found: None,,,300.906337,1,FALSE
+a-13-4,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,3600.193549,124,TRUE
+a-13-5,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,28940,12604,377.532454,0,FALSE
+a-14-1,toolsgenie,0.0,0,0,5,0,Candidate file not found: None,114301,34505,1934.367759,0,FALSE
+a-14-2,toolsgenie,0.0,0,1,1,1,,29936,9424,208.385855,0,FALSE
+a-15-2,toolsgenie,0.2686311100164566,0,1,1,1,,70849,16084,333.369391,0,FALSE
+a-15-3,toolsgenie,0.998701311196826,1,1,2,2,,30874,9500,145.349931,0,FALSE
+a-15-6,toolsgenie,0.8888888888888888,1,1,1,1,,24887,10936,240.68999,0,FALSE
+a-15-7,toolsgenie,0.0,0,0,2,0,Candidate file not found: None,,,3600.10414,124,TRUE
+a-15-8,toolsgenie,0.0,0,0,2,0,Candidate file not found: None,,,3600.162256,124,TRUE
+a-15-9,toolsgenie,0.17,0,1,2,2,,38653,10182,492.676097,0,FALSE
+a-15-10,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,3600.225407,124,TRUE
+b-4-13,toolsgenie,0.7642977396044842,1,1,1,1,,22583,6780,134.522722,0,FALSE
+b-5-10,toolsgenie,0.0,0,1,1,1,,32995,9592,498.669846,0,FALSE
+b-6-8,toolsgenie,0.9752110569710826,1,1,1,1,,32688,6715,170.578579,0,FALSE
+b-7-3,toolsgenie,0.5951475324648474,1,1,5,5,,71875,15033,483.931195,0,FALSE
+b-7-10,toolsgenie,0.5197512298305349,1,1,1,1,,30008,6911,463.700983,0,FALSE
+b-8-5,toolsgenie,0.41666666666666663,0,1,1,1,,49843,10302,264.525498,0,FALSE
+b-8-7,toolsgenie,0.5732233047033631,1,1,1,1,,85979,36514,2516.941295,0,FALSE
+b-8-8,toolsgenie,0.7156838208150587,1,1,2,2,,72562,20514,535.144676,0,FALSE
+b-8-10,toolsgenie,0.4942536730535155,0,1,1,1,,104178,34309,2044.792811,0,FALSE
+b-9-4,toolsgenie,0.0,0,0,1,0,Candidate file not found: None,,,3600.171109,124,TRUE
+b-10-4,toolsgenie,0.75,1,1,1,1,,28835,5968,207.395713,0,FALSE
+b-10-5,toolsgenie,0.6411464133266287,1,1,1,1,,33819,6854,144.367688,0,FALSE
+b-11-4,toolsgenie,0.7590794081694694,1,1,2,2,,24911,9714,256.923929,0,FALSE
+b-11-5,toolsgenie,0.6624563067473231,1,1,4,3,Candidate file not found: None,,,3600.217324,124,TRUE
+b-12-2,toolsgenie,0.8711654864450828,1,1,1,1,,22769,7865,231.222651,0,FALSE
+b-12-3,toolsgenie,1.0,1,1,2,2,,19821,5566,197.829854,0,FALSE

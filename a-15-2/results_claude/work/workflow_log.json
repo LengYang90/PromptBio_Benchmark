@@ -1,0 +1,30 @@
+{
+    "test_client_stream_20260430_072007": {
+        "Input_data": [
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/data/Matrix_of_SNP_genotypes.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/data/Matrix_of_bulk_omics_measurements.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/data/Matrix_of_bulk_omics_positions.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/data/Matrix_of_cell_type_composition.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/data/Matrix_of_ovariates.csv",
+            "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/data/Matrix_of_trait_positions.csv"
+        ],
+        "Reference_import": [],
+        "CodeProcess_data": [
+            {
+                "key": "XTHV3A3ZMF8MDD4V",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/work/XTHV3A3ZMF8MDD4V/debug_log.json"
+            },
+            {
+                "key": "ZBIKCIDKWNNHJ7XV",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/work/ZBIKCIDKWNNHJ7XV/debug_log.json"
+            },
+            {
+                "key": "IBLJH75LXO6QJIUJ",
+                "agent_status": "Success",
+                "log_file": "/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-15-2/result_2/toolsgenie_20260430/work/IBLJH75LXO6QJIUJ/debug_log.json"
+            }
+        ]
+    }
+}

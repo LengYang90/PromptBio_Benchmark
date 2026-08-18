@@ -1,0 +1,22 @@
+exec_runcode:
+1
+exec_stdout:
+=== Fixing Comet Parameter File Compatibility ===
+Generating compatible parameter file...
+Updated parameter file created successfully.
+
+=== Verifying Input Files ===
+Input files verified successfully.
+
+=== Running Comet Database Search ===
+Error: Comet execution failed!
+
+exec_stderr:
+
+ Comet version 2023.01 rev. 0 (c40d7e6)
+
+ The comet.params file is from version unknown
+ Please update your comet.params file.  You can generate
+ a new parameters file using "comet -p"
+
+

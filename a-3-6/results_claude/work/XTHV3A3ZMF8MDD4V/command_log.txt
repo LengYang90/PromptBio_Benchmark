@@ -1,0 +1,68 @@
+exec_runcode:
+0
+exec_stdout:
+=== RNA-Seq FASTQ Files Inspection ===
+
+File Information:
+==================
+-rw-rw-r-- 1 1011 1011 40K Apr 21 09:39 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/data/K562f_1.fq.gz
+-rw-rw-r-- 1 1011 1011 39K Apr 21 09:39 /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/data/K562f_2.fq.gz
+
+File Format Check:
+==================
+
+Paired-end Status:
+==================
+ Paired-end FASTQ files detected (K562f_1.fq.gz and K562f_2.fq.gz)
+
+Read Count Analysis:
+===================
+Forward reads (R1):
+  Total lines: 2404
+  Total reads: 601
+Reverse reads (R2):
+  Total lines: 2404
+  Total reads: 601
+
+Sample Read Format (First 2 reads from R1):
+===========================================
+@61PKHAAXX_HWUSI-EAS627_0007:4:1:1716:17840/1
+GTTGGGGTCATTTTCACTGGGTCCAGCGAGAAGGTTTTCCTTGGAGTTCCAACGAGCGGCTTCACTCAGACCCTGA
++BCR--ABL1|S|61PKHAAXX_HWUSI-EAS627_0007:4:1:1716:17840
+EBEEEDECECFGGGGGGGGGGEFEEEFFGGGFGGEEFEGFEEGGBGEBGFGEGFDEEEEE?CCCECE@ECECEE?4
+@61PKHAAXX_HWUSI-EAS627_0007:4:76:2954:4125/1
+TGGAAAGTCATGTCAGTGGTAGTAATATAATTATTGGGACGATTAGTTTTAGCATTGGAGTAGGTTTAGGATGAGT
++MT-ND5--MT-ND4|S|61PKHAAXX_HWUSI-EAS627_0007:4:76:2954:4125
+GGGGGGGFGGGGGGGFEFFDFFEFFGGGFGGGBGGGFGBGGEGGEGDEGGEDFEGFEDCFABEEBCEACE=CEBE#
+
+Sample Read Format (First 2 reads from R2):
+===========================================
+@61PKHAAXX_HWUSI-EAS627_0007:4:1:1716:17840/2
+GGAAGATGATGAGTCTCCGGGGCTCTATGGGTTTCTGAATGTCATCGTCCACTCAGCCACTGGATTTAAGCAGAGT
++BCR--ABL1|S|61PKHAAXX_HWUSI-EAS627_0007:4:1:1716:17840
+GGFFGF?GGGFGFDGGFGGFGGEGGFGFGDF?FBFGGFEECDGEBF?CEEBFDF@GGE:ECFDCDEDBCDEEEBEB
+@61PKHAAXX_HWUSI-EAS627_0007:4:76:2954:4125/2
+CAATTTCACAGCACCAAATCTCCACCTCCATCATCACCTCAACCCAAAAAGGCATAATTAAACTTTACTTCCTCTC
++MT-ND5--MT-ND4|S|61PKHAAXX_HWUSI-EAS627_0007:4:76:2954:4125
+GGGGGGGGGGGGGGGGGGGFGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGFGGGGGFGEFEFGFFFFFEGEGGD
+
+Read Length Analysis:
+====================
+R1 read lengths (first 1000 reads):
+    601 76
+R2 read lengths (first 1000 reads):
+    601 76
+
+Quality Score Preview (first read R1):
+=====================================
+EBEEEDECECFGGGGGGGGGGEFEEEFFGGGFGGEEFEGFEEGGBGEBGFGEGFDEEEEE?CCCECE@ECECEE?4
+
+Quality Score Preview (first read R2):
+=====================================
+GGFFGF?GGGFGFDGGFGGFGGEGGFGFGDF?FBFGGFEECDGEBF?CEEBFDF@GGE:ECFDCDEDBCDEEEBEB
+
+=== Inspection Complete ===
+
+exec_stderr:
+/mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-3-6/result_2/toolsgenie_20260430/work/XTHV3A3ZMF8MDD4V/command.sh: line 20: file: command not found
+

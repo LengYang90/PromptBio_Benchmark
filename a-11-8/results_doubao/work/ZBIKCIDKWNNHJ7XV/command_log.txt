@@ -1,0 +1,10 @@
+exec_runcode:
+0
+exec_stdout:
+Preprocessed edges saved to: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-11-8/result_11/toolsgenie_20260623/preprocessed_edges.csv
+Total edges: 91 (PPI: 75, miRNA-target: 16)
+Node types saved to: /mnt/data/lengyang/youjia_project/autoba/BABench/src/promptbio-bench/tasks/a-11-8/result_11/toolsgenie_20260623/node_types.csv
+Total nodes: 23 (miRNA: 8, gene: 15)
+
+exec_stderr:
+

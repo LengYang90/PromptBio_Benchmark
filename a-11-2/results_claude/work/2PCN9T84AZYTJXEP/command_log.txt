@@ -1,0 +1,72 @@
+exec_runcode:
+0
+exec_stdout:
+=== WGCNA CO-EXPRESSION NETWORK CONSTRUCTION ===
+Using optimal soft-thresholding power: 7
+Network parameters:
+- Soft-thresholding power: 7 
+- Maximum block size: 5000 
+- Minimum module size: 30 
+- Module merge cut height: 0.25 
+ Calculating module eigengenes block-wise from all genes
+   Flagging genes and samples with too many missing values...
+    ..step 1
+ ..Working on block 1 .
+    TOM calculation: adjacency..
+    ..will not use multithreading.
+     Fraction of slow calculations: 0.000000
+    ..connectivity..
+    ..matrix multiplication (system BLAS)..
+    ..normalization..
+    ..done.
+ ....clustering..
+ ....detecting modules..
+ ....calculating module eigengenes..
+ ....checking kME in modules..
+     ..removing 2 genes from module 1 because their KME is too low.
+     ..removing 3 genes from module 2 because their KME is too low.
+     ..removing 5 genes from module 3 because their KME is too low.
+     ..removing 2 genes from module 4 because their KME is too low.
+     ..removing 1 genes from module 6 because their KME is too low.
+     ..removing 2 genes from module 7 because their KME is too low.
+ ..merging modules that are too close..
+     mergeCloseModules: Merging modules whose distance is less than 0.25
+       Calculating new MEs...
+
+=== MODULE DETECTION RESULTS ===
+Number of modules detected: 7 
+Number of genes in grey module (unassigned): 23 
+
+Module sizes:
+Grey module (unassigned): 23 genes
+Module 1 ( turquoise ): 186 genes
+Module 2 ( blue ): 170 genes
+Module 3 ( brown ): 155 genes
+Module 4 ( yellow ): 122 genes
+Module 5 ( green ): 95 genes
+Module 6 ( red ): 86 genes
+Module 7 ( black ): 82 genes
+
+Co-expression network construction completed
+Gene-to-module assignments saved to gene_modules.csv
+Ready for connectivity analysis and hub gene identification
+
+exec_stderr:
+Loading required package: dynamicTreeCut
+Loading required package: fastcluster
+
+Attaching package: fastcluster
+
+The following object is masked from package:stats:
+
+    hclust
+
+
+
+Attaching package: WGCNA
+
+The following object is masked from package:stats:
+
+    cor
+
+

@@ -1,0 +1,69 @@
+exec_runcode:
+0
+exec_stdout:
+=== PHENO.CSV INSPECTION ===
+Dimensions: (20, 1)
+Sample IDs (first 10): ['Sample1', 'Sample2', 'Sample3', 'Sample4', 'Sample5', 'Sample6', 'Sample7', 'Sample8', 'Sample9', 'Sample10']
+Columns: ['Disease']
+Data types:
+Disease    int64
+dtype: object
+Summary statistics:
+         Disease
+count  20.000000
+mean    0.600000
+std     0.502625
+min     0.000000
+25%     0.000000
+50%     1.000000
+75%     1.000000
+max     1.000000
+Missing values: 0
+Sample data (first 5 rows):
+         Disease
+Sample          
+Sample1        1
+Sample2        0
+Sample3        1
+Sample4        1
+Sample5        1
+
+=== PROTEIN.CSV INSPECTION ===
+Dimensions: (100, 20)
+Sample IDs (first 10): ['Gene1', 'Gene2', 'Gene3', 'Gene4', 'Gene5', 'Gene6', 'Gene7', 'Gene8', 'Gene9', 'Gene10']
+Feature names (first 10): ['Sample1', 'Sample2', 'Sample3', 'Sample4', 'Sample5', 'Sample6', 'Sample7', 'Sample8', 'Sample9', 'Sample10']
+Data type: float64
+Value range: [-2.550, 2.551]
+Missing values: 0
+Sample data (first 5x5):
+        Sample1   Sample2   Sample3   Sample4   Sample5
+Gene1 -0.639561 -0.692060 -0.481281  0.349311 -1.434668
+Gene2  0.309356 -0.533619  0.247162 -1.919785 -2.183754
+Gene3 -0.504277 -0.638662 -0.805117 -0.515011 -1.645692
+Gene4 -0.462056 -0.716923 -0.942253 -1.179861  0.272828
+Gene5 -0.731539 -0.021971 -0.308875 -1.869579 -1.107733
+
+=== RNA.CSV INSPECTION ===
+Dimensions: (100, 20)
+Sample IDs (first 10): ['Gene1', 'Gene2', 'Gene3', 'Gene4', 'Gene5', 'Gene6', 'Gene7', 'Gene8', 'Gene9', 'Gene10']
+Feature names (first 10): ['Sample1', 'Sample2', 'Sample3', 'Sample4', 'Sample5', 'Sample6', 'Sample7', 'Sample8', 'Sample9', 'Sample10']
+Data type: float64
+Value range: [-4.031, 3.974]
+Missing values: 0
+Sample data (first 5x5):
+        Sample1   Sample2   Sample3   Sample4   Sample5
+Gene1 -0.503286 -1.033001 -0.141785  0.838819 -0.813101
+Gene2  0.465649 -1.120513 -0.721945 -2.108959 -1.123330
+Gene3 -0.261533 -0.723369 -0.905122 -0.985314 -2.057469
+Gene4 -1.479174 -1.080396 -1.895809 -1.880417  0.233578
+Gene5 -1.219672 -0.537624  0.688420 -1.202481 -1.387441
+
+=== SAMPLE ID OVERLAP ANALYSIS ===
+Pheno samples: 20
+Protein samples: 100
+RNA samples: 100
+Common samples (all three): 0
+Common samples (protein & RNA): 100
+
+exec_stderr:
+

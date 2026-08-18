@@ -1,0 +1,7 @@
+node,degree_centrality,type
+KRAS,14,gene
+PIK3CA,14,gene
+TP53,14,gene
+EGFR,14,gene
+AKT1,14,gene
+MYC,14,gene
