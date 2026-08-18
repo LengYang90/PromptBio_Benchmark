@@ -82,12 +82,19 @@ Deep Agent 只获得项目自定义的只读工具，并有模型请求过滤和
 - 文本、JSON、CSV/TSV、代码和日志的分页读取、搜索与结构化检查；
 - Excel 表格的只读采样；
 - 图片和 PDF 的元数据、文本提取及内存预览；
-- FASTA/FASTQ、VCF/BCF、BAM/CRAM 的 header 与记录采样。
+- FASTA/FASTQ、VCF/BCF、BAM/CRAM 的 header 与记录采样；
+- PDB 结构的链、序列摘要、原子/残基完整性和 CA B-factor 摘要，以及一对 PDB 的
+  链序列对应关系和刚体叠合后 CA-RMSD。
 
-文件列表与文件元数据工具仅用于导航；只有实际读取正文、表格、图片、PDF 或生物信息常用
-文件内容的工具才产生可引用的证据 ID。解析器不修改源文件。不会向 Agent 暴露 Shell、Python 执行、网络、写入、删除、
+文件列表与文件元数据工具仅用于导航；只有实际读取正文、表格、图片、PDF 或生物信息
+文件内容的工具才产生可引用的证据 ID。解析器不修改源文件。不会向 Agent 暴露 Shell、
+Python 执行、网络、写入、删除、
 编辑、默认文件系统工具或子 Agent 工具。结果目录根目录下未在 `expected_output`
 声明的其他文件也不会成为证据；例如不会把未声明的附加文本当成 Agent 答案。
+
+当任务声明多个 PDB 输出时，初评 Agent 会将所有“参考 PDB—Agent PDB”配对作为
+同一任务整体检查。它可对每一对调用只读结构比较工具；链序列匹配和叠合后的 CA-RMSD
+是判断证据，不使用固定 RMSD 阈值自动判分。
 
 评测器唯一会写入的文件是 `<results_dir>/evaluation.json`。
 
@@ -256,8 +263,8 @@ python -m unittest discover -s tests -v
 ```
 
 它验证两阶段目录隔离、未声明结果文件排除、路径越界拒绝、一次性文件清单、
-并发读取下唯一的证据编号、初评到复核的 LangGraph 路由、token 统计，以及 Deep
-Agent 的工具调用白名单。
+并发读取下唯一的证据编号、PDB 结构摘要与刚体叠合比较、初评到复核的 LangGraph
+路由、token 统计，以及 Deep Agent 的工具调用白名单。
 
 旧的 `evaluate_task_with_llm.py` 仍保留作为早期纯文本评测实现；它不会按需解析
 多种文件格式，也不具备本 README 所述的受限 Deep Agent 多步读取能力。

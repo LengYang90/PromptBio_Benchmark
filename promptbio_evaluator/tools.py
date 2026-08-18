@@ -90,6 +90,25 @@ def build_readonly_tools(store: EvidenceStore) -> list[BaseTool]:
         except (PolicyError, OSError) as exc:
             return _tool_error(exc)
 
+    @tool("inspect_pdb")
+    def inspect_pdb(path: str, residue_limit: int = 50) -> str:
+        """Read one allowed PDB structure in memory: chains, sequence summaries, atom/residue completeness, and CA B-factor statistics."""
+        try:
+            return json.dumps({"status": "ok", "result": store.inspect_pdb(path, residue_limit)}, ensure_ascii=False)
+        except (PolicyError, OSError, ValueError) as exc:
+            return _tool_error(exc)
+
+    @tool("compare_pdb_structures")
+    def compare_pdb_structures(reference_path: str, agent_path: str) -> str:
+        """Compare an allowed reference PDB and Agent PDB: chain sequence correspondence and CA-RMSD after in-memory rigid superposition. It creates citable content evidence for both files."""
+        try:
+            return json.dumps(
+                {"status": "ok", "result": store.compare_pdb_structures(reference_path, agent_path)},
+                ensure_ascii=False,
+            )
+        except (PolicyError, OSError, ValueError) as exc:
+            return _tool_error(exc)
+
     return [
         list_evidence_files,
         get_file_metadata,
@@ -100,4 +119,6 @@ def build_readonly_tools(store: EvidenceStore) -> list[BaseTool]:
         inspect_image,
         inspect_pdf,
         inspect_bio_file,
+        inspect_pdb,
+        compare_pdb_structures,
     ]

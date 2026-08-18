@@ -91,6 +91,74 @@ class PolicyTests(FixtureMixin, unittest.TestCase):
 
 
 class EvidenceStoreTests(FixtureMixin, unittest.TestCase):
+    @staticmethod
+    def _pdb_atom(
+        serial: int,
+        atom_name: str,
+        residue_name: str,
+        chain_id: str,
+        residue_number: int,
+        coordinate: tuple[float, float, float],
+        b_factor: float,
+    ) -> str:
+        x, y, z = coordinate
+        element = atom_name.strip()[0]
+        return (
+            f"ATOM  {serial:5d} {atom_name:^4} {residue_name:>3} {chain_id:1}"
+            f"{residue_number:4d}    {x:8.3f}{y:8.3f}{z:8.3f}{1.00:6.2f}{b_factor:6.2f}          {element:>2}\n"
+        )
+
+    @classmethod
+    def _pdb_for_ca_points(cls, points: list[tuple[float, float, float]]) -> str:
+        lines = ["MODEL        1\n"]
+        serial = 1
+        for residue_number, ca in enumerate(points, start=1):
+            residue_name = ("ALA", "GLY", "SER")[residue_number - 1]
+            lines.append(cls._pdb_atom(serial, "N", residue_name, "A", residue_number, (ca[0] - 0.2, ca[1], ca[2]), 80.0))
+            serial += 1
+            lines.append(cls._pdb_atom(serial, "CA", residue_name, "A", residue_number, ca, 80.0 + residue_number))
+            serial += 1
+            lines.append(cls._pdb_atom(serial, "C", residue_name, "A", residue_number, (ca[0] + 0.2, ca[1], ca[2]), 80.0))
+            serial += 1
+        lines.extend(["ENDMDL\n", "END\n"])
+        return "".join(lines)
+
+    def test_pdb_inspection_and_pairwise_comparison_are_read_only_content_evidence(self) -> None:
+        temporary, task_dir, result_dir = self.make_task_fixture()
+        self.addCleanup(temporary.cleanup)
+        payload = json.loads((task_dir / "task.json").read_text(encoding="utf-8"))
+        payload["expected_output"] = [{"file": "rank_001.pdb", "type": "pdb"}]
+        (task_dir / "task.json").write_text(json.dumps(payload), encoding="utf-8")
+        reference_points = [(0.0, 0.0, 0.0), (1.0, 0.0, 0.0), (0.0, 1.0, 0.0)]
+        # 90° rotation around z plus translation: raw coordinates differ, but
+        # the two structures are identical after rigid superposition.
+        agent_points = [(10.0, 5.0, 2.0), (10.0, 6.0, 2.0), (9.0, 5.0, 2.0)]
+        (task_dir / "ref_answer" / "rank_001.pdb").write_text(
+            self._pdb_for_ca_points(reference_points), encoding="utf-8"
+        )
+        (result_dir / "rank_001.pdb").write_text(
+            self._pdb_for_ca_points(agent_points), encoding="utf-8"
+        )
+        task = load_task(task_dir)
+        store = EvidenceStore(task_dir, result_dir, task, "initial_assessment", AccessLimits())
+
+        inspection = store.inspect_pdb(str(task_dir / "ref_answer" / "rank_001.pdb"), 10)
+        comparison = store.compare_pdb_structures(
+            str(task_dir / "ref_answer" / "rank_001.pdb"),
+            str(result_dir / "rank_001.pdb"),
+        )
+
+        self.assertEqual(inspection["chain_count"], 1)
+        self.assertEqual(inspection["chains"][0]["sequence_preview"], "AGS")
+        self.assertEqual(inspection["complete_backbone_residue_count"], 3)
+        self.assertEqual(comparison["chain_mappings"][0]["sequence_identity_fraction"], 1.0)
+        self.assertEqual(comparison["overall_ca_pair_count"], 3)
+        self.assertAlmostEqual(comparison["overall_ca_rmsd_after_superposition"], 0.0, places=3)
+        self.assertEqual(
+            [record.evidence_id for record in store.records],
+            ["I-0001", "I-0002", "I-0003"],
+        )
+
     def test_star_junction_file_is_readable_as_text(self) -> None:
         temporary, task_dir, result_dir = self.make_task_fixture()
         self.addCleanup(temporary.cleanup)

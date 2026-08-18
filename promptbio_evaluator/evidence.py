@@ -4,10 +4,14 @@ from __future__ import annotations
 
 import base64
 import csv
+import hashlib
 import io
 import json
+import math
 import mimetypes
+import statistics
 from dataclasses import dataclass
+from difflib import SequenceMatcher
 from pathlib import Path
 from threading import RLock
 from typing import Any, Literal
@@ -29,6 +33,16 @@ TEXT_EXTENSIONS = {
 TABLE_EXTENSIONS = {".csv", ".tsv", ".txt", ".xlsx", ".xlsm"}
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".tif", ".tiff"}
 BIO_EXTENSIONS = {".fa", ".fasta", ".fna", ".ffn", ".faa", ".frn", ".fq", ".fastq", ".vcf", ".bcf", ".bam", ".cram"}
+PDB_EXTENSION = ".pdb"
+
+THREE_TO_ONE = {
+    "ALA": "A", "ARG": "R", "ASN": "N", "ASP": "D", "CYS": "C",
+    "GLN": "Q", "GLU": "E", "GLY": "G", "HIS": "H", "ILE": "I",
+    "LEU": "L", "LYS": "K", "MET": "M", "PHE": "F", "PRO": "P",
+    "SER": "S", "THR": "T", "TRP": "W", "TYR": "Y", "VAL": "V",
+    # Common modified amino acids that still identify the same polymer residue.
+    "MSE": "M", "SEC": "U", "PYL": "O",
+}
 
 
 @dataclass(frozen=True)
@@ -428,6 +442,348 @@ class EvidenceStore:
         if suffix in {".vcf", ".bcf"}:
             return self._inspect_variant_file(path, record_limit)
         return self._inspect_alignment_file(path, record_limit)
+
+    @staticmethod
+    def _summary(values: list[float]) -> dict[str, float | int] | None:
+        if not values:
+            return None
+        return {
+            "count": len(values),
+            "mean": round(statistics.fmean(values), 3),
+            "median": round(statistics.median(values), 3),
+            "minimum": round(min(values), 3),
+            "maximum": round(max(values), 3),
+        }
+
+    @staticmethod
+    def _sequence_preview(sequence: str, limit: int) -> str:
+        if len(sequence) <= limit:
+            return sequence
+        return f"{sequence[:limit]}…{sequence[-min(limit, 40):]}"
+
+    def _parse_pdb(self, path: Path, preview_limit: int) -> dict[str, Any]:
+        """Parse a PDB text file in memory without running external software.
+
+        The parser intentionally extracts the fields needed for evaluation,
+        rather than attempting to repair or alter a structure. Only the first
+        coordinate model is used for atom, sequence, and geometry summaries;
+        all MODEL records are counted.
+        """
+        selected_model: int | None = None
+        current_model = 1
+        model_ids: set[int] = set()
+        atom_count = 0
+        hetero_atom_count = 0
+        malformed_coordinate_records = 0
+        chains: dict[str, list[dict[str, Any]]] = {}
+        residue_lookup: dict[tuple[str, int, str, str], dict[str, Any]] = {}
+
+        with path.open("r", encoding="utf-8", errors="replace") as handle:
+            for line in handle:
+                record_type = line[:6].strip().upper()
+                if record_type == "MODEL":
+                    try:
+                        current_model = int(line[10:14].strip())
+                    except ValueError:
+                        current_model = len(model_ids) + 1
+                    model_ids.add(current_model)
+                    if selected_model is None:
+                        selected_model = current_model
+                    continue
+                if record_type not in {"ATOM", "HETATM"}:
+                    continue
+                if selected_model is None:
+                    selected_model = current_model
+                model_ids.add(current_model)
+                if current_model != selected_model:
+                    continue
+                atom_count += 1
+                if record_type == "HETATM":
+                    hetero_atom_count += 1
+                    continue
+                try:
+                    residue_number = int(line[22:26].strip())
+                    coordinate = (
+                        float(line[30:38].strip()),
+                        float(line[38:46].strip()),
+                        float(line[46:54].strip()),
+                    )
+                    b_factor = float(line[60:66].strip()) if line[60:66].strip() else None
+                except ValueError:
+                    malformed_coordinate_records += 1
+                    continue
+                chain_id = line[21].strip() or "<blank>"
+                residue_name = line[17:20].strip().upper() or "UNK"
+                insertion_code = line[26].strip()
+                atom_name = line[12:16].strip().upper()
+                residue_key = (chain_id, residue_number, insertion_code, residue_name)
+                residue = residue_lookup.get(residue_key)
+                if residue is None:
+                    residue = {
+                        "chain_id": chain_id,
+                        "name": residue_name,
+                        "number": residue_number,
+                        "insertion_code": insertion_code,
+                        "code": THREE_TO_ONE.get(residue_name, "X"),
+                        "atoms": {},
+                    }
+                    residue_lookup[residue_key] = residue
+                    chains.setdefault(chain_id, []).append(residue)
+                # First alternate location is deterministic and adequate for a
+                # structure summary; no atom coordinates are written anywhere.
+                residue["atoms"].setdefault(atom_name, {"coordinate": coordinate, "b_factor": b_factor})
+
+        if selected_model is None:
+            selected_model = 1
+        chain_summaries: list[dict[str, Any]] = []
+        residue_preview: list[dict[str, Any]] = []
+        total_polymer_residues = 0
+        total_ca_atoms = 0
+        total_complete_backbones = 0
+        for chain_id, residues in chains.items():
+            sequence = "".join(residue["code"] for residue in residues)
+            ca_b_factors = [
+                atom["b_factor"]
+                for residue in residues
+                if (atom := residue["atoms"].get("CA")) is not None and atom["b_factor"] is not None
+            ]
+            ca_count = sum("CA" in residue["atoms"] for residue in residues)
+            complete_backbone_count = sum(
+                all(atom_name in residue["atoms"] for atom_name in ("N", "CA", "C"))
+                for residue in residues
+            )
+            total_polymer_residues += len(residues)
+            total_ca_atoms += ca_count
+            total_complete_backbones += complete_backbone_count
+            chain_summaries.append(
+                {
+                    "chain_id": chain_id,
+                    "residue_count": len(residues),
+                    "sequence_length": len(sequence),
+                    "sequence_sha256": hashlib.sha256(sequence.encode("ascii")).hexdigest(),
+                    "sequence_preview": self._sequence_preview(sequence, max(20, min(preview_limit, 120))),
+                    "ca_atom_count": ca_count,
+                    "complete_backbone_residue_count": complete_backbone_count,
+                    "ca_b_factor_summary": self._summary(ca_b_factors),
+                }
+            )
+            for residue in residues:
+                if len(residue_preview) >= preview_limit:
+                    break
+                ca = residue["atoms"].get("CA")
+                residue_preview.append(
+                    {
+                        "chain_id": chain_id,
+                        "residue_name": residue["name"],
+                        "residue_number": residue["number"],
+                        "insertion_code": residue["insertion_code"],
+                        "has_ca": ca is not None,
+                        "has_complete_backbone": all(
+                            atom_name in residue["atoms"] for atom_name in ("N", "CA", "C")
+                        ),
+                        "ca_b_factor": ca["b_factor"] if ca is not None else None,
+                    }
+                )
+
+        summary = {
+            "format": "pdb",
+            "model_count": len(model_ids) or 1,
+            "representative_model": selected_model,
+            "chain_count": len(chains),
+            "polymer_residue_count": total_polymer_residues,
+            "atom_count_in_representative_model": atom_count,
+            "hetero_atom_count_in_representative_model": hetero_atom_count,
+            "ca_atom_count": total_ca_atoms,
+            "complete_backbone_residue_count": total_complete_backbones,
+            "malformed_coordinate_records": malformed_coordinate_records,
+            "chains": chain_summaries,
+            "residue_preview": residue_preview,
+            "b_factor_note": (
+                "CA B-factors are reported as stored. In AlphaFold-style predicted PDB files "
+                "they commonly encode pLDDT, but this must not be assumed for every PDB."
+            ),
+        }
+        return {"summary": summary, "chains": chains}
+
+    def inspect_pdb(self, raw_path: str, residue_limit: int) -> dict[str, Any]:
+        """Inspect one allowed PDB structure with an in-memory, read-only parser."""
+        if residue_limit < 1:
+            raise PolicyError("residue_limit must be positive")
+        path, _ = self._resolve_allowed(raw_path)
+        if path.suffix.lower() != PDB_EXTENSION:
+            raise PolicyError("inspect_pdb only supports .pdb structure files")
+        parsed = self._parse_pdb(path, min(residue_limit, self.limits.max_records))
+        citation = self.cite(
+            path,
+            locator="PDB structure summary and residue preview",
+            extractor="inspect_pdb",
+            status="complete",
+        )
+        return {"path": str(path), **parsed["summary"], "evidence_id": citation.evidence_id}
+
+    @staticmethod
+    def _matching_blocks(reference_sequence: str, agent_sequence: str) -> list[tuple[int, int, int]]:
+        return [
+            (block.a, block.b, block.size)
+            for block in SequenceMatcher(None, reference_sequence, agent_sequence, autojunk=False).get_matching_blocks()
+            if block.size
+        ]
+
+    @staticmethod
+    def _ca_rmsd_after_superposition(
+        reference_points: list[tuple[float, float, float]],
+        agent_points: list[tuple[float, float, float]],
+    ) -> float | None:
+        """Return Kabsch/Horn superposed CA-RMSD using only standard-library math."""
+        if len(reference_points) != len(agent_points) or len(reference_points) < 3:
+            return None
+        count = len(reference_points)
+        reference_center = tuple(sum(point[index] for point in reference_points) / count for index in range(3))
+        agent_center = tuple(sum(point[index] for point in agent_points) / count for index in range(3))
+        covariance = [[0.0] * 3 for _ in range(3)]
+        for reference, agent in zip(reference_points, agent_points, strict=True):
+            fixed = [reference[index] - reference_center[index] for index in range(3)]
+            moving = [agent[index] - agent_center[index] for index in range(3)]
+            for row in range(3):
+                for column in range(3):
+                    covariance[row][column] += moving[row] * fixed[column]
+        sxx, sxy, sxz = covariance[0]
+        syx, syy, syz = covariance[1]
+        szx, szy, szz = covariance[2]
+        horn = [
+            [sxx + syy + szz, syz - szy, szx - sxz, sxy - syx],
+            [syz - szy, sxx - syy - szz, sxy + syx, szx + sxz],
+            [szx - sxz, sxy + syx, -sxx + syy - szz, syz + szy],
+            [sxy - syx, szx + sxz, syz + szy, -sxx - syy + szz],
+        ]
+        # Shift the symmetric matrix before power iteration. This preserves its
+        # eigenvectors while preventing equal-magnitude positive/negative
+        # eigenvalues from making the iteration oscillate.
+        shift = max(sum(abs(value) for value in row) for row in horn) + 1.0
+        for index in range(4):
+            horn[index][index] += shift
+        quaternion = [1.0, 0.0, 0.0, 0.0]
+        for _ in range(100):
+            updated = [sum(horn[row][column] * quaternion[column] for column in range(4)) for row in range(4)]
+            norm = math.sqrt(sum(value * value for value in updated))
+            if norm == 0:
+                return None
+            updated = [value / norm for value in updated]
+            delta = max(abs(updated[index] - quaternion[index]) for index in range(4))
+            sign_flipped_delta = max(abs(updated[index] + quaternion[index]) for index in range(4))
+            if min(delta, sign_flipped_delta) < 1e-12:
+                quaternion = updated
+                break
+            quaternion = updated
+        w, x, y, z = quaternion
+        rotation = (
+            (1 - 2 * (y * y + z * z), 2 * (x * y - w * z), 2 * (x * z + w * y)),
+            (2 * (x * y + w * z), 1 - 2 * (x * x + z * z), 2 * (y * z - w * x)),
+            (2 * (x * z - w * y), 2 * (y * z + w * x), 1 - 2 * (x * x + y * y)),
+        )
+        squared_error = 0.0
+        for reference, agent in zip(reference_points, agent_points, strict=True):
+            moving = [agent[index] - agent_center[index] for index in range(3)]
+            rotated = [sum(rotation[row][column] * moving[column] for column in range(3)) for row in range(3)]
+            for index in range(3):
+                squared_error += (rotated[index] - (reference[index] - reference_center[index])) ** 2
+        return round(math.sqrt(squared_error / count), 4)
+
+    def compare_pdb_structures(self, raw_reference_path: str, raw_agent_path: str) -> dict[str, Any]:
+        """Compare two allowed PDBs by chain sequence and superposed CA coordinates."""
+        reference_path, _ = self._resolve_allowed(raw_reference_path)
+        agent_path, _ = self._resolve_allowed(raw_agent_path)
+        if reference_path.suffix.lower() != PDB_EXTENSION or agent_path.suffix.lower() != PDB_EXTENSION:
+            raise PolicyError("compare_pdb_structures requires two .pdb files")
+        reference = self._parse_pdb(reference_path, min(self.limits.max_records, 50))
+        agent = self._parse_pdb(agent_path, min(self.limits.max_records, 50))
+
+        available_agent_chains = dict(agent["chains"])
+        mappings: list[dict[str, Any]] = []
+        all_reference_points: list[tuple[float, float, float]] = []
+        all_agent_points: list[tuple[float, float, float]] = []
+        for reference_chain_id, reference_residues in reference["chains"].items():
+            reference_sequence = "".join(item["code"] for item in reference_residues)
+            candidates = []
+            for agent_chain_id, agent_residues in available_agent_chains.items():
+                agent_sequence = "".join(item["code"] for item in agent_residues)
+                blocks = self._matching_blocks(reference_sequence, agent_sequence)
+                matching_residues = sum(block[2] for block in blocks)
+                similarity = matching_residues / max(len(reference_sequence), len(agent_sequence), 1)
+                candidates.append((agent_chain_id, agent_residues, blocks, matching_residues, similarity))
+            if not candidates:
+                mappings.append(
+                    {
+                        "reference_chain_id": reference_chain_id,
+                        "agent_chain_id": None,
+                        "reference_sequence_length": len(reference_sequence),
+                        "agent_sequence_length": 0,
+                        "matching_residue_count": 0,
+                        "sequence_identity_fraction": 0.0,
+                        "ca_pair_count": 0,
+                        "ca_rmsd_after_superposition": None,
+                    }
+                )
+                continue
+            # Keep matching chain IDs when possible; otherwise use the highest
+            # exact-sequence correspondence among the still-unmatched chains.
+            same_id_candidates = [candidate for candidate in candidates if candidate[0] == reference_chain_id]
+            chosen = max(same_id_candidates or candidates, key=lambda item: (item[4], item[3], item[0]))
+            agent_chain_id, agent_residues, blocks, matching_residues, similarity = chosen
+            del available_agent_chains[agent_chain_id]
+            reference_points: list[tuple[float, float, float]] = []
+            agent_points: list[tuple[float, float, float]] = []
+            for reference_start, agent_start, block_size in blocks:
+                for offset in range(block_size):
+                    reference_ca = reference_residues[reference_start + offset]["atoms"].get("CA")
+                    agent_ca = agent_residues[agent_start + offset]["atoms"].get("CA")
+                    if reference_ca is not None and agent_ca is not None:
+                        reference_points.append(reference_ca["coordinate"])
+                        agent_points.append(agent_ca["coordinate"])
+            all_reference_points.extend(reference_points)
+            all_agent_points.extend(agent_points)
+            mappings.append(
+                {
+                    "reference_chain_id": reference_chain_id,
+                    "agent_chain_id": agent_chain_id,
+                    "reference_sequence_length": len(reference_sequence),
+                    "agent_sequence_length": len(agent_residues),
+                    "matching_residue_count": matching_residues,
+                    "sequence_identity_fraction": round(similarity, 4),
+                    "ca_pair_count": len(reference_points),
+                    "ca_rmsd_after_superposition": self._ca_rmsd_after_superposition(reference_points, agent_points),
+                }
+            )
+
+        reference_citation = self.cite(
+            reference_path,
+            locator=f"PDB comparison with {self._relative_path(agent_path)}",
+            extractor="compare_pdb_structures",
+            status="complete",
+        )
+        agent_citation = self.cite(
+            agent_path,
+            locator=f"PDB comparison with {self._relative_path(reference_path)}",
+            extractor="compare_pdb_structures",
+            status="complete",
+        )
+        return {
+            "reference_path": str(reference_path),
+            "agent_path": str(agent_path),
+            "reference_structure": reference["summary"],
+            "agent_structure": agent["summary"],
+            "chain_mappings": mappings,
+            "unmatched_agent_chain_ids": sorted(available_agent_chains),
+            "overall_ca_pair_count": len(all_reference_points),
+            "overall_ca_rmsd_after_superposition": self._ca_rmsd_after_superposition(
+                all_reference_points,
+                all_agent_points,
+            ),
+            "rmsd_note": "RMSD is after rigid-body superposition of sequence-matched CA atoms; it is descriptive evidence, not a fixed pass/fail threshold.",
+            "reference_evidence_id": reference_citation.evidence_id,
+            "agent_evidence_id": agent_citation.evidence_id,
+            "evidence_ids": [reference_citation.evidence_id, agent_citation.evidence_id],
+        }
 
     def _inspect_sequence_file(self, path: Path, record_limit: int) -> dict[str, Any]:
         try:

@@ -51,6 +51,8 @@ READ_ONLY_TOOL_NAMES = frozenset(
         "inspect_image",
         "inspect_pdf",
         "inspect_bio_file",
+        "inspect_pdb",
+        "compare_pdb_structures",
     }
 )
 _REGISTERED_READ_ONLY_MODELS: set[str] = set()
@@ -163,6 +165,9 @@ Every declared output file has a reference-answer and Agent-result path below.
 You are evaluating the task as a whole, not computing a score per file. You must
 inspect BOTH files in EVERY declared pair with the appropriate read-only tool
 before returning a verdict. Consider relationships between the files.
+For a declared PDB pair, use compare_pdb_structures when possible: one call
+inspects and creates citable content evidence for both structures. Use inspect_pdb
+as needed for a single-structure summary.
 
 Declared output pair manifest:
 {_pair_manifest_text(task_dir, result_dir, task)}
