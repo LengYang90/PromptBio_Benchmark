@@ -1,0 +1,26 @@
+PLASMID MAP
+==================================================
+Total Length: 428 bp
+Construct Type: Circular plasmid
+Assembly Method: Golden Gate cloning with BsaI
+
+PART POSITIONS:
+--------------------------------------------------
+part1_promoter          1–111  bp (111 bp)
+part2_gene            112–208  bp ( 97 bp)
+part3_terminator      209–316  bp (108 bp)
+part4_backbone        317–428  bp (112 bp)
+
+ASSEMBLY ORDER:
+--------------------------------------------------
+1. part1_promoter
+2. part2_gene
+3. part3_terminator
+4. part4_backbone
+
+OVERHANGS USED:
+--------------------------------------------------
+part1_promoter: ATCG
+part2_gene: CTAG
+part3_terminator: TACG
+part4_backbone: TGCA

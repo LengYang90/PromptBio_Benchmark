@@ -1,0 +1,59 @@
+Hierarchical Model Summary
+==================================================
+
+Parameter Posterior Estimates
+------------------------------
+Parameter                      Mean       SD         2.5%       97.5%     
+----------------------------------------------------------------------
+intercept                      10.3582    2.8730     4.9671     14.6666   
+time_effect_T1                 0.6536     0.2023     0.2481     1.0456    
+time_effect_T2                 1.1417     0.2086     0.7244     1.5486    
+time_effect_T3                 1.7781     0.2064     1.3713     2.1747    
+time_effect_T4                 2.2165     0.2012     1.8134     2.6080    
+patient_effect_Patient_001     -4.5855    2.9027     -8.9844    0.8915    
+patient_effect_Patient_002     -6.1574    2.8943     -10.5642   -0.7498   
+patient_effect_Patient_003     -4.6786    2.8932     -9.0682    0.6744    
+patient_effect_Patient_004     -3.6231    2.8941     -8.0092    1.8135    
+patient_effect_Patient_005     -5.5492    2.8920     -9.9660    -0.1465   
+patient_effect_Patient_006     -5.5188    2.8869     -9.9077    -0.1531   
+patient_effect_Patient_007     -3.6412    2.8971     -8.0096    1.8181    
+patient_effect_Patient_008     -4.0840    2.8983     -8.4795    1.3672    
+patient_effect_Patient_009     -5.8700    2.8887     -10.2274   -0.4269   
+patient_effect_Patient_010     -4.8748    2.8965     -9.3097    0.5098    
+patient_effect_Patient_011     -5.9329    2.8982     -10.3240   -0.5135   
+patient_effect_Patient_012     -5.8778    2.8927     -10.3144   -0.3967   
+patient_effect_Patient_013     -5.1164    2.8977     -9.5335    0.3651    
+patient_effect_Patient_014     -8.0325    2.9077     -12.4809   -2.6154   
+patient_effect_Patient_015     -8.0805    2.9015     -12.5549   -2.6657   
+patient_effect_Patient_016     -5.7265    2.9002     -10.1760   -0.3171   
+patient_effect_Patient_017     -6.6336    2.8890     -11.0678   -1.2222   
+patient_effect_Patient_018     -4.8307    2.8980     -9.2386    0.6010    
+patient_effect_Patient_019     -6.4872    2.8868     -10.8923   -1.0926   
+patient_effect_Patient_020     -7.1828    2.8915     -11.5885   -1.7628   
+patient_effect_Patient_021     -3.9074    2.8990     -8.3154    1.5021    
+patient_effect_Patient_022     -5.6608    2.9001     -10.0974   -0.2012   
+patient_effect_Patient_023     -5.2277    2.8921     -9.6039    0.2304    
+patient_effect_Patient_024     -7.3666    2.8948     -11.7924   -1.8740   
+patient_effect_Patient_025     -6.0271    2.9003     -10.4026   -0.5918   
+patient_effect_Patient_026     -5.0751    2.8973     -9.5072    0.3252    
+patient_effect_Patient_027     -6.7114    2.8929     -11.0805   -1.2849   
+patient_effect_Patient_028     -4.5753    2.8953     -8.9829    0.8507    
+patient_effect_Patient_029     -6.3309    2.8861     -10.7092   -0.9253   
+patient_effect_Patient_030     -5.0547    2.9008     -9.4986    0.2933    
+mu_patient                     -5.6101    2.8808     -9.9539    -0.1975   
+sigma_patient                  1.2416     0.1783     0.9435     1.6504    
+sigma_patient_squared          1.5733     0.4654     0.8901     2.7238    
+sigma_obs                      0.8099     0.0525     0.7130     0.9193    
+
+==================================================
+Random Effects Variance Summary
+------------------------------
+sigma_patient (SD of patient effects):
+  Posterior mean: 1.2416
+  Posterior SD: 0.1783
+  95% Credible interval: [0.9435, 1.6504]
+
+sigma_patient_squared (Variance of patient effects):
+  Posterior mean: 1.5733
+  Posterior SD: 0.4654
+  95% Credible interval: [0.8901, 2.7238]

@@ -1,6 +1,6 @@
 {
     "id": "a-15-2",
-    "question": "Perform cell-type-specific cis-QTL analysis on methylation data to identify SNP effects on CpG sites.",
+    "question": "Using the omicwas R package's ctcisQTL function, perform cell-type-specific cis-QTL analysis on methylation data with a 1 Mb cis window, controlling for the provided covariates.",
     "input_files": [
         "data/Matrix_of_SNP_genotypes.csv",
         "data/Matrix_of_bulk_omics_measurements.csv",
@@ -11,9 +11,9 @@
     ],
     "expected_output": [
         {
-            "file": "mQTL_results.txt",
-            "type": "txt",
-            "description": "rows as SNP-CpG-celltype associations, columns should include SNP (term), CpG site (response), celltype, estimate, statistic, p.value"
+            "file": "mQTL_results.tsv",
+            "type": "tsv",
+            "description": "rows as SNP-CpG-celltype associations, columns should include term (SNP), response (CpG site), celltype, estimate, statistic, p.value"
         }
     ],
     "timeout_seconds": 3600

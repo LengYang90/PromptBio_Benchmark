@@ -12,7 +12,7 @@ Ypos <- read.csv(file.path(task_dir, "data", "Matrix_of_bulk_omics_positions.csv
 ctcisQTL(X, Xpos, W, Y, Ypos, C = C)
 results <- read.table(file.path(tempdir(), "ctcisQTL.out.txt"), header = TRUE, sep = "\t")
 write.table(results,
-    file      = file.path(task_dir, "ref_answer", "mQTL_results.txt"),
+    file      = file.path(task_dir, "ref_answer", "mQTL_results.tsv"),
     sep       = "\t",
     row.names = FALSE,
     quote     = FALSE)
